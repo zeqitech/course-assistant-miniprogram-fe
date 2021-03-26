@@ -1,0 +1,6 @@
+<import src="/global/foot.ttml" />
+
+<view class="page">
+  
+</view>
+<template is="foot"></template>

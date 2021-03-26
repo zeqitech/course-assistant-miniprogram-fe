@@ -1,0 +1,61 @@
+/* 班级封面 */
+.cover {
+  width: 100%;
+  height: 200px;
+}
+
+/* 作业列表 */
+.content {
+  width: calc(100% - 48px);
+  margin-top: 24px;
+}
+.content .item {
+  display: flex;
+  padding: 0 24px;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+  border: 1px solid #bbbbbb;
+  overflow: hidden;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.content .item .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+}
+.content .item .info {
+  margin-left: 12px;
+  height: 100rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.content .item .info .title {
+  font-size: 40rpx;
+}
+.content .item .info .date {
+  font-size: 28rpx;
+  color: #8c8c8c;
+}
+.content .item .status {
+  margin-left: auto;
+  width: 80px;
+  height: 30px;
+  border-radius: 16px;
+  border: #bbbbbb 1px solid;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 56rpx;
+}
+.content .item .status.green {
+  background-color: #b0ff97;
+}
+.content .item .status.yellow {
+  background-color: #ffee97;
+}
+.content .item .status.red {
+  background-color: #ffa497;
+}

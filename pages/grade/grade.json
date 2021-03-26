@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "作业评分",
+  "usingComponents": {
+    "s-input": "/components/sinput/sinput"
+  }
+}

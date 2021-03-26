@@ -1,0 +1,17 @@
+<view class="s-input">
+  <text class="title" type="digit">{{ label }}</text>
+  <input
+    tt:if="{{ type === 'default' }}"
+    class="value s-default"
+    value="{{ value }}"
+    placeholder="{{ placeholder }}"
+    bindinput="handleInput"
+  />
+  <textarea
+    tt:else
+    class="value s-textarea"
+    value="{{ value }}"
+    placeholder="{{ placeholder }}"
+    bindinput="handleInput"
+  ></textarea>
+</view>

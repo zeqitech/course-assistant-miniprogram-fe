@@ -1,0 +1,109 @@
+/* 用户个人信息卡片 */
+.profile {
+  width: calc(100% - 48px);
+  height: 360rpx;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 24px;
+  border: solid 1px #c2c2c2;
+  background-color: #fff;
+}
+.profile .avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+.profile .info {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profile .info .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* 课程列表 */
+.classes {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.classes > .title {
+  margin-left: 24px;
+  font-size: 28px;
+}
+.classes .content {
+  width: 100%;
+  margin-top: 12px;
+  white-space: nowrap;
+}
+.classes .content .item {
+  margin-left: 12px;
+  width: 200px;
+  height: 232px;
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #c2c2c2;
+  border-radius: 20px;
+  background-color: #fff;
+}
+.classes .content .item:first-child {
+  margin-left: 24px;
+}
+.classes .content .item:last-child {
+  margin-right: 24px;
+}
+.classes .content .item .cover {
+  width: 100%;
+  height: 120px;
+}
+.classes .content .item .info {
+  height: calc(100% - 120px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.classes .content .item .info .title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.classes .content .item .info .time {
+  font-size: 14px;
+  color: #aaaaaa;
+}
+.classes .content .item .info .status {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.classes .content .item .info .status .member {
+  display: flex;
+  align-items: center;
+}
+.classes .content .item .info .status .state,
+.classes .content .item .info .status .member .value {
+  font-size: 28rpx;
+  color: #8c8c8c;
+}
+.classes .content .item .info .status .member .value {
+  margin-left: 4px;
+}
+.classes .content .item .info .status .member .icon {
+  content: '';
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+  background-image: url('/image/member.png');
+}

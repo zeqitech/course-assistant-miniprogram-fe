@@ -1,0 +1,60 @@
+/* 文件链接 */
+.file {
+  width: calc(100% - 48px);
+  height: 72px;
+  border-radius: 20px;
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: solid 1px #bbbbbb;
+  margin-top: 24px;
+  background-color: #fff;
+}
+.file .title {
+  font-size: 32rpx;
+  white-space: nowrap;
+}
+.file .icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* 打分模块 */
+.grade {
+  width: calc(100% - 48px);
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.grade .input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.grade .input .title {
+  font-size: 28rpx;
+  margin-left: 12px;
+  margin-top: 8px;
+}
+.grade .input .value {
+  border: solid 1px #bbbbbb;
+  border-radius: 16px;
+  width: 100%;
+  margin-top: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: #fff;
+}
+.grade .score .value {
+  height: 44px;
+}
+.grade .remark .value {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+.grade .btn {
+  margin-top: 12px;
+  background-color: #fff !important;
+  border: solid 1px #bbbbbb i !important;
+}

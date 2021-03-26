@@ -1,0 +1,9 @@
+<import src="/global/foot.ttml" />
+
+<view class="page">
+  <view class="item" bindtap="navToGrade">
+    <text class="title">2019091605025-孙轶扬</text>
+    <view class="btn blue">打分</view>
+  </view>
+</view>
+<template is="foot"></template>
