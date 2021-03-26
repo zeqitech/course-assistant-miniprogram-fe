@@ -7,7 +7,8 @@
       label="班级名称"
       value="{{ name }}"
       bindinput="handleInputName"
-    />
+      placeholder="请输入班级名称"
+    ></s-input>
     <s-input type="slot" class="item" label="上课时间">
       <picker
         mode="multiSelector"
@@ -18,6 +19,28 @@
         <view class="picker">当前选择：{{ time }}</view>
       </picker>
     </s-input>
+    <s-input type="slot" class="item" label="起止日期">
+      <view>
+        <picker
+          mode="date"
+          value="{{ startDate }}"
+          bindchange="handleSelectDate"
+          data-name="start"
+        >
+          <view class="picker">起始日期：{{ startDate }}</view>
+        </picker>
+        <picker
+          mode="date"
+          value="{{ endDate }}"
+          bindchange="handleSelectDate"
+          data-name="end"
+         >
+          <view class="picker">截止日期：{{ endDate }}</view>
+        </picker>
+      </view>
+    </s-input>
+    <button class="btn chat" bindtap="handleSelectChat">选择群聊</button>
+    <button class="btn submit">立即创建</button>
   </view>
 </view>
 <template is="foot"></template>

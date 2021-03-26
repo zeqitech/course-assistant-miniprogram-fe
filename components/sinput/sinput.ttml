@@ -14,5 +14,5 @@
     placeholder="{{ placeholder }}"
     bindinput="handleInput"
   ></textarea>
-  <slot tt:else></slot>
+  <slot tt:else class="value s-slot"></slot>
 </view>
