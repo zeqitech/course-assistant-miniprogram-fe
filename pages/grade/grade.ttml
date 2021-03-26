@@ -7,12 +7,14 @@
     </view>
     <view class="grade">
       <s-input
+        class="item"
         label="分数"
         value="{{score}}"
         placeholder="请输入成绩"
         bindinput="handleScoreInput"
       />
       <s-input
+        class="item"
         label="评语"
         type="textarea"
         value="{{remark}}"
