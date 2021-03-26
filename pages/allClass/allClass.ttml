@@ -1,3 +1,16 @@
+<import src="/global/foot.ttml" />
+
 <view class="page">
-  <view class="item"> </view>
+  <s-card
+    tt:for="{{8}}"
+    class="item"
+    cover="https://www.fevaworks.com/imgs/ifeva2020-2.jpg"
+    title="计算机网络"
+    time="周二 5~6, 周四 5~6"
+    member="56"
+    state="进行中"
+    data-token="1212121212121"
+    bindtap="navToTask"
+  ></s-card>
 </view>
+<template is="foot"></template>

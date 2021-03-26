@@ -21,6 +21,8 @@
         time="周二 5~6, 周四 5~6"
         member="56"
         state="进行中"
+        data-token="1212121212121"
+        bindtap="navToTask"
       ></s-card>
     </scroll-view>
   </view>

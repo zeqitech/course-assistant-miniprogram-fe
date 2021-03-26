@@ -1,3 +1,5 @@
+const app = getApp();
+
 Page({
   /**
    * 页面数据
@@ -10,7 +12,19 @@ Page({
    * 当前页面首次加载时执行的生命周期函数
    * @param {Object} options
    */
-  onLoad(options) {},
+  onLoad(options) {
+    if (!app.globalData.hasLogin) {
+      tt.login({
+        success: function (res) {
+          if (res.code) {
+            console.log(res);
+          } else {
+            console.log(res.errMsg);
+          }
+        },
+      });
+    }
+  },
 
   /**
    * 跳转到班级作业列表页面

@@ -11,6 +11,8 @@ Page({
     classTimeArray, //上课时间列表
     startDate: '', //课程开始时间
     endDate: '', //课程结束时间
+    chatId: '111',
+    chatAvatar: '',
   },
 
   /**
@@ -79,8 +81,17 @@ Page({
         console.log(res);
         this.setData({
           chatId: res.data[0].id,
-          chatAvatar: res.data[0].avatarUrls[0],
+          // chatAvatar: res.data[0].avatarUrls[0],
         });
+        // tt.getChatInfo({
+        //   openChatId: this.data.chatId,
+        //   type: 1,
+        //   success: (res) => {
+        //     this.setData({
+        //       chatAvatar: res.data[0].avatarUrls[0],
+        //     });
+        //   },
+        // });
       },
       fail(res) {
         console.log(`chooseChat failure`);
