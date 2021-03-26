@@ -1,0 +1,32 @@
+<import src="/global/foot.ttml" />
+
+<view class="page">
+  <s-input
+    class="item"
+    label="作业名称"
+    placeholder="请输入作业名称"
+    bindinput="handleInputName"
+  />
+  <s-input class="item" type="slot" class="item" label="起止日期">
+    <view>
+      <picker
+        mode="date"
+        value="{{ startDate }}"
+        bindchange="handleSelectDate"
+        data-name="start"
+      >
+        <view class="picker">起始日期：{{ startDate }}</view>
+      </picker>
+      <picker
+        mode="date"
+        value="{{ endDate }}"
+        bindchange="handleSelectDate"
+        data-name="end"
+       >
+        <view class="picker">截止日期：{{ endDate }}</view>
+      </picker>
+    </view>
+  </s-input>
+  <button>立即发布</button>
+</view>
+<template is="foot"></template>

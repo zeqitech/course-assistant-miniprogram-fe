@@ -1,10 +1,13 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/task/task",
+    "pages/allClass/allClass",
     "pages/doc/doc",
     "pages/grade/grade",
-    "pages/newClass/newClass"
+    "pages/index/index",
+    "pages/newClass/newClass",
+    "pages/newTask/newTask",
+    "pages/sign/sign",
+    "pages/task/task"
   ],
   "window": {
     "navigationBarTextStyle": "black",
