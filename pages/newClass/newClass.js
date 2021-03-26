@@ -79,7 +79,7 @@ Page({
         console.log(res);
         this.setData({
           chatId: res.data[0].id,
-          chatAvatar: res.data[0].avatarUrls,
+          chatAvatar: res.data[0].avatarUrls[0],
         });
       },
       fail(res) {

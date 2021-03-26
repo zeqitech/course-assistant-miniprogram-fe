@@ -12,9 +12,22 @@ Page({
    */
   onLoad(options) {},
 
+  /**
+   * 跳转到班级作业列表页面
+   * @param {Object} e
+   */
   navToTask(e) {
     tt.navigateTo({
       url: '/pages/task/task?token=' + e.currentTarget.dataset.token,
+    });
+  },
+
+  /**
+   * 跳转到新建班级页面
+   */
+  navToNewClass() {
+    tt.navigateTo({
+      url: '/pages/newClass/newClass',
     });
   },
 });
