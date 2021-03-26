@@ -8,10 +8,11 @@
     bindinput="handleInput"
   />
   <textarea
-    tt:else
+    tt:elif="{{ type === 'textarea' }}"
     class="value s-textarea"
     value="{{ value }}"
     placeholder="{{ placeholder }}"
     bindinput="handleInput"
   ></textarea>
+  <slot tt:else></slot>
 </view>

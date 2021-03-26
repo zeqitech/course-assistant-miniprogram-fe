@@ -1,6 +1,23 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  
+  <view class="inputs">
+    <s-input
+      class="item"
+      label="班级名称"
+      value="{{ name }}"
+      bindinput="handleInputName"
+    />
+    <s-input type="slot" class="item" label="上课时间">
+      <picker
+        mode="multiSelector"
+        value="{{ timeIndex }}"
+        range="{{ classTimeArray }}"
+        bindchange="handleSelectClassTime"
+      >
+        <view class="picker">当前选择：{{ time }}</view>
+      </picker>
+    </s-input>
+  </view>
 </view>
 <template is="foot"></template>

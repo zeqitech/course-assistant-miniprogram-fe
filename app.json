@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/task/task",
     "pages/doc/doc",
-    "pages/grade/grade"
+    "pages/grade/grade",
+    "pages/newClass/newClass"
   ],
   "window": {
     "navigationBarTextStyle": "black",
