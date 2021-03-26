@@ -27,6 +27,6 @@
       </picker>
     </view>
   </s-input>
-  <button>立即发布</button>
+  <button class="item btn">立即发布</button>
 </view>
 <template is="foot"></template>
