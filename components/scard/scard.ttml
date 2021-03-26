@@ -1,0 +1,14 @@
+<view class="s-card">
+  <image class="cover" mode="aspectCover" src="{{ cover }}"></image>
+  <view class="info">
+    <text class="title">{{ title }}</text>
+    <text class="time">{{ time }}</text>
+    <view class="status">
+      <view class="member">
+        <image class="icon" src="/image/member.png"></image>
+        <text class="value">{{ member }}</text>
+      </view>
+      <text class="state">{{ state }}</text>
+    </view>
+  </view>
+</view>
