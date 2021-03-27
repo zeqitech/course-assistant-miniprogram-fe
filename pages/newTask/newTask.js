@@ -8,6 +8,8 @@ Page({
     name: '', //作业名称
     startDate: '', //作业起始日期
     endDate: '', //作业截至日期
+    chatId: '', //群聊ID
+    token: '', //班级Token
   },
 
   /**
@@ -16,6 +18,12 @@ Page({
    */
   onLoad(options) {
     console.log('-------------new task---------------');
+    console.log(options);
+    console.log('------------------------------------');
+    this.setData({
+      chatId: options.chatId,
+      token: options.token,
+    });
   },
 
   /**
@@ -35,11 +43,11 @@ Page({
   handleSelectDate(e) {
     if (e.currentTarget.dataset.name === 'start') {
       this.setData({
-        startDate: e.detail.value,
+        startDate: e.detail.value + ' 00:00:00',
       });
     } else {
       this.setData({
-        endDate: e.detail.value,
+        endDate: e.detail.value + ' 23:59:59',
       });
     }
   },
@@ -54,17 +62,26 @@ Page({
       this.data.endDate !== ''
     ) {
       tt.request({
-        url: '',
+        url: app.urlConfig.newTaskUrl,
         data: {
-          user_name: 'hello',
+          chatId: this.data.chatId,
+          expireTime: this.data.endDate,
+          groupToken: this.data.token,
+          openId: app.openId,
+          workName: this.data.name,
         },
         header: {
           'content-type': 'application/json',
         },
         success: (res) => {
-          console.log('发布作业成功');
-          tt.navigateBack({
-            delta: 1,
+          tt.showModal({
+            title: '成功',
+            content: '发布作业成功',
+            success(res) {
+              tt.navigateBack({
+                delta: 1,
+              });
+            },
           });
         },
         fail(res) {

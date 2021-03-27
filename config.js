@@ -14,6 +14,8 @@ var config = {
   newClassUrl: `${host}/group/new`,
   // 发布签到
   newSignUrl: `${host}/sign/publish`,
+  // 发布作业
+  newTaskUrl: `${host}/work/new`,
 };
 
 module.exports = config;
