@@ -12,6 +12,8 @@ var config = {
   getClassUrl: `${host}/group/getAll`,
   // 新建班级
   newClassUrl: `${host}/group/new`,
+  // 发布签到
+  newSignUrl: `${host}/sign/publish`,
 };
 
 module.exports = config;

@@ -1,3 +1,5 @@
+const app = getApp().globalData;
+
 Page({
   /**
    * 页面初始数据
@@ -12,7 +14,9 @@ Page({
    * 页面加载生命周期函数
    * @param {Object} options
    */
-  onLoad(options) {},
+  onLoad(options) {
+    console.log('-------------new task---------------');
+  },
 
   /**
    * 处理输入作业名称事件
@@ -50,7 +54,7 @@ Page({
       this.data.endDate !== ''
     ) {
       tt.request({
-        url: 'someurl',
+        url: '',
         data: {
           user_name: 'hello',
         },
