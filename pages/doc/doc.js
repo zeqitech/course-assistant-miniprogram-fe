@@ -20,6 +20,12 @@ Page({
     this.setData({
       token: options.token,
     });
+  },
+
+  /**
+   * 页面显示声明周期函数
+   */
+  onShow() {
     this.getDoc();
   },
 

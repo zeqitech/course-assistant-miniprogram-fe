@@ -9,7 +9,7 @@
     data-title="{{ item.fileName }}"
   >
     <text class="title">{{ item.fileName }}</text>
-    <view class="btn {{item.comment?(item.score<60?'red':'green'):'blue'}}">打分</view>
+    <view class="btn {{item.comment?(item.score<60?'red':'green'):'blue'}}">{{item.comment?item.score:"打分"}}</view>
   </view>
 </view>
 <template is="foot"></template>
