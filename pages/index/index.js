@@ -6,6 +6,7 @@ Page({
    */
   data: {
     forArray: ['1', '2', '3'],
+    isTeacher: app.globalData.isTeacher,
   },
 
   /**

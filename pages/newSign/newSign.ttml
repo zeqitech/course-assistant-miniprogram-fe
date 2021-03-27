@@ -10,3 +10,4 @@
   />
   <text class="btn" bindtap="handleNewSign">发起签到</text>
 </view>
+<template is="foot"></template>
