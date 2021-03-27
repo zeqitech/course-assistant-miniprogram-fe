@@ -40,7 +40,7 @@
       </view>
     </s-input>
     <button class="btn chat" bindtap="handleSelectChat">选择群聊</button>
-    <button class="btn submit">立即创建</button>
+    <button class="btn submit" bindtap="handleNewClass">立即创建</button>
   </view>
 </view>
 <template is="foot"></template>

@@ -9,7 +9,7 @@
       <s-input
         class="item"
         label="分数"
-        value="{{score}}"
+        value="{{ score }}"
         placeholder="请输入成绩"
         bindinput="handleScoreInput"
       />
@@ -17,7 +17,7 @@
         class="item"
         label="评语"
         type="textarea"
-        value="{{remark}}"
+        value="{{ remark }}"
         placeholder="请输入评语"
         bindinput="handleRemarkInput"
       />

@@ -60,21 +60,33 @@ Page({
    */
   handlePostGrade() {
     console.log(this.data.score, this.data.remark);
-    tt.request({
-      url: 'someurl',
-      method: 'POST',
-      data: {
-        user_name: 'hello',
-      },
-      header: {
-        'content-type': 'application/json',
-      },
-      success(res) {
-        console.log(`request 调用成功 res`);
-      },
-      fail(res) {
-        console.log(`request 调用失败`);
-      },
-    });
+    if (this.data.score !== '') {
+      if (this.data.remark === '') {
+        this.setData({
+          remark: '无',
+        });
+      }
+      tt.request({
+        url: 'someurl',
+        method: 'POST',
+        data: {
+          user_name: 'hello',
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        success(res) {
+          console.log(`request 调用成功 res`);
+        },
+        fail(res) {
+          console.log(`request 调用失败`);
+        },
+      });
+    } else {
+      tt.showModal({
+        title: '失败',
+        content: '请输入分数',
+      });
+    }
   },
 });

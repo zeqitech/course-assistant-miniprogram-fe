@@ -18,12 +18,35 @@ Page({
    */
   handleInputDuration(e) {
     this.setData({
-      duration: parseInt(e.detail),
+      duration: e.detail,
     });
   },
 
   /**
    * 点击发起签到按钮事件
    */
-  handleNewSign() {},
+  handleNewSign() {
+    if (this.data.duration !== '') {
+      tt.request({
+        url: 'someurl',
+        data: {
+          user_name: 'hello',
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        success(res) {
+          console.log(`request 调用成功 res`);
+        },
+        fail(res) {
+          console.log(`request 调用失败`);
+        },
+      });
+    } else {
+      tt.showModal({
+        title: '失败',
+        content: '请完善签到持续时间！',
+      });
+    }
+  },
 });

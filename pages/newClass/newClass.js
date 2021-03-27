@@ -98,4 +98,39 @@ Page({
       },
     });
   },
+
+  /**
+   *
+   * 处理新建班级事件
+   */
+  handleNewClass() {
+    if (
+      this.data.name !== '' &&
+      this.data.time !== '' &&
+      this.data.startDate !== '' &&
+      this.data.endDate !== '' &&
+      this.data.chatId !== ''
+    ) {
+      tt.request({
+        url: 'someurl',
+        data: {
+          user_name: 'hello',
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        success(res) {
+          console.log(`request 调用成功 res`);
+        },
+        fail(res) {
+          console.log(`request 调用失败`);
+        },
+      });
+    } else {
+      tt.showModal({
+        title: '失败',
+        content: '请完善课程信息！',
+      });
+    }
+  },
 });

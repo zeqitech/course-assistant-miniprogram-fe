@@ -39,4 +39,36 @@ Page({
       });
     }
   },
+
+  /**
+   * 处理发布作业事件
+   */
+  handleNewTask() {
+    if (
+      this.data.name !== '' &&
+      this.data.startDate !== '' &&
+      this.data.endDate !== ''
+    ) {
+      tt.request({
+        url: 'someurl',
+        data: {
+          user_name: 'hello',
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        success(res) {
+          console.log(`request 调用成功 res`);
+        },
+        fail(res) {
+          console.log(`request 调用失败`);
+        },
+      });
+    } else {
+      tt.showModal({
+        title: '失败',
+        content: '请完善作业信息！',
+      });
+    }
+  },
 });
