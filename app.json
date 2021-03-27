@@ -5,10 +5,12 @@
     "pages/doc/doc",
     "pages/grade/grade",
     "pages/newClass/newClass",
+    "pages/newSign/newSign",
     "pages/newTask/newTask",
     "pages/sign/sign",
     "pages/task/task",
-    "pages/viewSign/viewSign"
+    "pages/viewSign/viewSign",
+    "pages/viewSignInfo/viewSignInfo"
   ],
   "window": {
     "navigationBarTextStyle": "black",

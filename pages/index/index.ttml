@@ -7,7 +7,8 @@
       src="https://wimg.ruan8.com/uploadimg/image/20180521/20180521193021_39404.jpg"
     ></image>
     <view class="info">
-      <button class="item" bindtap="navToNewClass">新建班级</button>
+      <button tt:if="{{ isTeacher }}" class="item" bindtap="navToNewClass">新建班级</button>
+      <button tt:else class="item" bindtap="navToAllClass">所有班级</button>
     </view>
   </view>
   <view class="classes classes-now">

@@ -44,4 +44,13 @@ Page({
       url: '/pages/newClass/newClass',
     });
   },
+
+  /**
+   * 跳转到所有班级列表页面
+   */
+  navToAllClass() {
+    tt.navigateTo({
+      url: `/pages/allClass/allClass?filter=all&classArray=${classArray}`,
+    });
+  },
 });

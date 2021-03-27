@@ -3,7 +3,7 @@ Page({
    * 页面初始数据
    */
   data: {
-    showType: '',
+    filter: '',
   },
 
   /**
@@ -15,7 +15,7 @@ Page({
     console.log(options);
     console.log('-------------------------------------------');
     this.setData({
-      showType: options.showType,
+      filter: options.filter,
     });
   },
 });

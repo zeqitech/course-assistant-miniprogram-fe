@@ -3,7 +3,7 @@ Page({
    * 页面初始数据
    */
   data: {
-    duration: 10,
+    duration: '',
   },
 
   /**

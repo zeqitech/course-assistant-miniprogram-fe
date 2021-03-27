@@ -4,9 +4,9 @@
   <s-input
     class="item"
     label="签到时长"
-    value="duration"
+    value="{{ duration }}"
     placeholder="请输入签到时长"
     bindinput="handleInputDuration"
   />
-  <text class="btn" bindtap="handleNewSign">立即签到</text>
+  <text class="btn" bindtap="handleNewSign">发起签到</text>
 </view>
