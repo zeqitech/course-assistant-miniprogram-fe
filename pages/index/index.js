@@ -6,6 +6,7 @@ Page({
    */
   data: {
     forArray: ['1', '2', '3'],
+    classArray: [],
     isTeacher: app.isTeacher,
   },
 
@@ -39,6 +40,7 @@ Page({
                 this.setData({
                   isTeacher: res.data.data.is_teacher,
                 });
+                this.getClass();
               },
               fail(res) {
                 console.log('调用 /butler/login 失败');
@@ -50,6 +52,28 @@ Page({
         },
       });
     }
+  },
+
+  getClass() {
+    tt.request({
+      url: app.urlConfig.getClassUrl,
+      data: {
+        openId: app.openId,
+      },
+      header: {
+        'content-type': 'application/json',
+      },
+      success: (res) => {
+        console.log('获取班级列表成功');
+        console.log(res);
+        this.setData({
+          classArray: res.data.data.list,
+        });
+      },
+      fail(res) {
+        console.log(`request 调用失败`);
+      },
+    });
   },
 
   /**
