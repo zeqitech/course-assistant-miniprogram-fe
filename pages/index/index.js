@@ -71,7 +71,7 @@ Page({
         });
       },
       fail(res) {
-        console.log(`request 调用失败`);
+        console.log('获取班级列表失败');
       },
     });
   },

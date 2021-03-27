@@ -1,4 +1,5 @@
 import { classTimeArray } from './data';
+const app = getApp().globalData;
 
 Page({
   /**
@@ -57,11 +58,11 @@ Page({
   handleSelectDate(e) {
     if (e.currentTarget.dataset.name === 'start') {
       this.setData({
-        startDate: e.detail.value,
+        startDate: e.detail.value + ' 00:00:00',
       });
     } else {
       this.setData({
-        endDate: e.detail.value,
+        endDate: e.detail.value + ' 23:59:59',
       });
     }
   },
@@ -111,18 +112,35 @@ Page({
       this.data.endDate !== '' &&
       this.data.chatId !== ''
     ) {
+      tt.showToast({
+        title: '创建中',
+        icon: 'loading',
+      });
       tt.request({
-        url: 'someurl',
+        url: app.urlConfig.newClassUrl,
+        method: 'POST',
         data: {
-          user_name: 'hello',
+          chatId: this.data.chatId,
+          classTime: this.data.time,
+          coverUrl: 'https://pic.chinaz.com/picmap/201907191721549523_0.jpg',
+          startTime: this.data.startTime,
+          expireTime: this.data.endTime,
+          groupName: this.data.name,
+          teacherId: app.openId,
         },
         header: {
           'content-type': 'application/json',
         },
         success: (res) => {
           console.log('创建新班级成功');
-          tt.navigateBack({
-            delta: 1,
+          tt.showModal({
+            title: '成功',
+            content: '创建新班级成功',
+            success(res) {
+              tt.navigateBack({
+                delta: 1,
+              });
+            },
           });
         },
         fail(res) {
