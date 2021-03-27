@@ -64,7 +64,7 @@
 .btns {
   position: fixed;
   right: 16px;
-  bottom: 72px;
+  bottom: 60px;
   width: 50px;
   display: flex;
   flex-direction: column;

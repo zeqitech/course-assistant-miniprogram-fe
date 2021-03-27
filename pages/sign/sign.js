@@ -18,4 +18,21 @@ Page({
       token: options.token,
     });
   },
+
+  /**
+   * 处理签到事件
+   */
+  handleSignIn() {
+    tt.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        console.log(res);
+        var latitude = res.latitude;
+        var longitude = res.longitude;
+      },
+      fail: () => {
+        console.log('fail');
+      },
+    });
+  },
 });

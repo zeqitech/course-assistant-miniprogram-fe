@@ -37,6 +37,9 @@ Page({
    */
   handleTapSign() {
     if (this.data.isTeacher) {
+      tt.navigateTo({
+        url: '/pages/viewSign/viewSign',
+      });
     } else {
       tt.navigateTo({
         url: '/pages/sign/sign?token=' + this.data.token,
