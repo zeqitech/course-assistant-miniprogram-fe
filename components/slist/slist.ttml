@@ -1,5 +1,7 @@
 <view class="s-list">
   <text class="title">{{ title }}</text>
-  <text tt:if="{{ type === 'default' }}" class="value">{{ value }}</text>
+  <text tt:if="{{ type === 'default' }}" class="value {{ color }}">{{
+    value
+  }}</text>
   <slot tt:elif="{{ type === 'slot' }}" class="value"></slot>
 </view>

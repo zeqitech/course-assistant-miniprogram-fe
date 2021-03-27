@@ -10,17 +10,18 @@ App({
     console.log(args.query);
     // 获取系统状态栏信息
     tt.getSystemInfo({
-      success: e => {
+      success: (e) => {
         this.globalData.StatusBar = e.statusBarHeight;
         let capsule = tt.getMenuButtonBoundingClientRect();
         if (capsule) {
           this.globalData.Custom = capsule;
-          this.globalData.CustomBar = capsule.bottom + capsule.top - e.statusBarHeight;
+          this.globalData.CustomBar =
+            capsule.bottom + capsule.top - e.statusBarHeight;
         } else {
           this.globalData.CustomBar = e.statusBarHeight + 50;
         }
-      }
-    })
+      },
+    });
   },
   /**
    * 小程序显示时运行的生命周期函数
@@ -66,6 +67,6 @@ App({
   globalData: {
     hasLogin: false,
     openid: null,
-    isTeacher: false,
+    isTeacher: true,
   },
 });

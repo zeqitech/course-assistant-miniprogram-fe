@@ -1,6 +1,14 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <s-list></s-list>
+  <view class="list">
+    <s-list 
+      class="item"
+      title="2021-03-25 14:59"
+      value="正在进行"
+      color="green"
+    />
+  </view>
 </view>
+<text class="btn" bindtap="navToNewSign">+</text>
 <template is="foot"></template>

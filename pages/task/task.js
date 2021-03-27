@@ -46,4 +46,13 @@ Page({
       });
     }
   },
+
+  /**
+   * 跳转到发布作业页面
+   */
+  navToNewTask() {
+    tt.navigateTo({
+      url: '/pages/newTask/newTask?token=' + this.data.token,
+    });
+  },
 });

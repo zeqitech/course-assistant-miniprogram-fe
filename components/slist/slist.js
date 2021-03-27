@@ -15,5 +15,9 @@ Component({
       type: String,
       value: 'default',
     },
+    color: {
+      type: String,
+      value: '',
+    },
   },
 });

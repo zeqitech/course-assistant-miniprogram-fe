@@ -15,5 +15,13 @@
 }
 .s-list .value {
   font-size: 14px;
+}
+.s-list .value.green {
   color: #2fb804;
+}
+.s-list .value.red {
+  color: #ffa497;
+}
+.s-list .value.yellow {
+  color: #ffee97;
 }

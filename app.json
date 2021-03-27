@@ -7,7 +7,8 @@
     "pages/newClass/newClass",
     "pages/newTask/newTask",
     "pages/sign/sign",
-    "pages/task/task"
+    "pages/task/task",
+    "pages/viewSign/viewSign"
   ],
   "window": {
     "navigationBarTextStyle": "black",
