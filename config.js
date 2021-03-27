@@ -2,26 +2,12 @@
  * 小程序配置文件
  */
 
-var host = '14592619.qcloud.la';
+var host = 'http://121.196.153.233:8001';
 
 var config = {
   host,
 
-  loginUrl: `https://${host}/login`,
-
-  requestUrl: `https://${host}/testRequest`,
-
-  openIdUrl: `https://${host}/openid`,
-
-  tunnelUrl: `https://${host}/tunnel`,
-
-  paymentUrl: `https://${host}/payment`,
-
-  templateMessageUrl: `https://${host}/templateMessage`,
-
-  uploadFileUrl: `https://${host}/upload`,
-
-  downloadExampleUrl: `https://${host}/static/weapp.jpg`,
+  loginUrl: `${host}/butler/login`,
 };
 
 module.exports = config;

@@ -57,11 +57,14 @@ Page({
         header: {
           'content-type': 'application/json',
         },
-        success(res) {
-          console.log(`request 调用成功 res`);
+        success: (res) => {
+          console.log('发布作业成功');
+          tt.navigateBack({
+            delta: 1,
+          });
         },
         fail(res) {
-          console.log(`request 调用失败`);
+          console.log('发布作业失败');
         },
       });
     } else {

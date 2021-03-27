@@ -1,4 +1,4 @@
-const app = getApp();
+const app = getApp().globalData;
 
 Page({
   /**
@@ -6,7 +6,7 @@ Page({
    */
   data: {
     forArray: ['1', '2', '3'],
-    isTeacher: app.globalData.isTeacher,
+    isTeacher: app.isTeacher,
   },
 
   /**
@@ -14,13 +14,38 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
-    if (!app.globalData.hasLogin) {
+    if (!app.hasLogin || app.openId === '') {
+      // 首次进入主页时，登录
       tt.login({
-        success: function (res) {
+        // 登录成功回调
+        success: (res) => {
           if (res.code) {
+            // 登录完成后，把code发送到服务端
             console.log(res);
+            tt.request({
+              url: app.urlConfig.loginUrl,
+              data: {
+                code: res.code,
+              },
+              header: {
+                'content-type': 'application/json',
+              },
+              success: (res) => {
+                // 登录成功后，设置全局变量值
+                console.log(res);
+                app.hasLogin = true;
+                app.isTeacher = res.data.data.is_teacher;
+                app.openId = res.data.data.open_id;
+                this.setData({
+                  isTeacher: res.data.data.is_teacher,
+                });
+              },
+              fail(res) {
+                console.log('调用 /butler/login 失败');
+              },
+            });
           } else {
-            console.log(res.errMsg);
+            console.log('获取 code 失败');
           }
         },
       });

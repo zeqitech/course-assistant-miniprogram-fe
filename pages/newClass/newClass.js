@@ -119,11 +119,14 @@ Page({
         header: {
           'content-type': 'application/json',
         },
-        success(res) {
-          console.log(`request 调用成功 res`);
+        success: (res) => {
+          console.log('创建新班级成功');
+          tt.navigateBack({
+            delta: 1,
+          });
         },
         fail(res) {
-          console.log(`request 调用失败`);
+          console.log('创建新班级失败');
         },
       });
     } else {

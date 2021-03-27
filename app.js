@@ -1,4 +1,4 @@
-const openIdUrl = require('./config').openIdUrl;
+const urlConfig = require('./config');
 
 App({
   /**
@@ -66,7 +66,8 @@ App({
    */
   globalData: {
     hasLogin: false,
-    openid: null,
-    isTeacher: true,
+    openid: '',
+    isTeacher: false,
+    urlConfig,
   },
 });

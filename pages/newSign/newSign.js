@@ -35,8 +35,11 @@ Page({
         header: {
           'content-type': 'application/json',
         },
-        success(res) {
-          console.log(`request 调用成功 res`);
+        success: (res) => {
+          console.log('发起新的签到任务成功');
+          tt.navigateBack({
+            delta: 1,
+          });
         },
         fail(res) {
           console.log(`request 调用失败`);
