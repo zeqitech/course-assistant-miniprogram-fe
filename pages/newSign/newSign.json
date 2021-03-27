@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发起签到",
+  "usingComponents": {
+    "s-input": "/components/sinput/sinput"
+  }
+}

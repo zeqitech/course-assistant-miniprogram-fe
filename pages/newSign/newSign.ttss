@@ -1,0 +1,13 @@
+/* 发起签到按钮 */
+.btn {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 50%;
+  background-color: #2fb804;
+  color: white;
+  margin-top: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40rpx;
+}
