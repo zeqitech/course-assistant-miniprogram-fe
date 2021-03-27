@@ -3,10 +3,11 @@
 <view class="page">
   <text class="btn" bindtap="handleSignIn">立即签到</text>
   <view class="list">
-    <view class="item">
-      <text class="time">2021-03-37 15:33</text>
-      <text class="state">签到成功</text>
-    </view>
+    <s-list
+      class="item"
+      title="2021-03-27 15:33"
+      value="签到成功"
+    ></s-list>
   </view>
 </view>
 <template is="foot"></template>

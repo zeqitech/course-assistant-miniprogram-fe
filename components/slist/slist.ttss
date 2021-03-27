@@ -1,0 +1,19 @@
+.s-list {
+  width: 100%;
+  height: 44px;
+  border: 1px solid #bbbbbb;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 16px;
+  background-color: #fff;
+}
+.s-list .title {
+  font-size: 14px;
+}
+.s-list .value {
+  font-size: 14px;
+  color: #2fb804;
+}

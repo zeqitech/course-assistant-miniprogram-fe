@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "签到"
+  "navigationBarTitleText": "签到",
+  "usingComponents": {
+    "s-list": "/components/slist/slist"
+  }
 }

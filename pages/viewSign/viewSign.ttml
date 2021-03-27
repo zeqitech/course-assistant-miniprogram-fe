@@ -1,4 +1,6 @@
 <import src="/global/foot.ttml" />
 
-<view class="page"></view>
+<view class="page">
+  <s-list></s-list>
+</view>
 <template is="foot"></template>
