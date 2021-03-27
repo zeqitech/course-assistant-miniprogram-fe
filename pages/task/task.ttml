@@ -17,4 +17,8 @@
     </view>
   </view>
 </view>
+<view class="btns">
+  <text class="item" bindtap="handleTapSign">签到</text>
+  <text tt:if="{{ true }}" class="item">作业</text>
+</view>
 <template is="foot"></template>

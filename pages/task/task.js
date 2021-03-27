@@ -1,9 +1,12 @@
+const app = getApp();
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
     token: '',
+    isTeacher: app.globalData.isTeacher,
   },
 
   /**
@@ -27,5 +30,17 @@ Page({
     tt.navigateTo({
       url: '/pages/doc/doc?token=' + e.currentTarget.dataset.token,
     });
+  },
+
+  /**
+   *
+   */
+  handleTapSign() {
+    if (this.data.isTeacher) {
+    } else {
+      tt.navigateTo({
+        url: '/pages/sign/sign?token=' + this.data.token,
+      });
+    }
   },
 });

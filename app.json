@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/allClass/allClass",
     "pages/doc/doc",
     "pages/grade/grade",
-    "pages/index/index",
     "pages/newClass/newClass",
     "pages/newTask/newTask",
     "pages/sign/sign",
