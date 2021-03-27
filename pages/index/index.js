@@ -81,8 +81,9 @@ Page({
    * @param {Object} e
    */
   navToTask(e) {
+    console.log(e);
     tt.navigateTo({
-      url: '/pages/task/task?token=' + e.currentTarget.dataset.token,
+      url: `/pages/task/task?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}`,
     });
   },
 

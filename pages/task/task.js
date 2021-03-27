@@ -1,4 +1,4 @@
-const app = getApp();
+const app = getApp().globalData;
 
 Page({
   /**
@@ -6,7 +6,7 @@ Page({
    */
   data: {
     token: '',
-    isTeacher: app.globalData.isTeacher,
+    isTeacher: app.isTeacher,
   },
 
   /**
@@ -16,10 +16,32 @@ Page({
   onLoad(options) {
     console.log('-----------task page--------------');
     console.log(options);
+    console.log('----------------------------------');
     this.setData({
       token: options.token,
+      chatId: options.chatId,
     });
-    console.log('----------------------------------');
+  },
+
+  /**
+   * 获取任务列表
+   */
+  getTask() {
+    tt.request({
+      url: app.urlConfig.getTaskUrl,
+      data: {
+        groupToken: this.data.token,
+      },
+      header: {
+        'content-type': 'application/json',
+      },
+      success(res) {
+        console.log(res);
+      },
+      fail(res) {
+        console.log(`request 调用失败`);
+      },
+    });
   },
 
   /**
@@ -52,7 +74,7 @@ Page({
    */
   navToNewTask() {
     tt.navigateTo({
-      url: '/pages/newTask/newTask?token=' + this.data.token,
+      url: `/pages/newTask/newTask?token=${this.data.token}&chatId=${this.data.chatId}`,
     });
   },
 });

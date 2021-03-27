@@ -16,6 +16,8 @@ var config = {
   newSignUrl: `${host}/sign/publish`,
   // 发布作业
   newTaskUrl: `${host}/work/new`,
+  // 获取全部任务
+  getTaskUrl: `${host}/work/allWork`,
 };
 
 module.exports = config;

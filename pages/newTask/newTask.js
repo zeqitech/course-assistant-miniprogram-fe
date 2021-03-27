@@ -63,6 +63,7 @@ Page({
     ) {
       tt.request({
         url: app.urlConfig.newTaskUrl,
+        method: 'POST',
         data: {
           chatId: this.data.chatId,
           expireTime: this.data.endDate,
@@ -85,6 +86,7 @@ Page({
           });
         },
         fail(res) {
+          console.log(res);
           console.log('发布作业失败');
         },
       });

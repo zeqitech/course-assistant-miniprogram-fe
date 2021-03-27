@@ -66,7 +66,7 @@ App({
    */
   globalData: {
     hasLogin: false,
-    openid: '',
+    openId: '',
     isTeacher: false,
     urlConfig,
   },

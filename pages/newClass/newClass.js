@@ -25,6 +25,16 @@ Page({
   },
 
   /**
+   * 处理输入班级名称事件
+   * @param {Object} e
+   */
+  handleInputName(e) {
+    this.setData({
+      name: e.detail,
+    });
+  },
+
+  /**
    * 处理选择上课时间事件，只有在点击确定的时候才会触发
    * @param {Object} e
    */
@@ -105,6 +115,11 @@ Page({
    * 处理新建班级事件
    */
   handleNewClass() {
+    console.log(this.data.name);
+    console.log(this.data.time);
+    console.log(this.data.startDate);
+    console.log(this.data.endDate);
+    console.log(this.data.chatId);
     if (
       this.data.name !== '' &&
       this.data.time !== '' &&
@@ -123,8 +138,8 @@ Page({
           chatId: this.data.chatId,
           classTime: this.data.time,
           coverUrl: 'https://pic.chinaz.com/picmap/201907191721549523_0.jpg',
-          startTime: this.data.startTime,
-          expireTime: this.data.endTime,
+          startTime: this.data.startDate,
+          expireTime: this.data.endDate,
           groupName: this.data.name,
           teacherId: app.openId,
         },
@@ -132,16 +147,28 @@ Page({
           'content-type': 'application/json',
         },
         success: (res) => {
-          console.log('创建新班级成功');
-          tt.showModal({
-            title: '成功',
-            content: '创建新班级成功',
-            success(res) {
-              tt.navigateBack({
-                delta: 1,
-              });
-            },
-          });
+          console.log(res);
+          if (res.data.data.success) {
+            tt.showModal({
+              title: '成功',
+              content: '创建新班级成功',
+              success(res) {
+                tt.navigateBack({
+                  delta: 1,
+                });
+              },
+            });
+          } else {
+            tt.showModal({
+              title: '失败',
+              content: '创建新班级失败，请联系开发者反馈问题！',
+              success(res) {
+                tt.navigateBack({
+                  delta: 1,
+                });
+              },
+            });
+          }
         },
         fail(res) {
           console.log('创建新班级失败');

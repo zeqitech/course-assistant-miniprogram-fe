@@ -15,14 +15,16 @@
     <text class="title">正在进行</text>
     <scroll-view class="content" scroll-x="true">
       <s-card
-        tt:for="{{forArray}}"
+        tt:for="{{ classArray }}"
+        tt:if="{{ !item.expireStatus }}"
         class="item"
-        cover="https://www.fevaworks.com/imgs/ifeva2020-2.jpg"
-        title="计算机网络"
-        time="周二 5~6, 周四 5~6"
-        member="56"
+        cover="{{ item.coverUrl }}"
+        title="{{ item.groupName }}"
+        time="{{ item.classTime }}"
+        member="{{ item.studentCount }}"
         state="进行中"
-        data-token="1212121212121"
+        data-token="{{ item.groupToken }}"
+        data-chatId="{{ item.chatId }}"
         bindtap="navToTask"
       ></s-card>
     </scroll-view>
@@ -31,12 +33,17 @@
     <text class="title">已经结课</text>
     <scroll-view class="content" scroll-x="true">
       <s-card
+        tt:for="{{ classArray }}"
+        tt:if="{{ item.expireStatus }}"
         class="item"
-        cover="https://www.fevaworks.com/imgs/ifeva2020-2.jpg"
-        title="综合设计I"
-        time="周一 7~8"
-        member="30"
+        cover="{{ item.coverUrl }}"
+        title="{{ item.groupName }}"
+        time="{{ item.classTime }}"
+        member="{{ item.studentCount }}"
         state="已结课"
+        data-token="{{ item.groupToken }}"
+        data-chat-id="{{ item.chatId }}"
+        bindtap="navToTask"
       ></s-card>
     </scroll-view>
   </view>
