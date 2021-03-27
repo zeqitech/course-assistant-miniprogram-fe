@@ -83,7 +83,7 @@ Page({
   navToTask(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/task/task?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}`,
+      url: `/pages/task/task?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 

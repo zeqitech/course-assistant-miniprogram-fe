@@ -7,6 +7,7 @@ Page({
   data: {
     token: '',
     isTeacher: app.isTeacher,
+    taskArray: [],
   },
 
   /**
@@ -20,7 +21,9 @@ Page({
     this.setData({
       token: options.token,
       chatId: options.chatId,
+      cover: options.cover,
     });
+    this.getTask();
   },
 
   /**
@@ -35,8 +38,11 @@ Page({
       header: {
         'content-type': 'application/json',
       },
-      success(res) {
+      success: (res) => {
         console.log(res);
+        this.setData({
+          taskArray: res.data.data.list,
+        });
       },
       fail(res) {
         console.log(`request 调用失败`);

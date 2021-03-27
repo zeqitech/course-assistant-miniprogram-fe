@@ -22,9 +22,8 @@ Page({
    * @param {Object} e
    */
   handleOpenFile(e) {
-    let data = e.currentTarget.dataset;
     tt.openSchema({
-      schema: 'https://uestc.feishu.cn/docs/' + data.token,
+      schema: 'https://uestc.feishu.cn/docs/' + this.data.token,
       external: false,
       success(res) {
         console.log('打开成功');

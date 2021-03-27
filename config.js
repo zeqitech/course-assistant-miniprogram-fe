@@ -18,6 +18,8 @@ var config = {
   newTaskUrl: `${host}/work/new`,
   // 获取全部任务
   getTaskUrl: `${host}/work/allWork`,
+  // 获取全部文档
+  getDocUrl: `${host}/file/getAll`,
 };
 
 module.exports = config;

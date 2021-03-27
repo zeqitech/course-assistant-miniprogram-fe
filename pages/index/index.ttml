@@ -25,6 +25,7 @@
         state="进行中"
         data-token="{{ item.groupToken }}"
         data-chatId="{{ item.chatId }}"
+        data-cover="{{ item.coverUrl }}"
         bindtap="navToTask"
       ></s-card>
     </scroll-view>
@@ -43,6 +44,7 @@
         state="已结课"
         data-token="{{ item.groupToken }}"
         data-chat-id="{{ item.chatId }}"
+        data-cover="{{ item.coverUrl }}"
         bindtap="navToTask"
       ></s-card>
     </scroll-view>

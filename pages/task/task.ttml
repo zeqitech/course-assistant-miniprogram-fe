@@ -3,17 +3,17 @@
 <view class="page">
   <image
     class="cover"
-    src="https://www.fevaworks.com/imgs/ifeva2020-2.jpg"
+    src="{{ cover }}"
     mode="aspectCover"
   ></image>
   <view class="content">
-    <view class="item" bindtap="navToDoc">
+    <view class="item" bindtap="navToDoc" tt:for="{{ taskArray }}" data-token="{{ item.workToken }}">
       <image class="icon" src="/image/task.png"></image>
       <view class="info">
-        <text class="title">第一次作业</text>
-        <text class="date">2021-03-19</text>
+        <text class="title">{{ item.workName }}</text>
+        <text class="date">{{ item.expireTime }}</text>
       </view>
-      <view class="status yellow">进行中</view>
+      <view class="status {{item.expireStatus?'red':'green'}}">{{item.expireStatus?"已截止":"进行中"}}</view>
     </view>
   </view>
 </view>

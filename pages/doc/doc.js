@@ -1,9 +1,12 @@
+const app = getApp().globalData;
+
 Page({
   /**
    * 页面初始数模
    */
   data: {
     token: '',
+    docArray: [],
   },
 
   /**
@@ -16,6 +19,31 @@ Page({
     console.log('-----------------------------------------------');
     this.setData({
       token: options.token,
+    });
+    this.getDoc();
+  },
+
+  /**
+   * 获取某次任务下所有作业文档列表
+   */
+  getDoc() {
+    tt.request({
+      url: app.urlConfig.getDocUrl,
+      data: {
+        workToken: this.data.token,
+      },
+      header: {
+        'content-type': 'application/json',
+      },
+      success: (res) => {
+        console.log(res);
+        this.setData({
+          docArray: res.data.data.list,
+        });
+      },
+      fail(res) {
+        console.log(`request 调用失败`);
+      },
     });
   },
 
