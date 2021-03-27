@@ -1,3 +1,5 @@
+const app = getApp().globalData;
+
 Page({
   /**
    * 页面初始数据
@@ -25,12 +27,6 @@ Page({
     tt.openSchema({
       schema: 'https://uestc.feishu.cn/docs/' + this.data.token,
       external: false,
-      success(res) {
-        console.log('打开成功');
-      },
-      fail(res) {
-        console.log('打开失败');
-      },
     });
   },
 
@@ -65,20 +61,45 @@ Page({
           remark: '无',
         });
       }
-      tt.request({
-        url: 'someurl',
-        method: 'POST',
-        data: {
-          user_name: 'hello',
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        success(res) {
-          console.log(`request 调用成功 res`);
-        },
-        fail(res) {
-          console.log(`request 调用失败`);
+      tt.showModal({
+        title: '提示',
+        content: `确认给 ${this.data.title} 作业打分 ${this.data.score}？`,
+        success: (res) => {
+          if (res.confirm) {
+            tt.request({
+              url: app.urlConfig.postGradeUrl,
+              method: 'POST',
+              data: {
+                comment: this.data.remark,
+                fileToken: this.data.token,
+                openId: app.openId,
+                score: parseInt(this.data.score),
+              },
+              header: {
+                'content-type': 'application/json',
+              },
+              success(res) {
+                console.log(res);
+                tt.showModal({
+                  title: '成功',
+                  content: '分数添加成功',
+                  success(res) {
+                    tt.navigateBack({
+                      delta: 1,
+                    });
+                  },
+                });
+              },
+              fail(res) {
+                console.log(`request 调用失败`);
+              },
+            });
+          } else {
+            tt.showToast({
+              title: '已取消',
+              icon: 'success',
+            });
+          }
         },
       });
     } else {

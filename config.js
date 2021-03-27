@@ -20,6 +20,8 @@ var config = {
   getTaskUrl: `${host}/work/allWork`,
   // 获取全部文档
   getDocUrl: `${host}/file/getAll`,
+  // 打分
+  postGradeUrl: `${host}/file/grade`,
 };
 
 module.exports = config;
