@@ -13,7 +13,7 @@
   </view>
   <view class="classes classes-now">
     <view class="head">
-      <text class="title">正在进行</text>
+      <text class="title">当前课程</text>
       <text class="label" data-filter="now" bindtap="navToAllClass">查看更多</text>
     </view>
     <scroll-view class="content" scroll-x="true">
@@ -35,25 +35,9 @@
   </view>
   <view class="classes classes-past">
     <view class="head">
-      <text class="title">已经结课</text>
-      <text class="label" data-filter="past" bindtap="navToAllClass">查看更多</text>
+      <text class="title">结课班级</text>
+      <text class="label" data-filter="past" bindtap="navToAllClass">查看结课班级列表</text>
     </view>
-    <scroll-view class="content" scroll-x="true">
-      <s-card
-        tt:for="{{ classArray }}"
-        tt:if="{{ item.expireStatus }}"
-        class="item"
-        cover="{{ item.coverUrl }}"
-        title="{{ item.groupName }}"
-        time="{{ item.classTime }}"
-        member="{{ item.studentCount }}"
-        state="已结课"
-        data-token="{{ item.groupToken }}"
-        data-chat-id="{{ item.chatId }}"
-        data-cover="{{ item.coverUrl }}"
-        bindtap="navToTask"
-      ></s-card>
-    </scroll-view>
   </view>
 </view>
 <template is="foot"></template>

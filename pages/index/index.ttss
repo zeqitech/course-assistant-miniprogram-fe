@@ -43,7 +43,8 @@
   align-items: center;
 }
 .classes .head .title {
-  font-size: 28px;
+  font-size: 24px;
+  font-weight: 700;
 }
 .classes .head .label {
   font-size: 12px;
@@ -58,7 +59,7 @@
   width: 200px;
 }
 .classes .content .item:first-child {
-  margin-left: 24px;
+  margin-left: 12px;
 }
 .classes .content .item:last-child {
   margin-right: 24px;
