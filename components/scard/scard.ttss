@@ -1,12 +1,11 @@
 .s-card {
-  margin-left: 12px;
   height: 232px;
   display: inline-flex;
   flex-direction: column;
   overflow: hidden;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 4px 4px rgba(180, 180, 180, 0.2);
+  box-shadow: 0 4px 8px var(--box-shadow);
 }
 .s-card .cover {
   width: 100%;
@@ -21,11 +20,12 @@
 }
 .s-card .info .title {
   font-size: 20px;
-  font-weight: bold;
+  font-weight: medium;
+  color: var(--gray-scale-600-h2);
 }
 .s-card .info .time {
   font-size: 14px;
-  color: #aaaaaa;
+  color: var(--gray-scale-500-guide);
 }
 .s-card .info .status {
   width: 100%;
@@ -40,7 +40,7 @@
 .s-card .info .status .state,
 .s-card .info .status .member .value {
   font-size: 28rpx;
-  color: #8c8c8c;
+  color: var(--gray-scale-500-guide);
 }
 .s-card .info .status .member .value {
   margin-left: 4px;

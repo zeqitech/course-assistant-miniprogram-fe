@@ -8,12 +8,56 @@
   box-sizing: border-box;
 }
 
+:root {
+  --box-shadow: rgba(212, 212, 212, 0.2);
+  --primary: #3370ff;
+  --success: #34c724;
+  --error: #f54a45;
+  --gray-scale-0: #ffffff;
+  --gray-scale-50: #f8f9fa;
+  --gray-scale-100: #f5f6f7;
+  --gray-scale-200: #eff0f1;
+  --gray-scale-300: #dee0e3;
+  --gray-scale-400-disabled: #bbbfc4;
+  --gray-scale-500-guide: #8f959e;
+  --gray-scale-600-h2: #646a73;
+  --gray-scale-650: #51565d;
+  --gray-scale-700: #373c43;
+  --gray-scale-800: #2b2f36;
+  --gray-scale-900-h1: #1f2329;
+  --gray-scale-1000: #000000;
+  --margin-24px: 24px;
+  --margin-36px: 36px;
+}
+
+/* 全局字体通用样式，飞书推荐 */
+.h1 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: bold;
+}
+.h2 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: medium;
+}
+.h3-pc {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: medium;
+}
+.h3-mobile {
+  font-size: 17px;
+  line-height: 24px;
+  font-weight: medium;
+}
+
 #app {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
+  background-color: var(--gray-scale-50);
 }
 
 /* 单页面容器 */
@@ -24,7 +68,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: #101010;
+  color: var(--gray-scale-900-h1);
 }
 
 /* 全局底部信息 */

@@ -8,6 +8,7 @@ Page({
     forArray: ['1', '2', '3'],
     classArray: [],
     isTeacher: app.isTeacher,
+    avatar: '',
   },
 
   /**
@@ -42,6 +43,14 @@ Page({
                 app.openId = res.data.data.open_id;
                 this.setData({
                   isTeacher: res.data.data.is_teacher,
+                });
+                tt.getUserInfo({
+                  success: (res) => {
+                    this.setData({
+                      avatar: res.userInfo.avatarUrl,
+                      nickName: res.userInfo.nickName,
+                    });
+                  },
                 });
                 this.getClass(() => {
                   tt.hideLoading({});
