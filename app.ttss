@@ -9,10 +9,13 @@
 }
 
 :root {
+  /* 阴影颜色 */
   --box-shadow: rgba(212, 212, 212, 0.2);
+  /* 功能色 */
   --primary: #3370ff;
   --success: #34c724;
   --error: #f54a45;
+  /* 中性色 */
   --gray-scale-0: #ffffff;
   --gray-scale-50: #f8f9fa;
   --gray-scale-100: #f5f6f7;
@@ -26,30 +29,31 @@
   --gray-scale-800: #2b2f36;
   --gray-scale-900-h1: #1f2329;
   --gray-scale-1000: #000000;
+  /* 间隔 */
+  --margin-12px: 12px;
   --margin-24px: 24px;
   --margin-36px: 36px;
-}
-
-/* 全局字体通用样式，飞书推荐 */
-.h1 {
-  font-size: 24px;
-  line-height: 32px;
-  font-weight: bold;
-}
-.h2 {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: medium;
-}
-.h3-pc {
-  font-size: 18px;
-  line-height: 26px;
-  font-weight: medium;
-}
-.h3-mobile {
-  font-size: 17px;
-  line-height: 24px;
-  font-weight: medium;
+  /* 字体 */
+  --font-size-h1: 24px;
+  --font-size-h2: 20px;
+  --font-size-h3-pc: 18px;
+  --font-size-h3-app: 17px;
+  --font-size-text-pc: 14px;
+  --font-size-text-mobile: 16px;
+  --font-size-help: 12px;
+  --line-height-h1: 32px;
+  --line-height-h2: 28px;
+  --line-height-h3-pc: 26px;
+  --line-height-h3-app: 24px;
+  --line-height-text: 22px;
+  --line-height-help-pc: 20px;
+  --line-height-help-app: 18px;
+  --font-weight-h1: 600;
+  --font-weight-h2: 500;
+  --font-weight-h3: 500;
+  --font-weight-text: 400;
+  --font-weight-help-pc: 400;
+  --font-weight-help-app: 500;
 }
 
 #app {
@@ -57,7 +61,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--gray-scale-50);
+  background-color: var(--gray-scale-100);
 }
 
 /* 单页面容器 */

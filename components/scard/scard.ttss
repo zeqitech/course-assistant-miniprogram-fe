@@ -19,12 +19,14 @@
   justify-content: space-between;
 }
 .s-card .info .title {
-  font-size: 20px;
-  font-weight: medium;
-  color: var(--gray-scale-600-h2);
+  font-size: var(--font-size-h3-app);
+  font-weight: var(--font-weight-h3);
+  line-height: var(--line-height-h3-app);
 }
 .s-card .info .time {
-  font-size: 14px;
+  font-size: var(--font-size-text-mobile);
+  font-weight: var(--font-weight-text);
+  line-height: var(--line-height-text);
   color: var(--gray-scale-500-guide);
 }
 .s-card .info .status {
@@ -39,8 +41,16 @@
 }
 .s-card .info .status .state,
 .s-card .info .status .member .value {
-  font-size: 28rpx;
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
   color: var(--gray-scale-500-guide);
+}
+.s-card .info .status .state.green {
+  color: var(--success);
+}
+.s-card .info .status .state.red {
+  color: var(--error);
 }
 .s-card .info .status .member .value {
   margin-left: 4px;
