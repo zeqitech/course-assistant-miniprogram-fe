@@ -7,7 +7,9 @@
 /* 作业列表 */
 .content {
   width: calc(100% - 48px);
-  margin-top: 24px;
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
 }
 .content .item {
   display: flex;
@@ -19,6 +21,7 @@
   overflow: hidden;
   border-radius: 20px;
   background-color: #fff;
+  margin-top: 12px;
 }
 .content .item .icon {
   width: 50px;
