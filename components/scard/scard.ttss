@@ -4,9 +4,9 @@
   display: inline-flex;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid #c2c2c2;
   border-radius: 20px;
   background-color: #fff;
+  box-shadow: 0 4px 4px rgba(180, 180, 180, 0.2);
 }
 .s-card .cover {
   width: 100%;

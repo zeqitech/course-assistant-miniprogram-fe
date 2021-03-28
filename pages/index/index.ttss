@@ -52,6 +52,7 @@
 }
 .classes .content {
   width: 100%;
+  height: fit-content;
   margin-top: 12px;
   white-space: nowrap;
 }

@@ -1,6 +1,6 @@
-@import './colorui/main.ttss';
+/* @import './colorui/main.ttss';
 @import './colorui/icon.ttss';
-@import './colorui/animation.ttss';
+@import './colorui/animation.ttss'; */
 
 * {
   margin: 0;
@@ -24,6 +24,7 @@
   justify-content: space-between;
   align-items: center;
   color: #101010;
+  background-color: #fff;
 }
 
 /* 全局底部信息 */
