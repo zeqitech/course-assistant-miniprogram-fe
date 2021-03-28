@@ -35,6 +35,9 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.classes:last-child {
+  margin-top: 16px;
+}
 .classes .head {
   width: calc(100% - 48px);
   margin-left: 24px;
@@ -44,7 +47,7 @@
 }
 .classes .head .title {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 800;
 }
 .classes .head .label {
   font-size: 12px;
@@ -52,7 +55,7 @@
 }
 .classes .content {
   width: 100%;
-  height: fit-content;
+  height: 240px;
   margin-top: 12px;
   white-space: nowrap;
 }
