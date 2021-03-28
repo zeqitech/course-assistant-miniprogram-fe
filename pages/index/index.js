@@ -16,6 +16,9 @@ Page({
    */
   onLoad(options) {
     if (!app.hasLogin || app.openId === '') {
+      tt.showLoading({
+        title: '加载中',
+      });
       // 首次进入主页时，登录
       tt.login({
         // 登录成功回调
@@ -40,7 +43,9 @@ Page({
                 this.setData({
                   isTeacher: res.data.data.is_teacher,
                 });
-                this.getClass();
+                this.getClass(() => {
+                  tt.hideLoading({});
+                });
               },
               fail(res) {
                 console.log('调用 /butler/login 失败');
@@ -54,7 +59,18 @@ Page({
     }
   },
 
-  getClass() {
+  onShow() {
+    if (app.hasLogin) {
+      tt.showLoading({
+        title: '加载中',
+      });
+      this.getClass(() => {
+        tt.hideLoading({});
+      });
+    }
+  },
+
+  getClass(cb) {
     tt.request({
       url: app.urlConfig.getClassUrl,
       data: {
@@ -69,6 +85,7 @@ Page({
         this.setData({
           classArray: res.data.data.list,
         });
+        cb();
       },
       fail(res) {
         console.log('获取班级列表失败');
@@ -99,9 +116,12 @@ Page({
   /**
    * 跳转到所有班级列表页面
    */
-  navToAllClass() {
+  navToAllClass(e) {
+    let filter = e.currentTarget.dataset.filter;
     tt.navigateTo({
-      url: `/pages/allClass/allClass?filter=all&classArray=${classArray}`,
+      url: `/pages/allClass/allClass?filter=${filter}&classArray=${JSON.stringify(
+        this.data.classArray
+      )}`,
     });
   },
 });

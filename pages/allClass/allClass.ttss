@@ -1,0 +1,12 @@
+.list {
+  width: calc(100% - 48px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8px;
+  row-gap: 12px;
+  margin-top: 24px;
+}
+.list .item > view {
+  width: 100%;
+  margin-left: 0;
+}

@@ -4,6 +4,8 @@ Page({
    */
   data: {
     filter: '',
+    expireStatus: false,
+    classArray: [],
   },
 
   /**
@@ -11,11 +13,23 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
+    console.log(this.data.expireStatus);
     console.log('-----------------all class-----------------');
     console.log(options);
     console.log('-------------------------------------------');
     this.setData({
       filter: options.filter,
+      expireStatus: options.filter === 'now' ? false : true,
+      classArray: JSON.parse(options.classArray),
     });
+    if (options.filter === 'now') {
+      tt.setNavigationBarTitle({
+        title: '正在进行',
+      });
+    } else if (options.filter === 'past') {
+      tt.setNavigationBarTitle({
+        title: '已经结课',
+      });
+    }
   },
 });

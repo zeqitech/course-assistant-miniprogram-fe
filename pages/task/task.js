@@ -23,6 +23,12 @@ Page({
       chatId: options.chatId,
       cover: options.cover,
     });
+  },
+
+  /**
+   * 页面显示生命周期函数
+   */
+  onShow() {
     this.getTask();
   },
 

@@ -1,6 +1,5 @@
 .s-card {
   margin-left: 12px;
-  width: 200px;
   height: 232px;
   display: inline-flex;
   flex-direction: column;

@@ -8,11 +8,14 @@
     ></image>
     <view class="info">
       <button tt:if="{{ isTeacher }}" class="item" bindtap="navToNewClass">新建班级</button>
-      <button tt:else class="item" bindtap="navToAllClass">所有班级</button>
+      <button tt:else class="item" data-filter="all" bindtap="navToAllClass">所有班级</button>
     </view>
   </view>
   <view class="classes classes-now">
-    <text class="title">正在进行</text>
+    <view class="head">
+      <text class="title">正在进行</text>
+      <text class="label" data-filter="now" bindtap="navToAllClass">查看更多</text>
+    </view>
     <scroll-view class="content" scroll-x="true">
       <s-card
         tt:for="{{ classArray }}"
@@ -31,7 +34,10 @@
     </scroll-view>
   </view>
   <view class="classes classes-past">
-    <text class="title">已经结课</text>
+    <view class="head">
+      <text class="title">已经结课</text>
+      <text class="label" data-filter="past" bindtap="navToAllClass">查看更多</text>
+    </view>
     <scroll-view class="content" scroll-x="true">
       <s-card
         tt:for="{{ classArray }}"
