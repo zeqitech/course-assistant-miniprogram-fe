@@ -148,7 +148,7 @@ Page({
         },
         success: (res) => {
           console.log(res);
-          if (res.data.data.success) {
+          if (res.data.success) {
             tt.showModal({
               title: '成功',
               content: '创建新班级成功',
