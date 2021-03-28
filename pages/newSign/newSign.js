@@ -13,7 +13,11 @@ Page({
    * 页面初始化生命周期函数
    * @param {Object} options
    */
-  onLoad(options) {},
+  onLoad(options) {
+    this.setData({
+      token: options.token,
+    });
+  },
 
   /**
    * 输入签到时长事件
@@ -30,13 +34,16 @@ Page({
    */
   handleNewSign() {
     if (this.data.duration !== '') {
-      let startTime = func.getCurrentTime();
-      let endTime = new Date().getTime() + parseInt(this.data.duration) * 60;
+      let startTime = func.getCurrentTime(new Date().getTime());
+      let endTime = func.getCurrentTime(
+        new Date().getTime() + parseInt(this.data.duration) * 60000
+      );
       tt.getLocation({
         type: 'gcj02',
-        success: function (res) {
-          var latitude = res.latitude;
-          var longitude = res.longitude;
+        success: (res) => {
+          var latitude = res.latitude.toString();
+          var longitude = res.longitude.toString();
+          console.log(endTime, this.data.token);
           tt.request({
             url: app.urlConfig.newSignUrl,
             method: 'POST',
@@ -52,15 +59,23 @@ Page({
               'content-type': 'application/json',
             },
             success: (res) => {
-              tt.showModal({
-                title: '成功',
-                content: '发布签到成功！',
-                success(res) {
-                  tt.navigateBack({
-                    delta: 1,
-                  });
-                },
-              });
+              console.log(res);
+              if (res.data.success) {
+                tt.showModal({
+                  title: '成功',
+                  content: '发布签到成功！',
+                  success(res) {
+                    tt.navigateBack({
+                      delta: 1,
+                    });
+                  },
+                });
+              } else {
+                tt.showModal({
+                  title: '失败',
+                  content: res.data.message,
+                });
+              }
             },
             fail(res) {
               console.log(`request 调用失败`);

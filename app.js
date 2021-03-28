@@ -74,8 +74,8 @@ App({
   /**
    * 获取当前时间 格式：yyyy-MM-dd HH:MM:SS
    */
-  getCurrentTime() {
-    var date = new Date(); //当前时间
+  getCurrentTime(time) {
+    var date = new Date(time); //当前时间
     var month = this.zeroFill(date.getMonth() + 1); //月
     var day = this.zeroFill(date.getDate()); //日
     var hour = this.zeroFill(date.getHours()); //时

@@ -72,7 +72,7 @@ Page({
   handleTapSign() {
     if (this.data.isTeacher) {
       tt.navigateTo({
-        url: '/pages/viewSign/viewSign',
+        url: `/pages/viewSign/viewSign?token=${this.data.token}`,
       });
     } else {
       tt.navigateTo({
