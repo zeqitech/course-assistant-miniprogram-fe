@@ -24,10 +24,13 @@
   line-height: var(--line-height-h2);
 }
 .s-card .info .time {
-  font-size: var(--font-size-text-app);
-  font-weight: var(--font-weight-text);
-  line-height: var(--line-height-text);
+  width: 100%;
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
   color: var(--gray-scale-500-guide);
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .s-card .info .status {
   width: 100%;

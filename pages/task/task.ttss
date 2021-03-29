@@ -40,27 +40,33 @@
   font-size: 40rpx;
 }
 .content .item .info .date {
-  font-size: 28rpx;
-  color: #8c8c8c;
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
+  color: var(--gray-scale-500-guide);
 }
 .content .item .status {
   margin-left: auto;
   width: 80px;
   height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 16px;
   border: #bbbbbb 1px solid;
-  font-size: 28rpx;
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
   text-align: center;
-  line-height: 56rpx;
 }
 .content .item .status.green {
-  background-color: #b0ff97;
+  background-color: var(--success);
 }
 .content .item .status.yellow {
-  background-color: #ffee97;
+  background-color: var(--warning);
 }
 .content .item .status.red {
-  background-color: #ffa497;
+  background-color: var(--error);
 }
 
 /* 签到和发布作业按钮 */
