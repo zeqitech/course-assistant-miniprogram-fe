@@ -3,7 +3,8 @@
 <view class="page">
   <view class="list">
     <s-list 
-      class="item"
+      class="item animation-slide-bottom"
+      style="animation-delay: {{(index+1)*0.1}}s;"
       title="2021-03-25 14:59"
       action="正在进行"
       color="green"

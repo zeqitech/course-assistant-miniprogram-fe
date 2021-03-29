@@ -2,11 +2,23 @@
 
 <view class="page">
   <image
-    class="cover"
+    class="cover animation-scale-up"
     src="{{ cover }}"
     mode="aspectCover"
   ></image>
-  <s-list class="item width-app" title="签到" action=">" bindtap="navToSign"></s-list>
-  <s-list class="item width-app" title="作业" action=">" bindtap="navToTask"></s-list>
+  <s-list
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.1s;"
+    title="签到"
+    action=">"
+    bindtap="navToSign"
+  ></s-list>
+  <s-list
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.2s;"
+    title="作业"
+    action=">"
+    bindtap="navToTask"
+  ></s-list>
 </view>
 <template is="foot"></template>

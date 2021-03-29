@@ -1,6 +1,6 @@
 /* @import './colorui/main.ttss';
-@import './colorui/icon.ttss';
-@import './colorui/animation.ttss'; */
+@import './colorui/icon.ttss'; */
+@import './colorui/animation.ttss';
 
 * {
   margin: 0;

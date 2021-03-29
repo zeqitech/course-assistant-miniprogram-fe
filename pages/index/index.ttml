@@ -7,13 +7,23 @@
     </text>
   </view>
   <scroll-view class="functions" scroll-x="true">
-    <view class="item" tt:if="{{ isTeacher }}" bindtap="navToNewClass">
-      <image class="icon" src="/image/class.png"></image>
-      <text class="label">新建班级</text>
-    </view>
-    <view class="item" data-filter="past" bindtap="navToAllClass">
+    <view
+      class="item animation-scale-up"
+      style="animation-delay: 0.2s;"
+      data-filter="past"
+      bindtap="navToAllClass"
+    >
       <image class="icon" src="/image/history.png"></image>
       <text class="label">往期课程</text>
+    </view>
+    <view
+      class="item animation-scale-up"
+      style="animation-delay: 0.1s;"
+      tt:if="{{ isTeacher }}"
+      bindtap="navToNewClass"
+    >
+      <image class="icon" src="/image/class.png"></image>
+      <text class="label">新建班级</text>
     </view>
   </scroll-view>
   <view class="classes classes-now">
@@ -25,7 +35,8 @@
       <s-card
         tt:for="{{ classArray }}"
         tt:if="{{ !item.expireStatus }}"
-        class="item"
+        class="item animation-scale-up"
+        style="animation-delay: {{ (index + 1) * 0.1 }} s;"
         cover="{{ item.coverUrl }}"
         title="{{ item.groupName }}"
         time="{{ item.classTime }}"

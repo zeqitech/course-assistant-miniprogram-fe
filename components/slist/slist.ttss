@@ -16,9 +16,15 @@
   height: 44px;
 }
 .s-list .icon {
+  border-radius: 12px;
+}
+.s-list.high .icon {
   width: 40px;
   height: 40px;
-  border-radius: 12px;
+}
+.s-list.regular .icon {
+  width: 32px;
+  height: 32px;
 }
 .s-list .info {
   margin-left: var(--margin-12px);
