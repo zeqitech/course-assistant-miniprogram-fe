@@ -24,11 +24,11 @@ Page({
     });
     if (options.filter === 'now') {
       tt.setNavigationBarTitle({
-        title: '正在进行',
+        title: '当前课程列表',
       });
     } else if (options.filter === 'past') {
       tt.setNavigationBarTitle({
-        title: '已经结课',
+        title: '往期课程列表',
       });
     }
   },
