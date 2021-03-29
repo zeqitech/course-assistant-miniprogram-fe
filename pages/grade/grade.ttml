@@ -1,27 +1,31 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-    <view class="file" bindtap="handleOpenFile">
-      <text class="title">{{ title }}</text>
-      <image class="icon" src="/image/file.png"></image>
-    </view>
-    <view class="grade">
-      <s-input
-        class="item"
-        label="分数"
-        value="{{ score }}"
-        placeholder="请输入成绩"
-        bindinput="handleScoreInput"
-      />
-      <s-input
-        class="item"
-        label="评语"
-        type="textarea"
-        value="{{ remark }}"
-        placeholder="请输入评语"
-        bindinput="handleRemarkInput"
-      />
-      <button class="btn" bindtap="handlePostGrade">提交</button>
-    </view>
+  <s-list
+    class="file width-app"
+    type="slot"
+    title="{{ title }}"
+    bindtap="handleOpenFile"
+  >
+    <image class="icon" src="/image/file.png"></image>
+  </s-list>
+  <view class="grade">
+    <s-input
+      class="item"
+      label="分数"
+      value="{{ score }}"
+      placeholder="请输入成绩"
+      bindinput="handleScoreInput"
+    />
+    <s-input
+      class="item"
+      label="评语"
+      type="textarea"
+      value="{{ remark }}"
+      placeholder="请输入评语"
+      bindinput="handleRemarkInput"
+    />
+    <button class="btn" bindtap="handlePostGrade">提交</button>
+  </view>
 </view>
 <template is="foot"></template>

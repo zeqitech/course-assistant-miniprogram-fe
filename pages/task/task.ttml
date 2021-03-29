@@ -1,7 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <view class="content">
+  <!-- <view class="content">
     <view class="item" bindtap="navToDoc" tt:for="{{ taskArray }}" data-token="{{ item.workToken }}">
       <image class="icon" src="/image/task.png"></image>
       <view class="info">
@@ -10,7 +10,19 @@
       </view>
       <view class="status {{item.expireStatus?'red':'green'}}">{{item.expireStatus?"已截止":"进行中"}}</view>
     </view>
-  </view>
+  </view> -->
+  <s-list
+    tt:for="{{ taskArray }}"
+    type="button"
+    class="item width-app"
+    icon="/image/task.png"
+    title="{{ item.workName }}"
+    value="{{ item.expireTime }}"
+    action="{{ item.expireStatus ? '已截止' : '进行中' }}"
+    color="{{ item.expireStatus ? 'red' : 'green' }}"
+    data-token="{{ item.workToken }}"
+    bindtap="navToDoc"
+  ></s-list>
 </view>
 <image
   src="/image/add.png"

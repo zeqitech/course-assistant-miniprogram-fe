@@ -4,8 +4,8 @@
   border-radius: 12px;
   display: flex;
   align-items: center;
-  padding-left: var(--margin-12px);
-  padding-right: var(--margin-12px);
+  padding-left: 16px;
+  padding-right: 16px;
   background-color: var(--gray-scale-0);
   box-shadow: 0 4px 8px var(--box-shadow);
 }
@@ -70,6 +70,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 16px;
+  margin-left: auto;
   font-size: var(--font-size-help);
   font-weight: var(--font-weight-help-app);
   line-height: var(--line-height-help-app);

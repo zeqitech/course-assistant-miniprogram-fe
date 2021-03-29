@@ -1,16 +1,6 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <!-- <view 
-    tt:for="{{ docArray }}"
-    class="item"
-    bindtap="navToGrade"
-    data-token="{{ item.fileToken }}"
-    data-title="{{ item.fileName }}"
-  >
-    <text class="title">{{ item.fileName }}</text>
-    <view class="btn {{item.comment?(item.score<60?'red':'green'):'blue'}}">{{item.comment?item.score:"打分"}}</view>
-  </view> -->
   <s-list
     tt:for="{{ docArray }}"
     class="item width-app"

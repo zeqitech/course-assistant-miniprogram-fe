@@ -1,23 +1,11 @@
 /* 文件链接 */
 .file {
-  width: calc(100% - 48px);
-  height: 72px;
-  border-radius: 20px;
-  padding: 0 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: solid 1px #bbbbbb;
   margin-top: 24px;
-  background-color: #fff;
-}
-.file .title {
-  font-size: 32rpx;
-  white-space: nowrap;
 }
 .file .icon {
   width: 24px;
   height: 24px;
+  margin-left: auto;
 }
 
 /* 打分模块 */
