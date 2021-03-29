@@ -6,7 +6,7 @@
     <s-list
       class="item"
       title="2021-03-27 15:33"
-      value="签到成功"
+      action="签到成功"
       color="green"
     ></s-list>
   </view>

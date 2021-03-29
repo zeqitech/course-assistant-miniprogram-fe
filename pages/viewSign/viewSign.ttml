@@ -5,10 +5,10 @@
     <s-list 
       class="item"
       title="2021-03-25 14:59"
-      value="正在进行"
+      action="正在进行"
       color="green"
     />
   </view>
 </view>
-<image src="/image/add.png" class="btn" bindtap="navToNewSign"></image>
+<image src="/image/add.png" class="add-btn" bindtap="navToNewSign"></image>
 <template is="foot"></template>

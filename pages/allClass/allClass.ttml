@@ -14,7 +14,7 @@
       data-token="{{ item.groupToken }}"
       data-chatId="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
-      bindtap="navToTask"
+      bindtap="navToClass"
     ></s-card>
   </view>
   <view class="list" tt:if="{{ filter === 'past' }}">
@@ -30,22 +30,7 @@
       data-token="{{ item.groupToken }}"
       data-chatId="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
-      bindtap="navToTask"
-    ></s-card>
-  </view>
-  <view class="list" tt:if="{{ filter === 'all' }}">
-    <s-card
-      tt:for="{{ classArray }}"
-      class="item"
-      cover="{{ item.coverUrl }}"
-      title="{{ item.groupName }}"
-      time="{{ item.classTime }}"
-      member="{{ item.studentCount }}"
-      state="{{ item.expireStatus ? '已结课' : '进行中' }}"
-      data-token="{{ item.groupToken }}"
-      data-chatId="{{ item.chatId }}"
-      data-cover="{{ item.coverUrl }}"
-      bindtap="navToTask"
+      bindtap="navToClass"
     ></s-card>
   </view>
 </view>

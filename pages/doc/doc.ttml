@@ -1,7 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <view 
+  <!-- <view 
     tt:for="{{ docArray }}"
     class="item"
     bindtap="navToGrade"
@@ -10,6 +10,17 @@
   >
     <text class="title">{{ item.fileName }}</text>
     <view class="btn {{item.comment?(item.score<60?'red':'green'):'blue'}}">{{item.comment?item.score:"打分"}}</view>
-  </view>
+  </view> -->
+  <s-list
+    tt:for="{{ docArray }}"
+    class="item width-app"
+    icon="/image/doc.png"
+    title="{{ item.fileName }}"
+    action="{{ item.comment ? item.score : '打分' }}"
+    color="{{ item.comment?(item.score<60?'red':'green'):'blue' }}"
+    data-token="{{ item.fileToken }}"
+    data-title="{{ item.fileName }}"
+    bindtap="navToGrade"
+  ></s-list>
 </view>
 <template is="foot"></template>

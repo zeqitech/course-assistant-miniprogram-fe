@@ -1,7 +1,15 @@
-<view class="s-list">
-  <text class="title">{{ title }}</text>
-  <text tt:if="{{ type === 'default' }}" class="value {{ color }}">{{
-    value
+<view class="s-list {{ type === 'button' ? 'high' : 'regular' }}">
+  <image class="icon" tt:if="{{ icon }}" src="{{ icon }}"></image>
+  <view class="info" tt:if="{{ type === 'button' }}">
+    <text class="title">{{ title }}</text>
+    <text class="value">{{ value }}</text>
+  </view>
+  <text class="title" tt:else>{{ title }}</text>
+  <text tt:if="{{ type === 'default' }}" class="action {{ color }}">{{
+    action
   }}</text>
-  <slot tt:elif="{{ type === 'slot' }}" class="value"></slot>
+  <text tt:elif="{{ type === 'button' }}" class="btn {{ color }}">{{
+    action
+  }}</text>
+  <slot tt:elif="{{ type === 'slot' }}" class="action"></slot>
 </view>

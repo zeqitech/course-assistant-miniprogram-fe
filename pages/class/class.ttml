@@ -1,7 +1,12 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <s-list class="item width-app" title="签到" value=">" bindtap="navToSign"></s-list>
-  <s-list class="item width-app" title="作业" value=">" bindtap="navToTask"></s-list>
+  <image
+    class="cover"
+    src="{{ cover }}"
+    mode="aspectCover"
+  ></image>
+  <s-list class="item width-app" title="签到" action=">" bindtap="navToSign"></s-list>
+  <s-list class="item width-app" title="作业" action=">" bindtap="navToTask"></s-list>
 </view>
 <template is="foot"></template>

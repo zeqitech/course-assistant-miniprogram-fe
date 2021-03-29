@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "班级列表",
   "usingComponents": {
     "s-card": "/components/scard/scard"
   }

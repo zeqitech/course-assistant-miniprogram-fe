@@ -1,9 +1,3 @@
-/* 班级封面 */
-.cover {
-  width: 100%;
-  height: 200px;
-}
-
 /* 作业列表 */
 .content {
   width: calc(100% - 48px);
@@ -54,21 +48,18 @@
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  border: #bbbbbb 1px solid;
   font-size: var(--font-size-help);
   font-weight: var(--font-weight-help-app);
   line-height: var(--line-height-help-app);
   text-align: center;
+  color: var(--gray-scale-100);
 }
 .content .item .status.green {
   background-color: var(--success);
-  color: var(--gray-scale-0);
 }
 .content .item .status.yellow {
   background-color: var(--warning);
-  color: var(--gray-scale-0);
 }
 .content .item .status.red {
   background-color: var(--error);
-  color: var(--gray-scale-0);
 }
