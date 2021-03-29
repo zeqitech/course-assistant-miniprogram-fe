@@ -40,9 +40,8 @@
       </view>
     </s-input>
     <s-input type="slot" class="item" label="从群聊创建班级">
-      <view class="picker">当前选择：{{ chatName }}</view>
+      <view class="picker" bindtap="handleSelectChat">当前选择：{{ chatName }}</view>
     </s-input>
-    <button class="btn chat" bindtap="handleSelectChat">选择班级群聊</button>
     <button class="btn submit" bindtap="handleNewClass">立即创建</button>
   </view>
 </view>
