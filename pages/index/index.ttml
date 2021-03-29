@@ -1,22 +1,13 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <!-- <view class="profile">
-    <image
-      class="avatar"
-      src="https://wimg.ruan8.com/uploadimg/image/20180521/20180521193021_39404.jpg"
-    ></image>
-    <view class="info">
-      <button tt:if="{{ isTeacher }}" class="item" bindtap="navToNewClass">新建班级</button>
-      <button tt:else class="item" data-filter="all" bindtap="navToAllClass">所有班级</button>
-    </view>
-  </view> -->
+  <view class="header">
+    <text class="greet">
+      Hi, {{ nickName }}
+    </text>
+  </view>
   <scroll-view class="functions" scroll-x="true">
-    <view class="item">
-      <image class="icon" src="{{ avatar }}"></image>
-      <text class="label">{{ nickName }}</text>
-    </view>
-    <view class="item">
+    <view class="item" tt:if="{{ isTeacher }}">
       <image class="icon" src="/image/class.png"></image>
       <text class="label">新建班级</text>
     </view>

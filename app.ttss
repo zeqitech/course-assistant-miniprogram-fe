@@ -39,7 +39,7 @@
   --font-size-h3-pc: 18px;
   --font-size-h3-app: 17px;
   --font-size-text-pc: 14px;
-  --font-size-text-mobile: 16px;
+  --font-size-text-app: 16px;
   --font-size-help: 12px;
   --line-height-h1: 32px;
   --line-height-h2: 28px;
