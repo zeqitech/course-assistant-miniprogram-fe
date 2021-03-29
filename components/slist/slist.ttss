@@ -40,9 +40,9 @@
   color: var(--gray-scale-500-guide);
 }
 .s-list > .title {
-  font-size: var(--font-size-help);
-  font-weight: var(--font-weight-help-app);
-  line-height: var(--line-height-help-app);
+  font-size: var(--font-size-text-help-app);
+  font-weight: var(--font-weight-text-help-app);
+  line-height: var(--line-height-text-help);
 }
 .s-list .action {
   margin-left: auto;

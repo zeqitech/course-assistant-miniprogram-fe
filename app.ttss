@@ -41,18 +41,23 @@
   --font-size-h3-app: 17px;
   --font-size-text-pc: 14px;
   --font-size-text-app: 16px;
+  --font-size-text-pc: 12px;
+  --font-size-text-help-app: 14px;
   --font-size-help: 12px;
   --line-height-h1: 32px;
   --line-height-h2: 28px;
   --line-height-h3-pc: 26px;
   --line-height-h3-app: 24px;
   --line-height-text: 22px;
+  --line-height-text-help: 20px;
   --line-height-help-pc: 20px;
   --line-height-help-app: 18px;
   --font-weight-h1: 600;
   --font-weight-h2: 500;
   --font-weight-h3: 500;
   --font-weight-text: 400;
+  --font-weight-text-help-pc: 500;
+  --font-weight-text-help-app: 400;
   --font-weight-help-pc: 400;
   --font-weight-help-app: 500;
 }
