@@ -4,7 +4,9 @@
   width: 100%;
 }
 .s-input .title {
-  font-size: 28rpx;
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
   margin-left: 12px;
 }
 .s-input .value {
@@ -15,6 +17,9 @@
   padding-left: 12px;
   padding-right: 12px;
   background-color: #fff;
+  font-size: var(--font-size-text-app);
+  font-weight: var(--font-weight-text);
+  line-height: var(--line-height-text);
 }
 .s-input .value.s-default {
   height: 44px;
