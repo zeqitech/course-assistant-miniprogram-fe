@@ -1,0 +1,7 @@
+<import src="/global/foot.ttml" />
+
+<view class="page">
+  <s-list class="item width-app" title="签到" value=">" bindtap="navToSign"></s-list>
+  <s-list class="item width-app" title="作业" value=">" bindtap="navToTask"></s-list>
+</view>
+<template is="foot"></template>

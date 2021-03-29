@@ -76,6 +76,21 @@
   color: var(--gray-scale-900-h1);
 }
 
+/* 全局宽度样式 */
+.width-app {
+  width: calc(100% - 48px);
+}
+
+/* 全局添加按钮样式 */
+.add-btn {
+  position: fixed;
+  right: 16px;
+  bottom: 60px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 /* 全局底部信息 */
 .foot {
   display: flex;

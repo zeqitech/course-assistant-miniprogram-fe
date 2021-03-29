@@ -17,13 +17,10 @@
     </view>
   </view>
 </view>
-<view class="btns">
-  <text class="item" bindtap="handleTapSign">签到</text>
-  <text
-    tt:if="{{ isTeacher }}"
-    class="item"
-    decode="true"
-    bindtap="navToNewTask"
-    >发布\n作业</text>
-</view>
+<image
+  src="/image/add.png"
+  tt:if="{{ isTeacher }}"
+  class="add-btn"
+  bindtap="navToNewTask"
+></image>
 <template is="foot"></template>

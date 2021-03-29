@@ -106,10 +106,10 @@ Page({
    * 跳转到班级作业列表页面
    * @param {Object} e
    */
-  navToTask(e) {
+  navToClass(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/task/task?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/class/class?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 

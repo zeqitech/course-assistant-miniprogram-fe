@@ -34,7 +34,7 @@
         data-token="{{ item.groupToken }}"
         data-chatId="{{ item.chatId }}"
         data-cover="{{ item.coverUrl }}"
-        bindtap="navToTask"
+        bindtap="navToClass"
       ></s-card>
     </scroll-view>
   </view>

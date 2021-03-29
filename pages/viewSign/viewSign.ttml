@@ -10,5 +10,5 @@
     />
   </view>
 </view>
-<text class="btn" bindtap="navToNewSign">+</text>
+<image src="/image/add.png" class="btn" bindtap="navToNewSign"></image>
 <template is="foot"></template>

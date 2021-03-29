@@ -34,10 +34,12 @@ Page({
    */
   handleNewSign() {
     if (this.data.duration !== '') {
+      // 计算签到起止时间
       let startTime = func.getCurrentTime(new Date().getTime());
       let endTime = func.getCurrentTime(
         new Date().getTime() + parseInt(this.data.duration) * 60000
       );
+      // 获取当前老师位置
       tt.getLocation({
         type: 'gcj02',
         success: (res) => {

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/allClass/allClass",
+    "pages/class/class",
     "pages/doc/doc",
     "pages/grade/grade",
     "pages/newClass/newClass",

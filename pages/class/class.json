@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "班级功能",
+  "usingComponents": {
+    "s-list": "/components/slist/slist"
+  }
+}
