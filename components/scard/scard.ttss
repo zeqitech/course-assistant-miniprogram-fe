@@ -23,6 +23,12 @@
   font-weight: var(--font-weight-h2);
   line-height: var(--line-height-h2);
 }
+.s-card .info .title span {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+}
 .s-card .info .time {
   width: 100%;
   font-size: var(--font-size-help);
@@ -31,6 +37,15 @@
   color: var(--gray-scale-500-guide);
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+.s-card .info .time span {
+  word-break: break-all;
+  white-space: normal;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .s-card .info .status {
   width: 100%;

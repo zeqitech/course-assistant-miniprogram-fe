@@ -6,7 +6,7 @@
       tt:for="{{ classArray }}"
       tt:if="{{ !item.expireStatus }}"
       class="item animation-scale-up"
-      style="animation-delay: {{(index+1)*0.5}}s;"
+      style="animation-delay: {{(index+1)*0.1}}s;"
       cover="{{ item.coverUrl }}"
       title="{{ item.groupName }}"
       time="{{ item.classTime }}"

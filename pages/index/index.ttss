@@ -2,7 +2,7 @@
 .header {
   width: 100%;
   height: 196px;
-  background-image: linear-gradient(180deg, var(--primary), #8577ff);
+  background-image: linear-gradient(180deg, var(--primary), #77a2ff);
   display: flex;
   justify-content: start;
   align-items: flex-end;
