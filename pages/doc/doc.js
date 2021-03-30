@@ -43,9 +43,20 @@ Page({
       },
       success: (res) => {
         console.log(res);
-        this.setData({
-          docArray: res.data.data.list,
+        let that = this;
+        let docArray = JSON.parse(JSON.stringify(res.data.data.list));
+        docArray.forEach((item, index) => {
+          item.fileName =
+            item.fileName.split('-')[1] + '-' + item.fileName.split('-')[2];
+          if (index === docArray.length - 1) {
+            that.setData({
+              docArray: docArray,
+            });
+          }
         });
+        // this.setData({
+        //   docArray: res.data.data.list,
+        // });
       },
       fail(res) {
         console.log(`request 调用失败`);

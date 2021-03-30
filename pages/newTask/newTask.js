@@ -75,15 +75,23 @@ Page({
           'content-type': 'application/json',
         },
         success: (res) => {
-          tt.showModal({
-            title: '成功',
-            content: '发布作业成功',
-            success(res) {
-              tt.navigateBack({
-                delta: 1,
-              });
-            },
-          });
+          console.log(res);
+          if (res.data.success) {
+            tt.showModal({
+              title: '成功',
+              content: '发布作业成功',
+              success(res) {
+                tt.navigateBack({
+                  delta: 1,
+                });
+              },
+            });
+          } else {
+            tt.showModal({
+              title: '失败',
+              content: res.data.message,
+            });
+          }
         },
         fail(res) {
           console.log(res);

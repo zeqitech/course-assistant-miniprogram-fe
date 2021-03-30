@@ -6,6 +6,7 @@ Page({
    */
   data: {
     token: '',
+    chatId: '',
     isTeacher: app.isTeacher,
     taskArray: [],
   },

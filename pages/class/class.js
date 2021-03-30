@@ -42,7 +42,7 @@ Page({
    */
   navToTask() {
     tt.navigateTo({
-      url: `/pages/task/task?token=${this.data.token}&chatId=${this.data.chatId}&cover=${this.data.cover}`,
+      url: `/pages/task/task?token=${this.data.token}&chatId=${this.data.chatId}`,
     });
   },
 });
