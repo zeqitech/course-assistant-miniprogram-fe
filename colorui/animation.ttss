@@ -13,7 +13,7 @@
 
 /* Animation css */
 [class*='animation-'] {
-  animation-duration: 0.8s;
+  animation-duration: 0.5s;
   animation-timing-function: ease-in;
   animation-fill-mode: both;
 }

@@ -18,7 +18,7 @@
   background-color: #fff;
   display: flex;
   align-items: center;
-  color: #888888;
+  color: var(--gray-scale-500-guide);
   font-size: var(--font-size-text-app);
   font-weight: var(--font-weight-text);
   line-height: var(--line-height-text);

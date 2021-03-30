@@ -9,7 +9,7 @@
   height: 240rpx;
   border-radius: 50%;
   background-color: #2fb804;
-  color: white;
+  color: var(--gray-scale-0);
   margin-top: 64px;
   display: flex;
   justify-content: center;
