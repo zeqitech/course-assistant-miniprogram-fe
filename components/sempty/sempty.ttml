@@ -1,0 +1,4 @@
+<view class="not-found">
+  <image class="icon" src="/image/empty.png"></image>
+  <text class="value">页面空空如也</text>
+</view>

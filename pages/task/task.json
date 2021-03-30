@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "班级作业列表",
   "usingComponents": {
-    "s-list": "/components/slist/slist"
+    "s-list": "/components/slist/slist",
+    "s-empty": "/components/sempty/sempty"
   }
 }

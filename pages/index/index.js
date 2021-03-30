@@ -9,6 +9,8 @@ Page({
     classArray: [],
     isTeacher: app.isTeacher,
     avatar: '',
+    nowEmpty: true,
+    pastEmpty: true,
   },
 
   /**
@@ -91,6 +93,18 @@ Page({
       success: (res) => {
         console.log('获取班级列表成功');
         console.log(res);
+        res.data.data.list.forEach((item, index) => {
+          if (!item.expireStatus) {
+            this.setData({
+              nowEmpty: false,
+            });
+            return;
+          } else {
+            this.setData({
+              pastEmpty: false,
+            });
+          }
+        });
         this.setData({
           classArray: res.data.data.list,
         });
@@ -130,7 +144,9 @@ Page({
     tt.navigateTo({
       url: `/pages/allClass/allClass?filter=${filter}&classArray=${JSON.stringify(
         this.data.classArray
-      )}`,
+      )}&nowEmpty=${JSON.stringify(
+        this.data.nowEmpty
+      )}&pastEmpty=${JSON.stringify(this.data.pastEmpty)}`,
     });
   },
 });

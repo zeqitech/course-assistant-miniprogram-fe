@@ -6,6 +6,8 @@ Page({
     filter: '',
     expireStatus: false,
     classArray: [],
+    nowEmpty: true,
+    pastEmpty: true,
   },
 
   /**
@@ -21,6 +23,8 @@ Page({
       filter: options.filter,
       expireStatus: options.filter === 'now' ? false : true,
       classArray: JSON.parse(options.classArray),
+      nowEmpty: JSON.parse(options.nowEmpty),
+      pastEmpty: JSON.parse(options.pastEmpty),
     });
     if (options.filter === 'now') {
       tt.setNavigationBarTitle({

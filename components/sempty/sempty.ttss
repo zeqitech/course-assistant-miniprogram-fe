@@ -1,0 +1,17 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+.not-found .icon {
+  width: 40px;
+  height: 40px;
+}
+.not-found .value {
+  font-size: var(--font-size-text-app);
+  font-weight: var(--font-weight-text);
+  line-height: var(--line-height-text);
+  color: var(--gray-scale-500-guide);
+}

@@ -31,7 +31,8 @@
       <text class="title">当前课程</text>
       <text class="label" data-filter="now" bindtap="navToAllClass">查看更多</text>
     </view>
-    <scroll-view class="content" scroll-x="true">
+    <s-empty tt:if="{{ nowEmpty }}" class="empty"></s-empty>
+    <scroll-view class="content" scroll-x="true" tt:else>
       <s-card
         tt:for="{{ classArray }}"
         tt:if="{{ !item.expireStatus }}"

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "s-card": "/components/scard/scard"
+    "s-card": "/components/scard/scard",
+    "s-empty": "/components/sempty/sempty"
   }
 }

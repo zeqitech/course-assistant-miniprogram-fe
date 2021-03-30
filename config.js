@@ -22,6 +22,8 @@ var config = {
   getDocUrl: `${host}/file/getAll`,
   // 打分
   postGradeUrl: `${host}/file/grade`,
+  // 获取签到数据
+  getSignUrl: `${host}/sign/getAll`,
 };
 
 module.exports = config;

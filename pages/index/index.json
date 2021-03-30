@@ -2,6 +2,7 @@
   "navigationBarTitleText": "首页",
   "navigationStyle": "custom",
   "usingComponents": {
-    "s-card": "/components/scard/scard"
+    "s-card": "/components/scard/scard",
+    "s-empty": "/components/sempty/sempty"
   }
 }

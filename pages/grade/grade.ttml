@@ -1,14 +1,20 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <s-list
-    class="file width-app"
+  <s-input
+    class="item width-app"
+    label="作业原文件"
     type="slot"
-    title="{{ title }}"
-    bindtap="handleOpenFile"
   >
-    <image class="icon" src="/image/file.png"></image>
-  </s-list>
+    <s-list
+      class="file"
+      type="slot"
+      title="{{ title }}"
+      bindtap="handleOpenFile"
+    >
+      <image class="icon" src="/image/file.png"></image>
+    </s-list>
+  </s-input>
   <view class="grade">
     <s-input
       class="item"

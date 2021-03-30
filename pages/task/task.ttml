@@ -3,6 +3,7 @@
 <view class="page">
   <s-list
     tt:for="{{ taskArray }}"
+    tt:if="{{ taskArray.length !== 0 }}"
     type="button"
     class="item width-app animation-slide-bottom"
     style="animation-delay: {{ (index + 1) * 0.1 }}s;"
@@ -14,6 +15,7 @@
     data-token="{{ item.workToken }}"
     bindtap="navToDoc"
   ></s-list>
+  <s-empty tt:else class="empty"></s-empty>
 </view>
 <image
   src="/image/add.png"
