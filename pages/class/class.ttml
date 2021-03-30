@@ -2,7 +2,7 @@
 
 <view class="page">
   <image
-    class="cover animation-scale-up"
+    class="cover"
     src="{{ cover }}"
     mode="aspectCover"
   ></image>
