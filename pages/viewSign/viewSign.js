@@ -1,4 +1,5 @@
 const app = getApp().globalData;
+const func = getApp();
 
 Page({
   /**
@@ -27,6 +28,9 @@ Page({
    */
   onShow() {
     this.getSign();
+    this.setData({
+      currentTime: func.getCurrentTime(new Date()),
+    });
   },
 
   /**
@@ -69,7 +73,7 @@ Page({
   navToViewSignInfo(e) {
     let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: `/pages/viewSignInfo/viewSignInfo?token=${this.data.token}&teacherId=${data.teacherId}&signId=${data.signId}`,
+      url: `/pages/viewSignInfo/viewSignInfo?token=${this.data.token}&teacherId=${data.teacherId}&signId=${data.signId}&startTime=${data.startTime}&endTime=${data.endTime}`,
     });
   },
 });

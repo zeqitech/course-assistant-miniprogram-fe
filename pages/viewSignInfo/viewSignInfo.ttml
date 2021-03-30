@@ -1,4 +1,7 @@
 <import src="/global/foot.ttml" />
 
-<view class="page"></view>
+<view class="page">
+  <button class="btn width-app" tt:if="{{ endTime < currentTime }}">查看签到名单</button>
+  <button class="btn width-app" tt:else bindtap="endSign">提前结束签到</button>
+</view>
 <template is="foot"></template>

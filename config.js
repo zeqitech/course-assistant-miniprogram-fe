@@ -24,6 +24,8 @@ var config = {
   postGradeUrl: `${host}/file/grade`,
   // 获取签到数据
   getSignUrl: `${host}/sign/getAll`,
+  // 提前结束签到
+  endSignUrl: `${host}/sign/close`,
 };
 
 module.exports = config;

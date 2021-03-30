@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "查看签到",
   "usingComponents": {
-    "s-list": "/components/slist/slist"
+    "s-list": "/components/slist/slist",
+    "s-empty": "/components/sempty/sempty"
   }
 }

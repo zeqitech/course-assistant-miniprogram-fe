@@ -8,13 +8,17 @@
       class="item animation-slide-bottom"
       style="animation-delay: {{(index+1)*0.1}}s;"
       title="{{ item.startTime }}"
-      action=">"
+      action="{{ item.endTime < currentTime ? '已截止' : '正在进行' }}"
+      color="{{ item.endTime < currentTime ? 'red' : 'green' }}"
       data-sign-id="{{ item.signId }}"
       data-teacher-id="{{ item.teacherId }}"
+      data-start-time="{{ item.startTime }}"
+      data-end-time="{{ item.endTime }}"
       bindtap="navToViewSignInfo"
+      bindlongpress="endSign"
     />
   </view>
-  <s-empty tt:else class="empty"></s-empty>
+  <s-empty tt:if="{{ signArray.length === 0 }}" class="empty"></s-empty>
 </view>
 <image src="/image/add.png" class="add-btn" bindtap="navToNewSign"></image>
 <template is="foot"></template>
