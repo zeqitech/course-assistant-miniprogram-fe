@@ -1,3 +1,5 @@
+const app = getApp().globalData;
+
 Page({
   /**
    * 页面初始数据
@@ -15,16 +17,15 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
-    console.log(this.data.expireStatus);
     console.log('-----------------all class-----------------');
     console.log(options);
     console.log('-------------------------------------------');
     this.setData({
       filter: options.filter,
       expireStatus: options.filter === 'now' ? false : true,
-      classArray: JSON.parse(options.classArray),
-      nowEmpty: JSON.parse(options.nowEmpty),
-      pastEmpty: JSON.parse(options.pastEmpty),
+      classArray: app.classArray,
+      nowEmpty: options.nowEmpty === 'true' ? true : false,
+      pastEmpty: options.pastEmpty === 'true' ? true : false,
     });
     if (options.filter === 'now') {
       tt.setNavigationBarTitle({

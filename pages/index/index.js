@@ -108,6 +108,7 @@ Page({
         this.setData({
           classArray: res.data.data.list,
         });
+        app.classArray = res.data.data.list;
         cb();
       },
       fail(res) {
@@ -142,11 +143,7 @@ Page({
   navToAllClass(e) {
     let filter = e.currentTarget.dataset.filter;
     tt.navigateTo({
-      url: `/pages/allClass/allClass?filter=${filter}&classArray=${JSON.stringify(
-        this.data.classArray
-      )}&nowEmpty=${JSON.stringify(
-        this.data.nowEmpty
-      )}&pastEmpty=${JSON.stringify(this.data.pastEmpty)}`,
+      url: `/pages/allClass/allClass?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
     });
   },
 });
