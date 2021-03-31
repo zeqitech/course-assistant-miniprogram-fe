@@ -16,6 +16,8 @@ var config = {
   newSignUrl: `${host}/sign/publish`,
   // 发布作业
   newTaskUrl: `${host}/work/new`,
+  // 删除作业
+  delTaskUrl: `${host}/work/delete`,
   // 获取全部任务
   getTaskUrl: `${host}/work/allWork`,
   // 获取全部文档

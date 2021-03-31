@@ -47,9 +47,15 @@ Page({
       },
       success: (res) => {
         console.log(res);
-        this.setData({
-          taskArray: res.data.data.list,
-        });
+        if (res.data.success) {
+          this.setData({
+            taskArray: res.data.data.list,
+          });
+        } else {
+          this.setData({
+            taskArray: [],
+          });
+        }
       },
       fail(res) {
         console.log(`request 调用失败`);
@@ -62,8 +68,9 @@ Page({
    * @param {Object} e
    */
   navToDoc(e) {
+    let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: '/pages/doc/doc?token=' + e.currentTarget.dataset.token,
+      url: `/pages/doc/doc?token=${data.token}&expireStatus=${data.expireStatus}&endDate=${data.expireTime}&startDate=${data.updateTime}&groupToken=${data.groupToken}&name=${data.workName}`,
     });
   },
 
@@ -87,7 +94,7 @@ Page({
    */
   navToNewTask() {
     tt.navigateTo({
-      url: `/pages/newTask/newTask?token=${this.data.token}&chatId=${this.data.chatId}`,
+      url: `/pages/newTask/newTask?token=${this.data.token}&chatId=${this.data.chatId}&option=new`,
     });
   },
 });

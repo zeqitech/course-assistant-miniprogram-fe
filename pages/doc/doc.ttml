@@ -14,4 +14,13 @@
     bindtap="navToGrade"
   ></s-list>
 </view>
+<view class="popup">
+  <text
+    tt:for="{{ itemList }}"
+    tt:if="{{ showPopup }}"
+    data-index="{{ index }}"
+    bindtap="handleMoreOption"
+  >{{ item }}</text>
+</view>
+<image class="add-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
 <template is="foot"></template>

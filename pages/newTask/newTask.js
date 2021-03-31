@@ -10,6 +10,7 @@ Page({
     endDate: '', //作业截至日期
     chatId: '', //群聊ID
     token: '', //班级Token
+    option: '',
   },
 
   /**
@@ -21,9 +22,22 @@ Page({
     console.log(options);
     console.log('------------------------------------');
     this.setData({
-      chatId: options.chatId,
-      token: options.token,
+      option: options.option,
     });
+    if (options.option === 'new') {
+      this.setData({
+        chatId: options.chatId,
+        token: options.token,
+      });
+    } else {
+      this.setData({
+        startDate: options.startDate,
+        endDate: options.endDate,
+        name: options.name,
+        workToken: options.token,
+        groupToken: options.groupToken,
+      });
+    }
   },
 
   /**
@@ -105,4 +119,10 @@ Page({
       });
     }
   },
+
+  /**
+   * 处理修改作业信息事件
+   *
+   */
+  handleModifyTask() {},
 });

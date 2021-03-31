@@ -13,6 +13,11 @@
     action="{{ item.expireStatus ? '已截止' : '进行中' }}"
     color="{{ item.expireStatus ? 'red' : 'green' }}"
     data-token="{{ item.workToken }}"
+    data-expire-status="{{ item.expireStatus }}"
+    data-expire-time="{{ item.expireTime }}"
+    data-update-time="{{ item.updateTime }}"
+    data-group-token="{{ token }}"
+    data-work-name="{{ item.workName }}"
     bindtap="navToDoc"
   ></s-list>
   <s-empty tt:else class="empty"></s-empty>
