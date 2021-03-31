@@ -123,6 +123,9 @@ Page({
   handleMoreOption(e) {
     let index = e.currentTarget.dataset.index;
     if (index === 0) {
+      this.setData({
+        showPopup: false,
+      });
       this.modifyTask();
     } else if (index === 1) {
       this.setData({
@@ -184,6 +187,7 @@ Page({
               }
             },
             fail(res) {
+              tt.hideLoading({});
               console.log(res);
             },
           });

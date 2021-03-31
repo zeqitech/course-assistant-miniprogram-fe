@@ -55,13 +55,14 @@ Page({
    * @param {Object} e
    */
   handleSelectDate(e) {
+    console.log(e);
     if (e.currentTarget.dataset.name === 'start') {
       this.setData({
-        startDate: e.detail.value + ' 00:00:00',
+        startDate: e.detail.value,
       });
     } else {
       this.setData({
-        endDate: e.detail.value + ' 23:59:59',
+        endDate: e.detail.value,
       });
     }
   },
@@ -75,12 +76,15 @@ Page({
       this.data.startDate !== '' &&
       this.data.endDate !== ''
     ) {
+      tt.showLoading({
+        title: '发布中',
+      });
       tt.request({
         url: app.urlConfig.newTaskUrl,
         method: 'POST',
         data: {
           chatId: this.data.chatId,
-          expireTime: this.data.endDate,
+          expireTime: this.data.endDate + ' 23:59:59',
           groupToken: this.data.token,
           openId: app.openId,
           workName: this.data.name,
@@ -90,6 +94,7 @@ Page({
         },
         success: (res) => {
           console.log(res);
+          tt.hideLoading({});
           if (res.data.success) {
             tt.showModal({
               title: '成功',
@@ -110,6 +115,7 @@ Page({
         fail(res) {
           console.log(res);
           console.log('发布作业失败');
+          tt.hideLoading({});
         },
       });
     } else {
@@ -124,5 +130,58 @@ Page({
    * 处理修改作业信息事件
    *
    */
-  handleModifyTask() {},
+  handleModifyTask() {
+    if (
+      this.data.name !== '' &&
+      this.data.startDate !== '' &&
+      this.data.endDate !== ''
+    ) {
+      tt.showLoading({
+        title: '修改中',
+      });
+      tt.request({
+        url: app.urlConfig.modifyTaskUrl,
+        method: 'POST',
+        data: {
+          expireStatus: 0,
+          expireTime: this.data.endDate,
+          groupToken: this.data.groupToken,
+          updateTime: this.data.startDate,
+          workName: this.data.name,
+          workToken: this.data.workToken,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        success(res) {
+          console.log(res);
+          tt.hideLoading({});
+          if (res.data.success) {
+            tt.showModal({
+              title: '成功',
+              content: '修改作业信息成功',
+              success(res) {
+                tt.navigateBack({
+                  delta: 2,
+                });
+              },
+            });
+          } else {
+            tt.showModal({
+              title: '失败',
+              content: res.data.message,
+            });
+          }
+        },
+        fail(res) {
+          console.log(`修改作业信息失败`);
+          tt.hideLoading({});
+          tt.showModal({
+            title: '失败',
+            content: '请完善作业信息！',
+          });
+        },
+      });
+    }
+  },
 });
