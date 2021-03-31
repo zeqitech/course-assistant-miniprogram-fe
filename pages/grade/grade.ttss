@@ -1,9 +1,9 @@
 /* 文件链接 */
 .page > .item {
-  width: 100%;
+  margin-top: 24px;
 }
 .file {
-  margin-top: 24px;
+  margin-top: 8px;
 }
 .file .icon {
   width: 24px;
