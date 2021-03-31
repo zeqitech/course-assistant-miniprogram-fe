@@ -29,6 +29,9 @@ Page({
         chatId: options.chatId,
         token: options.token,
       });
+      tt.setNavigationBarTitle({
+        title: '发布作业',
+      });
     } else {
       this.setData({
         startDate: options.startDate,
@@ -36,6 +39,9 @@ Page({
         name: options.name,
         workToken: options.token,
         groupToken: options.groupToken,
+      });
+      tt.setNavigationBarTitle({
+        title: '修改信息',
       });
     }
   },

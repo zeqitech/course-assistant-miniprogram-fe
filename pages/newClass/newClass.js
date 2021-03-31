@@ -96,15 +96,15 @@ Page({
           chatName: res.data[0].name,
           // chatAvatar: res.data[0].avatarUrls[0],
         });
-        // tt.getChatInfo({
-        //   openChatId: this.data.chatId,
-        //   type: 1,
-        //   success: (res) => {
-        //     this.setData({
-        //       chatAvatar: res.data[0].avatarUrls[0],
-        //     });
-        //   },
-        // });
+        tt.getChatInfo({
+          openChatId: this.data.chatId,
+          type: 1,
+          success: (res) => {
+            this.setData({
+              chatAvatar: res.data[0].avatarUrls[0],
+            });
+          },
+        });
       },
       fail(res) {
         console.log(`chooseChat failure`);
@@ -129,9 +129,8 @@ Page({
       this.data.endDate !== '' &&
       this.data.chatId !== ''
     ) {
-      tt.showToast({
+      tt.showLoading({
         title: '创建中',
-        icon: 'loading',
       });
       tt.request({
         url: app.urlConfig.newClassUrl,
@@ -139,7 +138,7 @@ Page({
         data: {
           chatId: this.data.chatId,
           classTime: this.data.time,
-          coverUrl: 'https://pic.chinaz.com/picmap/201907191721549523_0.jpg',
+          coverUrl: this.data.chatAvatar,
           startTime: this.data.startDate,
           expireTime: this.data.endDate,
           groupName: this.data.name,
@@ -149,6 +148,7 @@ Page({
           'content-type': 'application/json',
         },
         success: (res) => {
+          tt.hideLoading({});
           console.log(res);
           if (res.data.success) {
             tt.showModal({
@@ -173,6 +173,7 @@ Page({
           }
         },
         fail(res) {
+          tt.hideLoading({});
           console.log('创建新班级失败');
         },
       });
