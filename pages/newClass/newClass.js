@@ -69,11 +69,11 @@ Page({
   handleSelectDate(e) {
     if (e.currentTarget.dataset.name === 'start') {
       this.setData({
-        startDate: e.detail.value + ' 00:00:00',
+        startDate: e.detail.value,
       });
     } else {
       this.setData({
-        endDate: e.detail.value + ' 23:59:59',
+        endDate: e.detail.value,
       });
     }
   },
@@ -144,9 +144,11 @@ Page({
           data: {
             chatId: this.data.chatId,
             classTime: this.data.time,
-            coverUrl: this.data.chatAvatar,
-            startTime: this.data.startDate,
-            expireTime: this.data.endDate,
+            coverUrl:
+              this.data.chatAvatar ||
+              'https://i-1-lanrentuku.qqxzb-img.com/2020/12/20/d72d89f0-18da-4df1-bf0c-9c014e000c72.png?imageView2/2/w/1024/',
+            startTime: this.data.startDate + ' 00:00:00',
+            expireTime: this.data.endDate + ' 23:59:59',
             groupName: this.data.name,
             teacherId: app.openId,
           },

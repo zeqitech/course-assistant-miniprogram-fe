@@ -27,8 +27,8 @@ Page({
     this.setData({
       token: options.token,
       expireStatus: options.expireStatus,
-      endDate: options.endDate,
-      startDate: options.startDate,
+      endDate: options.endDate.split(' ')[0],
+      startDate: options.startDate.split(' ')[0],
       groupToken: options.groupToken,
       name: options.name,
     });
@@ -94,7 +94,7 @@ Page({
     tt.getSystemInfo({
       success: (res) => {
         console.log(res);
-        if (res.platform === '111' || res.platform === '222') {
+        if (res.platform === 'ios' || res.platform === 'android') {
           tt.showActionSheet({
             itemList: this.data.itemList,
             success: (res) => {
