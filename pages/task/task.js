@@ -1,4 +1,5 @@
 const app = getApp().globalData;
+const func = getApp();
 
 Page({
   /**
@@ -9,6 +10,7 @@ Page({
     chatId: '',
     isTeacher: app.isTeacher,
     taskArray: [],
+    currentTime: '',
   },
 
   /**
@@ -31,6 +33,9 @@ Page({
    */
   onShow() {
     this.getTask();
+    this.setData({
+      currentTime: func.getCurrentTime(new Date()),
+    });
   },
 
   /**
