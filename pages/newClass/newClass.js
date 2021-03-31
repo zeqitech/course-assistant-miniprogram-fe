@@ -129,54 +129,61 @@ Page({
       this.data.endDate !== '' &&
       this.data.chatId !== ''
     ) {
-      tt.showLoading({
-        title: '创建中',
-      });
-      tt.request({
-        url: app.urlConfig.newClassUrl,
-        method: 'POST',
-        data: {
-          chatId: this.data.chatId,
-          classTime: this.data.time,
-          coverUrl: this.data.chatAvatar,
-          startTime: this.data.startDate,
-          expireTime: this.data.endDate,
-          groupName: this.data.name,
-          teacherId: app.openId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        success: (res) => {
-          tt.hideLoading({});
-          console.log(res);
-          if (res.data.success) {
-            tt.showModal({
-              title: '成功',
-              content: '创建新班级成功',
-              success(res) {
-                tt.navigateBack({
-                  delta: 1,
-                });
-              },
-            });
-          } else {
-            tt.showModal({
-              title: '失败',
-              content: '创建新班级失败，请联系开发者反馈问题！',
-              success(res) {
-                tt.navigateBack({
-                  delta: 1,
-                });
-              },
-            });
-          }
-        },
-        fail(res) {
-          tt.hideLoading({});
-          console.log('创建新班级失败');
-        },
-      });
+      if (this.data.startDate > this.data.endDate) {
+        tt.showModal({
+          title: '错误',
+          content: '起始日期不能晚于结束日期！',
+        });
+      } else {
+        tt.showLoading({
+          title: '创建中',
+        });
+        tt.request({
+          url: app.urlConfig.newClassUrl,
+          method: 'POST',
+          data: {
+            chatId: this.data.chatId,
+            classTime: this.data.time,
+            coverUrl: this.data.chatAvatar,
+            startTime: this.data.startDate,
+            expireTime: this.data.endDate,
+            groupName: this.data.name,
+            teacherId: app.openId,
+          },
+          header: {
+            'content-type': 'application/json',
+          },
+          success: (res) => {
+            tt.hideLoading({});
+            console.log(res);
+            if (res.data.success) {
+              tt.showModal({
+                title: '成功',
+                content: '创建新班级成功',
+                success(res) {
+                  tt.navigateBack({
+                    delta: 1,
+                  });
+                },
+              });
+            } else {
+              tt.showModal({
+                title: '失败',
+                content: '创建新班级失败，请联系开发者反馈问题！',
+                success(res) {
+                  tt.navigateBack({
+                    delta: 1,
+                  });
+                },
+              });
+            }
+          },
+          fail(res) {
+            tt.hideLoading({});
+            console.log('创建新班级失败');
+          },
+        });
+      }
     } else {
       tt.showModal({
         title: '失败',

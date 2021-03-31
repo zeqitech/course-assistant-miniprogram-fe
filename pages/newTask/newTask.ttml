@@ -15,6 +15,8 @@
         value="{{ startDate }}"
         bindchange="handleSelectDate"
         data-name="start"
+        start="2000-01-01"
+        end="2035-12-31"
       >
         <view class="picker">起始日期：{{ startDate }}</view>
       </picker>
@@ -23,6 +25,8 @@
         value="{{ endDate }}"
         bindchange="handleSelectDate"
         data-name="end"
+        start="2000-01-01"
+        end="2035-12-31"
        >
         <view class="picker">截止日期：{{ endDate }}</view>
       </picker>

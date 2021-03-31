@@ -34,6 +34,9 @@ Page({
    */
   handleNewSign() {
     if (this.data.duration !== '') {
+      tt.showLoading({
+        title: '请稍候',
+      });
       // 计算签到起止时间
       let startTime = func.getCurrentTime(new Date().getTime());
       let endTime = func.getCurrentTime(
@@ -61,6 +64,7 @@ Page({
               'content-type': 'application/json',
             },
             success: (res) => {
+              tt.hideLoading({});
               console.log(res);
               if (res.data.success) {
                 tt.showModal({
@@ -80,6 +84,7 @@ Page({
               }
             },
             fail(res) {
+              tt.hideLoading({});
               console.log(`request 调用失败`);
             },
           });

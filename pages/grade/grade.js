@@ -56,52 +56,59 @@ Page({
   handlePostGrade() {
     console.log(this.data.score, this.data.remark);
     if (this.data.score !== '') {
-      if (this.data.remark === '') {
-        this.setData({
-          remark: '无',
+      if (this.data.score >= '0' && this.data.score <= '100') {
+        if (this.data.remark === '') {
+          this.setData({
+            remark: '无',
+          });
+        }
+        tt.showModal({
+          title: '提示',
+          content: `确认给 ${this.data.title} 作业打分 ${this.data.score}？`,
+          success: (res) => {
+            if (res.confirm) {
+              tt.request({
+                url: app.urlConfig.postGradeUrl,
+                method: 'POST',
+                data: {
+                  comment: this.data.remark,
+                  fileToken: this.data.token,
+                  openId: app.openId,
+                  score: parseInt(this.data.score),
+                },
+                header: {
+                  'content-type': 'application/json',
+                },
+                success(res) {
+                  console.log(res);
+                  tt.showModal({
+                    title: '成功',
+                    content: '分数添加成功',
+                    success(res) {
+                      tt.navigateBack({
+                        delta: 1,
+                      });
+                    },
+                  });
+                },
+                fail(res) {
+                  console.log(`request 调用失败`);
+                },
+              });
+            } else {
+              tt.showToast({
+                title: '已取消',
+                icon: 'success',
+              });
+            }
+          },
+        });
+      } else {
+        tt.showModal({
+          title: '错误',
+          content: '分数区间为0~100',
         });
       }
-      tt.showModal({
-        title: '提示',
-        content: `确认给 ${this.data.title} 作业打分 ${this.data.score}？`,
-        success: (res) => {
-          if (res.confirm) {
-            tt.request({
-              url: app.urlConfig.postGradeUrl,
-              method: 'POST',
-              data: {
-                comment: this.data.remark,
-                fileToken: this.data.token,
-                openId: app.openId,
-                score: parseInt(this.data.score),
-              },
-              header: {
-                'content-type': 'application/json',
-              },
-              success(res) {
-                console.log(res);
-                tt.showModal({
-                  title: '成功',
-                  content: '分数添加成功',
-                  success(res) {
-                    tt.navigateBack({
-                      delta: 1,
-                    });
-                  },
-                });
-              },
-              fail(res) {
-                console.log(`request 调用失败`);
-              },
-            });
-          } else {
-            tt.showToast({
-              title: '已取消',
-              icon: 'success',
-            });
-          }
-        },
-      });
     } else {
       tt.showModal({
         title: '失败',
