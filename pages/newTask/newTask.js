@@ -165,7 +165,7 @@ Page({
             expireStatus: 0,
             expireTime: this.data.endDate + ' 23:59:59',
             groupToken: this.data.groupToken,
-            updateTime: this.data.startDate + ' 00:00:00',
+            updateTime: this.data.startDate + ' 11:59:59',
             workName: this.data.name,
             workToken: this.data.workToken,
           },
