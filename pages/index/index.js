@@ -181,10 +181,10 @@ Page({
    * 跳转到班级作业列表页面
    * @param {Object} e
    */
-  navToClass(e) {
+  navToCourse(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/class/class?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/course/course?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 

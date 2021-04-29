@@ -53,7 +53,7 @@
         data-course-id="{{ item.courseId }}"
         data-chat-id="{{ item.chatId }}"
         data-cover="{{ item.coverUrl }}"
-        bindtap="navToClass"
+        bindtap="navToCourse"
       ></s-card>
     </scroll-view>
   </view>
