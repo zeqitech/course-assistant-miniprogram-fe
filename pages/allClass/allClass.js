@@ -7,7 +7,7 @@ Page({
   data: {
     filter: '',
     expireStatus: false,
-    classArray: [],
+    courseList: [],
     nowEmpty: true,
     pastEmpty: true,
   },
@@ -23,7 +23,7 @@ Page({
     this.setData({
       filter: options.filter,
       expireStatus: options.filter === 'now' ? false : true,
-      classArray: app.classArray,
+      courseList: app.courseList,
       nowEmpty: options.nowEmpty === 'true' ? true : false,
       pastEmpty: options.pastEmpty === 'true' ? true : false,
     });

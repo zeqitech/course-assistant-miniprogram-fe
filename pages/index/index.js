@@ -12,7 +12,7 @@ Page({
     // 本学期课程列表是否为空
     nowEmpty: true,
     // 往期课程是否为空
-    pastEmpty: false,
+    pastEmpty: true,
     // 用户昵称，用于首部问候
     nickName: '',
   },
