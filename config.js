@@ -8,8 +8,8 @@ var config = {
   host,
   // 登录
   loginUrl: `${host}/login`,
-  // 获取班级列表
-  getClassUrl: `${host}/group/getAll`,
+  // 老师（助教）或学生获取课程列表
+  getCourseUrl: `${host}/course/list`,
   // 新建班级
   newClassUrl: `${host}/group/new`,
   // 发布签到
