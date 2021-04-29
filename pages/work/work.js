@@ -6,10 +6,11 @@ Page({
    * 页面初始数据
    */
   data: {
-    token: '',
-    chatId: '',
-    isTeacher: app.isTeacher,
+    // 用户类型
+    userType: app.userType,
+    // 作业列表
     workList: [],
+    // 当前时间
     currentTime: '',
   },
 
@@ -23,7 +24,6 @@ Page({
     console.log('----------------------------------');
     this.setData({
       courseId: options.courseId,
-      cover: options.cover,
     });
   },
 
@@ -39,13 +39,16 @@ Page({
   },
 
   /**
-   * 获取任务列表
+   * 获取作业列表
    */
   async handleGetWorkList() {
+    // 展示 `Loading`
     tt.showLoading({
       title: '获取作业列表',
     });
+    // 获取作业列表返回值
     let getWorkListRes = await new Promise((resolve) => {
+      // 调用飞书 HTTP 能力
       tt.request({
         url: app.urlConfig.getWorkUrl,
         data: {
@@ -54,22 +57,27 @@ Page({
         header: {
           'content-type': 'application/json',
         },
+        // 请求成功，回传数据
         complete(res) {
           resolve(res.data);
         },
       });
     });
+    // 隐藏 `Loading`
     tt.hideLoading();
+    // 若成功获取作业列表
     if (getWorkListRes.success) {
+      // 返回作业列表
       return getWorkListRes.data.workList;
     } else {
+      // 获取作业列表失败
       tt.showModal({
         title: '失败',
         content: getWorkListRes.message,
       });
+      // 返回空数组
       return [];
     }
-    console.log('获取作业列表成功', getWorkListRes);
   },
 
   /**

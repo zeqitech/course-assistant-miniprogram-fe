@@ -41,7 +41,7 @@ Page({
    */
   navToWork() {
     tt.navigateTo({
-      url: `/pages/work/work?courseId=${this.data.courseId}&chatId=${this.data.chatId}`,
+      url: `/pages/work/work?courseId=${this.data.courseId}`,
     });
   },
 });
