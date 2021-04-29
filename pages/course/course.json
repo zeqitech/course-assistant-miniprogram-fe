@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "班级功能",
+  "navigationBarTitleText": "课程功能",
   "usingComponents": {
     "s-list": "/components/slist/slist"
   }

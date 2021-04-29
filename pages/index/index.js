@@ -184,7 +184,7 @@ Page({
   navToCourse(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/course/course?token=${e.currentTarget.dataset.token}&chatId=${e.currentTarget.dataset.chatId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/course/course?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 
@@ -200,10 +200,10 @@ Page({
   /**
    * 跳转到所有班级列表页面
    */
-  navToAllClass(e) {
+  navToAllCourse(e) {
     let filter = e.currentTarget.dataset.filter;
     tt.navigateTo({
-      url: `/pages/allClass/allClass?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
+      url: `/pages/allCourse/allCourse?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
     });
   },
 });

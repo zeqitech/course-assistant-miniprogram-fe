@@ -19,8 +19,7 @@ Page({
     console.log(options);
     console.log('--------------------------------------------');
     this.setData({
-      token: options.token,
-      chatId: options.chatId,
+      courseId: options.courseId,
       cover: options.cover,
     });
   },
@@ -40,9 +39,9 @@ Page({
   /**
    * 跳转到作业列表页面
    */
-  navToTask() {
+  navToWork() {
     tt.navigateTo({
-      url: `/pages/task/task?token=${this.data.token}&chatId=${this.data.chatId}`,
+      url: `/pages/work/work?courseId=${this.data.courseId}&chatId=${this.data.chatId}`,
     });
   },
 });
