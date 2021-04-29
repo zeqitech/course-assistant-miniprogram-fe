@@ -40,16 +40,16 @@
     <!-- 页面不为空时显示课程列表，横向滑动 -->
     <scroll-view class="content" scroll-x="true" tt:else>
       <s-card
-        tt:for="{{ classArray }}"
+        tt:for="{{ courseList }}"
         tt:if="{{ !item.expireStatus }}"
         class="item animation-scale-up"
         style="animation-delay: {{ (index + 1) * 0.1 }} s;"
         cover="{{ item.coverUrl }}"
-        title="{{ item.groupName }}"
+        title="{{ item.courseName }}"
         time="{{ item.classTime }}"
         member="{{ item.studentCount }}"
         state="进行中"
-        data-token="{{ item.groupToken }}"
+        data-course-id="{{ item.courseId }}"
         data-chat-id="{{ item.chatId }}"
         data-cover="{{ item.coverUrl }}"
         bindtap="navToClass"

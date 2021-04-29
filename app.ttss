@@ -10,7 +10,7 @@
 
 :root {
   /* 阴影颜色 */
-  --box-shadow: rgba(212, 212, 212, 0.2);
+  --box-shadow: rgba(200, 200, 200, 0.2);
   /* 功能色 */
   --primary: #3370ff;
   --success: #34c724;

@@ -48,7 +48,7 @@ Page({
         });
       }
       // 获取班级列表
-      let courseList = await this.getCourse();
+      let courseList = await this.handleGetCourseList();
       app.courseList = courseList;
       // 更新当前页面的数据
       this.setData({
@@ -62,7 +62,7 @@ Page({
         title: '获取课程信息',
       });
       // 获取班级列表
-      let courseList = await this.getCourse();
+      let courseList = await this.handleGetCourseList();
       // 隐藏 `Loading`
       tt.hideLoading();
       // 更新当前页面数据
@@ -134,7 +134,7 @@ Page({
    * 获取课程列表
    * @returns 返回课程列表
    */
-  async getCourse() {
+  async handleGetCourseList() {
     // 展示加载中
     tt.showLoading({
       title: '获取课程信息',
@@ -157,7 +157,7 @@ Page({
     console.log(getCourseRes);
     if (getCourseRes.success) {
       // 查看是否存在未过期课程
-      getCourseRes.data.myCourse.some((item) => {
+      getCourseRes.data.courseList.some((item) => {
         if (!item.expireStatus) {
           this.setData({
             nowEmpty: false,
@@ -172,7 +172,7 @@ Page({
     }
     // 隐藏加载中
     tt.hideLoading();
-    return getCourseRes.data.myCourse;
+    return getCourseRes.data.courseList;
   },
 
   /**

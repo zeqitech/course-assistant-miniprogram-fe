@@ -67,7 +67,7 @@ App({
   globalData: {
     hasLogin: false,
     openId: '',
-    userType,
+    userType: null,
     courseList: [],
     urlConfig,
   },

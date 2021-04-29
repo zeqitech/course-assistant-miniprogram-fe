@@ -3,12 +3,12 @@
 <view class="page">
   <view class="list" tt:if="{{ filter === 'now' && !nowEmpty }}">
     <s-card
-      tt:for="{{ classArray }}"
+      tt:for="{{ courseList }}"
       tt:if="{{ !item.expireStatus }}"
       class="item animation-scale-up"
       style="animation-delay: {{(index+1)*0.1}}s;"
       cover="{{ item.coverUrl }}"
-      title="{{ item.groupName }}"
+      title="{{ item.courseName }}"
       time="{{ item.classTime }}"
       member="{{ item.studentCount }}"
       state="进行中"
@@ -21,12 +21,12 @@
   <s-empty tt:if="{{ filter === 'now' && nowEmpty }}" class="empty"></s-empty>
   <view class="list" tt:if="{{ filter === 'past' && !pastEmpty }}">
     <s-card
-      tt:for="{{ classArray }}"
+      tt:for="{{ courseList }}"
       tt:if="{{ item.expireStatus }}"
       class="item animation-scale-up"
       style="animation-delay: {{(index+1)*0.1}}s;"
       cover="{{ item.coverUrl }}"
-      title="{{ item.groupName }}"
+      title="{{ item.courseName }}"
       time="{{ item.classTime }}"
       member="{{ item.studentCount }}"
       state="已结课"
