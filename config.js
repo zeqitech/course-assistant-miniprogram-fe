@@ -20,8 +20,8 @@ var config = {
   modifyTaskUrl: `${host}/work/modify`,
   // 删除作业
   delTaskUrl: `${host}/work/delete`,
-  // 获取全部任务
-  getTaskUrl: `${host}/work/allWork`,
+  // 获取全部作业
+  getWorkUrl: `${host}/work/courseWork`,
   // 获取全部文档
   getDocUrl: `${host}/file/getAll`,
   // 打分

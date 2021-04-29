@@ -9,7 +9,7 @@ Page({
     token: '',
     chatId: '',
     isTeacher: app.isTeacher,
-    taskArray: [],
+    workList: [],
     currentTime: '',
   },
 
@@ -22,8 +22,7 @@ Page({
     console.log(options);
     console.log('----------------------------------');
     this.setData({
-      token: options.token,
-      chatId: options.chatId,
+      courseId: options.courseId,
       cover: options.cover,
     });
   },
@@ -31,41 +30,46 @@ Page({
   /**
    * 页面显示生命周期函数
    */
-  onShow() {
-    this.getTask();
+  async onShow() {
+    let workList = await this.handleGetWorkList();
     this.setData({
       currentTime: func.getCurrentTime(new Date()),
+      workList: workList,
     });
   },
 
   /**
    * 获取任务列表
    */
-  getTask() {
-    tt.request({
-      url: app.urlConfig.getTaskUrl,
-      data: {
-        groupToken: this.data.token,
-      },
-      header: {
-        'content-type': 'application/json',
-      },
-      success: (res) => {
-        console.log(res);
-        if (res.data.success) {
-          this.setData({
-            taskArray: res.data.data.list,
-          });
-        } else {
-          this.setData({
-            taskArray: [],
-          });
-        }
-      },
-      fail(res) {
-        console.log(`request 调用失败`);
-      },
+  async handleGetWorkList() {
+    tt.showLoading({
+      title: '获取作业列表',
     });
+    let getWorkListRes = await new Promise((resolve) => {
+      tt.request({
+        url: app.urlConfig.getWorkUrl,
+        data: {
+          courseId: this.data.courseId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    tt.hideLoading();
+    if (getWorkListRes.success) {
+      return getWorkListRes.data.workList;
+    } else {
+      tt.showModal({
+        title: '失败',
+        content: getWorkListRes.message,
+      });
+      return [];
+    }
+    console.log('获取作业列表成功', getWorkListRes);
   },
 
   /**
