@@ -9,6 +9,7 @@
   </view>
   <!-- 功能区，横向滑动组件 -->
   <scroll-view class="functions" scroll-x="true">
+    <!-- 往期课程功能，所有人可用 -->
     <view
       class="item animation-scale-up"
       style="animation-delay: 0.2s;"
@@ -21,7 +22,7 @@
     <view
       class="item animation-scale-up"
       style="animation-delay: 0.1s;"
-      tt:if="{{ isTeacher }}"
+      tt:if="{{ userType !== 3 }}"
       bindtap="navToNewClass"
     >
       <image class="icon" src="/image/class.png"></image>

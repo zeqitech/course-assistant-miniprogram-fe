@@ -11,6 +11,8 @@ Page({
     userType: app.userType,
     // 本学期课程列表是否为空
     nowEmpty: true,
+    // 往期课程是否为空
+    pastEmpty: false,
     // 用户昵称，用于首部问候
     nickName: '',
   },
@@ -157,12 +159,12 @@ Page({
     console.log(getCourseRes);
     if (getCourseRes.success) {
       // 查看是否存在未过期课程
-      getCourseRes.data.courseList.some((item) => {
+      getCourseRes.data.courseList.forEach((item) => {
         if (!item.expireStatus) {
           this.setData({
             nowEmpty: false,
           });
-          return true;
+          return;
         } else {
           this.setData({
             pastEmpty: false,
