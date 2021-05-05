@@ -113,5 +113,5 @@
 }
 .foot > * {
   color: #8c8c8c;
-  font-size: 24rpx;
+  font-size: 12px;
 }

@@ -84,10 +84,10 @@ Page({
    * 跳转到作业文档列表
    * @param {Object} e
    */
-  navToDoc(e) {
+  navToWorkFileList(e) {
     let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: `/pages/doc/doc?token=${data.token}&expireStatus=${data.expireStatus}&endDate=${data.expireTime}&startDate=${data.updateTime}&groupToken=${data.groupToken}&name=${data.workName}`,
+      url: `/pages/workFileList/workFileList?workId=${data.workId}`,
     });
   },
 

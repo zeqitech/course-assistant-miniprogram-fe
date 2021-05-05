@@ -5,12 +5,7 @@ Page({
    * 页面初始数模
    */
   data: {
-    token: '',
-    expireStatus: '',
-    endDate: '',
-    startDate: '',
-    groupToken: '',
-    name: '',
+    workId: '',
     docArray: [],
     itemList: ['修改作业信息', '删除作业', '取消'],
     showPopup: false,
@@ -21,17 +16,14 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
-    console.log('--------------------doc page-------------------');
+    console.log('--------------------workFileList page-------------------');
     console.log(options);
     console.log('-----------------------------------------------');
     this.setData({
-      token: options.token,
-      expireStatus: options.expireStatus,
-      endDate: options.endDate.split(' ')[0],
-      startDate: options.startDate.split(' ')[0],
-      groupToken: options.groupToken,
-      name: options.name,
+      workId: options.workId,
     });
+    let workFileList = this.handleGetWorkFileList();
+    console.log(workFileList);
   },
 
   /**
@@ -42,38 +34,25 @@ Page({
   },
 
   /**
-   * 获取某次任务下所有作业文档列表
+   * 获取某次作业之下所有作业文件列表
    */
-  getDoc() {
-    tt.request({
-      url: app.urlConfig.getDocUrl,
-      data: {
-        workToken: this.data.token,
-      },
-      header: {
-        'content-type': 'application/json',
-      },
-      success: (res) => {
-        console.log(res);
-        let that = this;
-        let docArray = JSON.parse(JSON.stringify(res.data.data.list));
-        docArray.forEach((item, index) => {
-          item.fileName =
-            item.fileName.split('-')[1] + '-' + item.fileName.split('-')[2];
-          if (index === docArray.length - 1) {
-            that.setData({
-              docArray: docArray,
-            });
-          }
-        });
-        // this.setData({
-        //   docArray: res.data.data.list,
-        // });
-      },
-      fail(res) {
-        console.log(`request 调用失败`);
-      },
+  async handleGetWorkFileList() {
+    let workFileListRes = new Promise((resolve) => {
+      tt.request({
+        url: app.urlConfig.getWorkFileListUrl,
+        data: {
+          workId: this.data.workId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res);
+        },
+      });
     });
+    console.log('获取作业文档列表成功', workFileListRes);
+    return workFileListRes;
   },
 
   /**

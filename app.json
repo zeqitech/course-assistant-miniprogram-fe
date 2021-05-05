@@ -1,15 +1,15 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/addCourse/addCourse",
     "pages/allCourse/allCourse",
     "pages/course/course",
-    "pages/doc/doc",
     "pages/grade/grade",
-    "pages/newClass/newClass",
     "pages/newSign/newSign",
     "pages/newTask/newTask",
     "pages/sign/sign",
     "pages/work/work",
+    "pages/workFileList/workFileList",
     "pages/viewSign/viewSign",
     "pages/viewSignInfo/viewSignInfo"
   ],

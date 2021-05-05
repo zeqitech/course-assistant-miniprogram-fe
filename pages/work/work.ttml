@@ -2,8 +2,8 @@
 
 <view class="page">
   <s-list
-    tt:for="{{ taskArray }}"
-    tt:if="{{ taskArray.length !== 0 }}"
+    tt:for="{{ workList }}"
+    tt:if="{{ workList.length !== 0 }}"
     type="button"
     class="item width-app animation-slide-bottom"
     style="animation-delay: {{ (index + 1) * 0.1 }}s;"
