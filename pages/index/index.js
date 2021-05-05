@@ -191,9 +191,9 @@ Page({
   /**
    * 跳转到新建班级页面
    */
-  navToNewClass() {
+  navToAddCourse() {
     tt.navigateTo({
-      url: '/pages/newClass/newClass',
+      url: '/pages/addCourse/addCourse',
     });
   },
 

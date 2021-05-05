@@ -23,10 +23,10 @@
       class="item animation-scale-up"
       style="animation-delay: 0.1s;"
       tt:if="{{ userType !== 3 }}"
-      bindtap="navToNewClass"
+      bindtap="navToAddCourse"
     >
       <image class="icon" src="/image/class.png"></image>
-      <text class="label">新建班级</text>
+      <text class="label">添加课程</text>
     </view>
   </scroll-view>
   <!-- 本学期开课课程列表 -->
