@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "学生作业列表",
+  "navigationBarTitleText": "作业文档列表",
   "usingComponents": {
     "s-list": "/components/slist/slist"
   }

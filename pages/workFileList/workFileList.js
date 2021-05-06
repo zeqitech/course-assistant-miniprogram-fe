@@ -5,10 +5,15 @@ Page({
    * 页面初始数模
    */
   data: {
+    // 作业 ID
     workId: '',
-    docArray: [],
+    // 文档列表
+    workFileList: [],
+    // 操作列表
     itemList: ['修改作业信息', '删除作业', '取消'],
+    // 显示弹出层
     showPopup: false,
+    userType: app.userType,
   },
 
   /**
@@ -22,22 +27,25 @@ Page({
     this.setData({
       workId: options.workId,
     });
-    let workFileList = this.handleGetWorkFileList();
-    console.log(workFileList);
   },
 
   /**
    * 页面显示声明周期函数
    */
-  onShow() {
-    this.getDoc();
+  async onShow() {
+    let workFileList = await this.handleGetWorkFileList();
+    this.setData({
+      workFileList: workFileList,
+    });
   },
 
   /**
    * 获取某次作业之下所有作业文件列表
    */
   async handleGetWorkFileList() {
-    let workFileListRes = new Promise((resolve) => {
+    // 获取返回值
+    let workFileListRes = await new Promise((resolve) => {
+      // 使用飞书开放 API
       tt.request({
         url: app.urlConfig.getWorkFileListUrl,
         data: {
@@ -47,12 +55,19 @@ Page({
           'content-type': 'application/json',
         },
         complete(res) {
-          resolve(res);
+          resolve(res.data);
         },
       });
     });
     console.log('获取作业文档列表成功', workFileListRes);
-    return workFileListRes;
+    // 若获取成功
+    if (workFileListRes.success) {
+      // 返回文档列表
+      return workFileListRes.data.workFileList;
+    } else {
+      // 获取失败，返回空数组
+      return [];
+    }
   },
 
   /**

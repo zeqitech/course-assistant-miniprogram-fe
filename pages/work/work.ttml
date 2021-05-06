@@ -13,13 +13,12 @@
     value="{{ item.expireTime }}"
     action="{{ item.expireTime < currentTime ? '已截止' : (item.updateTime <currentTime ? '进行中' : '未开始') }}"
     color="{{ item.expireTime < currentTime ? 'red' : (item.updateTime <currentTime ? 'green' : 'blue') }}"
-    data-token="{{ item.workToken }}"
     data-expire-status="{{ item.expireStatus }}"
     data-expire-time="{{ item.expireTime }}"
     data-update-time="{{ item.updateTime }}"
-    data-group-token="{{ token }}"
     data-work-name="{{ item.workName }}"
-    bindtap="navToDoc"
+    data-work-id="{{ item.workId }}"
+    bindtap="navToWorkFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->
   <s-empty tt:else class="empty"></s-empty>

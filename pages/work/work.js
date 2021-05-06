@@ -43,6 +43,7 @@ Page({
 
   /**
    * 获取作业列表
+   * @returns 作业列表数组
    */
   async handleGetWorkList() {
     // 展示 `Loading`

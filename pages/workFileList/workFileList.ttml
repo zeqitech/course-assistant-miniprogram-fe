@@ -2,15 +2,15 @@
 
 <view class="page">
   <s-list
-    tt:for="{{ docArray }}"
+    tt:for="{{ workFileList }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: {{(index+1)*0.1}}s;"
     icon="/image/doc.png"
     title="{{ item.fileName }}"
     action="{{ item.comment ? item.score : '打分' }}"
     color="{{ item.comment?(item.score<60?'red':'green'):'blue' }}"
-    data-token="{{ item.fileToken }}"
-    data-title="{{ item.fileName }}"
+    data-file-token="{{ item.fileToken }}"
+    data-file-name="{{ item.fileName }}"
     bindtap="navToGrade"
   ></s-list>
 </view>
@@ -22,5 +22,5 @@
     bindtap="handleMoreOption"
   >{{ item }}</text>
 </view>
-<image class="add-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
+<image tt:if="{{ userType !== 3 }}" class="add-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
 <template is="foot"></template>
