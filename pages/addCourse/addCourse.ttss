@@ -3,3 +3,11 @@
   display: flex;
   flex-direction: column;
 }
+
+.info > * {
+  margin-top: 12px;
+}
+
+.submit-btn {
+  margin-top: 24px;
+}

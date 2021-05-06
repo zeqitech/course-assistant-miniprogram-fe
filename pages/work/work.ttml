@@ -1,6 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
+  <!-- 作业列表非空，显示作业列表 -->
   <s-list
     tt:for="{{ workList }}"
     tt:if="{{ workList.length !== 0 }}"
@@ -20,8 +21,10 @@
     data-work-name="{{ item.workName }}"
     bindtap="navToDoc"
   ></s-list>
+  <!-- 作业列表为空，展示空页 -->
   <s-empty tt:else class="empty"></s-empty>
 </view>
+<!-- 右下角发布作业按钮 -->
 <image
   src="/image/add.png"
   tt:if="{{ userType !== 3 }}"

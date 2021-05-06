@@ -29,12 +29,9 @@ Page({
     console.log('------------------------------------');
     this.setData({
       option: options.option,
+      courseId: options.courseId,
     });
     if (options.option === 'new') {
-      this.setData({
-        chatId: options.chatId,
-        token: options.token,
-      });
       tt.setNavigationBarTitle({
         title: '发布作业',
       });
@@ -43,8 +40,6 @@ Page({
         startDate: options.startDate,
         endDate: options.endDate,
         name: options.name,
-        workToken: options.token,
-        groupToken: options.groupToken,
       });
       tt.setNavigationBarTitle({
         title: '修改信息',
@@ -77,12 +72,13 @@ Page({
    * @param {Object} e
    */
   handleSelectDate(e) {
-    console.log(e);
+    // 选择起始日期
     if (e.currentTarget.dataset.name === 'start') {
       this.setData({
         startDate: e.detail.value,
       });
     } else {
+      // 选择结束日期
       this.setData({
         endDate: e.detail.value,
       });
@@ -132,8 +128,25 @@ Page({
           });
         });
         console.log(addWorkRes);
-        // 隐藏加载中
-        tt.hideLoading();
+        // 若添加成功
+        if (addWorkRes.success) {
+          // 显示发布成功
+          tt.showToast({
+            title: '发布成功',
+            icon: 'success',
+            duration: 1000,
+          });
+          // 自动跳转回上一页
+          tt.navigateBack({
+            delta: 1,
+          });
+        } else {
+          // 若添加失败
+          tt.showModal({
+            title: '失败',
+            content: addWorkRes.message,
+          });
+        }
       }
     } else {
       tt.showModal({

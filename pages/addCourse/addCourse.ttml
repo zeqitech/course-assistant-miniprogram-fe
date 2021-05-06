@@ -11,6 +11,6 @@
     </s-input>
     <button type="default" bindtap="handleSelectFile">选择文件</button>
   </view>
-  <button class="width-app" type="primary" bindtap="handleAddCourse">添加课程</button>
+  <button class="width-app submit-btn" type="primary" bindtap="handleAddCourse">添加课程</button>
 </view>
 <template is="foot"></template>

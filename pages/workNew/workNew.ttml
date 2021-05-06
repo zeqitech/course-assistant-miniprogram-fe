@@ -8,6 +8,13 @@
     placeholder="请输入作业名称"
     bindinput="handleInputName"
   />
+  <s-input 
+    class="item"
+    label="作业权重"
+    value="{{ weight }}"
+    placeholder="请输入 1-99 之间的整数"
+    bindinput="handleInputWeight"
+  />
   <s-input class="item" type="slot" class="item" label="起止日期">
     <view>
       <picker
@@ -32,13 +39,6 @@
       </picker>
     </view>
   </s-input>
-  <s-input 
-    class="item"
-    label="作业权重"
-    value="{{ weight }}"
-    placeholder="请输入 1-99 之间的整数"
-    bindinput="handleInputWeight"
-  />
   <button class="item btn" tt:if="{{ option === 'new' }}" bindtap="handleAddWork">立即发布</button>
   <button class="item btn" tt:else bindtap="handleModifyTask">立即修改</button>
 </view>

@@ -34,6 +34,7 @@ Page({
    */
   async onShow() {
     let workList = await this.handleGetWorkList();
+    console.log('获取作业列表成功', workList);
     this.setData({
       currentTime: func.getCurrentTime(new Date()),
       workList: workList,
@@ -113,7 +114,7 @@ Page({
    */
   navToWorkNew() {
     tt.navigateTo({
-      url: `/pages/workNew/workNew?token=${this.data.token}&chatId=${this.data.chatId}&option=new`,
+      url: `/pages/workNew/workNew?courseId=${this.data.courseId}&option=new`,
     });
   },
 });
