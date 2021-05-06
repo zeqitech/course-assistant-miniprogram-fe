@@ -74,10 +74,10 @@ Page({
    * 跳转到打分页面
    * @param {Object} e
    */
-  navToGrade(e) {
+  navToWorkFileGrade(e) {
     let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: `/pages/grade/grade?token=${data.token}&title=${data.title}`,
+      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}`,
     });
   },
 

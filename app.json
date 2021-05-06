@@ -5,7 +5,8 @@
     "pages/course/all/all",
     "pages/course/index/index",
     "pages/work/list/list",
-    "pages/work/file/file",
+    "pages/work/file/grade/grade",
+    "pages/work/file/list/list",
     "pages/work/new/new"
   ],
   "window": {

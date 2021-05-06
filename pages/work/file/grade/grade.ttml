@@ -9,7 +9,7 @@
     <s-list
       class="file"
       type="slot"
-      title="{{ title }}"
+      title="{{ fileName }}"
       bindtap="handleOpenFile"
     >
       <image class="icon" src="/image/file.png"></image>

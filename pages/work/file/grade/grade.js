@@ -5,8 +5,14 @@ Page({
    * 页面初始数据
    */
   data: {
+    // 分数
     score: '',
+    // 评语
     remark: '',
+    // 文件 Token
+    fileToken: '',
+    // 文件名
+    fileName: '',
   },
 
   onLoad(options) {
@@ -14,8 +20,8 @@ Page({
     console.log(options);
     console.log('---------------------------------------');
     this.setData({
-      token: options.token,
-      title: options.title,
+      fileToken: options.fileToken,
+      fileName: options.fileName,
     });
   },
 
@@ -25,7 +31,7 @@ Page({
    */
   handleOpenFile(e) {
     tt.openSchema({
-      schema: 'https://uestc.feishu.cn/docs/' + this.data.token,
+      schema: 'https://uestc.feishu.cn/docs/' + this.data.fileToken,
       external: false,
     });
   },
@@ -53,49 +59,58 @@ Page({
   /**
    * 提交评分数据
    */
-  handlePostGrade() {
+  async handlePostGrade() {
     console.log(this.data.score, this.data.remark);
+    // 判断分数是否为空
     if (this.data.score !== '') {
-      if (this.data.score >= '0' && this.data.score <= '100') {
+      // 判断分数是否在正确的范围内
+      if (parseInt(this.data.score) >= 0 && parseInt(this.data.score) <= 100) {
+        // 判断评语是否为空
         if (this.data.remark === '') {
+          // 若评语为空，则添加 “无”
           this.setData({
             remark: '无',
           });
         }
         tt.showModal({
           title: '提示',
-          content: `确认给 ${this.data.title} 作业打分 ${this.data.score}？`,
-          success: (res) => {
+          content: `确认给 ${this.data.fileName} 作业打分 ${this.data.score}？`,
+          success: async (res) => {
+            // 若确认打分
             if (res.confirm) {
-              tt.request({
-                url: app.urlConfig.postGradeUrl,
-                method: 'POST',
-                data: {
-                  comment: this.data.remark,
-                  fileToken: this.data.token,
-                  openId: app.openId,
-                  score: parseInt(this.data.score),
-                },
-                header: {
-                  'content-type': 'application/json',
-                },
-                success(res) {
-                  console.log(res);
-                  tt.showModal({
-                    title: '成功',
-                    content: '分数添加成功',
-                    success(res) {
-                      tt.navigateBack({
-                        delta: 1,
-                      });
-                    },
-                  });
-                },
-                fail(res) {
-                  console.log(`request 调用失败`);
-                },
+              let gradeRes = await new Promise((resolve) => {
+                tt.request({
+                  url: app.urlConfig.gradeUrl,
+                  method: 'POST',
+                  data: {
+                    comment: this.data.remark,
+                    fileToken: this.data.fileToken,
+                    openId: app.openId,
+                    score: parseInt(this.data.score),
+                  },
+                  header: {
+                    'content-type': 'application/json',
+                  },
+                  complete(res) {
+                    resolve(res.data);
+                  },
+                });
               });
+              console.log(gradeRes);
+              // 若添加分数成功
+              if (gradeRes.success) {
+                tt.showModal({
+                  title: '成功',
+                  content: '打分成功',
+                  success() {
+                    tt.navigateBack({
+                      delta: 1,
+                    });
+                  },
+                });
+              }
             } else {
+              // 若取消打分
               tt.showToast({
                 title: '已取消',
                 icon: 'success',
