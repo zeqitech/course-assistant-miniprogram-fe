@@ -8,6 +8,14 @@
   margin-top: 12px;
 }
 
+.remind {
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
+  color: var(--gray-scale-500-guide);
+  margin-top: 8px;
+}
+
 .submit-btn {
   margin-top: 24px;
 }
