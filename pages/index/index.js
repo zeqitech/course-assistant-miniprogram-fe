@@ -200,10 +200,10 @@ Page({
   /**
    * 跳转到所有班级列表页面
    */
-  navToAllCourse(e) {
+  navToCourseAll(e) {
     let filter = e.currentTarget.dataset.filter;
     tt.navigateTo({
-      url: `/pages/allCourse/allCourse?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
+      url: `/pages/course/all/all?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
     });
   },
 });

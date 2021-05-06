@@ -13,11 +13,12 @@ Page({
     itemList: ['修改作业信息', '删除作业', '取消'],
     // 显示弹出层
     showPopup: false,
+    // 用户类型
     userType: app.userType,
   },
 
   /**
-   * 页面加载生命周期函数
+   * 生命周期函数 - 监听页面加载
    * @param {Object} options
    */
   onLoad(options) {
@@ -26,14 +27,20 @@ Page({
     console.log('-----------------------------------------------');
     this.setData({
       workId: options.workId,
+      startDate: options.startDate.split(' ')[0],
+      endDate: options.endDate.split(' ')[0],
+      weight: options.weight,
+      name: options.name,
     });
   },
 
   /**
-   * 页面显示声明周期函数
+   * 生命周期函数 - 监听页面显示
    */
   async onShow() {
+    // 获取文件列表
     let workFileList = await this.handleGetWorkFileList();
+    // 保存数据
     this.setData({
       workFileList: workFileList,
     });
@@ -55,6 +62,7 @@ Page({
           'content-type': 'application/json',
         },
         complete(res) {
+          // 回传数据
           resolve(res.data);
         },
       });
@@ -85,16 +93,24 @@ Page({
    * 点击更多按钮
    */
   handleTapMoreBtn() {
+    // 获取系统信息
     tt.getSystemInfo({
       success: (res) => {
         console.log(res);
+        // 移动端
         if (res.platform === 'ios' || res.platform === 'android') {
+          // 调用开放 API 显示菜单
           tt.showActionSheet({
             itemList: this.data.itemList,
             success: (res) => {
               if (res.tapIndex === 0) {
-                this.modifyTask();
+                // 修改作业
+                this.handleModifyWork();
               } else if (res.tapIndex === 1) {
+                // 删除作业
+                this.handleDelWork();
+              } else {
+                //取消
               }
             },
             fail(res) {
@@ -102,6 +118,7 @@ Page({
             },
           });
         } else {
+          // PC 端，展示弹出层
           this.setData({
             showPopup: true,
           });
@@ -117,16 +134,19 @@ Page({
   handleMoreOption(e) {
     let index = e.currentTarget.dataset.index;
     if (index === 0) {
+      // 修改作业信息
       this.setData({
         showPopup: false,
       });
-      this.modifyTask();
+      this.handleModifyWork();
     } else if (index === 1) {
+      // 删除作业
       this.setData({
         showPopup: false,
       });
-      this.deleteTask();
+      this.handleDelWork();
     } else {
+      // 取消
       this.setData({
         showPopup: false,
       });
@@ -134,59 +154,67 @@ Page({
   },
 
   /**
-   * 修改作业信息
+   * 跳转到修改作业信息页面
    */
-  modifyTask() {
+  handleModifyWork() {
     tt.navigateTo({
-      url: `/pages/newTask/newTask?token=${this.data.token}&expireStatus=${this.data.expireStatus}&endDate=${this.data.endDate}&startDate=${this.data.startDate}&groupToken=${this.data.groupToken}&name=${this.data.name}&option=modify`,
+      url: `/pages/work/new/new?option=modify&startDate=${this.data.startDate}&endDate=${this.data.endDate}&name=${this.data.name}&weight=${this.data.weight}&workId=${this.data.workId}`,
     });
   },
 
   /**
-   * 删除作业
+   * 处理删除作业事件
    */
-  deleteTask() {
-    tt.showModal({
-      title: '确认',
-      content: `即将删除本次作业的所有文档，是否确定删除作业：${this.data.name}`,
-      success: (res) => {
-        if (res.confirm) {
-          tt.showLoading({
-            title: '请稍候',
-          });
-          tt.request({
-            url: app.urlConfig.delTaskUrl + '?workToken=' + this.data.token,
-            method: 'DELETE',
-            header: {
-              'content-type': 'application/json',
-            },
-            success(res) {
-              console.log(res);
-              tt.hideLoading({});
-              if (res.data.success) {
-                tt.showModal({
-                  title: '成功',
-                  content: '成功删除作业',
-                  success(res) {
-                    tt.navigateBack({
-                      delta: 1,
-                    });
-                  },
-                });
-              } else {
-                tt.showModal({
-                  title: '失败',
-                  content: res.data.message,
-                });
-              }
-            },
-            fail(res) {
-              tt.hideLoading({});
-              console.log(res);
-            },
-          });
-        }
-      },
+  async handleDelWork() {
+    // 用户确认删除
+    let confirmRes = await new Promise((resolve) => {
+      tt.showModal({
+        title: '确认',
+        content: `即将删除本次作业的所有文档，是否确定删除作业：${this.data.name}`,
+        complete(res) {
+          resolve(res);
+        },
+      });
     });
+    // 如果点击确认
+    if (confirmRes.confirm) {
+      // 显示 Loading
+      tt.showLoading({
+        title: '请稍候',
+      });
+      // 发送删除作业请求
+      let delWorkRes = await new Promise((resolve) => {
+        tt.request({
+          url: `${app.urlConfig.delWorkUrl}?workId=${this.data.workId}&openId=${app.openId}`,
+          method: 'DELETE',
+          header: {
+            'content-type': 'application/json',
+          },
+          complete(res) {
+            resolve(res.data);
+          },
+        });
+      });
+      // 如果删除成功
+      if (delWorkRes.success) {
+        tt.hideLoading();
+        tt.showModal({
+          title: '成功',
+          content: '成功删除作业',
+          success() {
+            // 点击确认，返回上层
+            tt.navigateBack({
+              delta: 1,
+            });
+          },
+        });
+      } else {
+        // 删除失败
+        tt.showModal({
+          title: '失败',
+          content: delWorkRes.message,
+        });
+      }
+    }
   },
 });

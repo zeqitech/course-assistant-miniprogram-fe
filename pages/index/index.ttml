@@ -14,7 +14,7 @@
       class="item animation-scale-up"
       style="animation-delay: 0.2s;"
       data-filter="past"
-      bindtap="navToAllCourse"
+      bindtap="navToCourseAll"
     >
       <image class="icon" src="/image/history.png"></image>
       <text class="label">往期课程</text>
@@ -22,7 +22,7 @@
     <view
       class="item animation-scale-up"
       style="animation-delay: 0.1s;"
-      tt:if="{{ userType !== 3 }}"
+      tt:if="{{ userType === 1 }}"
       bindtap="navToCourseAdd"
     >
       <image class="icon" src="/image/class.png"></image>
@@ -34,7 +34,7 @@
     <!-- 列表标题 -->
     <view class="head">
       <text class="title">我的课程</text>
-      <text class="label" data-filter="now" bindtap="navToAllCourse">查看更多</text>
+      <text class="label" data-filter="now" bindtap="navToCourseAll">查看更多</text>
     </view>
     <!-- 页面为空时显示占位 -->
     <s-empty tt:if="{{ nowEmpty }}" class="empty"></s-empty>

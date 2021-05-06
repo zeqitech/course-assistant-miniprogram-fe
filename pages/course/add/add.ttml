@@ -9,7 +9,7 @@
       bindinput="handleInputTerm"
     >
     </s-input>
-    <text class="remind">【格式】：[学年][学期]——如 20211 表示 2021 年第 1 学期</text>
+    <text class="remind">【格式】: {{'<学年><学期>'}}——如 20211 表示 2021 年第 1 学期</text>
     <button type="default" bindtap="handleSelectFile">选择文件</button>
   </view>
   <button class="width-app submit-btn" type="primary" bindtap="handleAddCourse">添加课程</button>

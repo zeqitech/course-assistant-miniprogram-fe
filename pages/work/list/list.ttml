@@ -11,13 +11,14 @@
     icon="/image/task.png"
     title="{{ item.workName }}"
     value="{{ item.expireTime }}"
-    action="{{ item.expireTime < currentTime ? '已截止' : (item.updateTime <currentTime ? '进行中' : '未开始') }}"
-    color="{{ item.expireTime < currentTime ? 'red' : (item.updateTime <currentTime ? 'green' : 'blue') }}"
+    action="{{ item.expireTime < currentTime ? '已截止' : (item.startTime <currentTime ? '进行中' : '未开始') }}"
+    color="{{ item.expireTime < currentTime ? 'red' : (item.startTime <currentTime ? 'green' : 'blue') }}"
     data-expire-status="{{ item.expireStatus }}"
     data-expire-time="{{ item.expireTime }}"
-    data-update-time="{{ item.updateTime }}"
+    data-start-time="{{ item.startTime }}"
     data-work-name="{{ item.workName }}"
     data-work-id="{{ item.workId }}"
+    data-weight="{{ item.weight }}"
     bindtap="navToWorkFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->

@@ -17,6 +17,8 @@ Page({
     option: '',
     // 作业权重
     weight: '',
+    // 作业 ID
+    workId: '',
   },
 
   /**
@@ -40,6 +42,8 @@ Page({
         startDate: options.startDate,
         endDate: options.endDate,
         name: options.name,
+        weight: options.weight,
+        workId: options.workId,
       });
       tt.setNavigationBarTitle({
         title: '修改信息',
@@ -106,7 +110,7 @@ Page({
         tt.showLoading({
           title: '发布中',
         });
-        // 发送请求
+        // 发送发布作业请求
         let addWorkRes = await new Promise((resolve) => {
           tt.request({
             url: app.urlConfig.addWorkUrl,
@@ -160,64 +164,69 @@ Page({
    * 处理修改作业信息事件
    *
    */
-  handleModifyTask() {
+  async handleModifyTask() {
+    // 判断数据是否为空
     if (
       this.data.name !== '' &&
       this.data.startDate !== '' &&
-      this.data.endDate !== ''
+      this.data.endDate !== '' &&
+      this.data.weight !== ''
     ) {
+      // 起止日期需符合逻辑
       if (this.data.startDate > this.data.endDate) {
+        // 不符合逻辑报错
         tt.showModal({
           title: '错误',
           content: '起始日期不能晚于结束日期！',
         });
       } else {
+        // 符合逻辑
         tt.showLoading({
           title: '修改中',
         });
-        tt.request({
-          url: app.urlConfig.modifyTaskUrl,
-          method: 'POST',
-          data: {
-            expireStatus: 0,
-            expireTime: this.data.endDate + ' 23:59:59',
-            groupToken: this.data.groupToken,
-            updateTime: this.data.startDate + ' 11:59:59',
-            workName: this.data.name,
-            workToken: this.data.workToken,
-          },
-          header: {
-            'content-type': 'application/json',
-          },
-          success(res) {
-            console.log(res);
-            tt.hideLoading({});
-            if (res.data.success) {
-              tt.showModal({
-                title: '成功',
-                content: '修改作业信息成功',
-                success(res) {
-                  tt.navigateBack({
-                    delta: 2,
-                  });
-                },
-              });
-            } else {
-              tt.showModal({
-                title: '失败',
-                content: res.data.message,
-              });
-            }
-          },
-          fail(res) {
-            console.log(`修改作业信息失败`);
-            tt.hideLoading({});
-            tt.showModal({
-              title: '失败',
-              content: '请完善作业信息！',
-            });
-          },
+        // 发送修改作业请求
+        let modifyWorkRes = await new Promise((resolve) => {
+          // 调用飞书请求 API
+          tt.request({
+            url: app.urlConfig.modifyWorkUrl,
+            method: 'POST',
+            data: {
+              workId: this.data.workId,
+              startTime: this.data.startDate + ' 00:00:00',
+              expireTime: this.data.endDate + ' 23:59:59',
+              workName: this.data.name,
+              weight: parseInt(this.data.weight),
+            },
+            header: {
+              'content-type': 'application/json',
+            },
+            // 回传数据
+            complete(res) {
+              resolve(res.data);
+            },
+          });
         });
+        console.log(modifyWorkRes);
+        // 隐藏 Loading
+        tt.hideLoading();
+        // 如果修改作业信息成功
+        if (modifyWorkRes.success) {
+          // 提示信息
+          tt.showModal({
+            title: '成功',
+            content: '修改作业信息成功',
+            success() {
+              tt.navigateBack({
+                delta: 2,
+              });
+            },
+          });
+        } else {
+          tt.showModal({
+            title: '失败',
+            content: modifyWorkRes.message,
+          });
+        }
       }
     }
   },
