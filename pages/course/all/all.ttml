@@ -15,7 +15,7 @@
       data-course-id="{{ item.courseId }}"
       data-chat-id="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
-      bindtap="navToCourse"
+      bindtap="navToCourseIndex"
     ></s-card>
   </view>
   <s-empty tt:if="{{ filter === 'now' && nowEmpty }}" class="empty"></s-empty>
@@ -33,7 +33,7 @@
       data-course-id="{{ item.courseId }}"
       data-chat-id="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
-      bindtap="navToCourse"
+      bindtap="navToCourseIndex"
     ></s-card>
   </view>
   <s-empty tt:if="{{ filter === 'past' && pastEmpty }}" class="empty"></s-empty>

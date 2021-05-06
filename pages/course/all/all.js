@@ -42,10 +42,10 @@ Page({
    * 跳转到班级功能页面
    * @param {Object} e
    */
-  navToCourse(e) {
+  navToCourseIndex(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/course/course?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 });

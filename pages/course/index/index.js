@@ -24,6 +24,9 @@ Page({
     });
   },
 
+  /**
+   * 跳转到签到页面
+   */
   navToSign() {
     if (app.isTeacher) {
       tt.navigateTo({
@@ -39,9 +42,9 @@ Page({
   /**
    * 跳转到作业列表页面
    */
-  navToWork() {
+  navToWorkList() {
     tt.navigateTo({
-      url: `/pages/work/work?courseId=${this.data.courseId}`,
+      url: `/pages/work/list/list?courseId=${this.data.courseId}`,
     });
   },
 });

@@ -18,7 +18,7 @@
     style="animation-delay: 0.2s;"
     title="作业"
     action=">"
-    bindtap="navToWork"
+    bindtap="navToWorkList"
   ></s-list>
 </view>
 <template is="foot"></template>
