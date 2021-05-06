@@ -72,52 +72,63 @@ Page({
             remark: '无',
           });
         }
-        tt.showModal({
-          title: '提示',
-          content: `确认给 ${this.data.fileName} 作业打分 ${this.data.score}？`,
-          success: async (res) => {
-            // 若确认打分
-            if (res.confirm) {
-              let gradeRes = await new Promise((resolve) => {
-                tt.request({
-                  url: app.urlConfig.gradeUrl,
-                  method: 'POST',
-                  data: {
-                    comment: this.data.remark,
-                    fileToken: this.data.fileToken,
-                    openId: app.openId,
-                    score: parseInt(this.data.score),
-                  },
-                  header: {
-                    'content-type': 'application/json',
-                  },
-                  complete(res) {
-                    resolve(res.data);
-                  },
-                });
-              });
-              console.log(gradeRes);
-              // 若添加分数成功
-              if (gradeRes.success) {
-                tt.showModal({
-                  title: '成功',
-                  content: '打分成功',
-                  success() {
-                    tt.navigateBack({
-                      delta: 1,
-                    });
-                  },
-                });
-              }
-            } else {
-              // 若取消打分
-              tt.showToast({
-                title: '已取消',
-                icon: 'success',
-              });
-            }
-          },
+        // 提示用户打分情况，并获取用户确认
+        let confirmRes = await new Promise((resolve) => {
+          tt.showModal({
+            title: '提示',
+            content: `确认给 ${this.data.fileName} 作业打分 ${this.data.score}？`,
+            complete(res) {
+              resolve(res);
+            },
+          });
         });
+        // 若点击确定
+        if (confirmRes.confirm) {
+          // 发送打分请求
+          let gradeRes = await new Promise((resolve) => {
+            tt.request({
+              url: app.urlConfig.gradeUrl,
+              method: 'POST',
+              data: {
+                comment: this.data.remark,
+                fileToken: this.data.fileToken,
+                openId: app.openId,
+                score: parseInt(this.data.score),
+              },
+              header: {
+                'content-type': 'application/json',
+              },
+              complete(res) {
+                resolve(res.data);
+              },
+            });
+          });
+          if (gradeRes.success) {
+            // 提示打分成功
+            tt.showModal({
+              title: '成功',
+              content: '打分成功',
+              // 点击确认后返回
+              success() {
+                tt.navigateBack({
+                  delta: 1,
+                });
+              },
+            });
+          } else {
+            // 打分失败，显示报错信息
+            tt.showModal({
+              title: '失败',
+              content: gradeRes.message,
+            });
+          }
+        } else {
+          // 若取消打分
+          tt.showToast({
+            title: '已取消',
+            icon: 'success',
+          });
+        }
       } else {
         tt.showModal({
           title: '错误',
