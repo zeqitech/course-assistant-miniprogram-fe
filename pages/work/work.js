@@ -19,7 +19,7 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
-    console.log('-----------task page--------------');
+    console.log('-----------work page--------------');
     console.log(options);
     console.log('----------------------------------');
     this.setData({
