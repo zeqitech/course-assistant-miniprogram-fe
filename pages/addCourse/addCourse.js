@@ -52,7 +52,7 @@ Page({
   /**
    * 处理点击添加课程事件
    */
-  handleAddCourse() {
+  async handleAddCourse() {
     // 首先判断输入的内容是否为空
     if (this.data.term !== '') {
       // 若输入不为空，则判断是否已经选择文件
@@ -63,7 +63,7 @@ Page({
           this.data.file.split('.')[this.data.file.length - 1] === 'xls'
         ) {
           // 若文件类型正确，则发起请求
-          var addCourseRes = new Promise((resolve) => {
+          var addCourseRes = await new Promise((resolve) => {
             tt.uploadFile({
               url: app.urlConfig.addCourseUrl,
               filePath: this.data.file,

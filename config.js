@@ -12,12 +12,10 @@ var config = {
   addCourseUrl: `${host}/course/add`,
   // 老师（助教）或学生获取课程列表
   getCourseUrl: `${host}/course/list`,
-  // 新建班级
-  newClassUrl: `${host}/group/new`,
+  // 发布作业
+  addWorkUrl: `${host}/work/new`,
   // 发布签到
   newSignUrl: `${host}/sign/publish`,
-  // 发布作业
-  newTaskUrl: `${host}/work/new`,
   // 修改作业信息
   modifyTaskUrl: `${host}/work/modify`,
   // 删除作业

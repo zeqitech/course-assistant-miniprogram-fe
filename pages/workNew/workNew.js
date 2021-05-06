@@ -5,12 +5,18 @@ Page({
    * 页面初始数据
    */
   data: {
-    name: '', //作业名称
-    startDate: '', //作业起始日期
-    endDate: '', //作业截至日期
-    chatId: '', //群聊ID
-    token: '', //班级Token
+    //作业名称
+    name: '',
+    //作业起始日期
+    startDate: '',
+    //作业截至日期
+    endDate: '',
+    // 课程 ID
+    courseId: '',
+    // 操作，分为新建和修改
     option: '',
+    // 作业权重
+    weight: '',
   },
 
   /**
@@ -57,6 +63,16 @@ Page({
   },
 
   /**
+   * 处理输入作业权重事件
+   * @param {Object} e
+   */
+  handleInputWeight(e) {
+    this.setData({
+      weight: e.detail,
+    });
+  },
+
+  /**
    * 处理选择起止日期事件
    * @param {Object} e
    */
@@ -76,11 +92,13 @@ Page({
   /**
    * 处理发布作业事件
    */
-  handleNewTask() {
+  async handleAddWork() {
+    // 首先判断 `作业名`，`开始时间`，`结束时间`，`权重` 是否为空
     if (
       this.data.name !== '' &&
       this.data.startDate !== '' &&
-      this.data.endDate !== ''
+      this.data.endDate !== '' &&
+      this.data.weight !== ''
     ) {
       if (this.data.startDate > this.data.endDate) {
         tt.showModal({
@@ -88,48 +106,34 @@ Page({
           content: '起始日期不能晚于结束日期！',
         });
       } else {
+        // 展示加载中
         tt.showLoading({
           title: '发布中',
         });
-        tt.request({
-          url: app.urlConfig.newTaskUrl,
-          method: 'POST',
-          data: {
-            chatId: this.data.chatId,
-            expireTime: this.data.endDate + ' 23:59:59',
-            groupToken: this.data.token,
-            openId: app.openId,
-            workName: this.data.name,
-          },
-          header: {
-            'content-type': 'application/json',
-          },
-          success: (res) => {
-            console.log(res);
-            tt.hideLoading({});
-            if (res.data.success) {
-              tt.showModal({
-                title: '成功',
-                content: '发布作业成功',
-                success(res) {
-                  tt.navigateBack({
-                    delta: 1,
-                  });
-                },
-              });
-            } else {
-              tt.showModal({
-                title: '失败',
-                content: res.data.message,
-              });
-            }
-          },
-          fail(res) {
-            console.log(res);
-            console.log('发布作业失败');
-            tt.hideLoading({});
-          },
+        // 发送请求
+        let addWorkRes = await new Promise((resolve) => {
+          tt.request({
+            url: app.urlConfig.addWorkUrl,
+            method: 'POST',
+            data: {
+              startTime: this.data.startDate + ' 00:00:00',
+              expireTime: this.data.endDate + ' 23:59:59',
+              courseId: this.data.courseId,
+              weight: parseInt(this.data.weight),
+              openId: app.openId,
+              workName: this.data.name,
+            },
+            header: {
+              'content-type': 'application/json',
+            },
+            complete(res) {
+              resolve(res.data);
+            },
+          });
         });
+        console.log(addWorkRes);
+        // 隐藏加载中
+        tt.hideLoading();
       }
     } else {
       tt.showModal({

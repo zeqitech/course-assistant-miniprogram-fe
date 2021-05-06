@@ -12,6 +12,8 @@ Page({
     workList: [],
     // 当前时间
     currentTime: '',
+    // 课程 ID
+    courseId: '',
   },
 
   /**
@@ -109,9 +111,9 @@ Page({
   /**
    * 跳转到发布作业页面
    */
-  navToNewTask() {
+  navToWorkNew() {
     tt.navigateTo({
-      url: `/pages/newTask/newTask?token=${this.data.token}&chatId=${this.data.chatId}&option=new`,
+      url: `/pages/workNew/workNew?token=${this.data.token}&chatId=${this.data.chatId}&option=new`,
     });
   },
 });

@@ -32,7 +32,14 @@
       </picker>
     </view>
   </s-input>
-  <button class="item btn" tt:if="{{ option === 'new' }}" bindtap="handleNewTask">立即发布</button>
+  <s-input 
+    class="item"
+    label="作业权重"
+    value="{{ weight }}"
+    placeholder="请输入 1-99 之间的整数"
+    bindinput="handleInputWeight"
+  />
+  <button class="item btn" tt:if="{{ option === 'new' }}" bindtap="handleAddWork">立即发布</button>
   <button class="item btn" tt:else bindtap="handleModifyTask">立即修改</button>
 </view>
 <template is="foot"></template>

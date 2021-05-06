@@ -24,8 +24,8 @@
 </view>
 <image
   src="/image/add.png"
-  tt:if="{{ isTeacher }}"
+  tt:if="{{ userType !== 3 }}"
   class="add-btn"
-  bindtap="navToNewTask"
+  bindtap="navToWorkNew"
 ></image>
 <template is="foot"></template>
