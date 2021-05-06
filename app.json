@@ -1,17 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/addCourse/addCourse",
-    "pages/allCourse/allCourse",
-    "pages/course/course",
-    "pages/newSign/newSign",
-    "pages/sign/sign",
-    "pages/work/work",
-    "pages/workFileGrade/workFileGrade",
-    "pages/workFileList/workFileList",
-    "pages/workNew/workNew",
-    "pages/viewSign/viewSign",
-    "pages/viewSignInfo/viewSignInfo"
+    "pages/course/add/add",
+    "pages/course/all/all",
+    "pages/course/index/index",
+    "pages/work/list/list",
+    "pages/work/file/file",
+    "pages/work/new/new"
   ],
   "window": {
     "navigationBarTextStyle": "black",

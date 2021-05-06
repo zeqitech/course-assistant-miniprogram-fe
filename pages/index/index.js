@@ -178,22 +178,22 @@ Page({
   },
 
   /**
-   * 跳转到班级作业列表页面
+   * 跳转到课程功能页面
    * @param {Object} e
    */
-  navToCourse(e) {
+  navToCourseIndex(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/course/course?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
     });
   },
 
   /**
-   * 跳转到新建班级页面
+   * 跳转到添加课程页面
    */
-  navToAddCourse() {
+  navToCourseAdd() {
     tt.navigateTo({
-      url: '/pages/addCourse/addCourse',
+      url: '/pages/course/add/add',
     });
   },
 
