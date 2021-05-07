@@ -79,6 +79,8 @@ Page({
           },
         });
       });
+      // 隐藏 Loading
+      tt.hideLoading();
       // 成功发布签到
       if (newSignRes.success) {
         // 提示成功
