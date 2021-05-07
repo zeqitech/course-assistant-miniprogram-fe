@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "查看签到",
+  "navigationBarTitleText": "签到列表",
   "usingComponents": {
     "s-list": "/components/slist/slist",
     "s-empty": "/components/sempty/sempty"

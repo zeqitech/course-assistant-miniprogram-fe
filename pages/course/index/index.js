@@ -28,11 +28,15 @@ Page({
    * 跳转到签到页面
    */
   navToSign() {
+    // 如果当前用户不是学生
     if (app.userType !== 3) {
+      // 查看签到列表
       tt.navigateTo({
         url: `/pages/sign/list/list?courseId=${this.data.courseId}`,
       });
     } else {
+      // 当前用户是学生
+      // 直接跳转到签到页面
       tt.navigateTo({
         url: `/pages/sign/signIn/signIn?courseId=${this.data.courseId}`,
       });
