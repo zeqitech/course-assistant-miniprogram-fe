@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "添加课程",
   "usingComponents": {
-    "s-input": "/components/sinput/sinput"
+    "s-input": "/components/sinput/sinput",
+    "s-list": "/components/slist/slist"
   }
 }

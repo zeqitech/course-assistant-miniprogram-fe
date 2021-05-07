@@ -1,4 +1,6 @@
 const app = getApp().globalData;
+const fileUrl =
+  'https://butler-resource.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8%E8%8C%83%E4%BE%8B.xlsx';
 
 Page({
   /**
@@ -11,6 +13,10 @@ Page({
     file: '',
     // 文件名
     fileName: '',
+    // 临时文件路径
+    tempFilePath: '',
+    // 进度条
+    progress: 0,
   },
 
   /**
@@ -18,6 +24,71 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {},
+
+  /**
+   * 处理下载 Excel 模板事件
+   */
+  async handleDownloadExcel() {
+    console.log('开始下载');
+    // 显示 Loading
+    tt.showLoading({
+      title: '正在下载',
+      mask: true,
+    });
+    // 创建下载任务
+    let downloadTask = tt.downloadFile({
+      url: fileUrl,
+      filePath: 'ttfile://temp/添加课程模板.xlsx',
+      success: (res) => {
+        // 下载成功
+        if (res.statusCode === 200) {
+          console.log(res);
+          // 保存临时文件地址
+          this.setData({
+            tempFilePath: res.tempFilePath,
+          });
+          // 判断 OS
+          let os = tt.getSystemInfoSync();
+          console.log(os);
+          // 移动端
+          if (os.platform === 'android' || os.platform === 'ios') {
+            // 打开文件
+            tt.openDocument({
+              filePath: this.data.tempFilePath,
+            });
+          } else {
+            // PC 端
+            // 保存文件
+            tt.saveFileAs({
+              filePath: this.data.tempFilePath,
+              success: function (res) {
+                // 保存成功
+                console.log(res);
+              },
+            });
+          }
+        }
+      },
+      fail(res) {
+        console.log(`downloadFile 调用失败`);
+      },
+    });
+    // 监听下载进度变化
+    downloadTask.onProgressUpdate((res) => {
+      console.log(res);
+      this.setData({
+        progress: parseInt(res.progress),
+      });
+      if (this.data.progress === 100) {
+        tt.showToast({
+          title: '下载完成',
+          icon: 'success',
+          duration: 1500,
+        });
+      }
+    });
+    console.log(downloadTask);
+  },
 
   /**
    * 处理输入学期事件
@@ -38,6 +109,7 @@ Page({
     tt.filePicker({
       // 最大选择文件数量为 1
       maxNum: 1,
+      isSystem: true,
       success: (res) => {
         console.log(res);
         // 保存文件路径和文件名

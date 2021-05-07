@@ -16,6 +16,16 @@
   margin-top: 8px;
 }
 
+.file {
+  margin-top: 8px;
+}
+
+.file .icon {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+}
+
 .submit-btn {
   margin-top: 24px;
 }
