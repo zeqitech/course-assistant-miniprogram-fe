@@ -88,7 +88,7 @@ Page({
   navToWorkFileGrade(e) {
     let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}`,
+      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
     });
   },
 

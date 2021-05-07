@@ -25,13 +25,13 @@
     />
     <s-input
       class="item"
-      label="评语"
+      label="评语（可选）"
       type="textarea"
       value="{{ remark }}"
       placeholder="请输入评语"
       bindinput="handleRemarkInput"
     />
-    <button class="btn" bindtap="handlePostGrade">提交</button>
+    <button class="btn" type="primary" bindtap="handlePostGrade">提交</button>
   </view>
 </view>
 <template is="foot"></template>

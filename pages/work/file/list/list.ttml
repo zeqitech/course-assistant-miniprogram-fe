@@ -11,6 +11,8 @@
     color="{{ item.comment?(item.score<60?'red':'green'):'blue' }}"
     data-file-token="{{ item.fileToken }}"
     data-file-name="{{ item.fileName }}"
+    data-comment="{{ item.comment }}"
+    data-score="{{ item.score }}"
     bindtap="navToWorkFileGrade"
   ></s-list>
 </view>

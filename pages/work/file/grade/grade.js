@@ -22,6 +22,8 @@ Page({
     this.setData({
       fileToken: options.fileToken,
       fileName: options.fileName,
+      score: options.score === 'null' ? '' : options.score,
+      remark: options.comment === 'null' ? '' : options.comment,
     });
   },
 
