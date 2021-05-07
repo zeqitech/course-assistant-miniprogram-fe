@@ -131,21 +131,25 @@ Page({
       if (this.data.file !== '') {
         // 若已经选择文件，则判断文件类型是否正确
         if (
-          this.data.file.split('.')[this.data.file.length - 1] === 'xlsx' ||
-          this.data.file.split('.')[this.data.file.length - 1] === 'xls'
+          this.data.file.split('.')[1] === 'xlsx' ||
+          this.data.file.split('.')[1] === 'xls'
         ) {
+          // 显示 Loading
+          tt.showLoading({
+            title: '创建中',
+          });
+          console.log(app.openId, this.data.term);
           // 若文件类型正确，则发起请求
           var addCourseRes = await new Promise((resolve) => {
             tt.uploadFile({
-              url: app.urlConfig.addCourseUrl,
-              filePath: this.data.file,
-              name: this.data.fileName,
-              data: {
-                managerId: app.openId,
-                term: this.data.term,
+              url: `${app.urlConfig.addCourseUrl}?managerId=${app.openId}&term=${this.data.term}`,
+              header: {
+                'content-type': 'multipart/form-data',
               },
+              filePath: this.data.file,
+              name: 'courseExcel',
               complete(res) {
-                resolve(res);
+                resolve(res.data);
               },
             });
           });
@@ -171,5 +175,26 @@ Page({
       });
     }
     console.log(addCourseRes);
+    if (addCourseRes.success) {
+      // 提示成功
+      tt.showModal({
+        title: '成功',
+        content: '成功添加课程',
+        success(res) {
+          // 点击确认返回上层
+          tt.navigateBack({
+            delta: 1,
+          });
+        },
+      });
+    } else {
+      // 提示失败
+      tt.showModal({
+        title: '失败',
+        content: addCourseRes.message,
+      });
+    }
+    // 隐藏 Loading
+    tt.hideLoading();
   },
 });

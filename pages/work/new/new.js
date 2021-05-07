@@ -135,14 +135,15 @@ Page({
         // 若添加成功
         if (addWorkRes.success) {
           // 显示发布成功
-          tt.showToast({
-            title: '发布成功',
-            icon: 'success',
-            duration: 1000,
-          });
-          // 自动跳转回上一页
-          tt.navigateBack({
-            delta: 1,
+          tt.showModal({
+            title: '成功',
+            content: '发布成功',
+            success() {
+              // 自动跳转回上一页
+              tt.navigateBack({
+                delta: 1,
+              });
+            },
           });
         } else {
           // 若添加失败
