@@ -2,23 +2,22 @@
 
 <view class="page">
   <view class="list">
+    <!-- 渲染列表 -->
     <s-list
       tt:for="{{ signList }}"
       tt:if="{{ signList.length !== 0 }}"
       class="item animation-slide-bottom"
       style="animation-delay: {{(index+1)*0.1}}s;"
-      title="{{ item.startTime }}"
-      action="{{ item.endTime < currentTime ? '已截止' : '正在进行' }}"
-      color="{{ item.endTime < currentTime ? 'red' : 'green' }}"
+      title="{{ item.createTime }}"
+      action="{{ item.expireStatus ? '已截止' : '正在进行' }}"
+      color="{{ item.expireStatus ? 'red' : 'green' }}"
       data-sign-id="{{ item.signId }}"
-      data-teacher-id="{{ item.teacherId }}"
-      data-start-time="{{ item.startTime }}"
-      data-end-time="{{ item.endTime }}"
-      bindtap="navToViewSignInfo"
-      bindlongpress="endSign"
+      bindtap="navToSignInfo"
     />
   </view>
+  <!-- 空页面 -->
   <s-empty tt:if="{{ signList.length === 0 }}" class="empty"></s-empty>
 </view>
-<image src="/image/add.png" class="add-btn" bindtap="navToNewSign"></image>
+<!-- 发布签到按钮 -->
+<image src="/image/add.png" class="add-btn" bindtap="navToSignNew"></image>
 <template is="foot"></template>

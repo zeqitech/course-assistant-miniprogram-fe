@@ -6,16 +6,19 @@ Page({
    * 页面初始数据
    */
   data: {
+    // 签到持续时长
     duration: '',
+    // 课程 ID
+    courseId: '',
   },
 
   /**
-   * 页面初始化生命周期函数
+   * 生命周期函数 - 监听页面加载
    * @param {Object} options
    */
   onLoad(options) {
     this.setData({
-      token: options.token,
+      courseId: options.courseId,
     });
   },
 
@@ -30,10 +33,12 @@ Page({
   },
 
   /**
-   * 点击发起签到按钮事件
+   * 处理发布签到事件
    */
-  handleNewSign() {
+  async handleNewSign() {
+    // 判断持续事件不为空
     if (this.data.duration !== '') {
+      // 显示 Loading
       tt.showLoading({
         title: '请稍候',
       });
@@ -43,53 +48,57 @@ Page({
         new Date().getTime() + parseInt(this.data.duration) * 60000
       );
       // 获取当前老师位置
-      tt.getLocation({
-        type: 'gcj02',
-        success: (res) => {
-          var latitude = res.latitude.toString();
-          var longitude = res.longitude.toString();
-          console.log(endTime, this.data.token);
-          tt.request({
-            url: app.urlConfig.newSignUrl,
-            method: 'POST',
-            data: {
-              endTime: endTime,
-              groupToken: this.data.token,
-              latitude: latitude,
-              longitude: longitude,
-              startTime: startTime,
-              teacherId: app.openId,
-            },
-            header: {
-              'content-type': 'application/json',
-            },
-            success: (res) => {
-              tt.hideLoading({});
-              console.log(res);
-              if (res.data.success) {
-                tt.showModal({
-                  title: '成功',
-                  content: '发布签到成功！',
-                  success(res) {
-                    tt.navigateBack({
-                      delta: 1,
-                    });
-                  },
-                });
-              } else {
-                tt.showModal({
-                  title: '失败',
-                  content: res.data.message,
-                });
-              }
-            },
-            fail(res) {
-              tt.hideLoading({});
-              console.log(`request 调用失败`);
-            },
-          });
-        },
+      let location = await new Promise((resolve) => {
+        tt.getLocation({
+          type: 'gcj02',
+          success: (res) => {
+            resolve(res);
+          },
+        });
       });
+      // 获取签到请求返回值
+      let newSignRes = await new Promise((resolve) => {
+        // 使用开放 API 发送请求
+        tt.request({
+          url: app.urlConfig.releaseSignUrl,
+          method: 'POST',
+          data: {
+            courseId: this.data.courseId,
+            expireTime: endTime,
+            latitude: location.latitude.toString(),
+            longitude: location.longitude.toString(),
+            startTime: startTime,
+            teacherId: app.openId,
+            validDistance: 100,
+          },
+          header: {
+            'content-type': 'application/json',
+          },
+          complete(res) {
+            resolve(res.data);
+          },
+        });
+      });
+      // 成功发布签到
+      if (newSignRes.success) {
+        // 提示成功
+        tt.showModal({
+          title: '成功',
+          content: '发布签到成功',
+          success() {
+            // 点击确认后返回上层
+            tt.navigateBack({
+              delta: 1,
+            });
+          },
+        });
+      } else {
+        // 发布签到失败
+        tt.showModal({
+          title: '失败',
+          content: newSignRes.message,
+        });
+      }
     } else {
       tt.showModal({
         title: '失败',

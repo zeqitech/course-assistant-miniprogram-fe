@@ -18,9 +18,9 @@ Page({
   /**
    * 生命周期函数 - 监听页面展示
    */
-  onShow() {
+  async onShow() {
     // 首先获取签到列表
-    let signList = this.handleGetSignList();
+    let signList = await this.handleGetSignList();
     this.setData({
       signList: signList,
     });
@@ -46,12 +46,33 @@ Page({
         },
       });
     });
+    console.log(signListRes);
     // 获取成功
     if (signListRes.success) {
-      return signListRes.signList;
+      return signListRes.data.signList;
     } else {
       // 获取失败，返回空数组
       return [];
     }
+  },
+
+  /**
+   * 跳转到发布签到页面
+   */
+  navToSignNew() {
+    tt.navigateTo({
+      url: `/pages/sign/new/new?courseId=${this.data.courseId}`,
+    });
+  },
+
+  /**
+   * 跳转到签到详情页面
+   * @param {Object} e
+   */
+  navToSignInfo(e) {
+    let data = e.currentTarget.dataset;
+    tt.navigateTo({
+      url: `/pages/sign/info/info?signId=${data.signId}`,
+    });
   },
 });
