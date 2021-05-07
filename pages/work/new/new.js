@@ -196,6 +196,7 @@ Page({
               expireTime: this.data.endDate + ' 23:59:59',
               workName: this.data.name,
               weight: parseInt(this.data.weight),
+              courseId: this.data.courseId,
             },
             header: {
               'content-type': 'application/json',

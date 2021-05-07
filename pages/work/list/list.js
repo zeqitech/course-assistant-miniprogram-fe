@@ -91,7 +91,7 @@ Page({
   navToWorkFileList(e) {
     let data = e.currentTarget.dataset;
     tt.navigateTo({
-      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}`,
+      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
     });
   },
 

@@ -15,6 +15,8 @@ Page({
     showPopup: false,
     // 用户类型
     userType: app.userType,
+    // 课程 ID
+    courseId: '',
   },
 
   /**
@@ -31,6 +33,7 @@ Page({
       endDate: options.endDate.split(' ')[0],
       weight: options.weight,
       name: options.name,
+      courseId: options.courseId,
     });
   },
 
@@ -158,7 +161,7 @@ Page({
    */
   handleModifyWork() {
     tt.navigateTo({
-      url: `/pages/work/new/new?option=modify&startDate=${this.data.startDate}&endDate=${this.data.endDate}&name=${this.data.name}&weight=${this.data.weight}&workId=${this.data.workId}`,
+      url: `/pages/work/new/new?option=modify&startDate=${this.data.startDate}&endDate=${this.data.endDate}&name=${this.data.name}&weight=${this.data.weight}&workId=${this.data.workId}&courseId=${this.data.courseId}`,
     });
   },
 
