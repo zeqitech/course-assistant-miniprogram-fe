@@ -5,9 +5,10 @@ Page({
    * 页面初始数据
    */
   data: {
-    token: '',
-    chatId: '',
+    // 课程封面
     cover: '',
+    // 课程 ID
+    courseId: '',
   },
 
   /**

@@ -7,13 +7,20 @@ Page({
   data: {
     // 所有签到列表
     signList: [],
+    // 课程 ID
+    courseId: '',
   },
 
   /**
    * 生命周期函数 - 监听页面加载
    * @param {Object} options
    */
-  onLoad(options) {},
+  onLoad(options) {
+    // 保存课程 ID
+    this.setData({
+      courseId: options.courseId,
+    });
+  },
 
   /**
    * 生命周期函数 - 监听页面展示
@@ -42,6 +49,7 @@ Page({
           'content-type': 'application/json',
         },
         complete(res) {
+          // 回传参数
           resolve(res.data);
         },
       });
