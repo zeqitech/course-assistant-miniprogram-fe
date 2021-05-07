@@ -28,13 +28,13 @@ Page({
    * 跳转到签到页面
    */
   navToSign() {
-    if (app.isTeacher) {
+    if (app.userType !== 3) {
       tt.navigateTo({
-        url: `/pages/viewSign/viewSign?token=${this.data.token}`,
+        url: `/pages/sign/list/list?courseId=${this.data.courseId}`,
       });
     } else {
       tt.navigateTo({
-        url: `/pages/sign/sign?token=${this.data.token}`,
+        url: `/pages/sign/signIn/signIn?courseId=${this.data.courseId}`,
       });
     }
   },
