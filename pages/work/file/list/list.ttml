@@ -7,7 +7,7 @@
     style="animation-delay: {{(index+1)*0.1}}s;"
     icon="/image/doc.png"
     title="{{ item.fileName }}"
-    action="{{ item.comment ? item.score : '打分' }}"
+    action="{{ item.comment ? item.score : '未打分' }}"
     color="{{ item.comment?(item.score<60?'red':'green'):'blue' }}"
     data-file-token="{{ item.fileToken }}"
     data-file-name="{{ item.fileName }}"

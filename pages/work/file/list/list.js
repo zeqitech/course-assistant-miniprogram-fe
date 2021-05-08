@@ -133,9 +133,18 @@ Page({
    */
   navToWorkFileGrade(e) {
     let data = e.currentTarget.dataset;
-    tt.navigateTo({
-      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
-    });
+    // 如果是老师
+    if (app.userType !== 3) {
+      tt.navigateTo({
+        url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
+      });
+    } else {
+      // 如果是学生，直接打开文档
+      tt.openSchema({
+        schema: 'https://uestc.feishu.cn/docs/' + data.fileToken,
+        external: false,
+      });
+    }
   },
 
   /**

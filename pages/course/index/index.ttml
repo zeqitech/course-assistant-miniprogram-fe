@@ -25,7 +25,7 @@
     style="animation-delay: 0.3s;"
     title="课件"
     action=">"
-    bindtap="navToPPTFile"
+    bindtap="navToCourseware"
   ></s-list>
   <s-list
     tt:if="{{ userType !== 3 }}"

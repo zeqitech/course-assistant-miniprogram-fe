@@ -24,6 +24,7 @@ Page({
     this.setData({
       courseId: options.courseId,
       cover: options.cover,
+      coursewareToken: options.coursewareToken,
     });
   },
 
@@ -61,5 +62,15 @@ Page({
         url: `/pages/work/file/list/list?courseId=${this.data.courseId}`,
       });
     }
+  },
+
+  /**
+   * 打开课件
+   */
+  navToCourseware() {
+    tt.openSchema({
+      schema: 'https://uestc.feishu.cn/docs/' + this.data.coursewareToken,
+      external: false,
+    });
   },
 });

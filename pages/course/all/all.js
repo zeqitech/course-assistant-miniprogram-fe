@@ -45,7 +45,7 @@ Page({
   navToCourseIndex(e) {
     console.log(e);
     tt.navigateTo({
-      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}`,
+      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}&coursewareToken=${e.currentTarget.dataset.coursewareToken}`,
     });
   },
 });
