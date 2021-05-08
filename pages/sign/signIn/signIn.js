@@ -27,9 +27,8 @@ Page({
    */
   async handleSignIn() {
     // 显示 Loading
-    tt.showToast({
+    tt.showLoading({
       title: '定位中',
-      icon: 'loading',
     });
     // 获取位置
     let location = await new Promise((resolve) => {
@@ -60,6 +59,8 @@ Page({
         },
       });
     });
+    // 隐藏 Loading
+    tt.hideLoading();
     // 签到成功
     if (signInRes.success) {
       tt.showModal({
