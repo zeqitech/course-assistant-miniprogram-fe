@@ -1,4 +1,6 @@
 const urlConfig = require('./config');
+// 路由
+import routes from './public/router/routes';
 
 App({
   /**
@@ -23,6 +25,7 @@ App({
       },
     });
   },
+
   /**
    * 小程序显示时运行的生命周期函数
    * @param {Object} args
@@ -55,21 +58,47 @@ App({
       console.log('更新失败，请联系开发者反馈！');
     });
   },
-  /**
-   * 小程序不可见时执行的生命周期函数
-   */
-  onHide: function () {
-    console.log('App Hide');
-  },
+
   /**
    * 全局变量，用于存储用户登录态以及 openid
    */
   globalData: {
+    // 用户是否登录
     hasLogin: false,
+    // 用户 openId
     openId: '',
+    // 用户类型，1教务，2老师，3学生，4助教
     userType: null,
+    // 课程列表
     courseList: [],
+    // 请求地址
     urlConfig,
+  },
+
+  globalFunction: {
+    // 显示 Loading
+    showLoading(title) {
+      tt.showLoading({
+        title: title,
+      });
+    },
+
+    // 隐藏 Loading
+    hideLoading() {
+      tt.hideLoading();
+    },
+
+    // 页面路由跳转
+    pageNavigator(event, pageData) {
+      // 数据
+      let data = event.currentTarget.dataset;
+      // 传入页面默认数据
+      data.pageData = pageData;
+      // 路由目的地
+      let to = data.to;
+      // 调用函数，发起路由跳转
+      routes[to](data);
+    },
   },
 
   /**

@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
 const fileUrl =
   'https://butler-resource.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8%E8%8C%83%E4%BE%8B.xlsx';
 
@@ -138,11 +141,11 @@ Page({
           tt.showLoading({
             title: '创建中',
           });
-          console.log(app.openId, this.data.term);
+          console.log(globalData.openId, this.data.term);
           // 若文件类型正确，则发起请求
           var addCourseRes = await new Promise((resolve) => {
             tt.uploadFile({
-              url: `${app.urlConfig.addCourseUrl}?managerId=${app.openId}&term=${this.data.term}`,
+              url: `${globalData.urlConfig.addCourseUrl}?managerId=${globalData.openId}&term=${this.data.term}`,
               header: {
                 'content-type': 'multipart/form-data',
               },

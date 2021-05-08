@@ -7,28 +7,32 @@
     mode="aspectCover"
   ></image>
   <s-list
+    tt:if="{{ userType !== 4 }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.1s;"
     title="签到"
     action=">"
-    bindtap="navToSign"
+    bindtap="pageNavigator"
+    data-to="sign"
   ></s-list>
   <s-list
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.2s;"
     title="作业"
     action=">"
-    bindtap="navToWorkList"
+    bindtap="pageNavigator"
+    data-to="work"
   ></s-list>
   <s-list
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.3s;"
     title="课件"
     action=">"
-    bindtap="navToCourseware"
+    bindtap="pageNavigator"
+    data-to="courseware"
   ></s-list>
   <s-list
-    tt:if="{{ userType !== 3 }}"
+    tt:if="{{ userType === 2 }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.4s;"
     title="添加助教"

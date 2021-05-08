@@ -13,8 +13,9 @@
     <view
       class="item animation-scale-up"
       style="animation-delay: 0.2s;"
+      data-to="courseAll"
       data-filter="past"
-      bindtap="navToCourseAll"
+      bindtap="pageNavigator"
     >
       <image class="icon" src="/image/history.png"></image>
       <text class="label">往期课程</text>
@@ -23,7 +24,8 @@
       class="item animation-scale-up"
       style="animation-delay: 0.1s;"
       tt:if="{{ userType === 1 }}"
-      bindtap="navToCourseAdd"
+      data-to="courseAdd"
+      bindtap="pageNavigator"
     >
       <image class="icon" src="/image/class.png"></image>
       <text class="label">添加课程</text>
@@ -34,7 +36,12 @@
     <!-- 列表标题 -->
     <view class="head">
       <text class="title">我的课程</text>
-      <text class="label" data-filter="now" bindtap="navToCourseAll">查看更多</text>
+      <text
+        class="label"
+        data-to="courseAll"
+        data-filter="now"
+        bindtap="pageNavigator"
+      >查看更多</text>
     </view>
     <!-- 页面为空时显示占位 -->
     <s-empty tt:if="{{ nowEmpty }}" class="empty"></s-empty>
@@ -54,7 +61,8 @@
         data-course-id="{{ item.courseId }}"
         data-chat-id="{{ item.chatId }}"
         data-cover="{{ item.coverUrl }}"
-        bindtap="navToCourseIndex"
+        bindtap="pageNavigator"
+        data-to="courseIndex"
       ></s-card>
     </scroll-view>
   </view>

@@ -1,4 +1,9 @@
-const app = getApp().globalData;
+// 获取全局变量
+const globalData = getApp().globalData;
+// 获取全局函数
+const globalFunction = getApp().globalFunction;
+// // 路由
+// import routes from '../../public/router/routes';
 
 Page({
   /**
@@ -8,7 +13,7 @@ Page({
     // 班级列表
     classList: [],
     // 用户角色信息
-    userType: app.userType,
+    userType: globalData.userType,
     // 本学期课程列表是否为空
     nowEmpty: true,
     // 往期课程是否为空
@@ -18,30 +23,21 @@ Page({
   },
 
   /**
-   * 生命周期函数 - 监听页面首次加载
-   * @param {Object} options
-   */
-  async onLoad(options) {},
-
-  /**
    * 生命周期函数 - 监听页面显示
    */
   async onShow() {
     // 若未登录
-    if (!app.hasLogin || app.openId === '') {
+    if (!globalData.hasLogin || globalData.openId === '') {
       // 显示 `Loading`
-      tt.showLoading({
-        title: '加载中',
-      });
+      globalFunction.showLoading('加载中');
       // 用户登录，获取用户信息
       let userInfo = await this.handleLogin();
-      console.log(userInfo);
       // 如果登录成功
       if (userInfo.success) {
         // 保存全局变量
-        app.hasLogin = true;
-        app.openId = userInfo.openId;
-        app.userType = userInfo.userType;
+        globalData.hasLogin = true;
+        globalData.openId = userInfo.openId;
+        globalData.userType = userInfo.userType;
       } else {
         // 登录失败，显示报错信息
         tt.showModal({
@@ -51,7 +47,7 @@ Page({
       }
       // 获取班级列表
       let courseList = await this.handleGetCourseList();
-      app.courseList = courseList;
+      globalData.courseList = courseList;
       // 更新当前页面的数据
       this.setData({
         userType: userInfo.userType,
@@ -102,7 +98,7 @@ Page({
     let loginRes = await new Promise((resolve) => {
       // 调用飞书 HTTP 请求接口
       tt.request({
-        url: app.urlConfig.loginUrl,
+        url: globalData.urlConfig.loginUrl,
         data: {
           code: code,
         },
@@ -144,9 +140,9 @@ Page({
     // 获取课程返回结果
     let getCourseRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.getCourseUrl,
+        url: globalData.urlConfig.getCourseUrl,
         data: {
-          openId: app.openId,
+          openId: globalData.openId,
         },
         header: {
           'content-type': 'application/json',
@@ -178,32 +174,10 @@ Page({
   },
 
   /**
-   * 跳转到课程功能页面
+   * 页面路由
    * @param {Object} e
    */
-  navToCourseIndex(e) {
-    console.log(e);
-    tt.navigateTo({
-      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}&coursewareToken=${e.currentTarget.dataset.coursewareToken}`,
-    });
-  },
-
-  /**
-   * 跳转到添加课程页面
-   */
-  navToCourseAdd() {
-    tt.navigateTo({
-      url: '/pages/course/add/add',
-    });
-  },
-
-  /**
-   * 跳转到所有班级列表页面
-   */
-  navToCourseAll(e) {
-    let filter = e.currentTarget.dataset.filter;
-    tt.navigateTo({
-      url: `/pages/course/all/all?filter=${filter}&nowEmpty=${this.data.nowEmpty}&pastEmpty=${this.data.pastEmpty}`,
-    });
+  pageNavigator(e) {
+    globalFunction.pageNavigator(e, this.data);
   },
 });

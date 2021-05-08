@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -23,7 +26,7 @@ Page({
     this.setData({
       filter: options.filter,
       expireStatus: options.filter === 'now' ? false : true,
-      courseList: app.courseList,
+      courseList: globalData.courseList,
       nowEmpty: options.nowEmpty === 'true' ? true : false,
       pastEmpty: options.pastEmpty === 'true' ? true : false,
     });
@@ -47,5 +50,13 @@ Page({
     tt.navigateTo({
       url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}&coursewareToken=${e.currentTarget.dataset.coursewareToken}`,
     });
+  },
+
+  /**
+   * 页面路由
+   * @param {Object} e
+   */
+  pageNavigator(e) {
+    globalFunction.pageNavigator(e, this.data);
   },
 });
