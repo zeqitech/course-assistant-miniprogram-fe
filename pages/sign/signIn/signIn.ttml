@@ -1,14 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
+  <!-- 签到按钮 -->
   <text class="btn" bindtap="handleSignIn">立即签到</text>
-  <view class="list">
-    <s-list
-      class="item"
-      title="2021-03-27 15:33"
-      action="签到成功"
-      color="green"
-    ></s-list>
-  </view>
 </view>
 <template is="foot"></template>
