@@ -49,8 +49,12 @@
   font-size: var(--font-size-text-help-app);
   font-weight: var(--font-weight-text-help-app);
   line-height: var(--line-height-text-help);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .s-list .action {
+  min-width: fit-content;
   margin-left: auto;
   font-size: var(--font-size-help);
   font-weight: var(--font-weight-help-app);
