@@ -61,6 +61,26 @@ const routes = {
     });
   },
 
+  // 签到信息
+  signInfo(data) {
+    /**
+     * signId - 通过 signId 获取某次签到的信息
+     */
+    tt.navigateTo({
+      url: `/pages/sign/info/info?signId=${data.signId}`,
+    });
+  },
+
+  // 发布签到页面
+  signNew(data) {
+    /**
+     * courseId - 向指定课程下添加签到任务
+     */
+    tt.navigateTo({
+      url: `/pages/sign/new/new?courseId=${data.pageData.courseId}`,
+    });
+  },
+
   // 作业列表
   workList(data) {
     /**
@@ -70,6 +90,22 @@ const routes = {
       url: `/pages/work/list/list?courseId=${data.pageData.courseId}`,
     });
   },
+
+  // 发布作业
+  workNew(data) {
+    /**
+     * courseId - 在某个课程之下发布新的作业
+     */
+    tt.navigateTo({
+      url: `/pages/work/new/new?courseId=${data.pageData.courseId}&option=new`,
+    });
+  },
+
+  // 作业文档列表 - 老师
+  workFileListTeacher(data) {},
+
+  // 作业文档列表 - 助教
+  workFileListAssistant(data) {},
 
   // 作业文档列表 - 学生
   workFileListStudent(data) {

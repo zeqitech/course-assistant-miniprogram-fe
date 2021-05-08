@@ -43,11 +43,11 @@ Page({
     // 发送签到请求
     let signInRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.signInUrl,
+        url: globalData.urlConfig.signInUrl,
         method: 'POST',
         data: {
           courseId: this.data.courseId,
-          studentId: app.openId,
+          studentId: globalData.openId,
           latitude: location.latitude.toString(),
           longitude: location.longitude.toString(),
         },

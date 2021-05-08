@@ -1,5 +1,9 @@
-const app = getApp().globalData;
-const func = getApp();
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
+// 时间函数
+const timeFunction = getApp();
 
 Page({
   /**
@@ -43,8 +47,8 @@ Page({
         title: '请稍候',
       });
       // 计算签到起止时间
-      let startTime = func.getCurrentTime(new Date().getTime());
-      let endTime = func.getCurrentTime(
+      let startTime = timeFunction.getCurrentTime(new Date().getTime());
+      let endTime = timeFunction.getCurrentTime(
         new Date().getTime() + parseInt(this.data.duration) * 60000
       );
       // 获取当前老师位置
@@ -60,7 +64,7 @@ Page({
       let newSignRes = await new Promise((resolve) => {
         // 使用开放 API 发送请求
         tt.request({
-          url: app.urlConfig.releaseSignUrl,
+          url: globalData.urlConfig.releaseSignUrl,
           method: 'POST',
           data: {
             courseId: this.data.courseId,
@@ -68,7 +72,7 @@ Page({
             latitude: location.latitude.toString(),
             longitude: location.longitude.toString(),
             startTime: startTime,
-            teacherId: app.openId,
+            teacherId: globalData.openId,
             validDistance: 100,
           },
           header: {

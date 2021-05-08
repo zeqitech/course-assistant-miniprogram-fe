@@ -1,4 +1,5 @@
-const app = getApp().globalData;
+const globalData = getApp().globalData;
+const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -59,7 +60,7 @@ Page({
     // 发送请求
     let signedCountRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.signedCountUrl,
+        url: globalData.urlConfig.signedCountUrl,
         data: {
           signId: this.data.signId,
         },
@@ -92,7 +93,7 @@ Page({
     // 发送请求
     let unsignedListRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.unsignedListUrl,
+        url: globalData.urlConfig.unsignedListUrl,
         data: {
           signId: this.data.signId,
         },

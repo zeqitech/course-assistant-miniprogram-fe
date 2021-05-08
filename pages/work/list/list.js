@@ -1,5 +1,19 @@
-const app = getApp().globalData;
-const func = getApp();
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
+// 时间函数
+const timeFunction = getApp();
+
+// 根据用户类型，决定跳转到文件列表
+const switchWorkFileList = {
+  // 教务
+  1() {},
+  // 老师
+  2() {},
+  // 助教
+  4() {},
+};
 
 Page({
   /**
@@ -7,7 +21,7 @@ Page({
    */
   data: {
     // 用户类型
-    userType: app.userType,
+    userType: globalData.userType,
     // 作业列表
     workList: [],
     // 当前时间
@@ -34,10 +48,10 @@ Page({
    */
   async onShow() {
     // 若为老师，则获取作业列表
-    if (app.userType !== 3) {
+    if (globalData.userType !== 3) {
       let workList = await this.handleGetWorkList();
       this.setData({
-        currentTime: func.getCurrentTime(new Date()),
+        currentTime: timeFunction.getCurrentTime(new Date()),
         workList: workList,
       });
     }
@@ -56,7 +70,7 @@ Page({
     let getWorkListRes = await new Promise((resolve) => {
       // 调用飞书 HTTP 能力
       tt.request({
-        url: app.urlConfig.getWorkUrl,
+        url: globalData.urlConfig.getWorkUrl,
         data: {
           courseId: this.data.courseId,
         },
@@ -86,6 +100,8 @@ Page({
     }
   },
 
+  pageNavigator(e) {},
+
   /**
    * 跳转到作业文档列表
    * @param {Object} e
@@ -93,11 +109,11 @@ Page({
   navToWorkFileList(e) {
     let data = e.currentTarget.dataset;
     // 如果是老师
-    if (app.userType < 3) {
+    if (globalData.userType < 3) {
       tt.navigateTo({
         url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
       });
-    } else if (app.userType === 4) {
+    } else if (globalData.userType === 4) {
       // 如果是助教
       if (data.assistantAuth) {
         // 如果助教可评阅
@@ -112,29 +128,5 @@ Page({
         });
       }
     }
-  },
-
-  /**
-   *
-   */
-  handleTapSign() {
-    if (this.data.isTeacher) {
-      tt.navigateTo({
-        url: `/pages/viewSign/viewSign?token=${this.data.token}`,
-      });
-    } else {
-      tt.navigateTo({
-        url: '/pages/sign/sign?token=' + this.data.token,
-      });
-    }
-  },
-
-  /**
-   * 跳转到发布作业页面
-   */
-  navToWorkNew() {
-    tt.navigateTo({
-      url: `/pages/work/new/new?courseId=${this.data.courseId}&option=new`,
-    });
   },
 });

@@ -12,12 +12,19 @@
       action="{{ item.expireStatus ? '已截止' : '正在进行' }}"
       color="{{ item.expireStatus ? 'red' : 'green' }}"
       data-sign-id="{{ item.signId }}"
-      bindtap="navToSignInfo"
+      bindtap="pageNavigator"
+      data-to="signInfo"
     />
   </view>
   <!-- 空页面 -->
   <s-empty tt:if="{{ signList.length === 0 }}" class="empty"></s-empty>
 </view>
 <!-- 发布签到按钮 -->
-<image tt:if="{{ userType === 2 }}" src="/image/add.png" class="add-btn" bindtap="navToSignNew"></image>
+<image
+  tt:if="{{ userType === 2 }}"
+  src="/image/add.png"
+  class="add-btn"
+  bindtap="pageNavigator"
+  data-to="signNew"
+></image>
 <template is="foot"></template>

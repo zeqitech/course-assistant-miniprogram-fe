@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -41,7 +44,7 @@ Page({
     // 发送获取签到列表请求
     let signListRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.getAllSignUrl,
+        url: globalData.urlConfig.getAllSignUrl,
         data: {
           courseId: this.data.courseId,
         },
@@ -64,23 +67,7 @@ Page({
     }
   },
 
-  /**
-   * 跳转到发布签到页面
-   */
-  navToSignNew() {
-    tt.navigateTo({
-      url: `/pages/sign/new/new?courseId=${this.data.courseId}`,
-    });
-  },
-
-  /**
-   * 跳转到签到详情页面
-   * @param {Object} e
-   */
-  navToSignInfo(e) {
-    let data = e.currentTarget.dataset;
-    tt.navigateTo({
-      url: `/pages/sign/info/info?signId=${data.signId}`,
-    });
+  pageNavigator(e) {
+    globalFunction.pageNavigator(e, this.data);
   },
 });
