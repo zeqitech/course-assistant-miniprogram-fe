@@ -19,6 +19,7 @@
     data-work-name="{{ item.workName }}"
     data-work-id="{{ item.workId }}"
     data-weight="{{ item.weight }}"
+    data-assistant-auth="{{ item.assistantAuth }}"
     bindtap="navToWorkFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->

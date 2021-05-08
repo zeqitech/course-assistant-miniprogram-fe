@@ -138,20 +138,6 @@ Page({
       tt.navigateTo({
         url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
       });
-    } else if (app.userType === 4) {
-      // 如果是助教
-      if (data.assistantAuth) {
-        // 如果助教可评阅
-        tt.navigateTo({
-          url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
-        });
-      } else {
-        // 提示没有评阅权限
-        tt.showModal({
-          title: '错误',
-          content: '暂无本次作业评阅权限',
-        });
-      }
     } else {
       // 如果是学生，直接打开文档
       tt.openSchema({

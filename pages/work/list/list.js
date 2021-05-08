@@ -92,9 +92,26 @@ Page({
    */
   navToWorkFileList(e) {
     let data = e.currentTarget.dataset;
-    tt.navigateTo({
-      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
-    });
+    // 如果是老师
+    if (app.userType < 3) {
+      tt.navigateTo({
+        url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
+      });
+    } else if (app.userType === 4) {
+      // 如果是助教
+      if (data.assistantAuth) {
+        // 如果助教可评阅
+        tt.navigateTo({
+          url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
+        });
+      } else {
+        // 提示没有评阅权限
+        tt.showModal({
+          title: '提示',
+          content: '暂无本次作业评阅权限',
+        });
+      }
+    }
   },
 
   /**

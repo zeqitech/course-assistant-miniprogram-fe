@@ -32,11 +32,17 @@ Page({
    * 跳转到签到页面
    */
   navToSign() {
-    // 如果当前用户不是学生
-    if (app.userType !== 3) {
+    // 如果是老师
+    if (app.userType < 3) {
       // 查看签到列表
       tt.navigateTo({
         url: `/pages/sign/list/list?courseId=${this.data.courseId}`,
+      });
+    } else if (app.userType === 4) {
+      // 如果是助教
+      tt.showModal({
+        title: '提示',
+        content: '助教无需签到',
       });
     } else {
       // 当前用户是学生

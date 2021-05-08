@@ -19,5 +19,5 @@
   <s-empty tt:if="{{ signList.length === 0 }}" class="empty"></s-empty>
 </view>
 <!-- 发布签到按钮 -->
-<image src="/image/add.png" class="add-btn" bindtap="navToSignNew"></image>
+<image tt:if="{{ userType === 2 }}" src="/image/add.png" class="add-btn" bindtap="navToSignNew"></image>
 <template is="foot"></template>
