@@ -33,12 +33,14 @@ Page({
    * 页面显示生命周期函数
    */
   async onShow() {
-    let workList = await this.handleGetWorkList();
-    console.log('获取作业列表成功', workList);
-    this.setData({
-      currentTime: func.getCurrentTime(new Date()),
-      workList: workList,
-    });
+    // 若为老师，则获取作业列表
+    if (app.userType !== 3) {
+      let workList = await this.handleGetWorkList();
+      this.setData({
+        currentTime: func.getCurrentTime(new Date()),
+        workList: workList,
+      });
+    }
   },
 
   /**

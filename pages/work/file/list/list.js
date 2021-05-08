@@ -27,26 +27,43 @@ Page({
     console.log('--------------------workFileList page-------------------');
     console.log(options);
     console.log('-----------------------------------------------');
-    this.setData({
-      workId: options.workId,
-      startDate: options.startDate.split(' ')[0],
-      endDate: options.endDate.split(' ')[0],
-      weight: options.weight,
-      name: options.name,
-      courseId: options.courseId,
-    });
+    // 如果用户不是学生
+    if (app.userType !== 3) {
+      this.setData({
+        workId: options.workId,
+        startDate: options.startDate.split(' ')[0],
+        endDate: options.endDate.split(' ')[0],
+        weight: options.weight,
+        name: options.name,
+        courseId: options.courseId,
+      });
+    } else {
+      this.setData({
+        courseId: options.courseId,
+      });
+    }
   },
 
   /**
    * 生命周期函数 - 监听页面显示
    */
   async onShow() {
-    // 获取文件列表
-    let workFileList = await this.handleGetWorkFileList();
-    // 保存数据
-    this.setData({
-      workFileList: workFileList,
-    });
+    // 如果用户不是学生
+    if (app.userType !== 3) {
+      // 获取文件列表
+      let workFileList = await this.handleGetWorkFileList();
+      // 保存数据
+      this.setData({
+        workFileList: workFileList,
+      });
+    } else {
+      // 用户为学生
+      let workFileList = await this.handleGetMyWorkFileList();
+      // 保存数据
+      this.setData({
+        workFileList: workFileList,
+      });
+    }
   },
 
   /**
@@ -77,6 +94,35 @@ Page({
       return workFileListRes.data.workFileList;
     } else {
       // 获取失败，返回空数组
+      return [];
+    }
+  },
+
+  /**
+   * 获取学生课程下所有作业
+   */
+  async handleGetMyWorkFileList() {
+    let myWorkFileListRes = await new Promise((resolve) => {
+      tt.request({
+        url: app.urlConfig.getMyWorkUrl,
+        data: {
+          courseId: this.data.courseId,
+          studentId: app.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    console.log(myWorkFileListRes.data);
+    // 获取成功
+    if (myWorkFileListRes.success) {
+      return myWorkFileListRes.data.workList;
+    } else {
+      // 获取失败
       return [];
     }
   },

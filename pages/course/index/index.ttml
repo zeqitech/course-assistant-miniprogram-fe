@@ -20,5 +20,20 @@
     action=">"
     bindtap="navToWorkList"
   ></s-list>
+  <s-list
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.3s;"
+    title="课件"
+    action=">"
+    bindtap="navToPPTFile"
+  ></s-list>
+  <s-list
+    tt:if="{{ userType !== 3 }}"
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.4s;"
+    title="添加助教"
+    action=">"
+    bindtap="handleAddAssistant"
+  ></s-list>
 </view>
 <template is="foot"></template>

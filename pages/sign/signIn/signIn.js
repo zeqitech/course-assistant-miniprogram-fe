@@ -18,7 +18,7 @@ Page({
     console.log(options);
     console.log('----------------------------------------------');
     this.setData({
-      courseId: '',
+      courseId: options.courseId,
     });
   },
 

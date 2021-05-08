@@ -2,12 +2,10 @@
 .cover {
   width: 100%;
   height: 200px;
+  margin-bottom: 12px;
 }
 
 /* 功能列表 */
 .item {
-  margin-top: 24px;
-}
-.item:last-child {
   margin-top: 12px;
 }

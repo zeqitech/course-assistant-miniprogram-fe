@@ -9,6 +9,8 @@ Page({
     cover: '',
     // 课程 ID
     courseId: '',
+    // 用户类型
+    userType: app.userType,
   },
 
   /**
@@ -48,8 +50,16 @@ Page({
    * 跳转到作业列表页面
    */
   navToWorkList() {
-    tt.navigateTo({
-      url: `/pages/work/list/list?courseId=${this.data.courseId}`,
-    });
+    // 如果用户不是学生
+    if (app.userType !== 3) {
+      tt.navigateTo({
+        url: `/pages/work/list/list?courseId=${this.data.courseId}`,
+      });
+    } else {
+      // 用户是学生
+      tt.navigateTo({
+        url: `/pages/work/file/list/list?courseId=${this.data.courseId}`,
+      });
+    }
   },
 });
