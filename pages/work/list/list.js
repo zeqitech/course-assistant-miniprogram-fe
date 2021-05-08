@@ -5,14 +5,31 @@ const globalFunction = getApp().globalFunction;
 // 时间函数
 const timeFunction = getApp();
 
+// 根据路由目的地，返回 to 参数值
+const switchTo = {
+  // 发布作业
+  new() {
+    return 'workNew';
+  },
+  // 文件列表
+  workFileList() {
+    return switchWorkFileList[globalData.userType]();
+  },
+};
 // 根据用户类型，决定跳转到文件列表
 const switchWorkFileList = {
   // 教务
-  1() {},
+  1() {
+    return 'workFileListTeacher';
+  },
   // 老师
-  2() {},
+  2() {
+    return 'workFileListTeacher';
+  },
   // 助教
-  4() {},
+  4() {
+    return 'workFileListAssistant';
+  },
 };
 
 Page({
@@ -100,33 +117,16 @@ Page({
     }
   },
 
-  pageNavigator(e) {},
-
   /**
-   * 跳转到作业文档列表
+   * 页面路由
    * @param {Object} e
    */
-  navToWorkFileList(e) {
-    let data = e.currentTarget.dataset;
-    // 如果是老师
-    if (globalData.userType < 3) {
-      tt.navigateTo({
-        url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
-      });
-    } else if (globalData.userType === 4) {
-      // 如果是助教
-      if (data.assistantAuth) {
-        // 如果助教可评阅
-        tt.navigateTo({
-          url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${this.data.courseId}`,
-        });
-      } else {
-        // 提示没有评阅权限
-        tt.showModal({
-          title: '提示',
-          content: '暂无本次作业评阅权限',
-        });
-      }
-    }
+  pageNavigator(e) {
+    // 转换真实 to 参数
+    let realTo = switchTo[e.currentTarget.dataset.to]();
+    // 替换 to 参数
+    e.currentTarget.dataset.to = realTo;
+    // 进行路由
+    globalFunction.pageNavigator(e, this.data);
   },
 });

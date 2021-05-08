@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -113,14 +116,14 @@ Page({
         // 发送发布作业请求
         let addWorkRes = await new Promise((resolve) => {
           tt.request({
-            url: app.urlConfig.addWorkUrl,
+            url: globalData.urlConfig.addWorkUrl,
             method: 'POST',
             data: {
               startTime: this.data.startDate + ' 00:00:00',
               expireTime: this.data.endDate + ' 23:59:59',
               courseId: this.data.courseId,
               weight: parseInt(this.data.weight),
-              openId: app.openId,
+              openId: globalData.openId,
               workName: this.data.name,
             },
             header: {
@@ -189,7 +192,7 @@ Page({
         let modifyWorkRes = await new Promise((resolve) => {
           // 调用飞书请求 API
           tt.request({
-            url: app.urlConfig.modifyWorkUrl,
+            url: globalData.urlConfig.modifyWorkUrl,
             method: 'POST',
             data: {
               workId: this.data.workId,

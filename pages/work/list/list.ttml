@@ -20,7 +20,8 @@
     data-work-id="{{ item.workId }}"
     data-weight="{{ item.weight }}"
     data-assistant-auth="{{ item.assistantAuth }}"
-    bindtap="navToWorkFileList"
+    bindtap="pageNavigator"
+    data-to="workFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->
   <s-empty tt:else class="empty"></s-empty>
@@ -30,6 +31,7 @@
   src="/image/add.png"
   tt:if="{{ userType !== 3 }}"
   class="add-btn"
-  bindtap="navToWorkNew"
+  bindtap="pageNavigator"
+  data-to="new"
 ></image>
 <template is="foot"></template>

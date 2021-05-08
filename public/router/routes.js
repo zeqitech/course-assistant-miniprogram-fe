@@ -102,10 +102,27 @@ const routes = {
   },
 
   // 作业文档列表 - 老师
-  workFileListTeacher(data) {},
+  workFileListTeacher(data) {
+    tt.navigateTo({
+      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${data.pageData.courseId}`,
+    });
+  },
 
   // 作业文档列表 - 助教
-  workFileListAssistant(data) {},
+  workFileListAssistant(data) {
+    if (data.assistantAuth) {
+      // 如果助教可评阅
+      tt.navigateTo({
+        url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${data.pageData.courseId}`,
+      });
+    } else {
+      // 提示没有评阅权限
+      tt.showModal({
+        title: '提示',
+        content: '暂无本次作业评阅权限',
+      });
+    }
+  },
 
   // 作业文档列表 - 学生
   workFileListStudent(data) {
