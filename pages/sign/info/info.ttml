@@ -1,6 +1,22 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  
+  <view class="width-app info">
+    <s-list
+      title="已签到人数"
+      action="{{ signedCount }}"
+    />
+    <view class="unsign">
+      <text class="title">未签到名单</text>
+      <view class="list">
+        <s-list
+          class="item"
+          tt:for="{{ unsignedList }}"
+          title="{{ item }}"
+          action="未签到"
+        />
+      </view>
+    </view>
+  </view>
 </view>
 <template is="foot"></template>

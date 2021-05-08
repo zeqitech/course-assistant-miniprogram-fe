@@ -7,13 +7,10 @@ Page({
   data: {
     // 签到 ID
     signId: '',
-    // 签到信息
-    signInfo: {
-      // 已签到人数
-      signedCount: 0,
-      // 未签到名单
-      unsignedList: [],
-    },
+    // 已签到人数
+    signedCount: 0,
+    // 未签到名单
+    unsignedList: [],
   },
 
   /**
@@ -34,7 +31,8 @@ Page({
     // 获取签到情况
     let signInfo = await this.handleGetSignInfo();
     this.setData({
-      signInfo: signInfo,
+      signedCount: signInfo.signedCount,
+      unsignedList: signInfo.unsignedList,
     });
   },
 

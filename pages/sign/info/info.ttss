@@ -1,0 +1,25 @@
+.info {
+  margin-top: 24px;
+}
+
+.unsign {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.unsign .title {
+  align-self: center;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+.unsign .list {
+  display: flex;
+  flex-direction: column;
+}
+
+.unsign .list .item {
+  margin-top: 12px;
+}
