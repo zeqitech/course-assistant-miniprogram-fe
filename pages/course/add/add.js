@@ -2,6 +2,7 @@
 const globalData = getApp().globalData;
 // 全局函数
 import globalFunctions from '../../../public/function/index';
+// 模板文件地址
 const fileUrl =
   'https://butler-resource.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8%E8%8C%83%E4%BE%8B.xlsx';
 
@@ -23,21 +24,11 @@ Page({
   },
 
   /**
-   * 生命周期函数 - 监听页面装载
-   * @param {Object} options
-   */
-  onLoad(options) {},
-
-  /**
    * 处理下载 Excel 模板事件
    */
   async handleDownloadExcel() {
-    console.log('开始下载');
     // 显示 Loading
-    tt.showLoading({
-      title: '正在下载',
-      mask: true,
-    });
+    globalFunctions.showLoading('正在下载');
     // 创建下载任务
     let downloadTask = tt.downloadFile({
       url: fileUrl,
@@ -98,7 +89,6 @@ Page({
    * @param {Object} e
    */
   handleInputTerm(e) {
-    console.log(e);
     this.setData({
       term: e.detail,
     });
@@ -114,7 +104,6 @@ Page({
       maxNum: 1,
       isSystem: true,
       success: (res) => {
-        console.log(res);
         // 保存文件路径和文件名
         this.setData({
           file: res.list[0].path,

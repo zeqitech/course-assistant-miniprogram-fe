@@ -8,6 +8,7 @@ export default {
   showLoading(title) {
     tt.showLoading({
       title: title,
+      mask: true,
     });
   },
 
