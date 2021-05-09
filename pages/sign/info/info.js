@@ -1,5 +1,7 @@
+// 全局变量
 const globalData = getApp().globalData;
-const globalFunction = getApp().globalFunction;
+// 全局函数
+import globalFunctions from '../../../public/function/index';
 
 Page({
   /**
@@ -20,6 +22,7 @@ Page({
    */
   onLoad(options) {
     console.log('签到情况', options);
+    // 保存数据
     this.setData({
       signId: options.signId,
     });
@@ -31,6 +34,7 @@ Page({
   async onShow() {
     // 获取签到情况
     let signInfo = await this.handleGetSignInfo();
+    // 保存数据
     this.setData({
       signedCount: signInfo.signedCount,
       unsignedList: signInfo.unsignedList,
@@ -58,29 +62,18 @@ Page({
    */
   async handleGetSignedCount() {
     // 发送请求
-    let signedCountRes = await new Promise((resolve) => {
-      tt.request({
-        url: globalData.urlConfig.signedCountUrl,
-        data: {
-          signId: this.data.signId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          resolve(res.data);
-        },
-      });
-    });
+    let getSignedCountRes = await globalFunctions.sendRequests(
+      'getSignedCount',
+      this.data
+    );
     // 获取签到人数成功
-    if (signedCountRes.success) {
-      return signedCountRes.data.count;
+    if (getSignedCountRes.success) {
+      // 返回签到人数
+      return getSignedCountRes.data.count;
     } else {
-      // 获取失败
-      tt.showModal({
-        title: '失败',
-        content: signedCountRes.message,
-      });
+      // 获取失败，提示错误
+      globalFunctions.showError(getSignedCountRes.message);
+      // 返回 0 值
       return 0;
     }
   },
@@ -91,29 +84,18 @@ Page({
    */
   async handleGetUnsignedList() {
     // 发送请求
-    let unsignedListRes = await new Promise((resolve) => {
-      tt.request({
-        url: globalData.urlConfig.unsignedListUrl,
-        data: {
-          signId: this.data.signId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          resolve(res.data);
-        },
-      });
-    });
+    let getUnsignedListRes = await globalFunctions.sendRequests(
+      'getUnsignedList',
+      this.data
+    );
     // 如果获取成功
-    if (unsignedListRes.success) {
-      return unsignedListRes.data.unsignedList;
+    if (getUnsignedListRes.success) {
+      // 返回未签到名单
+      return getUnsignedListRes.data.unsignedList;
     } else {
-      // 获取失败
-      tt.showModal({
-        title: '失败',
-        content: unsignedListRes.message,
-      });
+      // 获取失败，显示报错
+      globalFunctions.showError(getUnsignedListRes.message);
+      // 返回空数组
       return [];
     }
   },

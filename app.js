@@ -64,7 +64,7 @@ App({
     // 用户是否登录
     hasLogin: false,
     // 用户 openId
-    openId: '',
+    openId: null,
     // 用户类型，1教务，2老师，3学生，4助教
     userType: null,
     // 课程列表

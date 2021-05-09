@@ -27,7 +27,7 @@ Page({
    */
   async onShow() {
     // 用户未登录
-    if (this.data.openId === '') {
+    if (this.data.openId === null) {
       // 显示 Loading
       globalFunctions.showLoading();
       // 登录
@@ -111,7 +111,7 @@ Page({
         nickName: userInfo.nickName,
         openId: loginRes.data.open_id,
       });
-      globalData.openId = loginRes.data.openId;
+      globalData.openId = loginRes.data.open_id;
       globalData.userType = loginRes.data.userType;
     } else {
       // 登录失败

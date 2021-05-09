@@ -48,6 +48,93 @@ const requests = {
     });
     return res;
   },
+
+  /**
+   * 签到
+   */
+  // 未签到名单
+  async getUnsignedList(data) {
+    // 发送请求获取未签到名单
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.unsignedListUrl,
+        data: {
+          signId: data.pageData.signId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 签到人数
+  async getSignedCount(data) {
+    // 发送请求获取签到人数
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.signedCountUrl,
+        data: {
+          signId: data.pageData.signId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取发布的所有签到
+  async getSignList(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getAllSignUrl,
+        data: {
+          courseId: data.pageData.courseId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          // 回传参数
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 发布签到
+  async postNewSign(data) {
+    // 发起签到请求
+    console.log(data);
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.releaseSignUrl,
+        method: 'POST',
+        data: {
+          courseId: data.pageData.courseId,
+          expireTime: data.pageData.endTime,
+          latitude: data.pageData.latitude,
+          longitude: data.pageData.longitude,
+          startTime: data.pageData.startTime,
+          teacherId: data.pageData.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 };
 
 export default requests;

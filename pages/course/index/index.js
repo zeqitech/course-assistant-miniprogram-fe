@@ -1,7 +1,7 @@
+// 全局函数
+import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
-// 全局函数
-const globalFunction = getApp().globalFunction;
 
 // 根据不同路由目的地，执行不同判断操作
 const switchTo = {
@@ -99,6 +99,6 @@ Page({
     // 更新 to 参数为真正路由目的地
     e.currentTarget.dataset.to = realTo;
     // 进行路由跳转
-    globalFunction.pageNavigator(e, this.data);
+    globalFunctions.pageNavigator(e, this.data);
   },
 });

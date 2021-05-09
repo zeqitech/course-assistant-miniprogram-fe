@@ -17,6 +17,22 @@ export default {
     tt.hideLoading();
   },
 
+  // 显示成功提示
+  async showSuccess(content, delta) {
+    tt.showModal({
+      title: '成功',
+      content: content,
+      success() {
+        // 点击确定返回 delta 层
+        if (delta > 0) {
+          tt.navigateBack({
+            delta: delta,
+          });
+        }
+      },
+    });
+  },
+
   // 显示错误提示
   showError(content) {
     tt.showModal({
@@ -50,5 +66,17 @@ export default {
     // 发起请求
     let res = await requests[url](data);
     return res;
+  },
+
+  // 查询授权状态
+  async getScope(auth) {
+    let scope = await new Promise((resolve) => {
+      tt.getSetting({
+        complete(res) {
+          resolve(res);
+        },
+      });
+    });
+    return scope[auth];
   },
 };

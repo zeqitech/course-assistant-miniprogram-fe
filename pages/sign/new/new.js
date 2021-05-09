@@ -1,7 +1,7 @@
+// 全局函数
+import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
-// 全局函数
-const globalFunction = getApp().globalFunction;
 // 时间函数
 const timeFunction = getApp();
 
@@ -14,6 +14,8 @@ Page({
     duration: '',
     // 课程 ID
     courseId: '',
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -21,6 +23,7 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
+    // 保存数据
     this.setData({
       courseId: options.courseId,
     });
@@ -40,76 +43,88 @@ Page({
    * 处理发布签到事件
    */
   async handleNewSign() {
-    // 判断持续事件不为空
+    console.log(globalData);
+    // 判断持续时间不为空
     if (this.data.duration !== '') {
-      // 显示 Loading
-      tt.showLoading({
-        title: '请稍候',
-      });
-      // 计算签到起止时间
-      let startTime = timeFunction.getCurrentTime(new Date().getTime());
-      let endTime = timeFunction.getCurrentTime(
-        new Date().getTime() + parseInt(this.data.duration) * 60000
-      );
+      // 获取签到起止时间
+      let times = this.handleGetSignTime();
+      // 获取授权信息
+      let authorized = await this.handleGetLocationAuth();
+      // 已授权，显示 Loading
+      if (authorized) {
+        // 显示 Loading
+        globalFunctions.showLoading('定位中');
+      }
       // 获取当前老师位置
-      let location = await new Promise((resolve) => {
-        tt.getLocation({
-          type: 'gcj02',
-          success: (res) => {
-            resolve(res);
-          },
-        });
+      let location = await this.handleGetLocation();
+      // 保存数据
+      this.setData({
+        latitude: location.latitude.toString(),
+        longitude: location.longitude.toString(),
+        startTime: times.startTime,
+        endTime: times.endTime,
       });
       // 获取签到请求返回值
-      let newSignRes = await new Promise((resolve) => {
-        // 使用开放 API 发送请求
-        tt.request({
-          url: globalData.urlConfig.releaseSignUrl,
-          method: 'POST',
-          data: {
-            courseId: this.data.courseId,
-            expireTime: endTime,
-            latitude: location.latitude.toString(),
-            longitude: location.longitude.toString(),
-            startTime: startTime,
-            teacherId: globalData.openId,
-            validDistance: 100,
-          },
-          header: {
-            'content-type': 'application/json',
-          },
-          complete(res) {
-            resolve(res.data);
-          },
-        });
-      });
-      // 隐藏 Loading
-      tt.hideLoading();
+      let postNewSignRes = await globalFunctions.sendRequests(
+        'postNewSign',
+        this.data
+      );
+      // 已授权，隐藏 Loading
+      if (authorized) {
+        // 隐藏 Loading
+        globalFunctions.hideLoading();
+      }
       // 成功发布签到
-      if (newSignRes.success) {
+      if (postNewSignRes.success) {
         // 提示成功
-        tt.showModal({
-          title: '成功',
-          content: '发布签到成功',
-          success() {
-            // 点击确认后返回上层
-            tt.navigateBack({
-              delta: 1,
-            });
-          },
-        });
+        await globalFunctions.showSuccess('发布成功', 1);
       } else {
         // 发布签到失败
-        tt.showModal({
-          title: '失败',
-          content: newSignRes.message,
-        });
+        globalFunctions.showError(postNewSignRes.message);
       }
     } else {
-      tt.showModal({
-        title: '失败',
-        content: '请完善签到持续时间！',
-      });
+      // 提示完善签到持续时间
+      globalFunctions.showError('请完善签到持续时间');
     }
+  },
+
+  /**
+   * 获取签到起止时间
+   */
+  handleGetSignTime() {
+    // 计算签到起止时间
+    let startTime = timeFunction.getCurrentTime(new Date().getTime());
+    let endTime = timeFunction.getCurrentTime(
+      new Date().getTime() + parseInt(this.data.duration) * 60000
+    );
+    // 返回时间对象
+    return {
+      startTime,
+      endTime,
+    };
+  },
+
+  /**
+   * 获取位置信息（经纬度）
+   */
+  async handleGetLocation() {
+    // 获取位置信息
+    let getLocationRes = await new Promise((resolve) => {
+      tt.getLocation({
+        type: 'gcj02',
+        complete(res) {
+          resolve(res);
+        },
+      });
+    });
+    // 返回数据
+    return getLocationRes;
+  },
+
+  /**
+   * 获取地理位置授权信息
+   */
+  async handleGetLocationAuth() {
+    return await globalFunctions.getScope('userLocation');
   },
 });
