@@ -8,10 +8,13 @@ Page({
    * 页面初始数据
    */
   data: {
+    // 筛选当前课程或已结课课程
     filter: '',
-    expireStatus: false,
-    courseList: [],
+    // 课程列表
+    courseList: globalData.courseList,
+    // 当前课程是否为空
     nowEmpty: true,
+    // 往期课程是否为空
     pastEmpty: true,
   },
 
@@ -23,33 +26,23 @@ Page({
     console.log('-----------------all class-----------------');
     console.log(options);
     console.log('-------------------------------------------');
+    // 保存数据
     this.setData({
       filter: options.filter,
-      expireStatus: options.filter === 'now' ? false : true,
-      courseList: globalData.courseList,
       nowEmpty: options.nowEmpty === 'true' ? true : false,
       pastEmpty: options.pastEmpty === 'true' ? true : false,
     });
+    // 如果页面展示当前课程
     if (options.filter === 'now') {
       tt.setNavigationBarTitle({
         title: '当前课程列表',
       });
     } else if (options.filter === 'past') {
+      // 如果展示往期课程
       tt.setNavigationBarTitle({
         title: '往期课程列表',
       });
     }
-  },
-
-  /**
-   * 跳转到班级功能页面
-   * @param {Object} e
-   */
-  navToCourseIndex(e) {
-    console.log(e);
-    tt.navigateTo({
-      url: `/pages/course/index/index?courseId=${e.currentTarget.dataset.courseId}&cover=${e.currentTarget.dataset.cover}&coursewareToken=${e.currentTarget.dataset.coursewareToken}`,
-    });
   },
 
   /**

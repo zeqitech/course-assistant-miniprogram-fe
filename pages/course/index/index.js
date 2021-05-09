@@ -81,6 +81,7 @@ Page({
     console.log('------------------class page----------------');
     console.log(options);
     console.log('--------------------------------------------');
+    // 保存数据
     this.setData({
       courseId: options.courseId,
       cover: options.cover,
