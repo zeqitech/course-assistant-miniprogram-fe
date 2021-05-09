@@ -1,4 +1,42 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
+
+// 根据 to 参数值，确定真实 to 参数
+const switchTo = {
+  // 打分相关页面
+  grade() {
+    return switchGrade[globalData.userType]();
+  },
+  // 修改作业页面
+  work() {
+    return 'WorkModify';
+  },
+};
+// 根据用户类型，决定是否打开打分页面
+const switchGrade = {
+  // 教务
+  1() {
+    // 打开打分页面
+    return 'workFileGrade';
+  },
+  // 老师
+  2() {
+    // 打开打分页面
+    return 'workFileGrade';
+  },
+  // 学生
+  3() {
+    // 直接打开文档
+    return 'openWorkFileStudent';
+  },
+  // 助教
+  4() {
+    // 打开打分页面
+    return 'workFileGrade';
+  },
+};
 
 Page({
   /**
@@ -14,7 +52,7 @@ Page({
     // 显示弹出层
     showPopup: false,
     // 用户类型
-    userType: app.userType,
+    userType: globalData.userType,
     // 课程 ID
     courseId: '',
   },
@@ -28,7 +66,7 @@ Page({
     console.log(options);
     console.log('-----------------------------------------------');
     // 如果用户不是学生
-    if (app.userType !== 3) {
+    if (globalData.userType !== 3) {
       this.setData({
         workId: options.workId,
         startDate: options.startDate.split(' ')[0],
@@ -49,7 +87,7 @@ Page({
    */
   async onShow() {
     // 如果用户不是学生
-    if (app.userType !== 3) {
+    if (globalData.userType !== 3) {
       // 获取文件列表
       let workFileList = await this.handleGetWorkFileList();
       // 保存数据
@@ -74,7 +112,7 @@ Page({
     let workFileListRes = await new Promise((resolve) => {
       // 使用飞书开放 API
       tt.request({
-        url: app.urlConfig.getWorkFileListUrl,
+        url: globalData.urlConfig.getWorkFileListUrl,
         data: {
           workId: this.data.workId,
         },
@@ -104,10 +142,10 @@ Page({
   async handleGetMyWorkFileList() {
     let myWorkFileListRes = await new Promise((resolve) => {
       tt.request({
-        url: app.urlConfig.getMyWorkUrl,
+        url: globalData.urlConfig.getMyWorkUrl,
         data: {
           courseId: this.data.courseId,
-          studentId: app.openId,
+          studentId: globalData.openId,
         },
         header: {
           'content-type': 'application/json',
@@ -128,23 +166,16 @@ Page({
   },
 
   /**
-   * 跳转到打分页面
+   * 页面路由
    * @param {Object} e
    */
-  navToWorkFileGrade(e) {
-    let data = e.currentTarget.dataset;
-    // 如果是老师
-    if (app.userType < 3) {
-      tt.navigateTo({
-        url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
-      });
-    } else {
-      // 如果是学生，直接打开文档
-      tt.openSchema({
-        schema: 'https://uestc.feishu.cn/docs/' + data.fileToken,
-        external: false,
-      });
-    }
+  pageNavigator(e) {
+    // 获取真实 to 参数
+    let realTo = switchTo[e.currentTarget.dataset.to]();
+    // 更新 to 参数
+    e.currentTarget.dataset.to = realTo;
+    // 页面路由
+    globalFunction.pageNavigator(e, this.data);
   },
 
   /**
@@ -163,7 +194,14 @@ Page({
             success: (res) => {
               if (res.tapIndex === 0) {
                 // 修改作业
-                this.handleModifyWork();
+                let obj = {
+                  currentTarget: {
+                    dataset: {
+                      to: 'work',
+                    },
+                  },
+                };
+                this.pageNavigator(obj);
               } else if (res.tapIndex === 1) {
                 // 删除作业
                 this.handleDelWork();
@@ -196,7 +234,14 @@ Page({
       this.setData({
         showPopup: false,
       });
-      this.handleModifyWork();
+      let obj = {
+        currentTarget: {
+          dataset: {
+            to: 'work',
+          },
+        },
+      };
+      this.pageNavigator(obj);
     } else if (index === 1) {
       // 删除作业
       this.setData({
@@ -209,15 +254,6 @@ Page({
         showPopup: false,
       });
     }
-  },
-
-  /**
-   * 跳转到修改作业信息页面
-   */
-  handleModifyWork() {
-    tt.navigateTo({
-      url: `/pages/work/new/new?option=modify&startDate=${this.data.startDate}&endDate=${this.data.endDate}&name=${this.data.name}&weight=${this.data.weight}&workId=${this.data.workId}&courseId=${this.data.courseId}`,
-    });
   },
 
   /**
@@ -243,7 +279,7 @@ Page({
       // 发送删除作业请求
       let delWorkRes = await new Promise((resolve) => {
         tt.request({
-          url: `${app.urlConfig.delWorkUrl}?workId=${this.data.workId}&openId=${app.openId}`,
+          url: `${globalData.urlConfig.delWorkUrl}?workId=${this.data.workId}&openId=${globalData.openId}`,
           method: 'DELETE',
           header: {
             'content-type': 'application/json',

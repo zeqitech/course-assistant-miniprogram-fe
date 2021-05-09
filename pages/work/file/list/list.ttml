@@ -13,7 +13,8 @@
     data-file-name="{{ item.fileName }}"
     data-comment="{{ item.comment }}"
     data-score="{{ item.score }}"
-    bindtap="navToWorkFileGrade"
+    bindtap="pageNavigator"
+    data-to="grade"
   ></s-list>
 </view>
 <view class="popup">

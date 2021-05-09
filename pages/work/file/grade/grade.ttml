@@ -10,7 +10,8 @@
       class="file"
       type="slot"
       title="查看作业内容"
-      bindtap="handleOpenFile"
+      bindtap="pageNavigator"
+      data-to="openWorkFileTeacher"
     >
       <image class="icon" src="/image/file.png"></image>
     </s-list>

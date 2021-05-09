@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局变量
+const globalData = getApp().globalData;
+// 全局函数
+const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -28,14 +31,11 @@ Page({
   },
 
   /**
-   * 打开文档页面
+   * 页面路由
    * @param {Object} e
    */
-  handleOpenFile(e) {
-    tt.openSchema({
-      schema: 'https://uestc.feishu.cn/docs/' + this.data.fileToken,
-      external: false,
-    });
+  pageNavigator(e) {
+    globalFunction.pageNavigator(e, this.data);
   },
 
   /**
@@ -89,12 +89,12 @@ Page({
           // 发送打分请求
           let gradeRes = await new Promise((resolve) => {
             tt.request({
-              url: app.urlConfig.gradeUrl,
+              url: globalData.urlConfig.gradeUrl,
               method: 'POST',
               data: {
                 comment: this.data.remark,
                 fileToken: this.data.fileToken,
-                openId: app.openId,
+                openId: globalData.openId,
                 score: parseInt(this.data.score),
               },
               header: {

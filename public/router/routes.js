@@ -133,6 +133,54 @@ const routes = {
       url: `/pages/work/file/list/list?courseId=${data.pageData.courseId}`,
     });
   },
+
+  // 打开作业文档 - 老师
+  openWorkFileTeacher(data) {
+    /**
+     * fileToken - 用于打开作业文档
+     */
+    tt.openSchema({
+      schema: 'https://uestc.feishu.cn/docs/' + data.pageData.fileToken,
+      external: false,
+    });
+  },
+
+  // 打开作业文档 - 学生
+  openWorkFileStudent(data) {
+    tt.openSchema({
+      schema: 'https://uestc.feishu.cn/docs/' + data.fileToken,
+      external: false,
+    });
+  },
+
+  // 作业打分页面
+  workFileGrade(data) {
+    /**
+     * fileToken - 指定打分作业
+     * fileName - 作业名称
+     * comment - 老师评语
+     * score - 作业得分
+     */
+    tt.navigateTo({
+      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}`,
+    });
+  },
+
+  // 修改作业信息
+  workModify(data) {
+    tt.navigateTo({
+      /**
+       * option - 页面操作类型，新建 or 修改
+       * startDate - 作业开始日期
+       * endDate - 作业截至日期
+       * name - 作业名称
+       * weight - 作业权重
+       * workId - 作业 ID 值
+       * courseId - 课程 ID 值
+       */
+      url: `/pages/work/new/new?option=modify&startDate=${data.pageData.startDate}&endDate=${data.pageData.endDate}&name=${data.pageData.name}&weight=${data.pageData.weight}&workId=${data.pageData.workId}&courseId=${data.pageData.courseId}`,
+    });
+  },
 };
 
 module.exports = routes;
