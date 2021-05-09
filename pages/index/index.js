@@ -1,9 +1,7 @@
 // 获取全局变量
 const globalData = getApp().globalData;
 // 获取全局函数
-const globalFunction = getApp().globalFunction;
-// // 路由
-// import routes from '../../public/router/routes';
+import globalFunctions from '../../public/function/index';
 
 Page({
   /**
@@ -11,9 +9,11 @@ Page({
    */
   data: {
     // 班级列表
-    classList: [],
+    courseList: [],
     // 用户角色信息
     userType: globalData.userType,
+    // 用户 openId
+    openId: globalData.openId,
     // 本学期课程列表是否为空
     nowEmpty: true,
     // 往期课程是否为空
@@ -26,106 +26,97 @@ Page({
    * 生命周期函数 - 监听页面显示
    */
   async onShow() {
-    // 若未登录
-    if (!globalData.hasLogin || globalData.openId === '') {
-      // 显示 `Loading`
-      globalFunction.showLoading('加载中');
-      // 用户登录，获取用户信息
-      let userInfo = await this.handleLogin();
-      // 如果登录成功
-      if (userInfo.success) {
-        // 保存全局变量
-        globalData.hasLogin = true;
-        globalData.openId = userInfo.openId;
-        globalData.userType = userInfo.userType;
-      } else {
-        // 登录失败，显示报错信息
-        tt.showModal({
-          title: '失败',
-          content: userInfo.message,
-        });
-      }
-      // 获取班级列表
-      let courseList = await this.handleGetCourseList();
-      globalData.courseList = courseList;
-      // 更新当前页面的数据
-      this.setData({
-        userType: userInfo.userType,
-        nickName: userInfo.nickName,
-        courseList: courseList,
-      });
-    } else {
-      // 展示 `Loading`
-      tt.showLoading({
-        title: '获取课程信息',
-      });
-      // 获取班级列表
-      let courseList = await this.handleGetCourseList();
-      // 隐藏 `Loading`
-      tt.hideLoading();
-      // 更新当前页面数据
-      this.setData({
-        courseList: courseList,
-      });
+    // 用户未登录
+    if (this.data.openId === '') {
+      // 显示 Loading
+      globalFunctions.showLoading();
+      // 登录
+      await this.handleLogin();
+      // 隐藏 Loading
+      globalFunctions.hideLoading();
     }
+    // 显示 Loading
+    globalFunctions.showLoading('获取课程列表');
+    // 登录成功后获取数据
+    let courseList = await this.handleGetCourseList();
+    // 保存数据
+    this.setData({
+      courseList: courseList,
+    });
+    // 隐藏 Loading
+    globalFunctions.hideLoading();
+    // 检查当前课程和往期课程是否为空
+    this.checkEmpty();
+  },
+
+  /**
+   * 获取用户信息
+   * @returns 返回用户信息
+   */
+  async handleGetUserInfo() {
+    // 获取用户信息
+    let userInfo = await new Promise((resolve) => {
+      // 调用飞书开放接口
+      tt.getUserInfo({
+        complete(res) {
+          resolve(res.userInfo);
+        },
+      });
+    });
+    return userInfo;
+  },
+
+  /**
+   * 调用 `tt.login` 获取临时授权码
+   * @returns 返回临时授权码
+   */
+  async handleGetCode() {
+    // 获取临时授权码
+    let code = await new Promise((resolve, reject) => {
+      tt.login({
+        success: function (res) {
+          // 成功获取 Code
+          if (res.code) {
+            // 返回 Code
+            resolve(res.code);
+          } else {
+            // 获取 Code 失败，返回报错信息
+            reject(res.errMsg);
+          }
+        },
+      });
+    });
+    // 保存临时授权码
+    this.setData({
+      code: code,
+    });
+    // 返回临时授权码
+    return code;
   },
 
   /**
    * 用户登录
    */
   async handleLogin() {
-    // 获取用户信息
-    let userInfo = await new Promise((resolve) => {
-      // 调用飞书获取用户信息接口
-      tt.getUserInfo({
-        // 完成后回传 `userInfo`
-        complete(res) {
-          resolve(res.userInfo);
-        },
-      });
-    });
     // 获取临时授权码 `code`
-    let code = await new Promise((resolve) => {
-      // 调用飞书登录接口
-      tt.login({
-        // 完成后回传 `code`
-        complete(res) {
-          resolve(res.code);
-        },
-      });
-    });
+    await this.handleGetCode();
+    // 获取用户信息
+    let userInfo = await this.handleGetUserInfo();
     // 把 `code` 发送到服务端
-    let loginRes = await new Promise((resolve) => {
-      // 调用飞书 HTTP 请求接口
-      tt.request({
-        url: globalData.urlConfig.loginUrl,
-        data: {
-          code: code,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          // 请求完成，隐藏加载模块
-          tt.hideLoading();
-          // 返回请求数据
-          resolve(res.data);
-        },
+    let loginRes = await globalFunctions.sendRequests('login', this.data);
+    // 登录成功
+    if (loginRes.success) {
+      // 保存数据
+      this.setData({
+        nickName: userInfo.nickName,
+        openId: loginRes.data.open_id,
       });
-    });
-    // 返回用户信息数据
-    return {
-      // 用户名
-      nickName: userInfo.nickName,
-      // `openId`
-      openId: loginRes.data.open_id,
-      // 用户类型
-      userType: loginRes.data.userType,
-      // 接口调用状态
-      success: loginRes.success,
-      // 接口调用报错信息
-      message: loginRes.message,
-    };
+      globalData.openId = loginRes.data.openId;
+      globalData.userType = loginRes.data.userType;
+    } else {
+      // 登录失败
+      globalFunctions.showError(loginRes.message);
+    }
   },
 
   /**
@@ -133,44 +124,40 @@ Page({
    * @returns 返回课程列表
    */
   async handleGetCourseList() {
-    // 展示加载中
-    tt.showLoading({
-      title: '获取课程信息',
-    });
     // 获取课程返回结果
-    let getCourseRes = await new Promise((resolve) => {
-      tt.request({
-        url: globalData.urlConfig.getCourseUrl,
-        data: {
-          openId: globalData.openId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          resolve(res.data);
-        },
-      });
-    });
-    console.log(getCourseRes);
-    if (getCourseRes.success) {
-      // 查看是否存在未过期课程
-      getCourseRes.data.courseList.forEach((item) => {
-        if (!item.expireStatus) {
-          this.setData({
-            nowEmpty: false,
-          });
-          return;
-        } else {
-          this.setData({
-            pastEmpty: false,
-          });
-        }
-      });
+    let getCourseListRes = await globalFunctions.sendRequests(
+      'getCourseList',
+      this.data
+    );
+    // 获取课程列表成功
+    if (getCourseListRes.success) {
+      // 返回数据
+      return getCourseListRes.data.courseList;
+    } else {
+      // 获取失败，进行提示
+      globalFunctions.showError(getCourseListRes.message);
+      // 返回空数组
+      return [];
     }
-    // 隐藏加载中
-    tt.hideLoading();
-    return getCourseRes.data.courseList;
+  },
+
+  /**
+   * 检查当前课程和往期课程是否为空
+   */
+  checkEmpty() {
+    // 遍历 courseList，检查当前课程和往期课程是否为空
+    this.data.courseList.forEach((item) => {
+      if (!item.expireStatus) {
+        this.setData({
+          nowEmpty: false,
+        });
+        return;
+      } else {
+        this.setData({
+          pastEmpty: false,
+        });
+      }
+    });
   },
 
   /**
@@ -178,6 +165,6 @@ Page({
    * @param {Object} e
    */
   pageNavigator(e) {
-    globalFunction.pageNavigator(e, this.data);
+    globalFunctions.pageNavigator(e, this.data);
   },
 });

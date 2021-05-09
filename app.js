@@ -1,6 +1,4 @@
-const urlConfig = require('./config');
-// 路由
-import routes from './public/router/routes';
+import urlConfig from './public/requests/config';
 
 App({
   /**
@@ -75,31 +73,7 @@ App({
     urlConfig,
   },
 
-  globalFunction: {
-    // 显示 Loading
-    showLoading(title) {
-      tt.showLoading({
-        title: title,
-      });
-    },
-
-    // 隐藏 Loading
-    hideLoading() {
-      tt.hideLoading();
-    },
-
-    // 页面路由跳转
-    pageNavigator(event, pageData) {
-      // 数据
-      let data = event.currentTarget.dataset;
-      // 传入页面默认数据
-      data.pageData = pageData;
-      // 路由目的地
-      let to = data.to;
-      // 调用函数，发起路由跳转
-      routes[to](data);
-    },
-  },
+  globalFunction: {},
 
   /**
    * 获取当前时间 格式：yyyy-MM-dd HH:MM:SS
