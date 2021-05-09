@@ -192,6 +192,14 @@ const requests = {
     });
     return res;
   },
+
+  /**
+   * 助教
+   */
+  // 添加助教
+  async addAssistant(data) {
+    let res = await new Promise((resolve) => {});
+  },
 };
 
 export default requests;

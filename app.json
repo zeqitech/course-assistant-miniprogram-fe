@@ -11,7 +11,8 @@
     "pages/work/list/list",
     "pages/work/file/grade/grade",
     "pages/work/file/list/list",
-    "pages/work/new/new"
+    "pages/work/new/new",
+    "pages/assistant/assistant"
   ],
   "window": {
     "navigationBarTextStyle": "black",

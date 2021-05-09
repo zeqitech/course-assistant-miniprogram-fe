@@ -17,6 +17,10 @@ const switchTo = {
   courseware() {
     return 'courseware';
   },
+  // 跳转到助教管理页面
+  assistant() {
+    return 'assistant';
+  },
 };
 // 根据不同用户类型，跳转到不同签到页面
 const switchSign = {

@@ -1,4 +1,11 @@
 const routes = {
+  // 助教管理页面
+  assistant(data) {
+    tt.navigateTo({
+      url: `/pages/assistant/assistant?courseId=${data.pageData.courseId}`,
+    });
+  },
+
   // 添加课程页面
   courseAdd() {
     tt.navigateTo({
