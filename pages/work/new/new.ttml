@@ -15,7 +15,7 @@
     placeholder="请输入 1-99 之间的整数"
     bindinput="handleInputWeight"
   />
-  <s-input class="item" type="slot" class="item" label="起止日期">
+  <s-input class="item" type="slot" label="起止日期">
     <view>
       <picker
         mode="date"
@@ -39,7 +39,19 @@
       </picker>
     </view>
   </s-input>
+  <s-input
+    class="item"
+    label="助教权限"
+    type="slot"
+  >
+    <view class="switchBox">
+      <text class="switchHelp">允许助教批改本次作业</text>
+      <switch
+        checked="{{ assistantAuth }}"
+      ></switch>
+    </view>
+  </s-input>
   <button class="item btn" type="primary" tt:if="{{ option === 'new' }}" bindtap="handleAddWork">立即发布</button>
-  <button class="item btn" type="primary" tt:else bindtap="handleModifyTask">立即修改</button>
+  <button class="item btn" type="primary" tt:else bindtap="handleModifyWork">立即修改</button>
 </view>
 <template is="foot"></template>

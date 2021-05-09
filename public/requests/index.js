@@ -50,6 +50,35 @@ const requests = {
   },
 
   /**
+   * 作业
+   */
+  // 发布作业
+  async postWorkNew(data) {
+    let res = new Promise((resolve) => {
+      tt.request({
+        url: url.addWorkUrl,
+        method: 'POST',
+        data: {
+          startTime: data.pageData.startDate + ' 00:00:00',
+          expireTime: data.pageData.endDate + ' 23:59:59',
+          courseId: data.pageData.courseId,
+          weight: parseInt(data.pageData.weight),
+          openId: data.pageData.openId,
+          workName: data.pageData.name,
+          assistantAuth: data.pageData.assistantAuth,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+
+  /**
    * 签到
    */
   // 未签到名单

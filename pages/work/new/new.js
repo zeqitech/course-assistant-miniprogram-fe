@@ -3,6 +3,29 @@ import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+const dataValidator = {
+  // 判断数据是否非空
+  isFull(data) {
+    // 数据非空
+    if (data) {
+      return true;
+    } else {
+      // 数据为空
+      return false;
+    }
+  },
+  // 判断第一个时间是否在第二个时间之前
+  earlyThan(a, b) {
+    // a 在 b 之前
+    if (a < b) {
+      return true;
+    } else {
+      // a 在 b 之后
+      return false;
+    }
+  },
+};
+
 Page({
   /**
    * 页面初始数据
@@ -22,6 +45,12 @@ Page({
     weight: '',
     // 作业 ID
     workId: '',
+    // 助教拥有批改作业权限
+    assistantAuth: false,
+    // 用户 openId
+    openId: globalData.openId,
+    // 作业分类
+    tag: '',
   },
 
   /**
@@ -32,21 +61,26 @@ Page({
     console.log('-------------new task---------------');
     console.log(options);
     console.log('------------------------------------');
+    // 保存通用数据
     this.setData({
       option: options.option,
       courseId: options.courseId,
     });
+    // 如果操作为发布作业
     if (options.option === 'new') {
       tt.setNavigationBarTitle({
         title: '发布作业',
       });
     } else {
+      // 如果操作为修改作业信息
       this.setData({
         startDate: options.startDate,
         endDate: options.endDate,
         name: options.name,
         weight: options.weight,
         workId: options.workId,
+        assistantAuth: options.assistantAuth,
+        tag: options.tag,
       });
       tt.setNavigationBarTitle({
         title: '修改信息',
@@ -81,6 +115,7 @@ Page({
   handleSelectDate(e) {
     // 选择起始日期
     if (e.currentTarget.dataset.name === 'start') {
+      // 保存数据
       this.setData({
         startDate: e.detail.value,
       });
@@ -93,74 +128,55 @@ Page({
   },
 
   /**
+   * 判断数据是否符合格式要求
+   */
+  handleValidateData() {
+    // 判断作业名、开始时间、截止时间、权重、作业分类是否非空
+    if (
+      dataValidator.isFull(this.data.name) &&
+      dataValidator.isFull(this.data.startDate) &&
+      dataValidator.isFull(this.data.endDate) &&
+      dataValidator.isFull(this.data.weight) &&
+      dataValidator.isFull(this.data.tag)
+    ) {
+      // 判断开始时间是否早于结束时间
+      if (dataValidator.earlyThan(this.data.startDate, this.data.endDate)) {
+        return true;
+      } else {
+        // 提示开始时间需早于截止时间
+        globalFunctions.showError('开始时间需早于截止时间');
+      }
+    } else {
+      // 数据不完善，提示完善数据
+      globalFunctions.showError('请完善数据');
+    }
+    // 以上两项同时满足返回 true，有一项不满足即返回 false
+    return false;
+  },
+
+  /**
    * 处理发布作业事件
    */
   async handleAddWork() {
     // 首先判断 `作业名`，`开始时间`，`结束时间`，`权重` 是否为空
-    if (
-      this.data.name !== '' &&
-      this.data.startDate !== '' &&
-      this.data.endDate !== '' &&
-      this.data.weight !== ''
-    ) {
-      if (this.data.startDate > this.data.endDate) {
-        tt.showModal({
-          title: '错误',
-          content: '起始日期不能晚于结束日期！',
-        });
+    if (this.handleValidateData()) {
+      // 显示 Loading
+      globalFunctions.showLoading('发布中');
+      // 发送发布作业请求
+      let postWorkNewRes = await globalFunctions.sendRequests(
+        'postWorkNew',
+        this.data
+      );
+      // 隐藏 Loading
+      globalFunctions.hideLoading();
+      // 若添加成功
+      if (postWorkNewRes.success) {
+        // 显示发布成功
+        globalFunctions.showSuccess('发布成功', 1);
       } else {
-        // 展示加载中
-        tt.showLoading({
-          title: '发布中',
-        });
-        // 发送发布作业请求
-        let addWorkRes = await new Promise((resolve) => {
-          tt.request({
-            url: globalData.urlConfig.addWorkUrl,
-            method: 'POST',
-            data: {
-              startTime: this.data.startDate + ' 00:00:00',
-              expireTime: this.data.endDate + ' 23:59:59',
-              courseId: this.data.courseId,
-              weight: parseInt(this.data.weight),
-              openId: globalData.openId,
-              workName: this.data.name,
-            },
-            header: {
-              'content-type': 'application/json',
-            },
-            complete(res) {
-              resolve(res.data);
-            },
-          });
-        });
-        console.log(addWorkRes);
-        // 若添加成功
-        if (addWorkRes.success) {
-          // 显示发布成功
-          tt.showModal({
-            title: '成功',
-            content: '发布成功',
-            success() {
-              // 自动跳转回上一页
-              tt.navigateBack({
-                delta: 1,
-              });
-            },
-          });
-        } else {
-          // 若添加失败
-          tt.showModal({
-            title: '失败',
-            content: addWorkRes.message,
-          });
-        }
+        // 若添加失败
+        globalFunctions.showError(postWorkNewRes.message);
       }
-    } else {
-      tt.showModal({
-        title: '失败',
-        content: '请完善作业信息！',
-      });
     }
   },
 
@@ -168,7 +184,7 @@ Page({
    * 处理修改作业信息事件
    *
    */
-  async handleModifyTask() {
+  async handleModifyWork() {
     // 判断数据是否为空
     if (
       this.data.name !== '' &&

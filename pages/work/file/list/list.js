@@ -1,5 +1,5 @@
 // 全局函数
-import globalFunctions from '../../../public/function/index';
+import globalFunctions from '../../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
