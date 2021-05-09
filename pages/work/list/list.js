@@ -1,7 +1,7 @@
+// 全局函数
+import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
-// 全局函数
-const globalFunction = getApp().globalFunction;
 // 时间函数
 const timeFunction = getApp();
 
@@ -127,6 +127,6 @@ Page({
     // 替换 to 参数
     e.currentTarget.dataset.to = realTo;
     // 进行路由
-    globalFunction.pageNavigator(e, this.data);
+    globalFunctions.pageNavigator(e, this.data);
   },
 });

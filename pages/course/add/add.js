@@ -1,7 +1,7 @@
-// 全局变量
-const globalData = getApp().globalData;
 // 全局函数
 import globalFunctions from '../../../public/function/index';
+// 全局变量
+const globalData = getApp().globalData;
 // 模板文件地址
 const fileUrl =
   'https://butler-resource.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8%E8%8C%83%E4%BE%8B.xlsx';

@@ -1,7 +1,7 @@
-// 获取全局变量
-const globalData = getApp().globalData;
 // 获取全局函数
 import globalFunctions from '../../public/function/index';
+// 获取全局变量
+const globalData = getApp().globalData;
 
 Page({
   /**

@@ -1,4 +1,7 @@
-const app = getApp().globalData;
+// 全局函数
+import globalFunctions from '../../../public/function/index';
+// 全局变量
+const globalData = getApp().globalData;
 
 Page({
   /**

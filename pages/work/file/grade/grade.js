@@ -1,7 +1,7 @@
+// 全局函数
+import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
-// 全局函数
-const globalFunction = getApp().globalFunction;
 
 Page({
   /**
@@ -35,7 +35,7 @@ Page({
    * @param {Object} e
    */
   pageNavigator(e) {
-    globalFunction.pageNavigator(e, this.data);
+    globalFunctions.pageNavigator(e, this.data);
   },
 
   /**
