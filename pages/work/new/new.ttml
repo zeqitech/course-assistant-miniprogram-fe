@@ -15,6 +15,13 @@
     placeholder="请输入 1-99 之间的整数"
     bindinput="handleInputWeight"
   />
+  <s-input 
+    class="item"
+    label="作业分类"
+    value="{{ tag }}"
+    placeholder="请输入作业分类"
+    bindinput="handleInputTag"
+  />
   <s-input class="item" type="slot" label="起止日期">
     <view>
       <picker

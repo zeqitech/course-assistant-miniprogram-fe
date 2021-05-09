@@ -54,7 +54,7 @@ const requests = {
    */
   // 发布作业
   async postWorkNew(data) {
-    let res = new Promise((resolve) => {
+    let res = await new Promise((resolve) => {
       tt.request({
         url: url.addWorkUrl,
         method: 'POST',
@@ -66,10 +66,38 @@ const requests = {
           openId: data.pageData.openId,
           workName: data.pageData.name,
           assistantAuth: data.pageData.assistantAuth,
+          tag: data.pageData.tag,
         },
         header: {
           'content-type': 'application/json',
         },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 修改作业信息
+  async postWorkModify(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.modifyWorkUrl,
+        method: 'POST',
+        data: {
+          workId: data.pageData.workId,
+          startTime: data.pageData.startDate + ' 00:00:00',
+          expireTime: data.pageData.endDate + ' 23:59:59',
+          workName: data.pageData.name,
+          weight: parseInt(data.pageData.weight),
+          courseId: data.pageData.courseId,
+          assistantAuth: data.pageData.assistantAuth,
+          tag: data.pageData.tag,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        // 回传数据
         complete(res) {
           resolve(res.data);
         },
