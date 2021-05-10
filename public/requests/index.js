@@ -198,7 +198,26 @@ const requests = {
    */
   // 添加助教
   async addAssistant(data) {
-    let res = await new Promise((resolve) => {});
+    // 发送添加助教请求
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.addAssistantUrl,
+        method: 'POST',
+        data: {
+          assistantName: data.pageData.assistantName,
+          courseId: data.pageData.courseId,
+          openId: data.pageData.openId,
+          teacherId: data.pageData.teacherId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
   },
 };
 

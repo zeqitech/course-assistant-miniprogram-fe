@@ -37,7 +37,8 @@
     style="animation-delay: 0.4s;"
     title="添加助教"
     action=">"
-    bindtap="assistant"
+    bindtap="pageNavigator"
+    data-to="assistant"
   ></s-list>
 </view>
 <template is="foot"></template>

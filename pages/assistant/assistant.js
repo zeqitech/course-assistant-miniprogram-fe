@@ -16,6 +16,8 @@ Page({
     openId: '',
     // 老师的 openId
     teacherId: globalData.openId,
+    // 用户类型
+    usetType: globalData.usetType,
   },
 
   /**
@@ -23,6 +25,7 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
+    console.log(options);
     // 保存数据
     this.setData({
       courseId: options.courseId,
@@ -35,7 +38,48 @@ Page({
   handleGetAssistantList() {},
 
   /**
-   * 添加助教
+   * 发起添加助教请求
    */
-  handleAddAssistant() {},
+  async handleSendAddAssistantRequest() {
+    return await globalFunctions.sendRequests('addAssistant', this.data);
+  },
+
+  /**
+   * 添加助教逻辑
+   */
+  async handleAddAssistant() {
+    // 选择助教
+    await this.handleSelectAssistant();
+    // 发送添加助教请求
+    let addAssistantRes = await this.handleSendAddAssistantRequest();
+    // 添加成功
+    if (addAssistantRes.success) {
+      globalFunctions.showSuccess('添加成功', 0);
+    } else {
+      // 添加失败
+      globalFunctions.showError(addAssistantRes.message);
+    }
+  },
+
+  /**
+   * 选择助教
+   */
+  async handleSelectAssistant() {
+    let res = await new Promise((resolve) => {
+      tt.chooseContact({
+        multi: false,
+        complete(res) {
+          resolve(res);
+        },
+      });
+    });
+    this.setData({
+      openId: res.data.openId,
+      assistantName: res.data.name,
+    });
+    return {
+      openId: res.data.openId,
+      assistantName: res.data.name,
+    };
+  },
 });
