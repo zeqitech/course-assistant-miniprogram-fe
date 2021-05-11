@@ -3,7 +3,7 @@
 <view class="page"></view>
 <!-- 发布签到按钮 -->
 <image
-  tt:if="{{ userType === 'teacher' }}"
+  
   src="/image/add.png"
   class="add-btn"
   bindtap="handleAddAssistant"

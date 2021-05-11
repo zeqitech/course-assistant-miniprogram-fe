@@ -35,7 +35,7 @@
     tt:if="{{ userType === 'teacher' }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.4s;"
-    title="添加助教"
+    title="助教管理"
     action=">"
     bindtap="pageNavigator"
     data-to="assistant"

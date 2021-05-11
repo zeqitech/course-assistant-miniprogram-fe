@@ -17,7 +17,7 @@ Page({
     // 老师的 openId
     teacherId: globalData.openId,
     // 用户类型
-    userType: globalData.usetType,
+    userType: globalData.userType,
   },
 
   /**
@@ -73,13 +73,14 @@ Page({
         },
       });
     });
+    console.log(res);
     this.setData({
-      openId: res.data.openId,
-      assistantName: res.data.name,
+      openId: res.data[0].openId,
+      assistantName: res.data[0].name,
     });
     return {
-      openId: res.data.openId,
-      assistantName: res.data.name,
+      openId: res.data[0].openId,
+      assistantName: res.data[0].name,
     };
   },
 });
