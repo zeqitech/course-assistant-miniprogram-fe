@@ -5,11 +5,17 @@ const globalData = getApp().globalData;
 // 时间函数
 const timeFunction = getApp();
 
+// 双语支持
+import translate from '../../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 签到持续时长
     duration: '',
     // 课程 ID
@@ -53,7 +59,7 @@ Page({
       // 已授权，显示 Loading
       if (authorized) {
         // 显示 Loading
-        globalFunctions.showLoading('定位中');
+        globalFunctions.showLoading(_('定位中'));
       }
       // 获取当前老师位置
       let location = await this.handleGetLocation();
@@ -77,14 +83,14 @@ Page({
       // 成功发布签到
       if (postNewSignRes.success) {
         // 提示成功
-        await globalFunctions.showSuccess('发布成功', 1);
+        await globalFunctions.showSuccess(_('发布成功'), 1);
       } else {
         // 发布签到失败
         globalFunctions.showError(postNewSignRes.message);
       }
     } else {
       // 提示完善签到持续时间
-      globalFunctions.showError('请完善签到持续时间');
+      globalFunctions.showError(_('请完善签到持续时间'));
     }
   },
 

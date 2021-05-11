@@ -78,6 +78,8 @@ const languageMap = {
   选择文件: '选择文件',
   当前课程列表: '当前课程列表',
   往期课程列表: '往期课程列表',
+  定位中: '定位中',
+  请完善签到持续时间: '请完善签到持续时间',
 };
 
 module.exports = { languageMap: languageMap };

@@ -79,6 +79,8 @@ const languageMap = {
   选择文件: 'Select File',
   当前课程列表: 'Ongoing Courses',
   往期课程列表: 'Ended Courses',
+  定位中: 'Locating',
+  请完善签到持续时间: 'Please enter the sign-in duration.',
 };
 
 module.exports = { languageMap: languageMap };
