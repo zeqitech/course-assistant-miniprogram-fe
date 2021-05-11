@@ -9,7 +9,7 @@
       class="item animation-slide-bottom"
       style="animation-delay: {{(index+1)*0.1}}s;"
       title="{{ item.createTime }}"
-      action="{{ item.expireStatus ? '已截止' : '正在进行' }}"
+      action="{{ item.expireStatus ? _t['已截止'] : _t['正在进行'] }}"
       color="{{ item.expireStatus ? 'red' : 'green' }}"
       data-sign-id="{{ item.signId }}"
       bindtap="pageNavigator"
