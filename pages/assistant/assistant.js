@@ -17,7 +17,7 @@ Page({
     // 老师的 openId
     teacherId: globalData.openId,
     // 用户类型
-    usetType: globalData.usetType,
+    userType: globalData.usetType,
   },
 
   /**

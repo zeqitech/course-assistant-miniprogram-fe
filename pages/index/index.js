@@ -39,6 +39,7 @@ Page({
     globalFunctions.showLoading('获取课程列表');
     // 登录成功后获取数据
     let courseList = await this.handleGetCourseList();
+    console.log('获取课程列表成功', courseList);
     // 保存数据
     this.setData({
       courseList: courseList,
@@ -104,6 +105,7 @@ Page({
     let userInfo = await this.handleGetUserInfo();
     // 把 `code` 发送到服务端
     let loginRes = await globalFunctions.sendRequests('login', this.data);
+    console.log(loginRes);
     // 登录成功
     if (loginRes.success) {
       // 保存数据
