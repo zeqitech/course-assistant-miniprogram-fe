@@ -3,6 +3,10 @@ import routes from '../router/index';
 // 请求
 import requests from '../requests/index';
 
+// 双语支持
+import translate from '../translate/index';
+const _ = translate._;
+
 export default {
   // 显示 Loading
   showLoading(title) {
@@ -20,8 +24,10 @@ export default {
   // 显示成功提示
   async showSuccess(content, delta) {
     tt.showModal({
-      title: '成功',
+      title: _('成功'),
       content: content,
+      confirmText: _('确认'),
+      cancelText: _('取消'),
       success() {
         // 点击确定返回 delta 层
         if (delta > 0) {
@@ -36,8 +42,10 @@ export default {
   // 显示错误提示
   showError(content) {
     tt.showModal({
-      title: '错误',
+      title: _('错误'),
       content: content,
+      confirmText: _('确认'),
+      cancelText: _('取消'),
     });
   },
 
