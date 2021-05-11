@@ -5,6 +5,7 @@ const globalData = getApp().globalData;
 
 // 双语支持
 import translate from '../../../public/translate/index';
+const _ = translate._;
 
 Page({
   /**
