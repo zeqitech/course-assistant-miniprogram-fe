@@ -3,6 +3,10 @@ import globalFunctions from '../../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../../public/translate/index';
+const _ = translate._;
+
 // 根据 to 参数值，确定真实 to 参数
 const switchTo = {
   // 打分相关页面
@@ -43,12 +47,14 @@ Page({
    * 页面初始数模
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 作业 ID
     workId: '',
     // 文档列表
     workFileList: [],
     // 操作列表
-    itemList: ['修改作业信息', '删除作业', '取消'],
+    itemList: [_('修改作业信息'), _('删除作业'), _('取消')],
     // 显示弹出层
     showPopup: false,
     // 用户类型
@@ -125,7 +131,6 @@ Page({
         },
       });
     });
-    console.log('获取作业文档列表成功', workFileListRes);
     // 若获取成功
     if (workFileListRes.success) {
       // 返回文档列表
@@ -209,9 +214,6 @@ Page({
                 //取消
               }
             },
-            fail(res) {
-              console.log(`showActionSheet failure`);
-            },
           });
         } else {
           // PC 端，展示弹出层
@@ -263,8 +265,8 @@ Page({
     // 用户确认删除
     let confirmRes = await new Promise((resolve) => {
       tt.showModal({
-        title: '确认',
-        content: `即将删除本次作业的所有文档，是否确定删除作业：${this.data.name}`,
+        title: _('确认'),
+        content: `${_(删除提示)}${this.data.name}`,
         complete(res) {
           resolve(res);
         },
@@ -274,7 +276,7 @@ Page({
     if (confirmRes.confirm) {
       // 显示 Loading
       tt.showLoading({
-        title: '请稍候',
+        title: _('请稍候'),
       });
       // 发送删除作业请求
       let delWorkRes = await new Promise((resolve) => {
@@ -291,23 +293,11 @@ Page({
       });
       // 如果删除成功
       if (delWorkRes.success) {
-        tt.hideLoading();
-        tt.showModal({
-          title: '成功',
-          content: '成功删除作业',
-          success() {
-            // 点击确认，返回上层
-            tt.navigateBack({
-              delta: 1,
-            });
-          },
-        });
+        globalFunctions.hideLoading();
+        globalFunctions.showSuccess(_('成功删除作业'));
       } else {
         // 删除失败
-        tt.showModal({
-          title: '失败',
-          content: delWorkRes.message,
-        });
+        globalFunctions.showError(delWorkRes.message);
       }
     }
   },

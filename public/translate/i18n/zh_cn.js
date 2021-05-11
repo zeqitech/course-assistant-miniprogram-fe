@@ -87,6 +87,8 @@ const languageMap = {
   已取消: '已取消',
   分数区间为: '分数区间为0~100',
   请输入分数: '请输入分数',
+  请稍候: '请稍候',
+  删除作业成功: '删除作业成功',
 };
 
 module.exports = { languageMap: languageMap };

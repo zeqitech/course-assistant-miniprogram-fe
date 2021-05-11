@@ -88,6 +88,8 @@ const languageMap = {
   已取消: 'Canceled',
   分数区间为: 'The score must be between 0 and 100.',
   请输入分数: 'Please enter the score.',
+  请稍候: 'Just a Moment',
+  删除作业成功: 'Delete assignment successfully.',
 };
 
 module.exports = { languageMap: languageMap };
