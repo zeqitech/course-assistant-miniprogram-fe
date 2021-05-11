@@ -81,6 +81,13 @@ const languageMap = {
   往期课程列表: 'Ended Courses',
   定位中: 'Locating',
   请完善签到持续时间: 'Please enter the sign-in duration.',
+  无: 'No comment.',
+  提示: 'Prompt',
+  确认打分: 'confirm to grade',
+  打分成功: 'Grade successfully.',
+  已取消: 'Canceled',
+  分数区间为: 'The score must be between 0 and 100.',
+  请输入分数: 'Please enter the score.',
 };
 
 module.exports = { languageMap: languageMap };

@@ -3,11 +3,17 @@ import globalFunctions from '../../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 分数
     score: '',
     // 评语
@@ -71,14 +77,16 @@ Page({
         if (this.data.remark === '') {
           // 若评语为空，则添加 “无”
           this.setData({
-            remark: '无',
+            remark: _('无'),
           });
         }
         // 提示用户打分情况，并获取用户确认
         let confirmRes = await new Promise((resolve) => {
           tt.showModal({
-            title: '提示',
-            content: `确认给 ${this.data.fileName} 作业打分 ${this.data.score}？`,
+            title: _('提示'),
+            content: `${this.data.fileName} ${_('确认打分')} ${
+              this.data.score
+            }? `,
             complete(res) {
               resolve(res);
             },
@@ -107,41 +115,23 @@ Page({
           });
           if (gradeRes.success) {
             // 提示打分成功
-            tt.showModal({
-              title: '成功',
-              content: '打分成功',
-              // 点击确认后返回
-              success() {
-                tt.navigateBack({
-                  delta: 1,
-                });
-              },
-            });
+            globalFunctions.showSuccess(_('打分成功'), 1);
           } else {
             // 打分失败，显示报错信息
-            tt.showModal({
-              title: '失败',
-              content: gradeRes.message,
-            });
+            globalFunctions.showError(gradeRes.message);
           }
         } else {
           // 若取消打分
           tt.showToast({
-            title: '已取消',
+            title: _('已取消'),
             icon: 'success',
           });
         }
       } else {
-        tt.showModal({
-          title: '错误',
-          content: '分数区间为0~100',
-        });
+        globalFunctions.showError(_('分数区间为'));
       }
     } else {
-      tt.showModal({
-        title: '失败',
-        content: '请输入分数',
-      });
+      globalFunctions.showError(_('请输入分数'));
     }
   },
 });

@@ -3,13 +3,13 @@
 <view class="page">
   <s-input
     class="item width-app"
-    label="作业原文件"
+    label="{{_t['作业原文件']}}"
     type="slot"
   >
     <s-list
       class="file"
       type="slot"
-      title="点击这里查看作业内容"
+      title="{{_t['点击这里查看作业内容']}}"
       bindtap="pageNavigator"
       data-to="openWorkFileTeacher"
     >
@@ -19,20 +19,20 @@
   <view class="grade">
     <s-input
       class="item"
-      label="分数"
+      label="{{_t['分数']}}"
       value="{{ score }}"
-      placeholder="请输入成绩"
+      placeholder="{{_t['请输入成绩']}}"
       bindinput="handleScoreInput"
     />
     <s-input
       class="item"
-      label="评语（可选）"
+      label="{{_t['评语']}}"
       type="textarea"
       value="{{ remark }}"
-      placeholder="请输入评语"
+      placeholder="{{_t['请输入评语']}}"
       bindinput="handleRemarkInput"
     />
-    <button class="btn" type="primary" bindtap="handlePostGrade">提交</button>
+    <button class="btn" type="primary" bindtap="handlePostGrade">{{_t['提交']}}</button>
   </view>
 </view>
 <template is="foot"></template>
