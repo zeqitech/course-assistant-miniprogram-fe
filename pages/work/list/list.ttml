@@ -29,7 +29,7 @@
 <!-- 右下角发布作业按钮 -->
 <image
   src="/image/add.png"
-  tt:if="{{ userType !== 3 }}"
+  tt:if="{{ userType !== 'student' }}"
   class="add-btn"
   bindtap="pageNavigator"
   data-to="new"

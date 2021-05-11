@@ -25,17 +25,17 @@ const switchTo = {
 // 根据不同用户类型，跳转到不同签到页面
 const switchSign = {
   // 教务
-  1() {
+  manager() {
     // 查看签到列表
     return 'signList';
   },
   // 老师
-  2() {
+  teacher() {
     // 查看签到列表
     return 'signList';
   },
   // 学生
-  3() {
+  student() {
     // 进行签到
     return 'signIn';
   },
@@ -43,22 +43,22 @@ const switchSign = {
 // 根据不同用户类型，跳转到不同作业页面
 const switchWork = {
   // 教务
-  1() {
+  manager() {
     // 跳转到作业列表
     return 'workList';
   },
   // 老师
-  2() {
+  teacher() {
     // 跳转到作业列表
     return 'workList';
   },
   // 学生
-  3() {
+  student() {
     // 跳转到作业文档列表
     return 'workFileListStudent';
   },
   // 助教
-  4() {
+  assistant() {
     // 跳转到作业列表
     return 'workList';
   },

@@ -21,7 +21,7 @@
 </view>
 <!-- 发布签到按钮 -->
 <image
-  tt:if="{{ userType === 2 }}"
+  tt:if="{{ userType === 'teacher' }}"
   src="/image/add.png"
   class="add-btn"
   bindtap="pageNavigator"

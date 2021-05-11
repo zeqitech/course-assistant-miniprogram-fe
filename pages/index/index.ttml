@@ -23,7 +23,7 @@
     <view
       class="item animation-scale-up"
       style="animation-delay: 0.1s;"
-      tt:if="{{ userType === 1 }}"
+      tt:if="{{ userType === 'manager' }}"
       data-to="courseAdd"
       bindtap="pageNavigator"
     >

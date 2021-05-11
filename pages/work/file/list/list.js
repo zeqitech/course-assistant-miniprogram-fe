@@ -17,22 +17,22 @@ const switchTo = {
 // 根据用户类型，决定是否打开打分页面
 const switchGrade = {
   // 教务
-  1() {
+  manager() {
     // 打开打分页面
     return 'workFileGrade';
   },
   // 老师
-  2() {
+  teacher() {
     // 打开打分页面
     return 'workFileGrade';
   },
   // 学生
-  3() {
+  student() {
     // 直接打开文档
     return 'openWorkFileStudent';
   },
   // 助教
-  4() {
+  assistant() {
     // 打开打分页面
     return 'workFileGrade';
   },
@@ -66,7 +66,7 @@ Page({
     console.log(options);
     console.log('-----------------------------------------------');
     // 如果用户不是学生
-    if (globalData.userType !== 3) {
+    if (globalData.userType !== 'student') {
       this.setData({
         workId: options.workId,
         startDate: options.startDate.split(' ')[0],
@@ -87,7 +87,7 @@ Page({
    */
   async onShow() {
     // 如果用户不是学生
-    if (globalData.userType !== 3) {
+    if (globalData.userType !== 'student') {
       // 获取文件列表
       let workFileList = await this.handleGetWorkFileList();
       // 保存数据

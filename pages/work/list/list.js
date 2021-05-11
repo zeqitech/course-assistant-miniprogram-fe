@@ -19,15 +19,15 @@ const switchTo = {
 // 根据用户类型，决定跳转到文件列表
 const switchWorkFileList = {
   // 教务
-  1() {
+  manager() {
     return 'workFileListTeacher';
   },
   // 老师
-  2() {
+  teacher() {
     return 'workFileListTeacher';
   },
   // 助教
-  4() {
+  assistant() {
     return 'workFileListAssistant';
   },
 };
@@ -65,7 +65,7 @@ Page({
    */
   async onShow() {
     // 若为老师，则获取作业列表
-    if (globalData.userType !== 3) {
+    if (globalData.userType !== 'student') {
       let workList = await this.handleGetWorkList();
       this.setData({
         currentTime: timeFunction.getCurrentTime(new Date()),

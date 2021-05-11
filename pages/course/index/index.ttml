@@ -7,7 +7,7 @@
     mode="aspectCover"
   ></image>
   <s-list
-    tt:if="{{ userType !== 4 }}"
+    tt:if="{{ userType !== 'assistant' }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.1s;"
     title="签到"
@@ -32,7 +32,7 @@
     data-to="courseware"
   ></s-list>
   <s-list
-    tt:if="{{ userType === 2 }}"
+    tt:if="{{ userType === 'teacher' }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.4s;"
     title="添加助教"

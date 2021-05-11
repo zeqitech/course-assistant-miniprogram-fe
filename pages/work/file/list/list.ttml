@@ -25,5 +25,5 @@
     bindtap="handleMoreOption"
   >{{ item }}</text>
 </view>
-<image tt:if="{{ userType < 3 }}" class="add-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
+<image tt:if="{{ userType === 'manager' || userType === 'teacher' }}" class="add-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
 <template is="foot"></template>
