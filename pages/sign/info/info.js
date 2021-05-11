@@ -3,11 +3,16 @@ import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../public/translate/index';
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 签到 ID
     signId: '',
     // 已签到人数
@@ -21,7 +26,6 @@ Page({
    * @param {Object} options
    */
   onLoad(options) {
-    console.log('签到情况', options);
     // 保存数据
     this.setData({
       signId: options.signId,
