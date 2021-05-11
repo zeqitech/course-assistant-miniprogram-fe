@@ -2,6 +2,6 @@
 
 <view class="page">
   <!-- 签到按钮 -->
-  <text class="btn" bindtap="handleSignIn">立即签到</text>
+  <text class="btn" bindtap="handleSignIn">{{_t['立即签到']}}</text>
 </view>
 <template is="foot"></template>

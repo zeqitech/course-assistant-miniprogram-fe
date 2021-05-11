@@ -3,11 +3,17 @@ import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 课程 ID
     courseId: '',
   },
@@ -31,7 +37,7 @@ Page({
   async handleSignIn() {
     // 显示 Loading
     tt.showLoading({
-      title: '定位中',
+      title: _('定位中'),
     });
     // 获取位置
     let location = await new Promise((resolve) => {
@@ -66,21 +72,10 @@ Page({
     tt.hideLoading();
     // 签到成功
     if (signInRes.success) {
-      tt.showModal({
-        title: '成功',
-        content: '签到成功',
-        success() {
-          tt.navigateBack({
-            delta: 1,
-          });
-        },
-      });
+      globalFunctions.showSuccess(_('签到成功'), 1);
     } else {
       // 签到失败
-      tt.showModal({
-        title: '失败',
-        content: signInRes.message,
-      });
+      globalFunctions.showError(signInRes.message);
     }
   },
 });
