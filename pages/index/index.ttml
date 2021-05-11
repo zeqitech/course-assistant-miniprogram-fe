@@ -18,7 +18,7 @@
       bindtap="pageNavigator"
     >
       <image class="icon" src="/image/history.png"></image>
-      <text class="label">往期课程</text>
+      <text class="label">{{_t['往期课程']}}</text>
     </view>
     <view
       class="item animation-scale-up"
@@ -28,20 +28,20 @@
       bindtap="pageNavigator"
     >
       <image class="icon" src="/image/class.png"></image>
-      <text class="label">添加课程</text>
+      <text class="label">{{_t['添加课程']}}</text>
     </view>
   </scroll-view>
   <!-- 本学期开课课程列表 -->
   <view class="classes classes-now">
     <!-- 列表标题 -->
     <view class="head">
-      <text class="title">我的课程</text>
+      <text class="title">{{_t['我的课程']}}</text>
       <text
         class="label"
         data-to="courseAll"
         data-filter="now"
         bindtap="pageNavigator"
-      >查看更多</text>
+      >{{_t['查看更多']}}</text>
     </view>
     <!-- 页面为空时显示占位 -->
     <s-empty tt:if="{{ nowEmpty }}" class="empty"></s-empty>
@@ -56,7 +56,7 @@
         title="{{ item.courseName }}"
         time="{{ item.classTime }}"
         member="{{ item.studentCount }}"
-        state="进行中"
+        state="{{_t['进行中']}}"
         data-courseware-token="{{ item.coursewareToken }}"
         data-course-id="{{ item.courseId }}"
         data-chat-id="{{ item.chatId }}"

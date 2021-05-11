@@ -3,6 +3,9 @@ import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../public/translate/index';
+
 Page({
   /**
    * 页面初始数据

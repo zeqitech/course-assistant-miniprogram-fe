@@ -11,7 +11,7 @@ const switchTo = {
   },
   // 修改作业页面
   work() {
-    return 'WorkModify';
+    return 'workModify';
   },
 };
 // 根据用户类型，决定是否打开打分页面

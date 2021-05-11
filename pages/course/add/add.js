@@ -6,11 +6,17 @@ const globalData = getApp().globalData;
 const fileUrl =
   'https://butler-resource.oss-cn-beijing.aliyuncs.com/%E8%AF%BE%E7%A8%8B%E4%BF%A1%E6%81%AF%E8%A1%A8%E8%8C%83%E4%BE%8B.xlsx';
 
+// 双语支持
+import translate from '../../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 开课学期
     term: '',
     // 文件路径
@@ -28,7 +34,7 @@ Page({
    */
   async handleDownloadExcel() {
     // 显示 Loading
-    globalFunctions.showLoading('正在下载');
+    globalFunctions.showLoading(_('正在下载'));
     // 创建下载任务
     let downloadTask = tt.downloadFile({
       url: fileUrl,
@@ -63,9 +69,6 @@ Page({
           }
         }
       },
-      fail(res) {
-        console.log(`downloadFile 调用失败`);
-      },
     });
     // 监听下载进度变化
     downloadTask.onProgressUpdate((res) => {
@@ -75,13 +78,12 @@ Page({
       });
       if (this.data.progress === 100) {
         tt.showToast({
-          title: '下载完成',
+          title: _('下载完成'),
           icon: 'success',
           duration: 1500,
         });
       }
     });
-    console.log(downloadTask);
   },
 
   /**
@@ -128,9 +130,8 @@ Page({
         ) {
           // 显示 Loading
           tt.showLoading({
-            title: '创建中',
+            title: _('创建中'),
           });
-          console.log(globalData.openId, this.data.term);
           // 若文件类型正确，则发起请求
           var addCourseRes = await new Promise((resolve) => {
             tt.uploadFile({
@@ -148,41 +149,38 @@ Page({
         } else {
           // 若文件类型不正确，则进行提示
           tt.showModal({
-            title: '错误',
-            content: '文件类型不正确，请上传 xlsx 或 xls 文件',
+            title: _('错误'),
+            content: _('文件类型不正确'),
+            confirmText: _('确认'),
+            cancelText: _('取消'),
           });
         }
       } else {
         // 若未选择文件，则提示
         tt.showModal({
-          title: '错误',
-          content: '请选择文件',
+          title: _('错误'),
+          content: _('请选择文件'),
+          confirmText: _('确认'),
+          cancelText: _('取消'),
         });
       }
     } else {
       // 若输入内容为空，则提示
       tt.showModal({
-        title: '错误',
-        content: '请填写开课学期',
+        title: _('错误'),
+        content: _('请填写开课学期'),
+        confirmText: _('确认'),
+        cancelText: _('取消'),
       });
     }
     console.log(addCourseRes);
     if (addCourseRes.success) {
       // 提示成功
-      tt.showModal({
-        title: '成功',
-        content: '成功添加课程',
-        success(res) {
-          // 点击确认返回上层
-          tt.navigateBack({
-            delta: 1,
-          });
-        },
-      });
+      globalFunctions.showSuccess(_('添加课程成功'), 1);
     } else {
       // 提示失败
       tt.showModal({
-        title: '失败',
+        title: _('错误'),
         content: addCourseRes.message,
       });
     }

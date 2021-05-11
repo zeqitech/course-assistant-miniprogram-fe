@@ -8,7 +8,7 @@
         <image class="icon" src="/image/member.png"></image>
         <text class="value">{{ member }}</text>
       </view>
-      <text class="state {{ state === '进行中' ? 'green' : 'red' }}">{{
+      <text class="state {{ state === _t['进行中'] ? 'green' : 'red' }}">{{
         state
       }}</text>
     </view>

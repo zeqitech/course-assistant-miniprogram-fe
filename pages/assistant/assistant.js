@@ -3,11 +3,17 @@ import globalFunctions from '../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 助教姓名
     assistantName: '',
     // 课程 ID
@@ -54,7 +60,7 @@ Page({
     let addAssistantRes = await this.handleSendAddAssistantRequest();
     // 添加成功
     if (addAssistantRes.success) {
-      globalFunctions.showSuccess('添加成功', 0);
+      globalFunctions.showSuccess(_('添加成功'), 0);
     } else {
       // 添加失败
       globalFunctions.showError(addAssistantRes.message);

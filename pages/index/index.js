@@ -3,11 +3,17 @@ import globalFunctions from '../../public/function/index';
 // 获取全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../public/translate/index';
+const _ = translate._;
+
 Page({
   /**
    * 页面数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 班级列表
     courseList: [],
     // 用户角色信息
@@ -36,10 +42,9 @@ Page({
       globalFunctions.hideLoading();
     }
     // 显示 Loading
-    globalFunctions.showLoading('获取课程列表');
+    globalFunctions.showLoading(_('获取课程列表'));
     // 登录成功后获取数据
     let courseList = await this.handleGetCourseList();
-    console.log('获取课程列表成功', courseList);
     // 保存数据
     this.setData({
       courseList: courseList,
@@ -103,9 +108,9 @@ Page({
     await this.handleGetCode();
     // 获取用户信息
     let userInfo = await this.handleGetUserInfo();
+    console.log(userInfo);
     // 把 `code` 发送到服务端
     let loginRes = await globalFunctions.sendRequests('login', this.data);
-    console.log(loginRes);
     // 登录成功
     if (loginRes.success) {
       // 保存数据
