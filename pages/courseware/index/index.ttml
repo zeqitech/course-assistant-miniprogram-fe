@@ -3,13 +3,13 @@
 <view class="page">
   <view class="width-app courseware">
     <s-input
-      label="课件原文件"
+      label="{{_t['课件原文件']}}"
       type="slot"
     >
       <s-list
         class="file"
         type="slot"
-        title="点击这里查看课件"
+        title="{{_t['点击这里查看课件']}}"
         bindtap="pageNavigator"
         data-to="coursewareFile"
       >
@@ -17,7 +17,7 @@
       </s-list>
     </s-input>
     <view class="info" tt:if="{{ userType === 'teacher' }}">
-      <text class="title">课件浏览情况</text>
+      <text class="title">{{_t['课件浏览情况']}}</text>
       <view class="list">
         <s-list
           class="item"
