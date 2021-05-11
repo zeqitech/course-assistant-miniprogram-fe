@@ -91,6 +91,10 @@ const languageMap = {
   请稍候: 'Just a Moment',
   删除作业成功: 'Delete assignment successfully.',
   获取作业列表: 'Getting Assignments',
+  开始时间需早于截止时间: 'The start date must be earlier than the end date.',
+  请完善数据: 'Please complete the data.',
+  修改中: 'Modifying',
+  修改作业信息成功: 'Modified assignment information successfully.',
 };
 
 module.exports = { languageMap: languageMap };

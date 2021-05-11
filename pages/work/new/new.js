@@ -3,6 +3,10 @@ import globalFunctions from '../../../public/function/index';
 // 全局变量
 const globalData = getApp().globalData;
 
+// 双语支持
+import translate from '../../../public/translate/index';
+const _ = translate._;
+
 const dataValidator = {
   // 判断数据是否非空
   isFull(data) {
@@ -31,6 +35,8 @@ Page({
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     //作业名称
     name: '',
     //作业起始日期
@@ -69,7 +75,7 @@ Page({
     // 如果操作为发布作业
     if (options.option === 'new') {
       tt.setNavigationBarTitle({
-        title: '发布作业',
+        title: _('发布作业'),
       });
     } else {
       // 如果操作为修改作业信息
@@ -83,7 +89,7 @@ Page({
         tag: options.tag,
       });
       tt.setNavigationBarTitle({
-        title: '修改信息',
+        title: _('修改信息'),
       });
     }
   },
@@ -154,11 +160,11 @@ Page({
         return true;
       } else {
         // 提示开始时间需早于截止时间
-        globalFunctions.showError('开始时间需早于截止时间');
+        globalFunctions.showError(_('开始时间需早于截止时间'));
       }
     } else {
       // 数据不完善，提示完善数据
-      globalFunctions.showError('请完善数据');
+      globalFunctions.showError(_('请完善数据'));
     }
     // 以上两项同时满足返回 true，有一项不满足即返回 false
     return false;
@@ -171,7 +177,7 @@ Page({
     // 首先判断 `作业名`，`开始时间`，`结束时间`，`权重` 是否为空
     if (this.handleValidateData()) {
       // 显示 Loading
-      globalFunctions.showLoading('发布中');
+      globalFunctions.showLoading(_('发布中'));
       // 发送发布作业请求
       let postWorkNewRes = await globalFunctions.sendRequests(
         'postWorkNew',
@@ -182,7 +188,7 @@ Page({
       // 若添加成功
       if (postWorkNewRes.success) {
         // 显示发布成功
-        globalFunctions.showSuccess('发布成功', 1);
+        globalFunctions.showSuccess(_('发布成功'), 1);
       } else {
         // 若添加失败
         globalFunctions.showError(postWorkNewRes.message);
@@ -198,7 +204,7 @@ Page({
     // 数据验证
     if (this.handleValidateData()) {
       // 显示 Loading
-      globalFunctions.showLoading('修改中');
+      globalFunctions.showLoading(_('修改中'));
       // 发送修改作业请求
       let postWorkModifyRes = await globalFunctions.sendRequests(
         'postWorkModify',
@@ -209,7 +215,7 @@ Page({
       // 如果修改作业信息成功
       if (postWorkModifyRes.success) {
         // 成功提示
-        globalFunctions.showSuccess('修改作业信息成功', 2);
+        globalFunctions.showSuccess(_('修改作业信息成功'), 2);
       } else {
         // 失败提示
         globalFunctions.showError(postWorkModifyRes.message);
