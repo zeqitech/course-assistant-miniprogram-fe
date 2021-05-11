@@ -5,6 +5,10 @@ const globalData = getApp().globalData;
 // 时间函数
 const timeFunction = getApp();
 
+// 双语支持
+import translate from '../../../public/translate/index';
+const _ = translate._;
+
 // 根据路由目的地，返回 to 参数值
 const switchTo = {
   // 发布作业
@@ -37,6 +41,8 @@ Page({
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 用户类型
     userType: globalData.userType,
     // 作业列表
@@ -81,7 +87,7 @@ Page({
   async handleGetWorkList() {
     // 展示 `Loading`
     tt.showLoading({
-      title: '获取作业列表',
+      title: _('获取作业列表'),
     });
     // 获取作业列表返回值
     let getWorkListRes = await new Promise((resolve) => {
@@ -108,10 +114,7 @@ Page({
       return getWorkListRes.data.workList;
     } else {
       // 获取作业列表失败
-      tt.showModal({
-        title: '失败',
-        content: getWorkListRes.message,
-      });
+      globalFunctions.showError(getWorkListRes.message);
       // 返回空数组
       return [];
     }

@@ -89,6 +89,7 @@ const languageMap = {
   请输入分数: '请输入分数',
   请稍候: '请稍候',
   删除作业成功: '删除作业成功',
+  获取作业列表: '获取作业列表',
 };
 
 module.exports = { languageMap: languageMap };

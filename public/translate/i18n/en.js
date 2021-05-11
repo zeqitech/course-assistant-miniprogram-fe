@@ -90,6 +90,7 @@ const languageMap = {
   请输入分数: 'Please enter the score.',
   请稍候: 'Just a Moment',
   删除作业成功: 'Delete assignment successfully.',
+  获取作业列表: 'Getting Assignments',
 };
 
 module.exports = { languageMap: languageMap };

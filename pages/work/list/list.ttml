@@ -11,7 +11,7 @@
     icon="/image/task.png"
     title="{{ item.workName }}"
     value="{{ item.expireTime }}"
-    action="{{ item.expireTime < currentTime ? '已截止' : (item.startTime <currentTime ? '进行中' : '未开始') }}"
+    action="{{ item.expireTime < currentTime ? _t['已截止'] : (item.startTime <currentTime ? _t['进行中'] : _t['未开始']) }}"
     color="{{ item.expireTime < currentTime ? 'red' : (item.startTime <currentTime ? 'green' : 'blue') }}"
     data-expire-status="{{ item.expireStatus }}"
     data-expire-time="{{ item.expireTime }}"
