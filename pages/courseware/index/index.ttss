@@ -1,0 +1,33 @@
+.courseware {
+  margin-top: 24px;
+}
+.file {
+  margin-top: 8px;
+}
+.file .icon {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
+}
+
+.info {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.info .title {
+  align-self: center;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+.info .list {
+  display: flex;
+  flex-direction: column;
+}
+
+.info .list .item {
+  margin-top: 12px;
+}

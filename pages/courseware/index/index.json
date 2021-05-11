@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程课件",
+  "usingComponents": {
+    "s-list": "/components/slist/slist",
+    "s-input": "/components/sinput/sinput"
+  }
+}

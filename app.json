@@ -12,7 +12,8 @@
     "pages/work/file/grade/grade",
     "pages/work/file/list/list",
     "pages/work/new/new",
-    "pages/assistant/assistant"
+    "pages/assistant/assistant",
+    "pages/courseware/index/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

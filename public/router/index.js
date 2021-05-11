@@ -38,13 +38,24 @@ const routes = {
   },
 
   // 打开课件文档
-  courseware(data) {
+  coursewareFile(data) {
     /**
      * coursewareToken - 课件 Token，用于打开课件文档
      */
     tt.openSchema({
       schema: 'https://uestc.feishu.cn/docs/' + data.pageData.coursewareToken,
       external: false,
+    });
+  },
+
+  // 课件页面
+  courseware(data) {
+    /**
+     * couresewareToken - 课件 Token
+     * openId - 用户 openId
+     */
+    tt.navigateTo({
+      url: `/pages/courseware/index/index?couresewareToken=${data.pageData.coursewareToken}&openId=${data.pageData.openId}`,
     });
   },
 

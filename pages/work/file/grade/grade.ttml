@@ -9,7 +9,7 @@
     <s-list
       class="file"
       type="slot"
-      title="查看作业内容"
+      title="点击这里查看作业内容"
       bindtap="pageNavigator"
       data-to="openWorkFileTeacher"
     >
