@@ -5,12 +5,15 @@ const globalData = getApp().globalData;
 
 // 双语支持
 import translate from '../../../public/translate/index';
+const _ = translate._;
 
 Page({
   /**
    * 页面初始数据
    */
   data: {
+    // ttml 双语支持
+    _t: translate._t(),
     // 筛选当前课程或已结课课程
     filter: '',
     // 课程列表
@@ -38,12 +41,12 @@ Page({
     // 如果页面展示当前课程
     if (options.filter === 'now') {
       tt.setNavigationBarTitle({
-        title: '当前课程列表',
+        title: _('当前课程列表'),
       });
     } else if (options.filter === 'past') {
       // 如果展示往期课程
       tt.setNavigationBarTitle({
-        title: '往期课程列表',
+        title: _('往期课程列表'),
       });
     }
   },

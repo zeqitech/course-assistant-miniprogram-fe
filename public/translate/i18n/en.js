@@ -77,6 +77,8 @@ const languageMap = {
   学期格式:
     '[Format]: <Year><Semester>. For example, 20211 represents the 1st semester of 2021',
   选择文件: 'Select File',
+  当前课程列表: 'Ongoing Courses',
+  往期课程列表: 'Ended Courses',
 };
 
 module.exports = { languageMap: languageMap };
