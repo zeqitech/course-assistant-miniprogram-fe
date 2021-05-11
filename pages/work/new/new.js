@@ -95,6 +95,16 @@ Page({
   },
 
   /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('发布作业'),
+    });
+  },
+
+  /**
    * 处理输入作业名称事件
    * @param {Object} e
    */

@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "发布作业",
   "usingComponents": {
     "s-input": "/components/sinput/sinput"
   }

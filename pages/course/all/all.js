@@ -38,12 +38,18 @@ Page({
       nowEmpty: options.nowEmpty === 'true' ? true : false,
       pastEmpty: options.pastEmpty === 'true' ? true : false,
     });
+  },
+
+  /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
     // 如果页面展示当前课程
-    if (options.filter === 'now') {
+    if (this.data.filter === 'now') {
       tt.setNavigationBarTitle({
         title: _('当前课程列表'),
       });
-    } else if (options.filter === 'past') {
+    } else if (this.data.filter === 'past') {
       // 如果展示往期课程
       tt.setNavigationBarTitle({
         title: _('往期课程列表'),

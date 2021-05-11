@@ -36,6 +36,16 @@ Page({
   },
 
   /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('发起签到'),
+    });
+  },
+
+  /**
    * 输入签到时长事件
    * @param {Object} e
    */

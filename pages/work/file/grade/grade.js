@@ -24,6 +24,10 @@ Page({
     fileName: '',
   },
 
+  /**
+   * 生命周期函数 - 监听页面加载
+   * @param {Object} options
+   */
   onLoad(options) {
     console.log('---------------grade page--------------');
     console.log(options);
@@ -33,6 +37,16 @@ Page({
       fileName: options.fileName,
       score: options.score === 'null' ? '' : options.score,
       remark: options.comment === 'null' ? '' : options.comment,
+    });
+  },
+
+  /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('作业评分'),
     });
   },
 

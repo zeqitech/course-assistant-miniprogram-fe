@@ -35,7 +35,12 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {},
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('课程课件'),
+    });
+  },
 
   handleGetViewInfo() {
     globalFunctions.sendRequests();

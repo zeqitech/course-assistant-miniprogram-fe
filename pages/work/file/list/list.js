@@ -108,6 +108,10 @@ Page({
         workFileList: workFileList,
       });
     }
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('作业文档列表'),
+    });
   },
 
   /**

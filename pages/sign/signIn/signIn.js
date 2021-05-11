@@ -32,6 +32,16 @@ Page({
   },
 
   /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('签到'),
+    });
+  },
+
+  /**
    * 处理签到事件
    */
   async handleSignIn() {

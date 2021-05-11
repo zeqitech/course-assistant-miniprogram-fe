@@ -43,6 +43,10 @@ Page({
       signedCount: signInfo.signedCount,
       unsignedList: signInfo.unsignedList,
     });
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('签到情况'),
+    });
   },
 
   /**

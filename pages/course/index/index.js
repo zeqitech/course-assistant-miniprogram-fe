@@ -99,6 +99,16 @@ Page({
   },
 
   /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('课程功能'),
+    });
+  },
+
+  /**
    * 页面路由
    * @param {Object} e
    */

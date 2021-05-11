@@ -30,6 +30,16 @@ Page({
   },
 
   /**
+   * 生命周期函数 - 监听页面显示
+   */
+  onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('添加课程'),
+    });
+  },
+
+  /**
    * 处理下载 Excel 模板事件
    */
   async handleDownloadExcel() {

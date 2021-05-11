@@ -1,5 +1,4 @@
 {
-  "navigationBarTitleText": "课程作业列表",
   "usingComponents": {
     "s-list": "/components/slist/slist",
     "s-empty": "/components/sempty/sempty"

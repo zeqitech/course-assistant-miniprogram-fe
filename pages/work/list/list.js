@@ -78,6 +78,10 @@ Page({
         workList: workList,
       });
     }
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('课程作业列表'),
+    });
   },
 
   /**
