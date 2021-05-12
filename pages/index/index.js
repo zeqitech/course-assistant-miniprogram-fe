@@ -73,6 +73,7 @@ Page({
     this.setData({
       courseList: courseList,
     });
+    globalData.courseList = courseList;
     // 隐藏 Loading
     globalFunctions.hideLoading();
     // 检查当前课程和往期课程是否为空

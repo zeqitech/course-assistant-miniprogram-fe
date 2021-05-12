@@ -42,6 +42,10 @@ Page({
    * 生命周期函数 - 监听页面显示
    */
   onShow() {
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 如果页面展示当前课程
     if (this.data.filter === 'now') {
       tt.setNavigationBarTitle({
@@ -53,10 +57,6 @@ Page({
         title: _('往期课程列表'),
       });
     }
-    // ttml 双语支持
-    this.setData({
-      _t: translate._t(),
-    });
   },
 
   /**
