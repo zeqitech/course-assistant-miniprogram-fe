@@ -80,6 +80,8 @@ Page({
     cover: '',
     // 课程 ID
     courseId: '',
+    // 用户 openId
+    openId: globalData.openId,
     // 用户类型
     userType: globalData.userType,
   },
@@ -103,7 +105,7 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('课程功能'),
@@ -112,6 +114,27 @@ Page({
     this.setData({
       _t: translate._t(),
     });
+    // 区分学生和助教
+    if (this.data.userType === 'student') {
+      await this.handleGetUserType();
+    }
+  },
+
+  /**
+   * 获取用户类型，区分学生和助教
+   */
+  async handleGetUserType() {
+    let res = await globalFunctions.sendRequests('getUserType', this.data);
+    console.log(res);
+    // 获取成功
+    if (res.success) {
+      this.setData({
+        userType: res.data.userType,
+      });
+      globalData.userType = res.data.userType;
+    } else {
+      globalFunctions.showError(res.message);
+    }
   },
 
   /**

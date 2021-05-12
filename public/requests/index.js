@@ -25,6 +25,25 @@ const requests = {
     // 返回数据
     return res;
   },
+  // 用户类型
+  async getUserType(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getUserTypeUrl,
+        data: {
+          openId: data.pageData.openId,
+          courseId: data.pageData.courseId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 课程

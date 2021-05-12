@@ -40,7 +40,7 @@
 <!-- 右下角发布作业按钮 -->
 <image
   src="/image/add.png"
-  tt:if="{{ userType !== 'student' }}"
+  tt:if="{{ userType === 'teacher' }}"
   class="add-btn"
   bindtap="pageNavigator"
   data-to="new"

@@ -53,7 +53,7 @@ Page({
   handleShowTime(e) {
     tt.showModal({
       title: _('详情'),
-      content: `${_('首次查看时间')}`,
+      content: `${_('首次查阅时间')}`,
       confirmText: _('确认'),
       cancelText: _('取消'),
     });

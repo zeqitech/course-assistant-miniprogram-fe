@@ -88,7 +88,7 @@ Page({
     let addAssistantRes = await this.handleSendAddAssistantRequest();
     // 添加成功
     if (addAssistantRes.success) {
-      globalFunctions.showSuccess(_('添加成功'), 0);
+      globalFunctions.showSuccess(_('添加成功'), 1);
     } else {
       // 添加失败
       globalFunctions.showError(addAssistantRes.message);
