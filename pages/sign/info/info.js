@@ -53,6 +53,33 @@ Page({
   },
 
   /**
+   * 提前结束签到
+   */
+  async handleEndSign() {
+    // 提示用户确认
+    let confirm = await new Promise((resolve) => {
+      tt.showModal({
+        title: _('提示'),
+        content: _('结束签到提醒'),
+        success(res) {
+          resolve(res);
+        },
+      });
+    });
+    // 用户确认后，结束签到
+    if (confirm.confirm) {
+      let res = await globalFunctions.sendRequests('endSign', this.data);
+      console.log(res);
+      // 结束成功
+      if (res.success) {
+        globalFunctions.showSuccess(_('结束签到成功'), 1);
+      } else {
+        globalFunctions.showError(res.message);
+      }
+    }
+  },
+
+  /**
    * 获取签到信息
    * @returns 返回签到人数和未签到人名单
    */

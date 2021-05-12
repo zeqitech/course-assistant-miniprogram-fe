@@ -424,6 +424,41 @@ const requests = {
     });
     return res;
   },
+  // 提前结束签到
+  async endSign(data) {
+    console.log(data);
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.closeSignUrl + '?signId=' + data.pageData.signId,
+        method: 'POST',
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  async getMySignRecord(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.signRecordStudent,
+        data: {
+          courseId: data.pageData.courseId,
+          openId: data.pageData.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 助教

@@ -2,6 +2,10 @@
   margin-top: 24px;
 }
 
+.warn-btn {
+  margin-top: 12px;
+}
+
 .unsign {
   margin-top: 20px;
   display: flex;

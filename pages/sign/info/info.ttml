@@ -6,11 +6,13 @@
       title="{{_t['已签到人数']}}"
       action="{{ signedCount }}"
     />
+    <button class="warn-btn" type="warn" bindtap="handleEndSign">{{_t['提前结束签到']}}</button>
     <view class="unsign">
       <text class="title">{{_t['未签到名单']}}</text>
       <view class="list">
         <s-list
           class="item"
+          tt:if="{{ unsignedList.length !== 0 }}"
           tt:for="{{ unsignedList }}"
           title="{{ item }}"
           action="{{_t['未签到']}}"

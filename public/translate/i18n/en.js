@@ -114,6 +114,12 @@ const languageMap = {
   查阅次数: 'View Count',
   作业查阅次数: 'Assignment view count: ',
   立即签到: 'Sign In',
+  提前结束签到: 'End Sign-in Early',
+  结束签到成功: 'End sign-in successfully.',
+  结束签到提醒:
+    'This check-in is about to end, it will not be able to re-open after the end, confirm the end of the check-in?',
+  签到记录: 'Sign-in Record',
+  已签到: 'Signed',
 };
 
 module.exports = { languageMap: languageMap };

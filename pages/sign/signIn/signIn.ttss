@@ -13,12 +13,24 @@
 }
 
 /* 签到记录列表 */
-.list {
-  width: calc(100% - 48px);
-  margin-top: 12px;
+.record {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 }
-.list .item {
+
+.record .title {
+  align-self: center;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+.record .list {
+  display: flex;
+  flex-direction: column;
+}
+
+.record .list .item {
   margin-top: 12px;
 }

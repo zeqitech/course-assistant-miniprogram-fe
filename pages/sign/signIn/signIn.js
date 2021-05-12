@@ -34,7 +34,7 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('签到'),
@@ -43,6 +43,21 @@ Page({
     this.setData({
       _t: translate._t(),
     });
+    // 获取个人签到列表
+    await this.handleGetMySignRecord();
+  },
+
+  /**
+   * 获取个人签到记录
+   */
+  async handleGetMySignRecord() {
+    let res = await globalFunctions.sendRequests('getMySignRecord', this.data);
+    // 获取成功
+    if (res.success) {
+      this.setData({
+        signList: res.data.signRecord,
+      });
+    }
   },
 
   /**
