@@ -61,6 +61,8 @@ Page({
     userType: globalData.userType,
     // 课程 ID
     courseId: '',
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -119,22 +121,10 @@ Page({
    */
   async handleGetWorkFileList() {
     // 获取返回值
-    let workFileListRes = await new Promise((resolve) => {
-      // 使用飞书开放 API
-      tt.request({
-        url: globalData.urlConfig.getWorkFileListUrl,
-        data: {
-          workId: this.data.workId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          // 回传数据
-          resolve(res.data);
-        },
-      });
-    });
+    let workFileListRes = await globalFunctions.sendRequests(
+      'getWorkFileList',
+      this.data
+    );
     // 若获取成功
     if (workFileListRes.success) {
       // 返回文档列表
@@ -149,22 +139,10 @@ Page({
    * 获取学生课程下所有作业
    */
   async handleGetMyWorkFileList() {
-    let myWorkFileListRes = await new Promise((resolve) => {
-      tt.request({
-        url: globalData.urlConfig.getMyWorkUrl,
-        data: {
-          courseId: this.data.courseId,
-          studentId: globalData.openId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          resolve(res.data);
-        },
-      });
-    });
-    console.log(myWorkFileListRes.data);
+    let myWorkFileListRes = await globalFunctions.sendRequests(
+      'getMyWorkFileList',
+      this.data
+    );
     // 获取成功
     if (myWorkFileListRes.success) {
       return myWorkFileListRes.data.workList;
@@ -283,18 +261,10 @@ Page({
         title: _('请稍候'),
       });
       // 发送删除作业请求
-      let delWorkRes = await new Promise((resolve) => {
-        tt.request({
-          url: `${globalData.urlConfig.delWorkUrl}?workId=${this.data.workId}&openId=${globalData.openId}`,
-          method: 'DELETE',
-          header: {
-            'content-type': 'application/json',
-          },
-          complete(res) {
-            resolve(res.data);
-          },
-        });
-      });
+      let delWorkRes = await globalFunctions.sendRequests(
+        'deleteWork',
+        this.data
+      );
       // 如果删除成功
       if (delWorkRes.success) {
         globalFunctions.hideLoading();

@@ -16,6 +16,8 @@ Page({
     _t: translate._t(),
     // 课程 ID
     courseId: '',
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -46,9 +48,7 @@ Page({
    */
   async handleSignIn() {
     // 显示 Loading
-    tt.showLoading({
-      title: _('定位中'),
-    });
+    globalFunctions.showLoading(_('定位中'));
     // 获取位置
     let location = await new Promise((resolve) => {
       tt.getLocation({
@@ -59,27 +59,15 @@ Page({
         },
       });
     });
-    // 发送签到请求
-    let signInRes = await new Promise((resolve) => {
-      tt.request({
-        url: globalData.urlConfig.signInUrl,
-        method: 'POST',
-        data: {
-          courseId: this.data.courseId,
-          studentId: globalData.openId,
-          latitude: location.latitude.toString(),
-          longitude: location.longitude.toString(),
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        complete(res) {
-          resolve(res.data);
-        },
-      });
+    // 保存数据
+    this.setData({
+      latitude: location.latitude.toString(),
+      longitude: location.longitude.toString(),
     });
+    // 发送签到请求
+    let signInRes = await globalFunctions.sendRequests('postSignIn', this.data);
     // 隐藏 Loading
-    tt.hideLoading();
+    globalFunctions.hideLoading();
     // 签到成功
     if (signInRes.success) {
       globalFunctions.showSuccess(_('签到成功'), 1);

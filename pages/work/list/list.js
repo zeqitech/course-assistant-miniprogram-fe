@@ -90,28 +90,14 @@ Page({
    */
   async handleGetWorkList() {
     // 展示 `Loading`
-    tt.showLoading({
-      title: _('获取作业列表'),
-    });
+    globalFunctions.showLoading(_('获取作业列表'));
     // 获取作业列表返回值
-    let getWorkListRes = await new Promise((resolve) => {
-      // 调用飞书 HTTP 能力
-      tt.request({
-        url: globalData.urlConfig.getWorkUrl,
-        data: {
-          courseId: this.data.courseId,
-        },
-        header: {
-          'content-type': 'application/json',
-        },
-        // 请求成功，回传数据
-        complete(res) {
-          resolve(res.data);
-        },
-      });
-    });
+    let getWorkListRes = await globalFunctions.sendRequests(
+      'getWorkList',
+      this.data
+    );
     // 隐藏 `Loading`
-    tt.hideLoading();
+    globalFunctions.hideLoading();
     // 若成功获取作业列表
     if (getWorkListRes.success) {
       // 返回作业列表

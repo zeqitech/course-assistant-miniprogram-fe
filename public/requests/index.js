@@ -122,6 +122,103 @@ const requests = {
     });
     return res;
   },
+  // 作业打分
+  async postGrade(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.gradeUrl,
+        method: 'POST',
+        data: {
+          comment: data.pageData.remark,
+          fileToken: data.pageData.fileToken,
+          openId: data.pageData.openId,
+          score: parseInt(data.pageData.score),
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取作业文档列表 - 老师
+  async getWorkFileList(data) {
+    let res = await new Promise((resolve) => {
+      // 使用飞书开放 API
+      tt.request({
+        url: url.getWorkFileListUrl,
+        data: {
+          workId: data.pageData.workId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          // 回传数据
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取作业文档列表 -学生
+  async getMyWorkFileList(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getMyWorkUrl,
+        data: {
+          courseId: data.pageData.courseId,
+          studentId: data.pageData.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 删除作业
+  async deleteWork(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: `${url.delWorkUrl}?workId=${data.pageData.workId}&openId=${data.pageData.openId}`,
+        method: 'DELETE',
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取作业列表 - 老师
+  async getWorkList(data) {
+    let res = await new Promise((resolve) => {
+      // 调用飞书 HTTP 能力
+      tt.request({
+        url: url.getWorkUrl,
+        data: {
+          courseId: data.pageData.courseId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        // 请求成功，回传数据
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 签到
@@ -198,6 +295,28 @@ const requests = {
           longitude: data.pageData.longitude,
           startTime: data.pageData.startTime,
           teacherId: data.pageData.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 学生签到
+  async postSignIn(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.signInUrl,
+        method: 'POST',
+        data: {
+          courseId: data.pageData.courseId,
+          studentId: data.pageData.openId,
+          latitude: data.pageData.latitude,
+          longitude: data.pageData.longitude,
         },
         header: {
           'content-type': 'application/json',

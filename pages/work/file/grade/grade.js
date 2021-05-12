@@ -22,6 +22,8 @@ Page({
     fileToken: '',
     // 文件名
     fileName: '',
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -109,24 +111,10 @@ Page({
         // 若点击确定
         if (confirmRes.confirm) {
           // 发送打分请求
-          let gradeRes = await new Promise((resolve) => {
-            tt.request({
-              url: globalData.urlConfig.gradeUrl,
-              method: 'POST',
-              data: {
-                comment: this.data.remark,
-                fileToken: this.data.fileToken,
-                openId: globalData.openId,
-                score: parseInt(this.data.score),
-              },
-              header: {
-                'content-type': 'application/json',
-              },
-              complete(res) {
-                resolve(res.data);
-              },
-            });
-          });
+          let gradeRes = await globalFunctions.sendRequests(
+            'postGrade',
+            this.data
+          );
           if (gradeRes.success) {
             // 提示打分成功
             globalFunctions.showSuccess(_('打分成功'), 1);
