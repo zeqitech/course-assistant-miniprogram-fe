@@ -259,7 +259,8 @@ const requests = {
    * 课件
    */
   // 获取课件浏览记录
-  async getcoursewareViewInfo(data) {
+  async getCoursewareViewInfo(data) {
+    console.log(data);
     let res = await new Promise((resolve) => {
       tt.request({
         url: url.getViewInfoUrl,

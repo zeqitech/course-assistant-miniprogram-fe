@@ -29,7 +29,6 @@ Page({
     // 保存数据
     this.setData({
       coursewareToken: options.coursewareToken,
-      openId: options.openId,
     });
   },
 
@@ -51,6 +50,7 @@ Page({
       'getCoursewareViewInfo',
       this.data
     );
+    console.log(coursewareViewInfoRes);
     // 获取成功
     if (coursewareViewInfoRes.success) {
       this.setData({

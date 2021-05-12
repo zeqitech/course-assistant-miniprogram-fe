@@ -60,7 +60,7 @@ const languageMap = {
   提交: 'Submit',
   课程课件: 'Courseware',
   点击这里查看课件: 'Click to View Courseware',
-  课件浏览情况: 'Courseware Browsing Statistics',
+  课件浏览情况: 'Courseware Browsing Times',
   错误: 'Error',
   获取课程列表: 'Getting Course List',
   正在下载: 'Downloading',

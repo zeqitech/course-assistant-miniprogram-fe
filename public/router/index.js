@@ -55,7 +55,7 @@ const routes = {
      * openId - 用户 openId
      */
     tt.navigateTo({
-      url: `/pages/courseware/index/index?couresewareToken=${data.pageData.coursewareToken}&openId=${data.pageData.openId}`,
+      url: `/pages/courseware/index/index?coursewareToken=${data.pageData.coursewareToken}`,
     });
   },
 
