@@ -6,8 +6,10 @@ App({
    * @param {Object} args
    */
   onLaunch: function (args) {
-    // 设置语言缓存，默认语言为中文
-    tt.setStorageSync('language', 'en');
+    // 设置语言缓存，默认语言为系统语言
+    let systemInfo = tt.getSystemInfoSync();
+    console.log(systemInfo);
+    tt.setStorageSync('language', systemInfo.language);
     console.log('App Launch');
     console.log(args.query);
     // 获取系统状态栏信息

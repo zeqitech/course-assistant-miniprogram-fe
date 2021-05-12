@@ -7,6 +7,28 @@ const globalData = getApp().globalData;
 import translate from '../../public/translate/index';
 const _ = translate._;
 
+// 切换语言
+const switchLanguage = {
+  // 当前使用英语
+  en() {
+    // 设置使用的语言为中文
+    tt.setStorageSync('language', 'zh_CN');
+    // 刷新页面翻译对象
+    this.setData({
+      _t: translate._t(),
+    });
+  },
+  // 当前使用中文
+  zh_CN() {
+    // 设置使用的语言为英文
+    tt.setStorageSync('language', 'en');
+    // 刷新页面翻译对象
+    this.setData({
+      _t: translate._t(),
+    });
+  },
+};
+
 Page({
   /**
    * 页面数据
@@ -173,5 +195,16 @@ Page({
    */
   pageNavigator(e) {
     globalFunctions.pageNavigator(e, this.data);
+  },
+
+  /**
+   * 切换语言
+   */
+  handleSwitchLanguage() {
+    // 获取当前使用语言
+    let language = tt.getStorageSync('language');
+    // 切换语言
+    let switchFunc = switchLanguage[language].bind(this);
+    switchFunc();
   },
 });

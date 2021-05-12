@@ -1,4 +1,4 @@
 <view class="not-found">
   <image class="icon" src="/image/empty.png"></image>
-  <text class="value">{{_t['页面空空如也']}}</text>
+  <text class="value">{{emptyMessage}}</text>
 </view>

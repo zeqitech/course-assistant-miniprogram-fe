@@ -94,6 +94,7 @@ const languageMap = {
   请完善数据: '请完善数据',
   修改中: '修改中',
   修改作业信息成功: '修改作业信息成功',
+  切换语言: 'English Mode',
 };
 
 module.exports = { languageMap: languageMap };

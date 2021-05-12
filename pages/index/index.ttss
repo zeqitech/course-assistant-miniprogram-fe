@@ -52,10 +52,13 @@
 .functions .item .icon {
   width: 48px;
   height: 48px;
-  border-radius: 50%;
 }
 .functions .item .label {
   font-size: 12px;
+}
+
+.translate:active {
+  box-shadow: 0 4px 8px rgba(220, 220, 220, 0.2);
 }
 
 /* 课程列表 */

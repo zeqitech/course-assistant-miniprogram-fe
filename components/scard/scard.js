@@ -22,6 +22,10 @@ Component({
       type: String,
       value: '0',
     },
+    expireState: {
+      type: Boolean,
+      value: true,
+    },
     state: {
       type: String,
       value: '',
