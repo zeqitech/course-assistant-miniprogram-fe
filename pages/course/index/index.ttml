@@ -40,5 +40,14 @@
     bindtap="pageNavigator"
     data-to="assistant"
   ></s-list>
+  <s-list
+    tt:if="{{ userType === 'teacher' }}"
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.5s;"
+    title="{{_t['成绩统计']}}"
+    action=">"
+    bindtap="pageNavigator"
+    data-to="assistant"
+  ></s-list>
 </view>
 <template is="foot"></template>

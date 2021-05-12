@@ -101,6 +101,7 @@ const languageMap = {
   竟然没有翻译: 'No translation.',
   选择作业分类: 'Switch Assignment Tag: ',
   所有作业: 'All Assignment',
+  成绩统计: 'Score Statistics',
 };
 
 module.exports = { languageMap: languageMap };

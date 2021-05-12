@@ -100,6 +100,7 @@ const languageMap = {
   竟然没有翻译: '竟然没有翻译',
   选择作业分类: '选择作业分类：',
   所有作业: '所有作业',
+  成绩统计: '成绩统计',
 };
 
 module.exports = { languageMap: languageMap };
