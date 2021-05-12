@@ -110,6 +110,9 @@ const languageMap = {
   次: ' time(s)',
   学生作业查阅情况: 'Students Assignment Review Status',
   最后一次查阅时间: 'Last view time: ',
+  查阅时间: 'View Time',
+  查阅次数: 'View Count',
+  作业查阅次数: 'Assignment view count: ',
 };
 
 module.exports = { languageMap: languageMap };

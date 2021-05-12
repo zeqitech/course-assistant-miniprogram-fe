@@ -297,6 +297,24 @@ const requests = {
     });
     return res;
   },
+  // 获取单个作业记录
+  async getWorkFileRecord(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getWorkFileRecordUrl,
+        data: {
+          fileToken: data.pageData.fileToken,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 签到

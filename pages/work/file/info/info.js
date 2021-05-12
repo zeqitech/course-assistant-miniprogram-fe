@@ -67,9 +67,8 @@ Page({
   handleShowTime(e) {
     tt.showModal({
       title: _('详情'),
-      content: `${_('首次查阅时间')}${e.currentTarget.dataset.createTime}; ${_(
-        '最后一次查阅时间'
-      )}${e.currentTarget.dataset.updateTime}`,
+      content: `${_('首次查阅时间')}${e.currentTarget.dataset.createTime}
+${_('最后一次查阅时间')}${e.currentTarget.dataset.updateTime}`,
       confirmText: _('确认'),
       cancelText: _('取消'),
     });

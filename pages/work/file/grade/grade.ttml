@@ -24,12 +24,12 @@
     <s-list
       class="file"
       title="{{_t['首次查阅时间']}}"
-      action="{{  }}"
+      action="{{ createTime }}"
     ></s-list>
     <s-list
       class="file"
       title="{{_t['最后一次查阅时间']}}"
-      action="{{  }}"
+      action="{{ updateTime }}"
     ></s-list>
   </s-input>
   <s-input
@@ -40,7 +40,7 @@
     <s-list
       class="file"
       title="{{_t['作业查阅次数']}}"
-      action="{{  }}"
+      action="{{ count + _t['次'] }}"
     ></s-list>
   </s-input>
   <view class="grade">

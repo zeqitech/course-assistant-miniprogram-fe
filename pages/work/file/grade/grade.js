@@ -44,7 +44,7 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('作业评分'),
@@ -53,6 +53,26 @@ Page({
     this.setData({
       _t: translate._t(),
     });
+    await this.handleGetWorkFileRecord();
+  },
+
+  /**
+   * 获取单个文件记录
+   */
+  async handleGetWorkFileRecord() {
+    let res = await globalFunctions.sendRequests(
+      'getWorkFileRecord',
+      this.data
+    );
+    console.log(res);
+    // 获取成功
+    if (res.success) {
+      this.setData({
+        createTime: res.data.viewRecord.createTime,
+        updateTime: res.data.viewRecord.updateTime,
+        count: res.data.viewRecord.count,
+      });
+    }
   },
 
   /**

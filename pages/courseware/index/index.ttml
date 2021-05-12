@@ -23,7 +23,7 @@
           class="item"
           tt:for="{{ viewRecord }}"
           title="{{ item.username }}"
-          action="{{ item.count }}"
+          action="{{ item.count + _t['次'] }}"
           data-create-Time="{{ item.createTime }}"
           data-update-Time="{{ item.updateTime }}"
           bindtap="handleShowTime"
