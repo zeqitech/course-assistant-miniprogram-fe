@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 分数
     score: '',
     // 评语
@@ -49,6 +47,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('作业评分'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

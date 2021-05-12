@@ -14,8 +14,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 签到持续时长
     duration: '',
     // 课程 ID
@@ -42,6 +40,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('发起签到'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

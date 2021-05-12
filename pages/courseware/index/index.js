@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 课件文档 token
     coursewareToken: '',
     // 用户 openId
@@ -39,6 +37,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('课程课件'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
     // 获取浏览记录
     await this.handleGetViewInfo();

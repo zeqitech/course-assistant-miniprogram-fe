@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 助教姓名
     assistantName: '',
     // 课程 ID
@@ -45,6 +43,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('助教管理'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

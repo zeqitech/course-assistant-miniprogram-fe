@@ -47,8 +47,6 @@ Page({
    * 页面初始数模
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 作业 ID
     workId: '',
     // 文档列表
@@ -94,6 +92,14 @@ Page({
    * 生命周期函数 - 监听页面显示
    */
   async onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('作业文档列表'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 如果用户不是学生
     if (globalData.userType !== 'student') {
       // 获取文件列表
@@ -110,10 +116,6 @@ Page({
         workFileList: workFileList,
       });
     }
-    // 设置标题
-    tt.setNavigationBarTitle({
-      title: _('作业文档列表'),
-    });
   },
 
   /**

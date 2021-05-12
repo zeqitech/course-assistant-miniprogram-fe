@@ -15,8 +15,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 开课学期
     term: '',
     // 文件路径
@@ -38,6 +36,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('添加课程'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

@@ -35,8 +35,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     //作业名称
     name: '',
     //作业起始日期
@@ -101,6 +99,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('发布作业'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

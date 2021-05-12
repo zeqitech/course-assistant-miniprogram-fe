@@ -41,8 +41,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 用户类型
     userType: globalData.userType,
     // 作业列表
@@ -70,6 +68,14 @@ Page({
    * 页面显示生命周期函数
    */
   async onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('课程作业列表'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 若为老师，则获取作业列表
     if (globalData.userType !== 'student') {
       let workList = await this.handleGetWorkList();
@@ -78,10 +84,6 @@ Page({
         workList: workList,
       });
     }
-    // 设置标题
-    tt.setNavigationBarTitle({
-      title: _('课程作业列表'),
-    });
   },
 
   /**

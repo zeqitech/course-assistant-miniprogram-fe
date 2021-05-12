@@ -73,8 +73,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 课程封面
     cover: '',
     // 课程 ID
@@ -106,6 +104,10 @@ Page({
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('课程功能'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
     });
   },
 

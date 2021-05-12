@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 所有签到列表
     signList: [],
     // 课程 ID
@@ -37,16 +35,19 @@ Page({
    * 生命周期函数 - 监听页面展示
    */
   async onShow() {
+    // 设置标题
+    tt.setNavigationBarTitle({
+      title: _('签到列表'),
+    });
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 首先获取签到列表
     let signList = await this.handleGetSignList();
     // 保存数据
     this.setData({
       signList: signList,
-    });
-
-    // 设置标题
-    tt.setNavigationBarTitle({
-      title: _('签到列表'),
     });
   },
 

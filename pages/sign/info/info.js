@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 签到 ID
     signId: '',
     // 已签到人数
@@ -37,6 +35,10 @@ Page({
    * 生命周期函数 - 监听页面展示
    */
   async onShow() {
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 获取签到情况
     let signInfo = await this.handleGetSignInfo();
     // 保存数据

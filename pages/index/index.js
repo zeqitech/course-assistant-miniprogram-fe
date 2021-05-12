@@ -34,8 +34,6 @@ Page({
    * 页面数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 班级列表
     courseList: [],
     // 用户角色信息
@@ -54,6 +52,10 @@ Page({
    * 生命周期函数 - 监听页面显示
    */
   async onShow() {
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
     // 用户未登录
     if (this.data.openId === null) {
       // 显示 Loading

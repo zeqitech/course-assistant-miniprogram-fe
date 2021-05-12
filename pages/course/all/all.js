@@ -12,8 +12,6 @@ Page({
    * 页面初始数据
    */
   data: {
-    // ttml 双语支持
-    _t: translate._t(),
     // 筛选当前课程或已结课课程
     filter: '',
     // 课程列表
@@ -55,6 +53,10 @@ Page({
         title: _('往期课程列表'),
       });
     }
+    // ttml 双语支持
+    this.setData({
+      _t: translate._t(),
+    });
   },
 
   /**
