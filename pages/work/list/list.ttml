@@ -2,6 +2,7 @@
 
 <view class="page">
   <s-input
+    tt:if="{{ workList.length !== 0}}"
     class="tag-picker width-app animation-slide-bottom"
     style="animation-delay: 0.1s;"
     type="slot"

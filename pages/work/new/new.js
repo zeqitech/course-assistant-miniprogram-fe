@@ -107,6 +107,16 @@ Page({
   },
 
   /**
+   * 修改助教批改作业权限
+   * @param {Object} e
+   */
+  handleAuthChange(e) {
+    this.setData({
+      assistantAuth: e.detail.value,
+    });
+  },
+
+  /**
    * 处理输入作业名称事件
    * @param {Object} e
    */

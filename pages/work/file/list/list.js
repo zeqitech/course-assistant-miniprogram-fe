@@ -254,7 +254,7 @@ Page({
     let confirmRes = await new Promise((resolve) => {
       tt.showModal({
         title: _('确认'),
-        content: `${_(删除提示)}${this.data.name}`,
+        content: `${_('删除提示')}${this.data.name}`,
         complete(res) {
           resolve(res);
         },
@@ -274,7 +274,7 @@ Page({
       // 如果删除成功
       if (delWorkRes.success) {
         globalFunctions.hideLoading();
-        globalFunctions.showSuccess(_('成功删除作业'));
+        globalFunctions.showSuccess(_('删除作业成功'), 1);
       } else {
         // 删除失败
         globalFunctions.showError(delWorkRes.message);

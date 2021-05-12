@@ -55,6 +55,7 @@
       <text class="switchHelp">{{_t['允许助教批改本次作业']}}</text>
       <switch
         checked="{{ assistantAuth }}"
+        bindchange="handleAuthChange"
       ></switch>
     </view>
   </s-input>
