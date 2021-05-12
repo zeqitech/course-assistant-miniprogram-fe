@@ -112,6 +112,7 @@ const languageMap = {
   查阅时间: '查阅时间',
   查阅次数: '查阅次数',
   作业查阅次数: '作业查阅次数：',
+  立即签到: '立即签到',
 };
 
 module.exports = { languageMap: languageMap };

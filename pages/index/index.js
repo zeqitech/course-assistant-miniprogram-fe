@@ -143,6 +143,7 @@ Page({
       this.setData({
         nickName: userInfo.nickName,
         openId: loginRes.data.open_id,
+        userType: loginRes.data.userType,
       });
       globalData.openId = loginRes.data.open_id;
       globalData.userType = loginRes.data.userType;

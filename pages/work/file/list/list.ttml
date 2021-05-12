@@ -2,6 +2,7 @@
 
 <view class="page">
   <s-input
+    tt:if="{{ userType === 'teacher' }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.1s;"
     label="{{_t['作业统计']}}"

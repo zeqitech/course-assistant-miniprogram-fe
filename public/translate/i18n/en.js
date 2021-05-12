@@ -113,6 +113,7 @@ const languageMap = {
   查阅时间: 'View Time',
   查阅次数: 'View Count',
   作业查阅次数: 'Assignment view count: ',
+  立即签到: 'Sign In',
 };
 
 module.exports = { languageMap: languageMap };
