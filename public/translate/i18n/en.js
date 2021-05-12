@@ -13,7 +13,7 @@ const languageMap = {
   助教: 'TA',
   助教管理: 'TA Management',
   签到列表: 'Check-in List',
-  发起签到: 'Release Sign-in Task',
+  发起签到: 'Release',
   签到持续时间: 'Check-in Duration (minutes)',
   请输入签到持续时间: 'Please enter the check-in duration.',
   成功: 'Success',
@@ -62,7 +62,7 @@ const languageMap = {
   课程课件: 'Courseware',
   点击这里查看课件: 'Click to View Courseware',
   课件浏览情况: 'Courseware Browsing Times',
-  错误: 'Error',
+  错误: 'Failed',
   获取课程列表: 'Getting Course List',
   正在下载: 'Downloading',
   下载完成: 'Finished',
@@ -96,7 +96,7 @@ const languageMap = {
   请完善数据: 'Please complete the data.',
   修改中: 'Modifying',
   修改作业信息成功: 'Modified assignment information successfully.',
-  切换语言: '使用中文模式',
+  切换语言: '中文模式',
   添加成功: 'Added successfully.',
   竟然没有翻译: 'No translation.',
   选择作业分类: 'Switch Assignment Tag: ',
@@ -104,6 +104,8 @@ const languageMap = {
   成绩统计: 'Score Statistics',
   详情: 'Detail',
   重新生成成绩: 'Regenerate Score',
+  首次查阅时间: 'First view time: ',
+  作业统计: 'Assignment Statistics',
 };
 
 module.exports = { languageMap: languageMap };

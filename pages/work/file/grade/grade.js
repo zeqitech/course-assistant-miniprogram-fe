@@ -37,6 +37,7 @@ Page({
       fileName: options.fileName,
       score: options.score === 'null' ? '' : options.score,
       remark: options.comment === 'null' ? '' : options.comment,
+      courseId: options.courseId,
     });
   },
 

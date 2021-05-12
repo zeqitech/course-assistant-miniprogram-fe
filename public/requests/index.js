@@ -173,6 +173,7 @@ const requests = {
           fileToken: data.pageData.fileToken,
           openId: data.pageData.openId,
           score: parseInt(data.pageData.score),
+          courseId: data.pageData.courseId,
         },
         header: {
           'content-type': 'application/json',
