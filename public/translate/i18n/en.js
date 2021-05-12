@@ -121,6 +121,7 @@ const languageMap = {
   签到记录: 'Sign-in Record',
   已签到: 'Signed',
   添加助教提醒: 'Confirm to add TA: ',
+  签到成功: 'Signed successfully.',
 };
 
 module.exports = { languageMap: languageMap };

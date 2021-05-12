@@ -3,7 +3,7 @@
 <view class="page">
   <!-- 签到按钮 -->
   <text class="btn" bindtap="handleSignIn">{{_t['立即签到']}}</text>
-  <view class="record">
+  <view class="record width-app">
       <text class="title">{{_t['签到记录']}}</text>
       <view class="list">
         <s-list
@@ -11,7 +11,7 @@
           tt:if="{{ signList.length !== 0 }}"
           tt:for="{{ signList }}"
           title="{{ item.updateTime }}"
-          action="{{_t['已签到']}}"
+          action="{{ item.signedStatus ? _t['已签到'] : _t['未签到']}}"
         />
         <s-empty tt:else></s-empty>
       </view>

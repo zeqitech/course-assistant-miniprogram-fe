@@ -85,6 +85,7 @@ Page({
     let signInRes = await globalFunctions.sendRequests('postSignIn', this.data);
     // 隐藏 Loading
     globalFunctions.hideLoading();
+    console.log(signInRes);
     // 签到成功
     if (signInRes.success) {
       globalFunctions.showSuccess(_('签到成功'), 1);

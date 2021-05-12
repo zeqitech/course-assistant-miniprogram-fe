@@ -119,6 +119,7 @@ const languageMap = {
   签到记录: '签到记录',
   已签到: '已签到',
   添加助教提醒: '是否确认添加助教：',
+  签到成功: '签到成功',
 };
 
 module.exports = { languageMap: languageMap };
