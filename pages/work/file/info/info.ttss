@@ -1,0 +1,16 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+}
+
+.list .title {
+  align-self: center;
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-h2);
+  line-height: var(--line-height-h2);
+}
+
+.list .item view:not(:first-child) {
+  margin-top: 12px;
+}

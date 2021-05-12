@@ -1,7 +1,12 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <s-input class="tag-picker width-app" type="slot" label="{{_t['作业分类']}}">
+  <s-input
+    class="tag-picker width-app animation-slide-bottom"
+    style="animation-delay: 0.1s;"
+    type="slot"
+    label="{{_t['作业分类']}}"
+  >
     <view>
       <picker
         mode="selector"
@@ -18,7 +23,7 @@
     tt:if="{{ workList.length !== 0 }}"
     type="button"
     class="item width-app animation-slide-bottom"
-    style="animation-delay: {{ (index + 1) * 0.1 }}s;"
+    style="animation-delay: {{ (index + 2) * 0.1 }}s;"
     icon="/image/task.png"
     title="{{ item.workName }}"
     value="{{ item.expireTime }}"

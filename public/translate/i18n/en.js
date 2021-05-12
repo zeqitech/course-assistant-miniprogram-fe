@@ -108,6 +108,8 @@ const languageMap = {
   作业统计: 'Assignment Statistics',
   点击这里查看作业查阅情况: 'Click to Get Assignment Review Status',
   次: ' time(s)',
+  学生作业查阅情况: 'Students Assignment Review Status',
+  最后一次查阅时间: 'Last view time: ',
 };
 
 module.exports = { languageMap: languageMap };

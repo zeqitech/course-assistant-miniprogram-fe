@@ -136,6 +136,7 @@ Page({
     console.log(userInfo);
     // 把 `code` 发送到服务端
     let loginRes = await globalFunctions.sendRequests('login', this.data);
+    console.log(loginRes);
     // 登录成功
     if (loginRes.success) {
       // 保存数据

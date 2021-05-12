@@ -34,7 +34,7 @@ Page({
   async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
-      title: _('作业统计'),
+      title: _('学生作业查阅情况'),
     });
     // ttml 双语支持
     this.setData({
@@ -58,5 +58,20 @@ Page({
     } else {
       globalFunctions.showError(res.message);
     }
+  },
+
+  /**
+   * 展示首次及最后一次查看时间
+   * @param {Object} e
+   */
+  handleShowTime(e) {
+    tt.showModal({
+      title: _('详情'),
+      content: `${_('首次查阅时间')}${e.currentTarget.dataset.createTime}; ${_(
+        '最后一次查阅时间'
+      )}${e.currentTarget.dataset.updateTime}`,
+      confirmText: _('确认'),
+      cancelText: _('取消'),
+    });
   },
 });

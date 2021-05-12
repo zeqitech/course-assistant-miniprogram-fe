@@ -2,7 +2,8 @@
 
 <view class="page">
   <s-input
-    class="item width-app"
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.1s;"
     label="{{_t['作业统计']}}"
     type="slot"
   >
@@ -18,7 +19,7 @@
   <s-list
     tt:for="{{ workFileList }}"
     class="item width-app animation-slide-bottom"
-    style="animation-delay: {{(index+1)*0.1}}s;"
+    style="animation-delay: {{(index+2)*0.1}}s;"
     icon="/image/doc.png"
     title="{{ item.fileName }}"
     action="{{ item.comment ? item.score : _t['未打分'] }}"
