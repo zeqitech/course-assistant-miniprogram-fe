@@ -103,6 +103,8 @@ Page({
     openId: globalData.openId,
     // 用户类型
     userType: globalData.userType,
+    // 课程名
+    courseName: '',
   },
 
   /**
@@ -118,6 +120,7 @@ Page({
       courseId: options.courseId,
       cover: options.cover,
       coursewareToken: options.coursewareToken,
+      courseName: options.courseName,
     });
   },
 
@@ -127,7 +130,7 @@ Page({
   async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
-      title: _('课程功能'),
+      title: this.data.courseName,
     });
     // ttml 双语支持
     this.setData({

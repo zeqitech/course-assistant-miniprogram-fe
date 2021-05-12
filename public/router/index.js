@@ -33,7 +33,7 @@ const routes = {
      * coursewareToken - 课件文档 Token
      */
     tt.navigateTo({
-      url: `/pages/course/index/index?courseId=${data.courseId}&cover=${data.cover}&coursewareToken=${data.coursewareToken}`,
+      url: `/pages/course/index/index?courseId=${data.courseId}&cover=${data.cover}&coursewareToken=${data.coursewareToken}&courseName=${data.courseName}`,
     });
   },
 

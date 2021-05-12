@@ -12,6 +12,7 @@
           tt:for="{{ signList }}"
           title="{{ item.updateTime }}"
           action="{{ item.signedStatus ? _t['已签到'] : _t['未签到']}}"
+          color="{{ item.signedStatus ? 'green' : 'red' }}"
         />
         <s-empty tt:else></s-empty>
       </view>
