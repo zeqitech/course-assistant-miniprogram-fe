@@ -118,6 +118,7 @@ const languageMap = {
   结束签到提醒: '即将结束本次签到，结束后将无法重新开启，确认结束签到？',
   签到记录: '签到记录',
   已签到: '已签到',
+  添加助教提醒: '是否确认添加助教：',
 };
 
 module.exports = { languageMap: languageMap };

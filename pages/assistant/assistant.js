@@ -83,15 +83,17 @@ Page({
    */
   async handleAddAssistant() {
     // 选择助教
-    await this.handleSelectAssistant();
-    // 发送添加助教请求
-    let addAssistantRes = await this.handleSendAddAssistantRequest();
-    // 添加成功
-    if (addAssistantRes.success) {
-      globalFunctions.showSuccess(_('添加成功'), 1);
-    } else {
-      // 添加失败
-      globalFunctions.showError(addAssistantRes.message);
+    let ta = await this.handleSelectAssistant();
+    if (ta) {
+      // 发送添加助教请求
+      let addAssistantRes = await this.handleSendAddAssistantRequest();
+      // 添加成功
+      if (addAssistantRes.success) {
+        globalFunctions.showSuccess(_('添加成功'), 1);
+      } else {
+        // 添加失败
+        globalFunctions.showError(addAssistantRes.message);
+      }
     }
   },
 
@@ -99,6 +101,7 @@ Page({
    * 选择助教
    */
   async handleSelectAssistant() {
+    // 选择助教
     let res = await new Promise((resolve) => {
       tt.chooseContact({
         multi: false,
@@ -107,14 +110,27 @@ Page({
         },
       });
     });
-    console.log(res);
-    this.setData({
-      openId: res.data[0].openId,
-      assistantName: res.data[0].name,
+    // 用户确认
+    let confirm = await new Promise((resolve) => {
+      tt.showModal({
+        title: _('提示'),
+        content: _('添加助教提醒') + res.data[0].name,
+        confirmText: _('确认'),
+        cancelText: _('取消'),
+        success(res) {
+          resolve(res);
+        },
+      });
     });
-    return {
-      openId: res.data[0].openId,
-      assistantName: res.data[0].name,
-    };
+    // 如果确认
+    if (confirm.confirm) {
+      this.setData({
+        openId: res.data[0].openId,
+        assistantName: res.data[0].name,
+      });
+      return true;
+    } else {
+      return false;
+    }
   },
 });

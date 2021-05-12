@@ -120,6 +120,7 @@ const languageMap = {
     'This check-in is about to end, it will not be able to re-open after the end, confirm the end of the check-in?',
   签到记录: 'Sign-in Record',
   已签到: 'Signed',
+  添加助教提醒: 'Confirm to add TA: ',
 };
 
 module.exports = { languageMap: languageMap };

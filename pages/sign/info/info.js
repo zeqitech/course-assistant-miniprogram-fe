@@ -61,6 +61,8 @@ Page({
       tt.showModal({
         title: _('提示'),
         content: _('结束签到提醒'),
+        confirmText: _('确认'),
+        cancelText: _('取消'),
         success(res) {
           resolve(res);
         },
