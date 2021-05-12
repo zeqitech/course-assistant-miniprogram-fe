@@ -14,6 +14,10 @@ Page({
   data: {
     // 用户 openId
     openId: globalData.openId,
+    // 用户类型
+    userType: globalData.userType,
+    // 重新生成成绩
+    force: false,
   },
 
   /**
@@ -56,5 +60,27 @@ Page({
     } else {
       globalFunctions.showError(res.message);
     }
+  },
+
+  /**
+   * 重新获取成绩
+   */
+  async regetScore() {
+    this.setData({
+      force: true,
+    });
+    let res = await globalFunctions.sendRequests('getScoreList', this.data);
+    // 获取成功
+    if (res.success) {
+      this.setData({
+        scoreList: res.data.gradeList,
+      });
+    } else {
+      globalFunctions.showError(res.message);
+    }
+    // 恢复默认
+    this.setData({
+      force: false,
+    });
   },
 });

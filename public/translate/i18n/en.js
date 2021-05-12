@@ -103,6 +103,7 @@ const languageMap = {
   所有作业: 'All Assignment',
   成绩统计: 'Score Statistics',
   详情: 'Detail',
+  重新生成成绩: 'Regenerate Score',
 };
 
 module.exports = { languageMap: languageMap };

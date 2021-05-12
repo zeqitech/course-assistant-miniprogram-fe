@@ -102,6 +102,7 @@ const languageMap = {
   所有作业: '所有作业',
   成绩统计: '成绩统计',
   详情: '详情',
+  重新生成成绩: '重新生成成绩',
 };
 
 module.exports = { languageMap: languageMap };

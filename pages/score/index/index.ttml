@@ -2,6 +2,7 @@
 
 <view class="page">
   <view class="list width-app">
+    <button class="item" bindtap="regetScore">{{ _t['重新生成成绩'] }}</button>
     <s-list
       class="item"
       tt:if="{{ scoreList.length !== 0 }}"
