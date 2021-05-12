@@ -11,7 +11,7 @@ function translate() {
 
 function translateTxt(desc) {
   //翻译
-  return translate()[desc] || '竟然没有翻译';
+  return translate()[desc] || translate()['竟然没有翻译'];
 }
 
 module.exports = {

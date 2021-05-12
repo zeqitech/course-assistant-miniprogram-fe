@@ -359,9 +359,9 @@ const requests = {
   async getAssistantList(data) {
     let res = await new Promise((resolve) => {
       tt.request({
-        url: 'someurl',
+        url: url.getAssistantListUrl,
         data: {
-          user_name: 'hello',
+          courseId: data.pageData.courseId,
         },
         header: {
           'content-type': 'application/json',

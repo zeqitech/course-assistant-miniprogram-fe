@@ -1,6 +1,15 @@
 <import src="/global/foot.ttml" />
 
-<view class="page"></view>
+<view class="page">
+  <s-list
+    class="width-app assistant"
+    tt:if="{{ assistantList.length !== 0 }}"
+    tt:for="{{ assistantList }}"
+    title="{{ item.assistantName }}"
+    action="{{ _t['助教'] }}"
+  ></s-list>
+  <s-empty tt:else></s-empty>
+</view>
 <!-- 发布签到按钮 -->
 <image
   tt:if="{{ userType === 'teacher' }}"

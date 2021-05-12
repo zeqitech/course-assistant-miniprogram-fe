@@ -22,6 +22,8 @@ Page({
     teacherId: globalData.openId,
     // 用户类型
     userType: globalData.userType,
+    // 助教列表
+    assistantList: [],
   },
 
   /**
@@ -39,7 +41,7 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('助教管理'),
@@ -48,6 +50,8 @@ Page({
     this.setData({
       _t: translate._t(),
     });
+    // 获取助教列表
+    await this.handleGetAssistantList();
   },
 
   /**
@@ -58,6 +62,13 @@ Page({
       'getAssistantList',
       this.data
     );
+    console.log(getAssistantRes);
+    // 获取成功
+    if (getAssistantRes.success) {
+      this.setData({
+        assistantList: getAssistantRes.data.assistantList,
+      });
+    }
   },
 
   /**

@@ -10,6 +10,7 @@ const languageMap = {
   签到: 'Sign In',
   作业: 'Assignment',
   课件: 'Courseware',
+  助教: 'TA',
   助教管理: 'TA Management',
   签到列表: 'Check-in List',
   发起签到: 'Release Sign-in Task',
@@ -96,6 +97,8 @@ const languageMap = {
   修改中: 'Modifying',
   修改作业信息成功: 'Modified assignment information successfully.',
   切换语言: '使用中文模式',
+  添加成功: 'Added successfully.',
+  竟然没有翻译: 'No translation.',
 };
 
 module.exports = { languageMap: languageMap };

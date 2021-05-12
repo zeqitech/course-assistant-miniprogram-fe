@@ -10,6 +10,7 @@ const languageMap = {
   签到: '签到',
   作业: '作业',
   课件: '课件',
+  助教: '助教',
   助教管理: '助教管理',
   签到列表: '签到列表',
   发起签到: '发起签到',
@@ -95,6 +96,8 @@ const languageMap = {
   修改中: '修改中',
   修改作业信息成功: '修改作业信息成功',
   切换语言: 'English Mode',
+  添加成功: '添加成功',
+  竟然没有翻译: '竟然没有翻译',
 };
 
 module.exports = { languageMap: languageMap };
