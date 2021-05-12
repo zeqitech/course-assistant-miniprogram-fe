@@ -48,6 +48,23 @@ const requests = {
     });
     return res;
   },
+  // 添加课程
+  async addCourse(data) {
+    let res = await new Promise((resolve) => {
+      tt.uploadFile({
+        url: `${url.addCourseUrl}?managerId=${data.pageData.openId}&term=${data.pageData.term}`,
+        header: {
+          'content-type': 'multipart/form-data',
+        },
+        filePath: data.pageData.file,
+        name: 'courseExcel',
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 作业
@@ -214,6 +231,24 @@ const requests = {
         },
         complete(res) {
           resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取助教列表
+  async getAssistantList(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: 'someurl',
+        data: {
+          user_name: 'hello',
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res);
         },
       });
     });

@@ -51,7 +51,12 @@ Page({
   /**
    * 获取助教列表
    */
-  handleGetAssistantList() {},
+  async handleGetAssistantList() {
+    let getAssistantRes = await globalFunctions.sendRequests(
+      'getAssistantList',
+      this.data
+    );
+  },
 
   /**
    * 发起添加助教请求

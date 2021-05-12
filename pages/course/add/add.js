@@ -27,6 +27,8 @@ Page({
     tempFilePath: '',
     // 进度条
     progress: 0,
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -139,49 +141,23 @@ Page({
           this.data.file.split('.')[1] === 'xls'
         ) {
           // 显示 Loading
-          tt.showLoading({
-            title: _('创建中'),
-          });
+          globalFunctions.showLoading(_('创建中'));
           // 若文件类型正确，则发起请求
-          var addCourseRes = await new Promise((resolve) => {
-            tt.uploadFile({
-              url: `${globalData.urlConfig.addCourseUrl}?managerId=${globalData.openId}&term=${this.data.term}`,
-              header: {
-                'content-type': 'multipart/form-data',
-              },
-              filePath: this.data.file,
-              name: 'courseExcel',
-              complete(res) {
-                resolve(res.data);
-              },
-            });
-          });
+          var addCourseRes = await globalFunctions.sendRequests(
+            'addCourse',
+            this.data
+          );
         } else {
           // 若文件类型不正确，则进行提示
-          tt.showModal({
-            title: _('错误'),
-            content: _('文件类型不正确'),
-            confirmText: _('确认'),
-            cancelText: _('取消'),
-          });
+          globalFunctions.showError(_('文件类型不正确'));
         }
       } else {
         // 若未选择文件，则提示
-        tt.showModal({
-          title: _('错误'),
-          content: _('请选择文件'),
-          confirmText: _('确认'),
-          cancelText: _('取消'),
-        });
+        globalFunctions.showError(_('请选择文件'));
       }
     } else {
       // 若输入内容为空，则提示
-      tt.showModal({
-        title: _('错误'),
-        content: _('请填写开课学期'),
-        confirmText: _('确认'),
-        cancelText: _('取消'),
-      });
+      globalFunctions.showError(_('请填写开课学期'));
     }
     console.log(addCourseRes);
     if (addCourseRes.success) {
@@ -189,12 +165,9 @@ Page({
       globalFunctions.showSuccess(_('添加课程成功'), 1);
     } else {
       // 提示失败
-      tt.showModal({
-        title: _('错误'),
-        content: addCourseRes.message,
-      });
+      globalFunctions.showError(addCourseRes.message);
     }
     // 隐藏 Loading
-    tt.hideLoading();
+    globalFunctions.hideLoading();
   },
 });
