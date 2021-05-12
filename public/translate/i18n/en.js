@@ -1,6 +1,6 @@
 const languageMap = {
   往期课程: 'Past Courses',
-  添加课程: 'Add Class',
+  添加课程: 'Add Course',
   我的课程: 'My Courses',
   查看更多: 'More',
   进行中: 'Ongoing',

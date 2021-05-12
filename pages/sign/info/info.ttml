@@ -6,7 +6,12 @@
       title="{{_t['已签到人数']}}"
       action="{{ signedCount }}"
     />
-    <button class="warn-btn" type="warn" bindtap="handleEndSign">{{_t['提前结束签到']}}</button>
+    <button
+      tt:if="{{ !expireStatus }}"
+      class="warn-btn"
+      type="warn"
+      bindtap="handleEndSign"
+    >{{_t['提前结束签到']}}</button>
     <view class="unsign">
       <text class="title">{{_t['未签到名单']}}</text>
       <view class="list">

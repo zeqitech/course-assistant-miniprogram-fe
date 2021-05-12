@@ -12,6 +12,7 @@
       action="{{ item.expireStatus ? _t['已截止'] : _t['正在进行'] }}"
       color="{{ item.expireStatus ? 'red' : 'green' }}"
       data-sign-id="{{ item.signId }}"
+      data-expire-status="{{ item.expireStatus }}"
       bindtap="pageNavigator"
       data-to="signInfo"
     />

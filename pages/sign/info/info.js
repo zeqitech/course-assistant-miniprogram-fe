@@ -18,6 +18,8 @@ Page({
     signedCount: 0,
     // 未签到名单
     unsignedList: [],
+    // 已结束
+    expireStatus: false,
   },
 
   /**
@@ -28,6 +30,7 @@ Page({
     // 保存数据
     this.setData({
       signId: options.signId,
+      expireStatus: options.expireStatus === 'true' ? true : false,
     });
   },
 

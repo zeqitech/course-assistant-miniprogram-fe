@@ -85,7 +85,7 @@ const routes = {
      * signId - 通过 signId 获取某次签到的信息
      */
     tt.navigateTo({
-      url: `/pages/sign/info/info?signId=${data.signId}`,
+      url: `/pages/sign/info/info?signId=${data.signId}&expireStatus=${data.expireStatus}`,
     });
   },
 
