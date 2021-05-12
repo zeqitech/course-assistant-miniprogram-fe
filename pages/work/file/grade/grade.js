@@ -67,11 +67,18 @@ Page({
     console.log(res);
     // 获取成功
     if (res.success) {
-      this.setData({
-        createTime: res.data.viewRecord.createTime,
-        updateTime: res.data.viewRecord.updateTime,
-        count: res.data.viewRecord.count,
-      });
+      // 如果学生查看过文档
+      if (res.data.viewRecord) {
+        this.setData({
+          createTime: res.data.viewRecord.createTime,
+          updateTime: res.data.viewRecord.updateTime,
+          count: res.data.viewRecord.count,
+        });
+      } else {
+        this.setData({
+          count: 0,
+        });
+      }
     }
   },
 

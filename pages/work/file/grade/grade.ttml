@@ -17,6 +17,7 @@
     </s-list>
   </s-input>
   <s-input
+    tt:if="{{ count !== 0 }}"
     class="item width-app"
     label="{{_t['查阅时间']}}"
     type="slot"
