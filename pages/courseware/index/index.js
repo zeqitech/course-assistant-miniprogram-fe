@@ -36,15 +36,27 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('课程课件'),
     });
+    // 获取浏览记录
+    await this.handleGetViewInfo();
   },
 
-  handleGetViewInfo() {
-    globalFunctions.sendRequests();
+  async handleGetViewInfo() {
+    // 获取课件浏览记录
+    let coursewareViewInfoRes = await globalFunctions.sendRequests(
+      'getCoursewareViewInfo',
+      this.data
+    );
+    // 获取成功
+    if (coursewareViewInfoRes.success) {
+      this.setData({
+        viewRecord: coursewareViewInfoRes.data.viewRecord,
+      });
+    }
   },
 
   /**

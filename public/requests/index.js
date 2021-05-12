@@ -248,7 +248,29 @@ const requests = {
           'content-type': 'application/json',
         },
         complete(res) {
-          resolve(res);
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+
+  /**
+   * 课件
+   */
+  // 获取课件浏览记录
+  async getcoursewareViewInfo(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getViewInfoUrl,
+        data: {
+          fileToken: data.pageData.coursewareToken,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
         },
       });
     });
