@@ -37,6 +37,7 @@
     data-work-id="{{ item.workId }}"
     data-weight="{{ item.weight }}"
     data-assistant-auth="{{ item.assistantAuth }}"
+    data-tag="{{ item.tag }}"
     bindtap="pageNavigator"
     data-to="workFileList"
   ></s-list>

@@ -83,7 +83,7 @@ Page({
         name: options.name,
         weight: options.weight,
         workId: options.workId,
-        assistantAuth: options.assistantAuth,
+        assistantAuth: options.assistantAuth === 'true' ? true : false,
         tag: options.tag,
       });
       tt.setNavigationBarTitle({

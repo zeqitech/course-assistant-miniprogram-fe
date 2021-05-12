@@ -29,10 +29,5 @@
     "uploadFile": 10000,
     "downloadFile": 10000
   },
-  "ext": {
-    "defaultPages": {
-      "PCMode": "/pages/index/"
-    }
-  },
   "debug": false
 }

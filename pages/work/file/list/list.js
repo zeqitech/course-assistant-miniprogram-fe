@@ -65,6 +65,7 @@ Page({
     courseId: '',
     // 用户 openId
     openId: globalData.openId,
+    assistantAuth: '',
   },
 
   /**
@@ -84,6 +85,8 @@ Page({
         weight: options.weight,
         name: options.name,
         courseId: options.courseId,
+        assistantAuth: options.assistantAuth,
+        tag: options.tag,
       });
     } else {
       this.setData({

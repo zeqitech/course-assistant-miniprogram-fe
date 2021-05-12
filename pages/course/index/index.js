@@ -19,7 +19,7 @@ const switchTo = {
   },
   // 跳转到课件页面
   courseware() {
-    return 'courseware';
+    return courseware[globalData.userType]();
   },
   // 跳转到助教管理页面
   assistant() {
@@ -68,6 +68,25 @@ const switchWork = {
   assistant() {
     // 跳转到作业列表
     return 'workList';
+  },
+};
+// 根据不同的用户类型，跳转到课件页面
+const courseware = {
+  // 老师
+  teacher() {
+    return 'courseware';
+  },
+  // 教管
+  manager() {
+    return 'coursewareFile';
+  },
+  // 学生
+  student() {
+    return 'coursewareFile';
+  },
+  // 助教
+  assistant() {
+    return 'coursewareFile';
   },
 };
 

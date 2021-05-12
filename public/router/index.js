@@ -122,7 +122,7 @@ const routes = {
   // 作业文档列表 - 老师
   workFileListTeacher(data) {
     tt.navigateTo({
-      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${data.pageData.courseId}`,
+      url: `/pages/work/file/list/list?workId=${data.workId}&startDate=${data.startTime}&endDate=${data.expireTime}&weight=${data.weight}&name=${data.workName}&courseId=${data.pageData.courseId}&assistantAuth=${data.assistantAuth}&tag=${data.tag}`,
     });
   },
 
@@ -196,7 +196,7 @@ const routes = {
        * workId - 作业 ID 值
        * courseId - 课程 ID 值
        */
-      url: `/pages/work/new/new?option=modify&startDate=${data.pageData.startDate}&endDate=${data.pageData.endDate}&name=${data.pageData.name}&weight=${data.pageData.weight}&workId=${data.pageData.workId}&courseId=${data.pageData.courseId}`,
+      url: `/pages/work/new/new?option=modify&startDate=${data.pageData.startDate}&endDate=${data.pageData.endDate}&name=${data.pageData.name}&weight=${data.pageData.weight}&workId=${data.pageData.workId}&courseId=${data.pageData.courseId}&assistantAuth=${data.pageData.assistantAuth}&tag=${data.pageData.tag}`,
     });
   },
 
