@@ -207,11 +207,30 @@ const requests = {
         url: url.getWorkUrl,
         data: {
           courseId: data.pageData.courseId,
+          tag: data.pageData.tag,
         },
         header: {
           'content-type': 'application/json',
         },
         // 请求成功，回传数据
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
+  // 获取分类列表
+  async getTagList(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getTagListUrl,
+        data: {
+          courseId: data.pageData.courseId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
         complete(res) {
           resolve(res.data);
         },

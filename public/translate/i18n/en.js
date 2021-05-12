@@ -99,6 +99,8 @@ const languageMap = {
   切换语言: '使用中文模式',
   添加成功: 'Added successfully.',
   竟然没有翻译: 'No translation.',
+  选择作业分类: 'Switch Assignment Tag: ',
+  所有作业: 'All Assignment',
 };
 
 module.exports = { languageMap: languageMap };

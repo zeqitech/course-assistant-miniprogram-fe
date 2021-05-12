@@ -16,6 +16,33 @@
       <image class="icon" src="/image/file.png"></image>
     </s-list>
   </s-input>
+  <s-input
+    class="item width-app"
+    label="{{_t['查阅时间']}}"
+    type="slot"
+  >
+    <s-list
+      class="file"
+      title="{{_t['首次查阅时间']}}"
+      action="{{  }}"
+    ></s-list>
+    <s-list
+      class="file"
+      title="{{_t['最后一次查阅时间']}}"
+      action="{{  }}"
+    ></s-list>
+  </s-input>
+  <s-input
+    class="item width-app"
+    label="{{_t['查阅次数']}}"
+    type="slot"
+  >
+    <s-list
+      class="file"
+      title="{{_t['作业查阅次数']}}"
+      action="{{  }}"
+    ></s-list>
+  </s-input>
   <view class="grade">
     <s-input
       class="item"

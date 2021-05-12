@@ -98,6 +98,8 @@ const languageMap = {
   切换语言: 'English Mode',
   添加成功: '添加成功',
   竟然没有翻译: '竟然没有翻译',
+  选择作业分类: '选择作业分类：',
+  所有作业: '所有作业',
 };
 
 module.exports = { languageMap: languageMap };

@@ -49,6 +49,10 @@ Page({
     currentTime: '',
     // 课程 ID
     courseId: '',
+    // 作业分类
+    tag: '',
+    // 分类列表
+    tagList: [],
   },
 
   /**
@@ -79,10 +83,64 @@ Page({
     // 若为老师，则获取作业列表
     if (globalData.userType !== 'student') {
       let workList = await this.handleGetWorkList();
+      let tagList = await this.handleGetTagList();
+      tagList.unshift(_('所有作业'));
       this.setData({
         currentTime: timeFunction.getCurrentTime(new Date()),
         workList: workList,
+        tagList: tagList,
       });
+    }
+  },
+
+  /**
+   * 选择分类
+   */
+  async handleSelectTag(e) {
+    // 若查看所有作业
+    if (e.detail.value === '0') {
+      this.setData({
+        tag: '',
+      });
+    } else {
+      this.setData({
+        tag: this.data.tagList[parseInt(e.detail.value)],
+      });
+    }
+
+    let workList = await this.handleGetTagedWork();
+    this.setData({
+      workList: workList,
+    });
+  },
+
+  /**
+   * 获取某个分类下的文章
+   * @param {String} tag
+   */
+  async handleGetTagedWork() {
+    let res = await globalFunctions.sendRequests('getWorkList', this.data);
+    // 获取成功
+    if (res.success) {
+      return res.data.workList;
+    } else {
+      return [];
+    }
+  },
+
+  /**
+   * 获取分类列表
+   */
+  async handleGetTagList() {
+    let getTagListRes = await globalFunctions.sendRequests(
+      'getTagList',
+      this.data
+    );
+    console.log(getTagListRes);
+    if (getTagListRes.success) {
+      return getTagListRes.data.tagList;
+    } else {
+      return [];
     }
   },
 

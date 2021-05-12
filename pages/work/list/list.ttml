@@ -1,6 +1,17 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
+  <s-input class="tag-picker width-app" type="slot" label="{{_t['作业分类']}}">
+    <view>
+      <picker
+        mode="selector"
+        range="{{ tagList }}"
+        bindchange="handleSelectTag"
+      >
+        <view class="picker">{{_t['选择作业分类']}}{{ tag }}</view>
+      </picker>
+    </view>
+  </s-input>
   <!-- 作业列表非空，显示作业列表 -->
   <s-list
     tt:for="{{ workList }}"

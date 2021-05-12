@@ -5,3 +5,23 @@
 .item:first-child {
   margin-top: var(--margin-24px);
 }
+
+.tag-picker {
+  margin-top: 24px;
+}
+.tag-picker .picker {
+  width: 100%;
+  height: 44px;
+  border-radius: 16px;
+  margin-top: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  background-color: var(--gray-scale-0);
+  box-shadow: 0 4px 8px var(--box-shadow);
+  display: flex;
+  align-items: center;
+  color: var(--gray-scale-500-guide);
+  font-size: var(--font-size-text-app);
+  font-weight: var(--font-weight-text);
+  line-height: var(--line-height-text);
+}
