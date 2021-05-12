@@ -13,6 +13,7 @@
       data-update-time="{{ item.updateTime }}"
       bindtap="handleShowTime"
     ></s-list>
+    <s-empty tt:else></s-empty>
   </view>
 </view>
 

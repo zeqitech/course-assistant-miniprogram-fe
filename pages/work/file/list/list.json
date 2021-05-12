@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "s-list": "/components/slist/slist",
-    "s-input": "/components/sinput/sinput"
+    "s-input": "/components/sinput/sinput",
+    "s-empty": "/components/sempty/sempty"
   }
 }

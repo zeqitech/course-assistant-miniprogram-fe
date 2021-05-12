@@ -15,6 +15,7 @@
           title="{{ item }}"
           action="{{_t['未签到']}}"
         />
+        <s-empty tt:else></s-empty>
       </view>
     </view>
   </view>

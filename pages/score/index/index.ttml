@@ -10,6 +10,7 @@
       title="{{ item.studentName + '  ' + item.schoolId }}"
       action="{{ item.grade }}"
     ></s-list>
+    <s-empty tt:else></s-empty>
   </view>
 </view>
 

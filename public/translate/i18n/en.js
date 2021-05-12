@@ -5,7 +5,7 @@ const languageMap = {
   查看更多: 'More',
   进行中: 'Ongoing',
   已结课: 'Ended',
-  页面空空如也: 'Empty Page',
+  页面空空如也: 'No Data',
   课程功能: 'Course Functions',
   签到: 'Sign In',
   作业: 'Assignment',
