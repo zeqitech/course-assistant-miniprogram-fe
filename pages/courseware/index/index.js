@@ -46,6 +46,22 @@ Page({
     await this.handleGetViewInfo();
   },
 
+  /**
+   * 展示首次及最后一次查看时间
+   * @param {Object} e
+   */
+  handleShowTime(e) {
+    tt.showModal({
+      title: _('详情'),
+      content: `${_('首次查看时间')}`,
+      confirmText: _('确认'),
+      cancelText: _('取消'),
+    });
+  },
+
+  /**
+   * 获取课件浏览记录
+   */
   async handleGetViewInfo() {
     // 获取课件浏览记录
     let coursewareViewInfoRes = await globalFunctions.sendRequests(

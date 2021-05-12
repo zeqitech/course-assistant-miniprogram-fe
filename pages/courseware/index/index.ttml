@@ -24,6 +24,9 @@
           tt:for="{{ viewRecord }}"
           title="{{ item.username }}"
           action="{{ item.count }}"
+          data-create-Time="{{ item.createTime }}"
+          data-update-Time="{{ item.updateTime }}"
+          bindtap="handleShowTime"
         />
       </view>
     </view>

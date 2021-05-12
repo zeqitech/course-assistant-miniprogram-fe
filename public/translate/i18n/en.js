@@ -102,6 +102,7 @@ const languageMap = {
   选择作业分类: 'Switch Assignment Tag: ',
   所有作业: 'All Assignment',
   成绩统计: 'Score Statistics',
+  详情: 'Detail',
 };
 
 module.exports = { languageMap: languageMap };

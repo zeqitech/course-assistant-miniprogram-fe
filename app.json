@@ -13,7 +13,8 @@
     "pages/work/file/list/list",
     "pages/work/new/new",
     "pages/assistant/assistant",
-    "pages/courseware/index/index"
+    "pages/courseware/index/index",
+    "pages/score/index/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

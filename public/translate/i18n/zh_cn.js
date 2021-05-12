@@ -101,6 +101,7 @@ const languageMap = {
   选择作业分类: '选择作业分类：',
   所有作业: '所有作业',
   成绩统计: '成绩统计',
+  详情: '详情',
 };
 
 module.exports = { languageMap: languageMap };

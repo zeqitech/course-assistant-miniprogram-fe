@@ -65,6 +65,27 @@ const requests = {
     });
     return res;
   },
+  // 课程成绩
+  async getScoreList(data) {
+    let res = await new Promise((resolve) => {
+      tt.request({
+        url: url.getScoreListUrl,
+        method: 'POST',
+        data: {
+          courseId: data.pageData.courseId,
+          force: data.pageData.force,
+          openId: data.pageData.openId,
+        },
+        header: {
+          'content-type': 'application/json',
+        },
+        complete(res) {
+          resolve(res.data);
+        },
+      });
+    });
+    return res;
+  },
 
   /**
    * 作业

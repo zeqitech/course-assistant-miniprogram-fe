@@ -199,6 +199,13 @@ const routes = {
       url: `/pages/work/new/new?option=modify&startDate=${data.pageData.startDate}&endDate=${data.pageData.endDate}&name=${data.pageData.name}&weight=${data.pageData.weight}&workId=${data.pageData.workId}&courseId=${data.pageData.courseId}`,
     });
   },
+
+  // 课程成绩页面
+  scoreStatistics(data) {
+    tt.navigateTo({
+      url: `/pages/score/index/index?courseId=${data.pageData.courseId}`,
+    });
+  },
 };
 
 module.exports = routes;

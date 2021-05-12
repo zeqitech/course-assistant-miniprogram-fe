@@ -47,7 +47,7 @@
     title="{{_t['成绩统计']}}"
     action=">"
     bindtap="pageNavigator"
-    data-to="assistant"
+    data-to="score"
   ></s-list>
 </view>
 <template is="foot"></template>

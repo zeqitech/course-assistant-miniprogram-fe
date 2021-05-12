@@ -1,0 +1,15 @@
+<import src="/global/foot.ttml" />
+
+<view class="page">
+  <view class="list width-app">
+    <s-list
+      class="item"
+      tt:if="{{ scoreList.length !== 0 }}"
+      tt:for="{{ scoreList }}"
+      title="{{ item.studentName + '  ' + item.schoolId }}"
+      action="{{ item.grade }}"
+    ></s-list>
+  </view>
+</view>
+
+<template is="foot"></template>

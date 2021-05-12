@@ -25,6 +25,9 @@ const switchTo = {
   assistant() {
     return 'assistant';
   },
+  score() {
+    return 'scoreStatistics';
+  },
 };
 // 根据不同用户类型，跳转到不同签到页面
 const switchSign = {
