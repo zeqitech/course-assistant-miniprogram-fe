@@ -17,6 +17,10 @@ const switchTo = {
   work() {
     return 'workModify';
   },
+  // 打开作业情况统计
+  workFileInfo() {
+    return 'workFileInfo';
+  },
 };
 // 根据用户类型，决定是否打开打分页面
 const switchGrade = {

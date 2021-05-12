@@ -11,6 +11,7 @@
     "pages/work/list/list",
     "pages/work/file/grade/grade",
     "pages/work/file/list/list",
+    "pages/work/file/info/info",
     "pages/work/new/new",
     "pages/assistant/assistant",
     "pages/courseware/index/index",

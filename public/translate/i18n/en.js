@@ -106,6 +106,8 @@ const languageMap = {
   重新生成成绩: 'Regenerate Score',
   首次查阅时间: 'First view time: ',
   作业统计: 'Assignment Statistics',
+  点击这里查看作业查阅情况: 'Click to Get Assignment Review Status',
+  次: ' time(s)',
 };
 
 module.exports = { languageMap: languageMap };

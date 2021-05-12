@@ -105,6 +105,8 @@ const languageMap = {
   重新生成成绩: '重新生成成绩',
   首次查阅时间: '首次查阅时间',
   作业统计: '作业统计',
+  点击这里查看作业查阅情况: '点击这里查看作业查阅情况',
+  次: ' 次',
 };
 
 module.exports = { languageMap: languageMap };

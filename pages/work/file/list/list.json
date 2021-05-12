@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "s-list": "/components/slist/slist"
+    "s-list": "/components/slist/slist",
+    "s-input": "/components/sinput/sinput"
   }
 }

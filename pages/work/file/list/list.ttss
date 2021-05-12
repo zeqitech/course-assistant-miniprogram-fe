@@ -1,3 +1,7 @@
+.status {
+  margin-top: 8px;
+}
+
 /* 作业文档列表 */
 .item {
   margin-top: 12px;

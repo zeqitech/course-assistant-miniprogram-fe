@@ -206,6 +206,13 @@ const routes = {
       url: `/pages/score/index/index?courseId=${data.pageData.courseId}`,
     });
   },
+
+  // 作业情况统计
+  workFileInfo(data) {
+    tt.navigateTo({
+      url: `/pages/work/file/info/info?workId=${data.pageData.workId}`,
+    });
+  },
 };
 
 module.exports = routes;
