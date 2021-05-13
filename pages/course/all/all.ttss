@@ -12,6 +12,7 @@
 /* PC 端适配 */
 @media (min-width: 640px) {
   .list {
+    width: fit-content;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;

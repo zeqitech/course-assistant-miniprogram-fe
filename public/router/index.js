@@ -1,3 +1,5 @@
+import globalFunctions from '../function/index';
+
 const routes = {
   // 助教管理页面
   assistant(data) {
@@ -136,8 +138,10 @@ const routes = {
     } else {
       // 提示没有评阅权限
       tt.showModal({
-        title: '提示',
-        content: '暂无本次作业评阅权限',
+        title: _('提示'),
+        content: _('暂无本次作业评阅权限'),
+        confirmText: _('确认'),
+        cancelText: _('取消'),
       });
     }
   },

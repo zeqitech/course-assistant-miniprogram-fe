@@ -122,3 +122,10 @@
     width: 50%;
   }
 }
+
+/* PC 端适配 */
+@media (min-width: 900px) {
+  .width-app {
+    width: 40%;
+  }
+}

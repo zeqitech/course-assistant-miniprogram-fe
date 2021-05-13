@@ -72,7 +72,6 @@ Page({
    * 页面显示生命周期函数
    */
   async onShow() {
-    console.log('页面显示');
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('课程作业列表'),

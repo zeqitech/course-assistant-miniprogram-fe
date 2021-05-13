@@ -120,6 +120,7 @@ const languageMap = {
   已签到: '已签到',
   添加助教提醒: '是否确认添加助教：',
   签到成功: '签到成功',
+  暂无本次作业评阅权限: '暂无本次作业评阅权限',
 };
 
 module.exports = { languageMap: languageMap };
