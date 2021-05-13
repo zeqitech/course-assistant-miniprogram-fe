@@ -1,7 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <view class="list" tt:if="{{ filter === 'now' && !nowEmpty }}">
+  <view class="list width-app" tt:if="{{ filter === 'now' && !nowEmpty }}">
     <s-card
       tt:for="{{ courseList }}"
       tt:if="{{ !item.expireStatus }}"
@@ -22,7 +22,7 @@
     ></s-card>
   </view>
   <s-empty tt:if="{{ filter === 'now' && nowEmpty }}" class="empty"></s-empty>
-  <view class="list" tt:if="{{ filter === 'past' && !pastEmpty }}">
+  <view class="list width-app" tt:if="{{ filter === 'past' && !pastEmpty }}">
     <s-card
       tt:for="{{ courseList }}"
       tt:if="{{ item.expireStatus }}"

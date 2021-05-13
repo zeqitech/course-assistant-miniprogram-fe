@@ -1,5 +1,4 @@
 .list {
-  width: calc(100% - 48px);
   display: grid;
   grid-template-columns: 50% 50%;
   column-gap: 8px;
@@ -8,4 +7,16 @@
 }
 .list .item > view {
   width: 100%;
+}
+
+/* PC 端适配 */
+@media (min-width: 640px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
+  .list .item > view {
+    width: 200px;
+  }
 }

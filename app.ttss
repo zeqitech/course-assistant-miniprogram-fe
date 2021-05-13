@@ -115,3 +115,10 @@
   color: #8c8c8c;
   font-size: 12px;
 }
+
+/* PC 端适配 */
+@media (min-width: 640px) {
+  .width-app {
+    width: 50%;
+  }
+}

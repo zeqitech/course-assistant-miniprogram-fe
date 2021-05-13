@@ -9,3 +9,10 @@
 .item {
   margin-top: 12px;
 }
+
+/* PC 端适配 */
+@media (min-width: 640px) {
+  .cover {
+    height: 500px;
+  }
+}

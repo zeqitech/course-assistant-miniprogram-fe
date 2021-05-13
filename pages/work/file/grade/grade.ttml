@@ -44,7 +44,7 @@
       action="{{ count + _t['次'] }}"
     ></s-list>
   </s-input>
-  <view class="grade">
+  <view class="grade width-app">
     <s-input
       class="item"
       label="{{_t['分数']}}"

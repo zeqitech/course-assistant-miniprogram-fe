@@ -13,7 +13,6 @@
 
 /* 打分模块 */
 .grade {
-  width: calc(100% - 48px);
   display: flex;
   flex-direction: column;
   margin-top: 16px;
