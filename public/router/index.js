@@ -184,7 +184,7 @@ const routes = {
      * score - 作业得分
      */
     tt.navigateTo({
-      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&comment=${data.comment}&score=${data.score}&courseId=${data.pageData.courseId}`,
+      url: `/pages/work/file/grade/grade?fileToken=${data.fileToken}&fileName=${data.fileName}&score=${data.score}&courseId=${data.pageData.courseId}`,
     });
   },
 

@@ -15,8 +15,8 @@
       expireState="{{ item.expireStatus }}"
       data-courseware-token="{{ item.coursewareToken }}"
       data-course-id="{{ item.courseId }}"
-      data-chat-id="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
+      data-course-name="{{ item.courseName }}"
       bindtap="pageNavigator"
       data-to="courseIndex"
     ></s-card>
@@ -36,8 +36,8 @@
       expireState="{{ item.expireStatus }}"
       data-courseware-token="{{ item.coursewareToken }}"
       data-course-id="{{ item.courseId }}"
-      data-chat-id="{{ item.chatId }}"
       data-cover="{{ item.coverUrl }}"
+      data-course-name="{{ item.courseName }}"
       bindtap="pageNavigator"
       data-to="courseIndex"
     ></s-card>

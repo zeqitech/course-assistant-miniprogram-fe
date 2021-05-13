@@ -56,8 +56,6 @@ const languageMap = {
   点击这里查看作业内容: 'Click to View Assignment Content',
   分数: 'Score',
   请输入成绩: 'Please enter the score.',
-  评语: 'Comments (Optional)',
-  请输入评语: 'Please enter a comment.',
   提交: 'Submit',
   课程课件: 'Courseware',
   点击这里查看课件: 'Click to View Courseware',

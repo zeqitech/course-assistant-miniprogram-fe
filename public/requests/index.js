@@ -169,7 +169,6 @@ const requests = {
         url: url.gradeUrl,
         method: 'POST',
         data: {
-          comment: data.pageData.remark,
           fileToken: data.pageData.fileToken,
           openId: data.pageData.openId,
           score: parseInt(data.pageData.score),

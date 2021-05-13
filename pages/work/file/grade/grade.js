@@ -14,8 +14,6 @@ Page({
   data: {
     // 分数
     score: '',
-    // 评语
-    remark: '',
     // 文件 Token
     fileToken: '',
     // 文件名
@@ -36,7 +34,6 @@ Page({
       fileToken: options.fileToken,
       fileName: options.fileName,
       score: options.score === 'null' ? '' : options.score,
-      remark: options.comment === 'null' ? '' : options.comment,
       courseId: options.courseId,
     });
   },
