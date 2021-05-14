@@ -3,7 +3,8 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: #2fb804;
+  background-color: var(--primary);
+  box-shadow: 0 4px 8px var(--box-shadow);
   color: white;
   margin-top: 64px;
   display: flex;
