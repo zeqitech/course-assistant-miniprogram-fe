@@ -66,8 +66,6 @@ Page({
     if (this.data.duration !== '') {
       // 获取签到起止时间
       let times = this.handleGetSignTime();
-      // 获取授权信息
-      let authorized = await this.handleGetLocationAuth();
       // 已授权，显示 Loading
       // 显示 Loading
       globalFunctions.showLoading(_('定位中'), false);
