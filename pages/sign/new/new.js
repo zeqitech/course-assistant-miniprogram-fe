@@ -69,10 +69,8 @@ Page({
       // 获取授权信息
       let authorized = await this.handleGetLocationAuth();
       // 已授权，显示 Loading
-      if (authorized) {
-        // 显示 Loading
-        globalFunctions.showLoading(_('定位中'));
-      }
+      // 显示 Loading
+      globalFunctions.showLoading(_('定位中'), false);
       // 获取当前老师位置
       let location = await this.handleGetLocation();
       // 保存数据
@@ -88,10 +86,8 @@ Page({
         this.data
       );
       // 已授权，隐藏 Loading
-      if (authorized) {
-        // 隐藏 Loading
-        globalFunctions.hideLoading();
-      }
+      // 隐藏 Loading
+      globalFunctions.hideLoading();
       // 成功发布签到
       if (postNewSignRes.success) {
         // 提示成功

@@ -18,7 +18,7 @@
     </s-list>
   </s-input>
   <s-list
-    tt:if="{{ workFileList.length!==0 }}"
+    tt:if="{{ workFileList.length !== 0 }}"
     tt:for="{{ workFileList }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: {{(index+2)*0.1}}s;"
@@ -32,7 +32,11 @@
     bindtap="pageNavigator"
     data-to="grade"
   ></s-list>
-  <s-empty tt:else></s-empty>
+  <s-empty
+    class="empty"
+    tt:if="{{ workFileList.length === 0 }}"
+    emptyMessage="{{ _t['暂无作业文档'] }}"
+  ></s-empty>
 </view>
 <view class="popup">
   <text

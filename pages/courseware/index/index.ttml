@@ -29,7 +29,11 @@
           data-update-Time="{{ item.updateTime }}"
           bindtap="handleShowTime"
         />
-        <s-empty tt:else></s-empty>
+        <s-empty
+          class="empty"
+          tt:if="{{ viewRecord.length === 0 }}"
+          emptyMessage="{{ _t['暂无浏览记录'] }}"
+        ></s-empty>
       </view>
     </view>
   </view>

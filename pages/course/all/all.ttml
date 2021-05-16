@@ -21,7 +21,11 @@
       data-to="courseIndex"
     ></s-card>
   </view>
-  <s-empty tt:if="{{ filter === 'now' && nowEmpty }}" class="empty"></s-empty>
+  <s-empty
+    tt:if="{{ filter === 'now' && nowEmpty }}"
+    class="empty"
+    emptyMessage="{{ _t['暂无课程信息'] }}"
+  ></s-empty>
   <view class="list width-app" tt:if="{{ filter === 'past' && !pastEmpty }}">
     <s-card
       tt:for="{{ courseList }}"
@@ -42,6 +46,10 @@
       data-to="courseIndex"
     ></s-card>
   </view>
-  <s-empty tt:if="{{ filter === 'past' && pastEmpty }}" class="empty"></s-empty>
+  <s-empty
+    tt:if="{{ filter === 'past' && pastEmpty }}"
+    class="empty"
+    emptyMessage="{{ _t['暂无课程信息'] }}"
+  ></s-empty>
 </view>
 <template is="foot"></template>

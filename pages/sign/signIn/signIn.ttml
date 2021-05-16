@@ -14,7 +14,11 @@
           action="{{ item.signedStatus ? _t['已签到'] : _t['未签到']}}"
           color="{{ item.signedStatus ? 'green' : 'red' }}"
         />
-        <s-empty tt:else></s-empty>
+        <s-empty
+          class="empty"
+          tt:if="{{ signList.length === 0 }}"
+          emptyMessage="{{ _t['老师暂未发起签到'] }}"
+        ></s-empty>
       </view>
     </view>
 </view>

@@ -18,7 +18,11 @@
     />
   </view>
   <!-- 空页面 -->
-  <s-empty tt:if="{{ signList.length === 0 }}" class="empty"></s-empty>
+  <s-empty
+    tt:if="{{ signList.length === 0 }}"
+    class="empty"
+    emptyMessage="{{ _t['暂无签到任务'] }}"
+  ></s-empty>
 </view>
 <!-- 发布签到按钮 -->
 <image

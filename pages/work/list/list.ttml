@@ -42,7 +42,11 @@
     data-to="workFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->
-  <s-empty tt:else class="empty"></s-empty>
+  <s-empty
+    tt:if="{{ workList.length === 0 }}"
+    class="empty"
+    emptyMessage="{{ _t['暂无作业信息'] }}"
+  ></s-empty>
 </view>
 <!-- 右下角发布作业按钮 -->
 <image

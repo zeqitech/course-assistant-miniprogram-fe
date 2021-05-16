@@ -1,6 +1,7 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
+  <!-- 助教列表 -->
   <s-list
     class="width-app assistant"
     tt:if="{{ assistantList.length !== 0 }}"
@@ -8,7 +9,12 @@
     title="{{ item.assistantName }}"
     action="{{ _t['助教'] }}"
   ></s-list>
-  <s-empty tt:else></s-empty>
+  <!-- 暂无助教 -->
+  <s-empty
+    class="empty"
+    tt:if="{{ assistantList.length === 0 }}"
+    emptyMessage="{{ _t['当前课程暂无助教'] }}"
+  ></s-empty>
 </view>
 <!-- 发布签到按钮 -->
 <image

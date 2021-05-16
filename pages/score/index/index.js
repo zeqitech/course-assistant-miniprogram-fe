@@ -18,6 +18,8 @@ Page({
     userType: globalData.userType,
     // 重新生成成绩
     force: false,
+    // 成绩列表
+    scoreList: [],
   },
 
   /**

@@ -54,7 +54,11 @@
       >{{_t['查看更多']}}</text>
     </view>
     <!-- 页面为空时显示占位 -->
-    <s-empty tt:if="{{ nowEmpty }}" class="empty"></s-empty>
+    <s-empty
+      tt:if="{{ nowEmpty }}"
+      class="empty"
+      emptyMessage="{{ _t['暂无课程信息'] }}"
+    ></s-empty>
     <!-- 页面不为空时显示课程列表，横向滑动 -->
     <scroll-view class="content" scroll-x="true" tt:else>
       <s-card

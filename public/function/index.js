@@ -9,10 +9,10 @@ const _ = translate._;
 
 export default {
   // 显示 Loading
-  showLoading(title) {
+  showLoading(title, mask = true) {
     tt.showLoading({
       title: title,
-      mask: true,
+      mask: mask,
     });
   },
 
