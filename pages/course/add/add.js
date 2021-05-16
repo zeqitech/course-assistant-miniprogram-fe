@@ -56,6 +56,10 @@ Page({
       success: (res) => {
         // 下载成功
         if (res.statusCode === 200) {
+          tt.showToast({
+            title: _('成功'),
+            icon: 'success',
+          });
           console.log(res);
           // 保存临时文件地址
           this.setData({
@@ -124,6 +128,11 @@ Page({
         this.setData({
           file: res.list[0].path,
           fileName: res.list[0].name,
+        });
+        // 提示选择成功
+        tt.showToast({
+          title: _('成功'),
+          icon: 'success',
         });
       },
     });

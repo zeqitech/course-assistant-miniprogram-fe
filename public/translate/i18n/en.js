@@ -17,7 +17,6 @@ const languageMap = {
   签到持续时间: 'Check-in Duration (minutes)',
   请输入签到持续时间: 'Please enter the check-in duration.',
   成功: 'Success',
-  发布成功: 'Success',
   确认: 'Confirm',
   取消: 'Cancel',
   正在进行: 'Ongoing',
