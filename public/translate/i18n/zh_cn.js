@@ -118,6 +118,7 @@ const languageMap = {
   添加助教提醒: '是否确认添加助教：',
   签到成功: '签到成功',
   暂无本次作业评阅权限: '暂无本次作业评阅权限',
+  课堂测试: '课堂测试',
 };
 
 module.exports = { languageMap: languageMap };

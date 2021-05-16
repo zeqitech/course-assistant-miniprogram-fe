@@ -1,4 +1,5 @@
-import globalFunctions from '../function/index';
+import translate from '../translate/index';
+const _ = translate._;
 
 const routes = {
   // 助教管理页面
@@ -215,6 +216,14 @@ const routes = {
   workFileInfo(data) {
     tt.navigateTo({
       url: `/pages/work/file/info/info?workId=${data.pageData.workId}`,
+    });
+  },
+
+  // 课堂测试功能开发中，暂时使用飞书问卷
+  test() {
+    tt.openSchema({
+      schema: 'https://wenjuan.feishu.cn/project/',
+      external: false,
     });
   },
 };

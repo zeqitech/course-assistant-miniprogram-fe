@@ -49,5 +49,13 @@
     bindtap="pageNavigator"
     data-to="score"
   ></s-list>
+  <s-list
+    class="item width-app animation-slide-bottom"
+    style="animation-delay: 0.6s;"
+    title="{{_t['课堂测试']}}"
+    action=">"
+    bindtap="pageNavigator"
+    data-to="test"
+  ></s-list>
 </view>
 <template is="foot"></template>

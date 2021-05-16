@@ -120,6 +120,7 @@ const languageMap = {
   添加助教提醒: 'Confirm to add TA: ',
   签到成功: 'Signed successfully.',
   暂无本次作业评阅权限: 'No permission to this assignment.',
+  课堂测试: 'Test',
 };
 
 module.exports = { languageMap: languageMap };

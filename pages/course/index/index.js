@@ -25,8 +25,13 @@ const switchTo = {
   assistant() {
     return 'assistant';
   },
+  // 跳转到班级成绩统计页面
   score() {
     return 'scoreStatistics';
+  },
+  // 提示课堂测试开发中
+  test() {
+    return 'test';
   },
 };
 // 根据不同用户类型，跳转到不同签到页面
