@@ -35,6 +35,17 @@
   margin-left: auto;
 }
 
+.file-chosen {
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
+  color: var(--gray-scale-500-guide);
+}
+
+.success {
+  color: var(--success);
+}
+
 .submit-btn {
   margin-top: 24px;
 }

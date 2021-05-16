@@ -41,6 +41,7 @@
     </s-input>
     <!-- 选择 Excel 文件 -->
     <button type="default" bindtap="handleSelectFile">{{_t['选择文件']}}</button>
+    <view class="file-chosen" tt:if="{{ fileName }}"><text class="success">✔</text>{{ fileName }}</view>
   </view>
   <!-- 添加课程 -->
   <button
