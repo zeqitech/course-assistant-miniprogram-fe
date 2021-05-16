@@ -78,7 +78,7 @@ const requests = {
         filePath: data.pageData.file,
         name: 'courseExcel',
         complete(res) {
-          resolve(res.data);
+          resolve(JSON.parse(res.data));
         },
       });
     });

@@ -20,6 +20,15 @@
       <image class="icon" src="/image/history.png"></image>
       <text class="label">{{_t['往期课程']}}</text>
     </view>
+    <!-- 切换语言功能，所有人可用 -->
+    <view
+      class="item animation-scale-up translate"
+      style="animation-delay: 0.3s;"
+      bindtap="handleSwitchLanguage"
+    >
+      <image class="icon" src="/image/translate.png"></image>
+      <text class="label">{{_t['切换语言']}}</text>
+    </view>
     <!-- 添加课程功能，仅教务管理人员可用 -->
     <view
       class="item animation-scale-up"
@@ -30,15 +39,6 @@
     >
       <image class="icon" src="/image/class.png"></image>
       <text class="label">{{_t['添加课程']}}</text>
-    </view>
-    <!-- 切换语言功能，所有人可用 -->
-    <view
-      class="item animation-scale-up translate"
-      style="animation-delay: 0.3s;"
-      bindtap="handleSwitchLanguage"
-    >
-      <image class="icon" src="/image/translate.png"></image>
-      <text class="label">{{_t['切换语言']}}</text>
     </view>
   </scroll-view>
   <!-- 本学期开课课程列表 -->

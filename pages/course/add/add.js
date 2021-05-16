@@ -158,6 +158,16 @@ Page({
             'addCourse',
             this.data
           );
+          // 隐藏 Loading
+          globalFunctions.hideLoading();
+          console.log('添加课程返回值', addCourseRes);
+          if (addCourseRes.success) {
+            // 提示成功
+            globalFunctions.showSuccess(_('添加课程成功'), 1);
+          } else {
+            // 提示失败
+            globalFunctions.showError(addCourseRes.message);
+          }
         } else {
           // 若文件类型不正确，则进行提示
           globalFunctions.showError(_('文件类型不正确'));
@@ -170,15 +180,5 @@ Page({
       // 若输入内容为空，则提示
       globalFunctions.showError(_('请填写开课学期'));
     }
-    console.log(addCourseRes);
-    if (addCourseRes.success) {
-      // 提示成功
-      globalFunctions.showSuccess(_('添加课程成功'), 1);
-    } else {
-      // 提示失败
-      globalFunctions.showError(addCourseRes.message);
-    }
-    // 隐藏 Loading
-    globalFunctions.hideLoading();
   },
 });
