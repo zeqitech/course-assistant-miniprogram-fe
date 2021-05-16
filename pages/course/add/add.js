@@ -27,6 +27,32 @@ Page({
     progress: 0,
     // 用户 openId
     openId: globalData.openId,
+    // 学年数据
+    yearData: '',
+    // 学期数据
+    semesterData: '',
+    // 学年选项
+    year: [
+      '2019',
+      '2020',
+      '2021',
+      '2022',
+      '2023',
+      '2024',
+      '2025',
+      '2026',
+      '2027',
+      '2028',
+      '2029',
+      '2030',
+      '2031',
+      '2032',
+      '2033',
+      '2034',
+      '2035',
+    ],
+    // 学期选项
+    semester: ['1', '2'],
   },
 
   /**
@@ -139,9 +165,32 @@ Page({
   },
 
   /**
+   * 选择学年
+   * @param {Object} e
+   */
+  handleSelectYear(e) {
+    this.setData({
+      yearData: this.data.year[e.detail.value],
+    });
+  },
+
+  /**
+   * 选择学期
+   * @param {Object} e
+   */
+  handleSelectSemester(e) {
+    this.setData({
+      semesterData: this.data.semester[e.detail.value],
+    });
+  },
+
+  /**
    * 处理点击添加课程事件
    */
   async handleAddCourse() {
+    this.setData({
+      term: this.data.yearData + this.data.semesterData,
+    });
     // 首先判断输入的内容是否为空
     if (this.data.term !== '') {
       // 若输入不为空，则判断是否已经选择文件

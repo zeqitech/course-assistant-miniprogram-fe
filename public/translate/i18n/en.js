@@ -66,14 +66,11 @@ const languageMap = {
   创建中: 'Adding',
   文件类型不正确: 'Incorrect file type, please upload xlsx or xls file.',
   请选择文件: 'Please select a file.',
-  请填写开课学期: 'Please fill in the semester.',
+  请填写开课学期: 'Please choose the semester.',
   添加课程成功: 'Course added successfully.',
   Excel模板: 'Excel Template',
   点击这里下载Excel模板: 'Click to Download Excel Template',
-  学期: 'Semester',
-  请输入开课学期: 'Please enter the semester.',
-  学期格式:
-    '[Format]: <Year><Semester>. For example, 20211 represents the 1st semester of 2021',
+  学期: 'Semester: ',
   选择文件: 'Select File',
   当前课程列表: 'Ongoing Courses',
   往期课程列表: 'Ended Courses',
@@ -131,6 +128,8 @@ const languageMap = {
   暂无作业查阅记录: 'No View Record',
   暂无作业文档: 'No Document',
   暂无作业信息: 'No Assignment Data',
+  学年: 'Year: ',
+  开课学期: 'Term',
 };
 
 module.exports = { languageMap: languageMap };

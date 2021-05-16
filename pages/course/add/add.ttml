@@ -20,12 +20,25 @@
     <s-input
       label="{{_t['学期']}}"
       value="{{ term }}"
-      placeholder="{{_t['请输入开课学期']}}"
-      bindinput="handleInputTerm"
+      type="slot"
     >
+      <view>
+      <picker
+        mode="selector"
+        range="{{ year }}"
+        bindchange="handleSelectYear"
+      >
+        <view class="picker">{{_t['学年']}}{{ yearData }}</view>
+      </picker>
+      <picker
+        mode="selector"
+        range="{{ semester }}"
+        bindchange="handleSelectSemester"
+       >
+        <view class="picker">{{_t['学期']}}{{ semesterData }}</view>
+      </picker>
+    </view>
     </s-input>
-    <!-- 输入提示 -->
-    <text class="remind">{{_t['学期格式']}}</text>
     <!-- 选择 Excel 文件 -->
     <button type="default" bindtap="handleSelectFile">{{_t['选择文件']}}</button>
   </view>
