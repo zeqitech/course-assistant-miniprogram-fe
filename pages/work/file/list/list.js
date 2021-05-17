@@ -87,6 +87,7 @@ Page({
         courseId: options.courseId,
         assistantAuth: options.assistantAuth,
         tag: options.tag,
+        url: options.url,
       });
     } else {
       this.setData({

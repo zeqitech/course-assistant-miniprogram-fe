@@ -89,6 +89,7 @@ Page({
         workId: options.workId,
         assistantAuth: options.assistantAuth === 'true' ? true : false,
         tag: options.tag,
+        docUrl: options.url,
       });
       tt.setNavigationBarTitle({
         title: _('修改信息'),
@@ -117,7 +118,7 @@ Page({
     tt.docsPicker({
       maxNum: 1,
       pickerTitle: _('请选择题目要求云文档'),
-      success(res) {
+      success: (res) => {
         console.log(res);
         // 保存数据
         this.setData({
