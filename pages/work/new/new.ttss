@@ -48,6 +48,7 @@
   font-weight: var(--font-weight-help-app);
   line-height: var(--line-height-help-app);
   color: var(--gray-scale-500-guide);
+  align-self: flex-start;
 }
 
 .success {
