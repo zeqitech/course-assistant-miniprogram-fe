@@ -23,7 +23,7 @@
       <image class="icon" src="/image/file.png"></image>
     </s-list>
   </s-input>
-  <view class="file-chosen" tt:if="{{ fileName }}"><text class="success">✔</text>{{ fileName }}</view>
+  <view class="file-chosen width-app" tt:if="{{ fileName }}"><text class="success">✔</text>{{ fileName }}</view>
   <s-input 
     class="item width-app"
     label="{{_t['作业权重']}}"
