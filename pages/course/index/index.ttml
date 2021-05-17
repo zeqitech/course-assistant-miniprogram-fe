@@ -32,6 +32,7 @@
     data-to="courseware"
   ></s-list>
   <s-list
+    tt:if="{{ userType === 'teacher' }}"
     class="item width-app animation-slide-bottom"
     style="animation-delay: 0.4s;"
     title="{{_t['课堂测试']}}"
