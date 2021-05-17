@@ -1,5 +1,4 @@
 .item {
-  width: calc(100% - 48px);
   margin-top: 8px;
 }
 .item:first-child {
@@ -42,4 +41,25 @@
 }
 .btn {
   margin-top: 24px;
+}
+
+.file-chosen {
+  font-size: var(--font-size-help);
+  font-weight: var(--font-weight-help-app);
+  line-height: var(--line-height-help-app);
+  color: var(--gray-scale-500-guide);
+}
+
+.success {
+  color: var(--success);
+}
+
+.file {
+  margin-top: 8px;
+}
+
+.file .icon {
+  width: 24px;
+  height: 24px;
+  margin-left: auto;
 }

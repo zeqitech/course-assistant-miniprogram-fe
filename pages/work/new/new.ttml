@@ -2,27 +2,43 @@
 
 <view class="page">
   <s-input
-    class="item"
+    class="item width-app"
     label="{{_t['作业名称']}}"
     value="{{ name }}"
     placeholder="{{_t['请输入作业名称']}}"
     bindinput="handleInputName"
   />
+  <!-- 选择作业要求云文档 -->
+  <s-input
+    class="item width-app"
+    label="{{_t['题目详情']}}"
+    type="slot"
+  >
+    <s-list
+      class="file"
+      type="slot"
+      title="{{_t['点击这里选择题目要求云文档']}}"
+      bindtap="handleSelectDoc"
+    >
+      <image class="icon" src="/image/file.png"></image>
+    </s-list>
+  </s-input>
+  <view class="file-chosen" tt:if="{{ fileName }}"><text class="success">✔</text>{{ fileName }}</view>
   <s-input 
-    class="item"
+    class="item width-app"
     label="{{_t['作业权重']}}"
     value="{{ weight }}"
     placeholder="{{_t['请输入作业权重']}}"
     bindinput="handleInputWeight"
   />
   <s-input 
-    class="item"
+    class="item width-app"
     label="{{_t['作业分类']}}"
     value="{{ tag }}"
     placeholder="{{_t['请输入作业分类']}}"
     bindinput="handleInputTag"
   />
-  <s-input class="item" type="slot" label="{{_t['起止日期']}}">
+  <s-input class="item width-app" type="slot" label="{{_t['起止日期']}}">
     <view>
       <picker
         mode="date"
@@ -47,7 +63,7 @@
     </view>
   </s-input>
   <s-input
-    class="item"
+    class="item width-app"
     label="{{_t['助教权限']}}"
     type="slot"
   >
@@ -59,7 +75,7 @@
       ></switch>
     </view>
   </s-input>
-  <button class="item btn" type="primary" tt:if="{{ option === 'new' }}" bindtap="handleAddWork">{{_t['立即发布']}}</button>
-  <button class="item btn" type="primary" tt:else bindtap="handleModifyWork">{{_t['立即修改']}}</button>
+  <button class="item width-app btn" type="primary" tt:if="{{ option === 'new' }}" bindtap="handleAddWork">{{_t['立即发布']}}</button>
+  <button class="item width-app btn" type="primary" tt:else bindtap="handleModifyWork">{{_t['立即修改']}}</button>
 </view>
 <template is="foot"></template>

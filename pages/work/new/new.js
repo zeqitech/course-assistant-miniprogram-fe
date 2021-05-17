@@ -55,6 +55,10 @@ Page({
     openId: globalData.openId,
     // 作业分类
     tag: '',
+    // 作业详情文档链接
+    docUrl: null,
+    // 作业详情文档名称
+    fileName: '',
   },
 
   /**
@@ -103,6 +107,24 @@ Page({
     // ttml 双语支持
     this.setData({
       _t: translate._t(),
+    });
+  },
+
+  /**
+   * 老师选择题目要求
+   */
+  handleSelectDoc() {
+    tt.docsPicker({
+      maxNum: 1,
+      pickerTitle: _('请选择题目要求云文档'),
+      success(res) {
+        console.log(res);
+        // 保存数据
+        this.setData({
+          fileName: res.fileList[0].fileName,
+          docUrl: res.fileList[0].filePath,
+        });
+      },
     });
   },
 

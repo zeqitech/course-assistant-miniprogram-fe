@@ -130,6 +130,9 @@ const languageMap = {
   暂无作业信息: 'No Assignment Data',
   学年: 'Year: ',
   开课学期: 'Term',
+  题目详情: 'Assignment Details',
+  点击这里选择题目要求云文档: 'Click to Select Assignment Detail',
+  请选择题目要求云文档: 'Select Assignment Detail',
 };
 
 module.exports = { languageMap: languageMap };

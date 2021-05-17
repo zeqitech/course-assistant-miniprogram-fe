@@ -124,6 +124,7 @@ const requests = {
           workName: data.pageData.name,
           assistantAuth: data.pageData.assistantAuth,
           tag: data.pageData.tag,
+          url: data.pageData.docUrl,
         },
         header: {
           'content-type': 'application/json',
@@ -150,6 +151,7 @@ const requests = {
           courseId: data.pageData.courseId,
           assistantAuth: data.pageData.assistantAuth,
           tag: data.pageData.tag,
+          url: data.pageData.docUrl,
         },
         header: {
           'content-type': 'application/json',
