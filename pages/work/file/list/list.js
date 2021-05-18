@@ -80,7 +80,7 @@ Page({
     if (globalData.userType !== 'student') {
       this.setData({
         workId: options.workId,
-        startDate: options.startDate.split(' ')[0],
+        endTime: options.endDate.split(' ')[1].slice(0, 5),
         endDate: options.endDate.split(' ')[0],
         weight: options.weight,
         name: options.name,
