@@ -1,6 +1,6 @@
 <template name="foot">
   <view class="foot">
     <text class="right">© 2021 - All rights reserved</text>
-    <text class="author">ZeQi Studio</text>
+    <text class="author">ZeQi Studio & Synx Studio</text>
   </view>
 </template>

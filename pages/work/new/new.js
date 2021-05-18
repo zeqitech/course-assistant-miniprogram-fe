@@ -37,8 +37,8 @@ Page({
   data: {
     //作业名称
     name: '',
-    //作业起始日期
-    startDate: '',
+    //作业截止时刻
+    endTime: '',
     //作业截至日期
     endDate: '',
     // 课程 ID
@@ -82,7 +82,7 @@ Page({
     } else {
       // 如果操作为修改作业信息
       this.setData({
-        startDate: options.startDate,
+        endTime: options.endTime,
         endDate: options.endDate,
         name: options.name,
         weight: options.weight,
@@ -175,10 +175,10 @@ Page({
    */
   handleSelectDate(e) {
     // 选择起始日期
-    if (e.currentTarget.dataset.name === 'start') {
+    if (e.currentTarget.dataset.name === 'time') {
       // 保存数据
       this.setData({
-        startDate: e.detail.value,
+        endTime: e.detail.value,
       });
     } else {
       // 选择结束日期
@@ -195,13 +195,13 @@ Page({
     // 判断作业名、开始时间、截止时间、权重、作业分类是否非空
     if (
       dataValidator.isFull(this.data.name) &&
-      dataValidator.isFull(this.data.startDate) &&
+      dataValidator.isFull(this.data.endTime) &&
       dataValidator.isFull(this.data.endDate) &&
       dataValidator.isFull(this.data.weight) &&
       dataValidator.isFull(this.data.tag)
     ) {
       // 判断开始时间是否早于结束时间
-      if (dataValidator.earlyThan(this.data.startDate, this.data.endDate)) {
+      if (dataValidator.earlyThan(this.data.endTime, this.data.endDate)) {
         return true;
       } else {
         // 提示开始时间需早于截止时间

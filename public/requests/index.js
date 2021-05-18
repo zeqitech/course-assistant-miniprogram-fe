@@ -116,8 +116,8 @@ const requests = {
         url: url.addWorkUrl,
         method: 'POST',
         data: {
-          startTime: data.pageData.startDate + ' 00:00:00',
-          expireTime: data.pageData.endDate + ' 23:59:59',
+          expireTime:
+            data.pageData.endDate + ' ' + data.pageData.endTime + ':00',
           courseId: data.pageData.courseId,
           weight: parseInt(data.pageData.weight),
           openId: data.pageData.openId,
@@ -144,8 +144,8 @@ const requests = {
         method: 'POST',
         data: {
           workId: data.pageData.workId,
-          startTime: data.pageData.startDate + ' 00:00:00',
-          expireTime: data.pageData.endDate + ' 23:59:59',
+          expireTime:
+            data.pageData.endDate + ' ' + data.pageData.endTime + ':00',
           workName: data.pageData.name,
           weight: parseInt(data.pageData.weight),
           courseId: data.pageData.courseId,

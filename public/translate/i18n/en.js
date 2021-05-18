@@ -35,8 +35,7 @@ const languageMap = {
   作业分类: 'Assignment Tag',
   请输入作业分类: 'Please tag your assignment.',
   起止日期: 'Start and End Date',
-  起始日期: 'Start: ',
-  截止日期: 'End: ',
+  截止日期: 'End date: ',
   助教权限: 'TA Permission',
   允许助教批改本次作业: 'Allow TAs to correct this assignment?',
   立即发布: 'Publish',
@@ -133,6 +132,8 @@ const languageMap = {
   题目详情: 'Assignment Details',
   点击这里选择题目要求云文档: 'Click to Select Assignment Detail',
   请选择题目要求云文档: 'Select Assignment Detail',
+  截止时刻: 'End time: ',
+  截止时间: 'Deadline',
 };
 
 module.exports = { languageMap: languageMap };
