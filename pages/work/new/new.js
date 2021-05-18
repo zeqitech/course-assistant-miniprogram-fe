@@ -198,7 +198,8 @@ Page({
       dataValidator.isFull(this.data.endTime) &&
       dataValidator.isFull(this.data.endDate) &&
       dataValidator.isFull(this.data.weight) &&
-      dataValidator.isFull(this.data.tag)
+      dataValidator.isFull(this.data.tag) &&
+      dataValidator.isFull(this.data.docUrl)
     ) {
       // 判断开始时间是否早于结束时间
       if (dataValidator.earlyThan(this.data.endTime, this.data.endDate)) {
