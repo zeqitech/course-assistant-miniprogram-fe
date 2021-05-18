@@ -4,7 +4,7 @@
   <!-- 头部问候区 -->
   <view class="header">
     <text class="greet">
-      Hi, {{ nickName }}
+      Hi, {{ nickName }}<text tt:if="{{ userType === 'teacher' }}"> 老师</text>
     </text>
   </view>
   <!-- 功能区，横向滑动组件 -->
