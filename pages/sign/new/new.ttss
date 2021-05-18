@@ -1,5 +1,4 @@
 .item {
-  width: calc(100% - 48px);
   margin-top: 24px;
 }
 

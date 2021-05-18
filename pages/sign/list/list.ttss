@@ -1,6 +1,5 @@
 /* 签到记录列表 */
 .list {
-  width: calc(100% - 48px);
   margin-top: 12px;
   display: flex;
   flex-direction: column;

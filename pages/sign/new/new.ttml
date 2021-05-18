@@ -2,7 +2,7 @@
 
 <view class="page">
   <s-input
-    class="item"
+    class="item width-app"
     label="{{_t['签到持续时间']}}"
     value="{{ duration }}"
     placeholder="{{_t['请输入签到持续时间']}}"
