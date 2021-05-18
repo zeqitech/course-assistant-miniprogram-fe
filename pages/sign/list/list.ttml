@@ -1,12 +1,12 @@
 <import src="/global/foot.ttml" />
 
 <view class="page">
-  <view class="list">
+  <view class="list width-app">
     <!-- 渲染列表 -->
     <s-list
       tt:for="{{ signList }}"
       tt:if="{{ signList.length !== 0 }}"
-      class="item animation-slide-bottom width-app"
+      class="item animation-slide-bottom"
       style="animation-delay: {{(index+1)*0.1}}s;"
       title="{{ item.createTime }}"
       action="{{ item.expireStatus ? _t['已截止'] : _t['正在进行'] }}"
