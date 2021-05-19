@@ -201,13 +201,7 @@ Page({
       dataValidator.isFull(this.data.tag) &&
       dataValidator.isFull(this.data.docUrl)
     ) {
-      // 判断开始时间是否早于结束时间
-      if (dataValidator.earlyThan(this.data.endTime, this.data.endDate)) {
-        return true;
-      } else {
-        // 提示开始时间需早于截止时间
-        globalFunctions.showError(_('开始时间需早于截止时间'));
-      }
+      return true;
     } else {
       // 数据不完善，提示完善数据
       globalFunctions.showError(_('请完善数据'));

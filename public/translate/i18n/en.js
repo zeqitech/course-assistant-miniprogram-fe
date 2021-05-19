@@ -37,7 +37,7 @@ const languageMap = {
   起止日期: 'Start and End Date',
   截止日期: 'End date: ',
   助教权限: 'TA Permission',
-  允许助教批改本次作业: 'Allow TAs to correct this assignment?',
+  允许助教批改本次作业: 'TA Permission',
   立即发布: 'Publish',
   立即修改: 'Modify',
   发布中: 'Publishing',
@@ -134,6 +134,7 @@ const languageMap = {
   请选择题目要求云文档: 'Select Assignment Detail',
   截止时刻: 'End time: ',
   截止时间: 'Deadline',
+  老师: 'Teacher',
 };
 
 module.exports = { languageMap: languageMap };
