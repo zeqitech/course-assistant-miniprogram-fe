@@ -2,6 +2,10 @@
   margin-top: 24px;
 }
 
+.btn {
+  width: 100%;
+}
+
 .list .item view {
   margin-top: 12px;
 }
