@@ -17,11 +17,16 @@
       <image class="icon" src="/image/file.png"></image>
     </s-list>
   </s-input>
+  <text
+    tt:if="{{ userType === 'teacher' }}"
+    class="title animation-slide-bottom"
+    style="animation-delay: 0.3s;"
+  >{{_t['学生作业列表']}}</text>
   <s-list
     tt:if="{{ workFileList.length !== 0 }}"
     tt:for="{{ workFileList }}"
     class="item width-app animation-slide-bottom"
-    style="animation-delay: {{(index+2)*0.1}}s;"
+    style="animation-delay: {{(index+4)*0.1}}s;"
     icon="/image/doc.png"
     title="{{ item.fileName }}"
     action="{{ item.score ? item.score : _t['未打分'] }}"
@@ -33,7 +38,8 @@
     data-to="grade"
   ></s-list>
   <s-empty
-    class="empty"
+    class="empty animation-scale-up"
+    style="animation-delay: 0.3s;"
     tt:if="{{ workFileList.length === 0 }}"
     emptyMessage="{{ _t['暂无作业文档'] }}"
   ></s-empty>

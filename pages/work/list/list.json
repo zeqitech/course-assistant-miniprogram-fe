@@ -3,5 +3,6 @@
     "s-list": "/components/slist/slist",
     "s-empty": "/components/sempty/sempty",
     "s-input": "/components/sinput/sinput"
-  }
+  },
+  "enablePullDownRefresh": true
 }

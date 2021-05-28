@@ -137,6 +137,10 @@ const languageMap = {
   老师: 'Teacher',
   出勤率: 'Attendance',
   未签到人数: 'Unsigned',
+  学生作业列表: 'Assignment List',
+  点击记录可查看详细查阅时间:
+    '* Notice: Click the record to get detailed information.',
+  课件原文件: 'Courseware Document',
 };
 
 module.exports = { languageMap: languageMap };

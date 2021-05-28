@@ -23,6 +23,14 @@
   line-height: var(--line-height-h2);
 }
 
+.info .notice {
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: var(--font-weight-text-help-app);
+  line-height: var(--line-height-text-help);
+  color: var(--gray-scale-500-guide);
+}
+
 .info .list {
   display: flex;
   flex-direction: column;

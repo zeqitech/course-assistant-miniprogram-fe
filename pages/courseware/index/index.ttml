@@ -18,6 +18,10 @@
     </s-input>
     <view class="info" tt:if="{{ userType === 'teacher' }}">
       <text class="title">{{_t['课件浏览情况']}}</text>
+      <text
+        tt:if="{{ viewRecord.length !== 0 }}"
+        class="notice"
+      >{{ _t['点击记录可查看详细查阅时间'] }}</text>
       <view class="list">
         <s-list
           class="item"

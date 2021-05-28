@@ -14,6 +14,8 @@ Page({
   data: {
     // 作业 ID
     workId: '',
+    // 用户 openId
+    openId: globalData.openId,
     // 查阅记录
     viewRecord: [],
   },

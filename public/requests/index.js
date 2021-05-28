@@ -287,6 +287,7 @@ const requests = {
         url: url.getWorkRecordUrl,
         data: {
           workId: data.pageData.workId,
+          openId: data.pageData.openId,
         },
         header: {
           'content-type': 'application/json',

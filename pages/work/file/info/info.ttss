@@ -4,6 +4,14 @@
   margin-top: 12px;
 }
 
+.list .notice {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: var(--font-weight-text-help-app);
+  line-height: var(--line-height-text-help);
+  color: var(--gray-scale-500-guide);
+}
+
 .list .title {
   align-self: center;
   font-size: var(--font-size-h2);

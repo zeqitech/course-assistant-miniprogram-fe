@@ -100,6 +100,14 @@ Page({
   },
 
   /**
+   * 监听下拉刷新
+   */
+  async onPullDownRefresh() {
+    await this.onShow();
+    tt.stopPullDownRefresh();
+  },
+
+  /**
    * 选择分类
    */
   async handleSelectTag(e) {

@@ -2,6 +2,10 @@
 
 <view class="page">
   <view class="list width-app">
+    <text
+      tt:if="{{ viewRecord.length !== 0 }}"
+      class="notice"
+    >{{ _t['点击记录可查看详细查阅时间'] }}</text>
     <s-list
       class="item animation-slide-bottom"
       style="animation-delay: {{ (index + 1) * 0.1 }}s;"
