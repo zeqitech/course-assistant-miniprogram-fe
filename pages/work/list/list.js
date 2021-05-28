@@ -19,6 +19,10 @@ const switchTo = {
   workFileList() {
     return switchWorkFileList[globalData.userType]();
   },
+  // 修改作业信息
+  workModify() {
+    return 'workModify';
+  },
 };
 // 根据用户类型，决定跳转到文件列表
 const switchWorkFileList = {
@@ -114,6 +118,20 @@ Page({
     });
   },
 
+  async handleMoreOptions(e) {
+    console.log(e);
+    // 判断操作类型，0修改，1删除
+    if (e.detail === 0) {
+      // 修改路由目的地
+      e.currentTarget.dataset.to = 'workModify';
+      // 修改作业信息
+      this.pageNavigator(e);
+    } else {
+      // 删除作业
+      await this.handleDelWork(e);
+    }
+  },
+
   /**
    * 获取某个分类下的文章
    * @param {String} tag
@@ -167,6 +185,44 @@ Page({
       globalFunctions.showError(getWorkListRes.message);
       // 返回空数组
       return [];
+    }
+  },
+
+  /**
+   * 处理删除作业事件
+   */
+  async handleDelWork(e) {
+    // 用户确认删除
+    let confirmRes = await new Promise((resolve) => {
+      tt.showModal({
+        title: _('确认'),
+        content: `${_('删除提示')}${e.currentTarget.dataset.workName}`,
+        complete(res) {
+          resolve(res);
+        },
+      });
+    });
+    // 如果点击确认
+    if (confirmRes.confirm) {
+      // 显示 Loading
+      tt.showLoading({
+        title: _('请稍候'),
+      });
+      // 发送删除作业请求
+      let delWorkRes = await globalFunctions.sendRequests(
+        'deleteWork',
+        this.data,
+        e
+      );
+      // 如果删除成功
+      if (delWorkRes.success) {
+        globalFunctions.hideLoading();
+        await globalFunctions.showSuccess(_('删除作业成功'), 0);
+        this.onShow();
+      } else {
+        // 删除失败
+        globalFunctions.showError(delWorkRes.message);
+      }
     }
   },
 

@@ -13,10 +13,6 @@ const switchTo = {
   grade() {
     return switchGrade[globalData.userType]();
   },
-  // 修改作业页面
-  work() {
-    return 'workModify';
-  },
   // 打开作业情况统计
   workFileInfo() {
     return 'workFileInfo';
@@ -80,14 +76,6 @@ Page({
     if (globalData.userType !== 'student') {
       this.setData({
         workId: options.workId,
-        endTime: options.endDate.split(' ')[1].slice(0, 5),
-        endDate: options.endDate.split(' ')[0],
-        weight: options.weight,
-        name: options.name,
-        courseId: options.courseId,
-        assistantAuth: options.assistantAuth,
-        tag: options.tag,
-        url: options.url,
       });
     } else {
       this.setData({
@@ -173,116 +161,5 @@ Page({
     e.currentTarget.dataset.to = realTo;
     // 页面路由
     globalFunctions.pageNavigator(e, this.data);
-  },
-
-  /**
-   * 点击更多按钮
-   */
-  handleTapMoreBtn() {
-    // 获取系统信息
-    tt.getSystemInfo({
-      success: (res) => {
-        console.log(res);
-        // 移动端
-        if (res.platform === 'ios' || res.platform === 'android') {
-          // 调用开放 API 显示菜单
-          tt.showActionSheet({
-            itemList: this.data.itemList,
-            success: (res) => {
-              if (res.tapIndex === 0) {
-                // 修改作业
-                let obj = {
-                  currentTarget: {
-                    dataset: {
-                      to: 'work',
-                    },
-                  },
-                };
-                this.pageNavigator(obj);
-              } else if (res.tapIndex === 1) {
-                // 删除作业
-                this.handleDelWork();
-              } else {
-                //取消
-              }
-            },
-          });
-        } else {
-          // PC 端，展示弹出层
-          this.setData({
-            showPopup: true,
-          });
-        }
-      },
-    });
-  },
-
-  /**
-   * 处理选择更多功能事件
-   * @param {Object} e
-   */
-  handleMoreOption(e) {
-    let index = e.currentTarget.dataset.index;
-    if (index === 0) {
-      // 修改作业信息
-      this.setData({
-        showPopup: false,
-      });
-      let obj = {
-        currentTarget: {
-          dataset: {
-            to: 'work',
-          },
-        },
-      };
-      this.pageNavigator(obj);
-    } else if (index === 1) {
-      // 删除作业
-      this.setData({
-        showPopup: false,
-      });
-      this.handleDelWork();
-    } else {
-      // 取消
-      this.setData({
-        showPopup: false,
-      });
-    }
-  },
-
-  /**
-   * 处理删除作业事件
-   */
-  async handleDelWork() {
-    // 用户确认删除
-    let confirmRes = await new Promise((resolve) => {
-      tt.showModal({
-        title: _('确认'),
-        content: `${_('删除提示')}${this.data.name}`,
-        complete(res) {
-          resolve(res);
-        },
-      });
-    });
-    // 如果点击确认
-    if (confirmRes.confirm) {
-      // 显示 Loading
-      tt.showLoading({
-        title: _('请稍候'),
-      });
-      // 发送删除作业请求
-      let delWorkRes = await globalFunctions.sendRequests(
-        'deleteWork',
-        this.data
-      );
-      // 如果删除成功
-      if (delWorkRes.success) {
-        globalFunctions.hideLoading();
-        globalFunctions.showSuccess(_('删除作业成功'), 1);
-      } else {
-        // 删除失败
-        globalFunctions.showError(delWorkRes.message);
-      }
-    }
   },
 });

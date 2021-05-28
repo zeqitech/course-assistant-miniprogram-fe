@@ -2,14 +2,18 @@
   <image class="icon" tt:if="{{ icon }}" src="{{ icon }}"></image>
   <view class="info" tt:if="{{ type === 'button' }}">
     <text class="title">{{ title }}</text>
-    <text class="value">{{ value }}</text>
+    <text class="value {{ color }}">{{ value }}</text>
   </view>
   <text class="title" tt:else>{{ title }}</text>
-  <text tt:if="{{ type === 'default' }}" class="action {{ color }}">{{
+  <text tt:if="{{ type === 'default' }}" class="action">{{
     action
   }}</text>
-  <text tt:elif="{{ type === 'button' }}" class="btn {{ color }}">{{
-    action
-  }}</text>
+  <image
+    src="/image/more1.png"
+    tt:elif="{{ type === 'button' }}"
+    class="btn"
+    catchtap="handleMoreOptions"
+    hover-stop-propagation='true'
+  ></image>
   <slot tt:elif="{{ type === 'slot' }}" class="action"></slot>
 </view>

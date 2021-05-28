@@ -27,8 +27,7 @@
     style="animation-delay: {{ (index + 2) * 0.1 }}s;"
     icon="/image/task.png"
     title="{{ item.workName }}"
-    value="{{ item.expireTime }}"
-    action="{{ item.expireTime < currentTime ? _t['已截止'] : (item.startTime <currentTime ? _t['进行中'] : _t['未开始']) }}"
+    value="{{ item.expireTime < currentTime ? _t['已截止'] : item.expireTime }}"
     color="{{ item.expireTime < currentTime ? 'red' : (item.startTime <currentTime ? 'green' : 'blue') }}"
     data-expire-status="{{ item.expireStatus }}"
     data-expire-time="{{ item.expireTime }}"
@@ -40,6 +39,7 @@
     data-url="{{ item.url }}"
     data-tag="{{ item.tag }}"
     bindtap="pageNavigator"
+    bindtapmore="handleMoreOptions"
     data-to="workFileList"
   ></s-list>
   <!-- 作业列表为空，展示空页 -->

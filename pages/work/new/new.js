@@ -82,8 +82,8 @@ Page({
     } else {
       // 如果操作为修改作业信息
       this.setData({
-        endTime: options.endTime,
-        endDate: options.endDate,
+        endTime: options.endDate.split(' ')[1].slice(0, 5),
+        endDate: options.endDate.split(' ')[0],
         name: options.name,
         weight: options.weight,
         workId: options.workId,

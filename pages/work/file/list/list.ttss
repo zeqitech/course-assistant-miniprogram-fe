@@ -37,3 +37,12 @@
 .popup text:not(:last-child) {
   border-bottom: 1px solid var(--gray-scale-400-disabled);
 }
+
+/* 更多按钮 */
+.more-btn {
+  position: fixed;
+  right: 24px;
+  top: 24px;
+  width: 20px;
+  height: 20px;
+}

@@ -94,6 +94,8 @@
   width: 55px;
   height: 55px;
   border-radius: 50%;
+}
+.add-btn:active {
   box-shadow: 0 4px 8px var(--box-shadow);
 }
 

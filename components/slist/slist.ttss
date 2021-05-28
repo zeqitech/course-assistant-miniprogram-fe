@@ -23,8 +23,8 @@
   height: 40px;
 }
 .s-list.regular .icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 .s-list .info {
   margin-left: var(--margin-12px);
@@ -75,28 +75,20 @@
   color: var(--primary);
 }
 .s-list .btn {
-  width: 80px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 16px;
+  width: 32px;
+  height: 32px;
   margin-left: auto;
-  font-size: var(--font-size-help);
-  font-weight: var(--font-weight-help-app);
-  line-height: var(--line-height-help-app);
-  text-align: center;
-  color: var(--gray-scale-100);
+  z-index: 10;
 }
-.s-list .btn.green {
-  background-color: var(--success);
+.s-list .value.green {
+  color: var(--success);
 }
-.s-list .btn.yellow {
-  background-color: var(--warning);
+.s-list .value.yellow {
+  color: var(--warning);
 }
-.s-list .btn.red {
-  background-color: var(--error);
+.s-list .value.red {
+  color: var(--error);
 }
-.s-list .btn.blue {
-  background-color: var(--primary);
+.s-list .value.blue {
+  color: var(--primary);
 }
