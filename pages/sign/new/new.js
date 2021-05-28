@@ -20,6 +20,10 @@ Page({
     courseId: '',
     // 用户 openId
     openId: globalData.openId,
+    // 所有签到列表
+    signList: [],
+    // 用户类型
+    userType: globalData.userType,
   },
 
   /**
@@ -36,7 +40,7 @@ Page({
   /**
    * 生命周期函数 - 监听页面显示
    */
-  onShow() {
+  async onShow() {
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('发起签到'),
@@ -44,7 +48,45 @@ Page({
     // ttml 双语支持
     this.setData({
       _t: translate._t(),
+      duration: '',
     });
+    // 首先获取签到列表
+    let signList = await this.handleGetSignList();
+    // 保存数据
+    this.setData({
+      signList: signList,
+    });
+  },
+
+  /**
+   * 监听下拉刷新事件
+   */
+  async onPullDownRefresh() {
+    await this.onShow();
+    // 加载完成，停止下拉刷新
+    tt.stopPullDownRefresh();
+  },
+
+  /**
+   * 获取签到记录列表
+   * @returns 返回签到记录列表
+   */
+  async handleGetSignList() {
+    // 发送获取签到列表请求
+    let getSignListRes = await globalFunctions.sendRequests(
+      'getSignList',
+      this.data
+    );
+    // 获取成功
+    if (getSignListRes.success) {
+      // 返回签到列表
+      return getSignListRes.data.signList;
+    } else {
+      // 获取失败，报错
+      globalFunctions.showError(getSignListRes.message);
+      // 返回空数组
+      return [];
+    }
   },
 
   /**
@@ -89,7 +131,12 @@ Page({
       // 成功发布签到
       if (postNewSignRes.success) {
         // 提示成功
-        await globalFunctions.showSuccess(_('发布成功'), 1);
+        await globalFunctions.showSuccess(_('发布成功'), 0);
+        // 刷新页面数据
+        this.setData({
+          signList: await this.handleGetSignList(),
+          duration: '',
+        });
       } else {
         // 发布签到失败
         globalFunctions.showError(postNewSignRes.message);
@@ -138,5 +185,13 @@ Page({
    */
   async handleGetLocationAuth() {
     return await globalFunctions.getScope('userLocation');
+  },
+
+  /**
+   * 页面路由
+   * @param {Object} e
+   */
+  pageNavigator(e) {
+    globalFunctions.pageNavigator(e, this.data);
   },
 });

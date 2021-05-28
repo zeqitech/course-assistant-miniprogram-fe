@@ -1,9 +1,0 @@
-/* 签到记录列表 */
-.list {
-  margin-top: 12px;
-  display: flex;
-  flex-direction: column;
-}
-.list .item {
-  margin-top: 12px;
-}

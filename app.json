@@ -5,7 +5,6 @@
     "pages/course/all/all",
     "pages/course/index/index",
     "pages/sign/info/info",
-    "pages/sign/list/list",
     "pages/sign/new/new",
     "pages/sign/signIn/signIn",
     "pages/work/list/list",

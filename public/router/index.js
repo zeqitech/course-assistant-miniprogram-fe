@@ -102,16 +102,6 @@ const routes = {
     });
   },
 
-  // 作业列表
-  workList(data) {
-    /**
-     * courseId - 通过课程 ID 获取该课程下所有作业
-     */
-    tt.navigateTo({
-      url: `/pages/work/list/list?courseId=${data.pageData.courseId}`,
-    });
-  },
-
   // 发布作业
   workNew(data) {
     /**

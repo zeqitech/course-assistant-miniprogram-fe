@@ -39,12 +39,12 @@ const switchSign = {
   // 教务
   manager() {
     // 查看签到列表
-    return 'signList';
+    return 'signNew';
   },
   // 老师
   teacher() {
     // 查看签到列表
-    return 'signList';
+    return 'signNew';
   },
   // 学生
   student() {
