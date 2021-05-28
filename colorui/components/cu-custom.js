@@ -41,12 +41,12 @@ Component({
    */
   methods: {
     BackPage() {
-      wx.navigateBack({
+      tt.navigateBack({
         delta: 1
       });
     },
     toHome(){
-      wx.reLaunch({
+      tt.reLaunch({
         url: '/pages/index/index',
       })
     }

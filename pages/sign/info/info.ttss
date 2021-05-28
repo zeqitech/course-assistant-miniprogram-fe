@@ -27,3 +27,31 @@
 .unsign .list .item {
   margin-top: 12px;
 }
+
+.data {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: calc(120px + 24px + 12px);
+  background-color: var(--gray-scale-100);
+}
+.data .item {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 88px;
+  height: 120px;
+  box-shadow: 0 4px 8px var(--box-shadow);
+  background-color: var(--gray-scale-50);
+  border-radius: 12px;
+}
+.data .item:not(:first-child) {
+  margin-left: 12px;
+}
+.data .item .icon {
+}
+.data .item .label {
+  font-size: 12px;
+}

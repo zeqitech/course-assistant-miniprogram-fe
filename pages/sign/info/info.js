@@ -43,12 +43,7 @@ Page({
       _t: translate._t(),
     });
     // 获取签到情况
-    let signInfo = await this.handleGetSignInfo();
-    // 保存数据
-    this.setData({
-      signedCount: signInfo.signedCount,
-      unsignedList: signInfo.unsignedList,
-    });
+    await this.handleGetSignInfo();
     // 设置标题
     tt.setNavigationBarTitle({
       title: _('签到情况'),
@@ -90,13 +85,15 @@ Page({
    */
   async handleGetSignInfo() {
     // 获取签到人数
-    let signedCount = await this.handleGetSignedCount();
+    let signData = await this.handleGetSignedCount();
     // 获取未签到名单
     let unsignedList = await this.handleGetUnsignedList();
-    return {
-      signedCount,
+    this.setData({
+      signedCount: signData.signedCount,
+      unsignedCount: signData.unsignedCount,
+      attendance: parseInt(signData.attendance) * 100 + '%',
       unsignedList,
-    };
+    });
   },
 
   /**
@@ -112,7 +109,7 @@ Page({
     // 获取签到人数成功
     if (getSignedCountRes.success) {
       // 返回签到人数
-      return getSignedCountRes.data.count;
+      return getSignedCountRes.data;
     } else {
       // 获取失败，提示错误
       globalFunctions.showError(getSignedCountRes.message);

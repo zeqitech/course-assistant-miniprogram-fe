@@ -22,8 +22,8 @@ const languageMap = {
   正在进行: 'Ongoing',
   已截止: 'Ended',
   签到情况: 'Sign-in Situation',
-  已签到人数: 'Number of People Checked In',
-  未签到名单: 'Unchecked List',
+  已签到人数: 'Signed In',
+  未签到名单: 'Unsigned List',
   未签到: 'Absence',
   课程作业列表: 'Assignment List',
   发布作业: 'Post Assignment',
@@ -135,6 +135,8 @@ const languageMap = {
   截止时刻: 'End time: ',
   截止时间: 'Deadline',
   老师: 'Teacher',
+  出勤率: 'Attendance',
+  未签到人数: 'Unsigned',
 };
 
 module.exports = { languageMap: languageMap };

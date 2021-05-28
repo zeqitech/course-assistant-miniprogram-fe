@@ -2,23 +2,50 @@
 
 <view class="page">
   <view class="width-app info">
-    <s-list
-      title="{{_t['已签到人数']}}"
-      action="{{ signedCount }}"
-    />
+    <view class="data">
+      <!-- 已签到人数 -->
+      <view
+        class="item animation-scale-up"
+        style="animation-delay: 0.1s;"
+      >
+        <text class="icon">{{ signedCount }}</text>
+        <text class="label">{{_t['已签到人数']}}</text>
+      </view>
+      <!-- 未签到人数 -->
+      <view
+        class="item animation-scale-up"
+        style="animation-delay: 0.2s;"
+      >
+        <text class="icon">{{ unsignedCount }}</text>
+        <text class="label">{{_t['未签到人数']}}</text>
+      </view>
+      <!-- 出勤率 -->
+      <view
+        class="item animation-scale-up"
+        style="animation-delay: 0.3s;"
+      >
+        <text class="icon">{{ attendance }}</text>
+        <text class="label">{{_t['出勤率']}}</text>
+      </view>
+    </view>
     <button
       tt:if="{{ !expireStatus }}"
-      class="warn-btn"
+      style="animation-delay: 0.4s;"
+      class="warn-btn animation-scale-up"
       type="warn"
       bindtap="handleEndSign"
     >{{_t['提前结束签到']}}</button>
     <view class="unsign">
-      <text class="title">{{_t['未签到名单']}}</text>
+      <text
+        class="title animation-scale-up"
+        style="animation-delay: 0.5s;"
+      >{{_t['未签到名单']}}</text>
       <view class="list">
         <s-list
-          class="item"
+          class="item animation-scale-up"
           tt:if="{{ unsignedList.length !== 0 }}"
           tt:for="{{ unsignedList }}"
+          style="animation-delay: {{ index * 0.1 + 0.6 }}s;"
           title="{{ item }}"
           action="{{_t['未签到']}}"
         />
