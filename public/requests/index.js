@@ -229,7 +229,7 @@ const requests = {
   async deleteWork(data) {
     let res = await new Promise((resolve) => {
       tt.request({
-        url: `${url.delWorkUrl}?workId=${data.pageData.workId}&openId=${data.pageData.openId}`,
+        url: `${url.delWorkUrl}?workId=${data.workId}&openId=${data.pageData.openId}`,
         method: 'DELETE',
         header: {
           'content-type': 'application/json',

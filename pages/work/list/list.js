@@ -57,6 +57,8 @@ Page({
     tag: '',
     // 分类列表
     tagList: [],
+    // 用户 openId
+    openId: globalData.openId,
   },
 
   /**
@@ -218,7 +220,7 @@ Page({
       if (delWorkRes.success) {
         globalFunctions.hideLoading();
         await globalFunctions.showSuccess(_('删除作业成功'), 0);
-        this.onShow();
+        await this.onShow();
       } else {
         // 删除失败
         globalFunctions.showError(delWorkRes.message);
