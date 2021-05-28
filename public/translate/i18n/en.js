@@ -22,7 +22,7 @@ const languageMap = {
   正在进行: 'Ongoing',
   已截止: 'Ended',
   签到情况: 'Sign-in Situation',
-  已签到人数: 'Signed In',
+  已签到人数: 'Signed',
   未签到名单: 'Unsigned List',
   未签到: 'Absence',
   课程作业列表: 'Assignment List',
