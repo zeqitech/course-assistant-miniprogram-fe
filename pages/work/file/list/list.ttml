@@ -38,13 +38,4 @@
     emptyMessage="{{ _t['暂无作业文档'] }}"
   ></s-empty>
 </view>
-<view class="popup">
-  <text
-    tt:for="{{ itemList }}"
-    tt:if="{{ showPopup }}"
-    data-index="{{ index }}"
-    bindtap="handleMoreOption"
-  >{{ item }}</text>
-</view>
-<image tt:if="{{ userType === 'manager' || userType === 'teacher' }}" class="more-btn" src="/image/more.png" bindtap="handleTapMoreBtn"></image>
 <template is="foot"></template>
