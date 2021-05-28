@@ -62,16 +62,6 @@ const routes = {
     });
   },
 
-  // 签到列表页面
-  signList(data) {
-    /**
-     * courseId - 课程 ID，用于获取签到列表
-     */
-    tt.navigateTo({
-      url: `/pages/sign/list/list?courseId=${data.pageData.courseId}`,
-    });
-  },
-
   // 签到页面
   signIn(data) {
     /**
@@ -99,6 +89,16 @@ const routes = {
      */
     tt.navigateTo({
       url: `/pages/sign/new/new?courseId=${data.pageData.courseId}`,
+    });
+  },
+
+  // 作业列表
+  workList(data) {
+    /**
+     * courseId - 通过课程 ID 获取该课程下所有作业
+     */
+    tt.navigateTo({
+      url: `/pages/work/list/list?courseId=${data.pageData.courseId}`,
     });
   },
 
