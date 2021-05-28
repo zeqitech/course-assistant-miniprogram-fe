@@ -51,6 +51,9 @@
   margin-left: 12px;
 }
 .data .item .icon {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-h1);
+  line-height: var(--line-height-h1);
 }
 .data .item .label {
   font-size: 12px;

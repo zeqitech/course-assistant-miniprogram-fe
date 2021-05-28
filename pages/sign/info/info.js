@@ -51,6 +51,14 @@ Page({
   },
 
   /**
+   * 监听下拉刷新
+   */
+  async onPullDownRefresh() {
+    await this.onShow();
+    tt.stopPullDownRefresh();
+  },
+
+  /**
    * 提前结束签到
    */
   async handleEndSign() {

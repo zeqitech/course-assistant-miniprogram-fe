@@ -8,7 +8,7 @@
         class="item animation-scale-up"
         style="animation-delay: 0.1s;"
       >
-        <text class="icon">{{ signedCount }}</text>
+        <text class="icon" style="color: var(--success);">{{ signedCount }}</text>
         <text class="label">{{_t['已签到人数']}}</text>
       </view>
       <!-- 未签到人数 -->
@@ -16,7 +16,7 @@
         class="item animation-scale-up"
         style="animation-delay: 0.2s;"
       >
-        <text class="icon">{{ unsignedCount }}</text>
+        <text class="icon" style="color: var(--error);">{{ unsignedCount }}</text>
         <text class="label">{{_t['未签到人数']}}</text>
       </view>
       <!-- 出勤率 -->
@@ -24,7 +24,7 @@
         class="item animation-scale-up"
         style="animation-delay: 0.3s;"
       >
-        <text class="icon">{{ attendance }}</text>
+        <text class="icon" style="color: var(--primary);">{{ attendance }}</text>
         <text class="label">{{_t['出勤率']}}</text>
       </view>
     </view>

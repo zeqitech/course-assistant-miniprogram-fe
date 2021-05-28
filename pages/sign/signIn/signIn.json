@@ -2,5 +2,6 @@
   "usingComponents": {
     "s-list": "/components/slist/slist",
     "s-empty": "/components/sempty/sempty"
-  }
+  },
+  "enablePullDownRefresh": true
 }

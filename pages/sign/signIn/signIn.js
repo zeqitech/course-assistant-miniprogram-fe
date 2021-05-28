@@ -48,6 +48,14 @@ Page({
   },
 
   /**
+   * 监听页面下拉刷新
+   */
+  async onPullDownRefresh() {
+    await this.onShow();
+    tt.stopPullDownRefresh();
+  },
+
+  /**
    * 获取个人签到记录
    */
   async handleGetMySignRecord() {
@@ -88,7 +96,8 @@ Page({
     console.log(signInRes);
     // 签到成功
     if (signInRes.success) {
-      globalFunctions.showSuccess(_('签到成功'), 1);
+      await globalFunctions.showSuccess(_('签到成功'), 0);
+      await this.onShow();
     } else {
       // 签到失败
       globalFunctions.showError(signInRes.message);

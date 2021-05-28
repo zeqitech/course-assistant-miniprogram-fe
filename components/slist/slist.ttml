@@ -5,7 +5,7 @@
     <text class="value {{ color }}">{{ value }}</text>
   </view>
   <text class="title" tt:else>{{ title }}</text>
-  <text tt:if="{{ type === 'default' }}" class="action">{{
+  <text tt:if="{{ type === 'default' }}" class="action {{ color }}">{{
     action
   }}</text>
   <image
