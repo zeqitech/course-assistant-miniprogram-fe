@@ -3,6 +3,7 @@
 <view class="page">
   <view class="width-app courseware">
     <s-input
+      class="animation-slide-bottom"
       label="{{_t['课件原文件']}}"
       type="slot"
     >
@@ -17,14 +18,19 @@
       </s-list>
     </s-input>
     <view class="info" tt:if="{{ userType === 'teacher' }}">
-      <text class="title">{{_t['课件浏览情况']}}</text>
+      <text
+        class="title animation-slide-bottom"
+        style="animation-delay: 0.1s;"
+      >{{_t['课件浏览情况']}}</text>
       <text
         tt:if="{{ viewRecord.length !== 0 }}"
-        class="notice"
+        class="notice animation-scale-up"
+        style="animation-delay: 0.2s;"
       >{{ _t['点击记录可查看详细查阅时间'] }}</text>
       <view class="list">
         <s-list
-          class="item"
+          class="item animation-slide-bottom"
+          style="animation-delay: {{index + 3}} * 0.1 s;"
           tt:if="{{ viewRecord.length !== 0 }}"
           tt:for="{{ viewRecord }}"
           title="{{ item.username }}"
@@ -34,7 +40,8 @@
           bindtap="handleShowTime"
         />
         <s-empty
-          class="empty"
+          class="empty animation-scale-up"
+          style="animation-delay: 0.3s;"
           tt:if="{{ viewRecord.length === 0 }}"
           emptyMessage="{{ _t['暂无浏览记录'] }}"
         ></s-empty>

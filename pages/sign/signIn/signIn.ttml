@@ -2,12 +2,19 @@
 
 <view class="page">
   <!-- 签到按钮 -->
-  <text class="btn" bindtap="handleSignIn">{{_t['立即签到']}}</text>
+  <text
+    class="btn animation-slide-bottom"
+    bindtap="handleSignIn"
+  >{{_t['立即签到']}}</text>
   <view class="record width-app">
-      <text class="title">{{_t['签到记录']}}</text>
+      <text
+        class="title animation-slide-bottom"
+        style="animation-delay: 0.1s;"
+      >{{_t['签到记录']}}</text>
       <view class="list">
         <s-list
-          class="item"
+          class="item animation-slide-bottom"
+          style="animation-delay: {{(index+2)*0.1}}s;"
           tt:if="{{ signList.length !== 0 }}"
           tt:for="{{ signList }}"
           title="{{ item.updateTime }}"
@@ -15,7 +22,8 @@
           color="{{ item.signedStatus ? 'green' : 'red' }}"
         />
         <s-empty
-          class="empty"
+          class="empty animation-slide-bottom"
+          style="animation-delay: 0.2s;"
           tt:if="{{ signList.length === 0 }}"
           emptyMessage="{{ _t['老师暂未发起签到'] }}"
         ></s-empty>
