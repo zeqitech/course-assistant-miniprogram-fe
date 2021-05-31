@@ -9,27 +9,28 @@
     bindinput="handleInputDuration"
   />
   <text class="btn" bindtap="handleNewSign">{{_t['发起签到']}}</text>
-    <view class="list width-app">
-      <!-- 渲染列表 -->
-      <s-list
-        tt:for="{{ signList }}"
-        tt:if="{{ signList.length !== 0 }}"
-        class="item animation-slide-bottom"
-        style="animation-delay: {{(index+1)*0.1}}s;"
-        title="{{ item.createTime }}"
-        action="{{ item.expireStatus ? _t['已截止'] : _t['正在进行'] }}"
-        color="{{ item.expireStatus ? 'red' : 'green' }}"
-        data-sign-id="{{ item.signId }}"
-        data-expire-status="{{ item.expireStatus }}"
-        bindtap="pageNavigator"
-        data-to="signInfo"
-      />
-    </view>
-    <!-- 空页面 -->
-    <s-empty
-      tt:if="{{ signList.length === 0 }}"
-      class="empty"
-      emptyMessage="{{ _t['暂无签到任务'] }}"
-    ></s-empty>
+  <text class="title">{{_t['签到记录']}}</text>
+  <view class="list width-app">
+    <!-- 渲染列表 -->
+    <s-list
+      tt:for="{{ signList }}"
+      tt:if="{{ signList.length !== 0 }}"
+      class="item animation-slide-bottom"
+      style="animation-delay: {{(index+1)*0.1}}s;"
+      title="{{ item.createTime }}"
+      action="{{ item.expireStatus ? _t['已截止'] : _t['正在进行'] }}"
+      color="{{ item.expireStatus ? 'red' : 'green' }}"
+      data-sign-id="{{ item.signId }}"
+      data-expire-status="{{ item.expireStatus }}"
+      bindtap="pageNavigator"
+      data-to="signInfo"
+    />
+  </view>
+  <!-- 空页面 -->
+  <s-empty
+    tt:if="{{ signList.length === 0 }}"
+    class="empty"
+    emptyMessage="{{ _t['暂无签到任务'] }}"
+  ></s-empty>
 </view>
 <template is="foot"></template>

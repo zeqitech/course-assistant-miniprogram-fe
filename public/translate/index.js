@@ -1,5 +1,5 @@
 function getLanguage() {
-  //返回缓存中的language属性 (en / zh_CN)
+  //返回缓存中的language属性 (en_US / zh_CN)
   return tt.getStorageSync('language') || 'zh_CN';
 }
 
