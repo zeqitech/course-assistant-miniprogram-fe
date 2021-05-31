@@ -29,6 +29,7 @@
   font-weight: var(--font-weight-text-help-app);
   line-height: var(--line-height-text-help);
   color: var(--gray-scale-500-guide);
+  text-align: center;
 }
 
 .info .list {

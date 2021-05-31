@@ -10,6 +10,10 @@
   />
   <text class="btn" bindtap="handleNewSign">{{_t['发起签到']}}</text>
   <text class="title">{{_t['签到记录']}}</text>
+  <text
+    tt:if="{{ viewRecord.length !== 0 }}"
+    class="notice"
+  >{{ _t['点击记录可查看详细查阅时间'] }}</text>
   <view class="list width-app">
     <!-- 渲染列表 -->
     <s-list
