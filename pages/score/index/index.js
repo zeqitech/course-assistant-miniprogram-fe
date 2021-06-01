@@ -85,4 +85,17 @@ Page({
       force: false,
     });
   },
+
+  /**
+   * 上传成绩
+   */
+  uploadScore() {
+    // 接口尚未获得，提示用户
+    tt.showModal({
+      title: _('提示'),
+      content: _('此功能可与上游教务系统对接'),
+      confirmText: _('确认'),
+      cancelText: _('取消'),
+    });
+  },
 });
