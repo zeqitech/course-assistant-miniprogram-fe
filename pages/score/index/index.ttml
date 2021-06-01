@@ -15,6 +15,7 @@
       style="animation-delay: 0.2s;"
       bindtap="regetScore"
     >{{ _t['重新生成成绩'] }}</button>
+    <view class="height-box"></view>
     <!-- 成绩列表 -->
     <s-list
       class="item animation-slide-bottom"
