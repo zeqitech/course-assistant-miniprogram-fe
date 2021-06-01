@@ -1,10 +1,17 @@
 .list {
   margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .btn {
   width: 100%;
   margin-top: 8px;
+}
+
+.list .item {
+  width: 100%;
 }
 
 .list .item view {

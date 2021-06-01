@@ -59,6 +59,7 @@ Page({
       this.setData({
         scoreList: res.data.gradeList,
       });
+      // return res.data.gradeList;
     } else {
       globalFunctions.showError(res.message);
     }
