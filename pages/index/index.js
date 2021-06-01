@@ -10,7 +10,7 @@ const _ = translate._;
 // 切换语言
 const switchLanguage = {
   // 当前使用英语
-  en() {
+  en_US() {
     // 设置使用的语言为中文
     tt.setStorageSync('language', 'zh_CN');
     // 刷新页面翻译对象
@@ -21,7 +21,7 @@ const switchLanguage = {
   // 当前使用中文
   zh_CN() {
     // 设置使用的语言为英文
-    tt.setStorageSync('language', 'en');
+    tt.setStorageSync('language', 'en_US');
     // 刷新页面翻译对象
     this.setData({
       _t: translate._t(),

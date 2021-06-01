@@ -143,7 +143,8 @@ const languageMap = {
   课件原文件: 'Courseware Document',
   问题反馈: 'Feedback',
   此功能可与上游教务系统对接:
-    'This function can be connected with the upstream educational administration system to upload the scores.',
+    'This function can connect with the upstream educational administration system to upload the scores.',
+  上传成绩: 'Upload Score',
 };
 
 module.exports = { languageMap: languageMap };

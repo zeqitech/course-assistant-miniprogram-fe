@@ -142,6 +142,7 @@ const languageMap = {
   问题反馈: '问题反馈',
   此功能可与上游教务系统对接:
     '此功能可与上游教务系统对接，将成绩上传至教务系统中',
+  上传成绩: '上传成绩',
 };
 
 module.exports = { languageMap: languageMap };

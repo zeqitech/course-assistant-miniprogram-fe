@@ -17,7 +17,7 @@
     <!-- 成绩列表 -->
     <s-list
       class="item animation-slide-bottom"
-      style="animation-delay: {{(index+2)*0.1}}s;"
+      style="animation-delay: {{(index + 2) * 0.1}}s;"
       tt:if="{{ scoreList.length !== 0 }}"
       tt:for="{{ scoreList }}"
       title="{{ item.studentName + '  ' + item.schoolId }}"
