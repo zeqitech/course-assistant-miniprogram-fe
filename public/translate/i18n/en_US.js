@@ -145,6 +145,8 @@ const languageMap = {
   此功能可与上游教务系统对接:
     'This function can connect with the upstream educational administration system to upload the scores.',
   上传成绩: 'Upload Score',
+  使用课程助手服务台发送反馈:
+    'Use Course Assistant Desk to send feedback. Press Confirm to open.',
 };
 
 module.exports = { languageMap: languageMap };

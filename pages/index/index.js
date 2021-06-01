@@ -199,7 +199,24 @@ Page({
    * @param {Object} e
    */
   pageNavigator(e) {
-    globalFunctions.pageNavigator(e, this.data);
+    // 针对反馈功能特殊处理
+    if (e.currentTarget.dataset.to === 'feedback') {
+      tt.showModal({
+        title: _('提示'),
+        content: _('使用课程助手服务台发送反馈'),
+        confirmText: _('确认'),
+        cancelText: _('取消'),
+        success(res) {
+          // 如果点击确认，进行跳转
+          if (res.confirm) {
+            globalFunctions.pageNavigator(e, this.data);
+          }
+        },
+      });
+    } else {
+      // 其余功能正常进行跳转
+      globalFunctions.pageNavigator(e, this.data);
+    }
   },
 
   /**
