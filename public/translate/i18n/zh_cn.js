@@ -139,6 +139,7 @@ const languageMap = {
   学生作业列表: '学生作业列表',
   点击记录可查看详细查阅时间: '* 提示：点击记录可查看详细查阅时间',
   课件原文件: '课件文档',
+  问题反馈: '问题反馈',
 };
 
 module.exports = { languageMap: languageMap };

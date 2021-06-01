@@ -141,6 +141,7 @@ const languageMap = {
   点击记录可查看详细查阅时间:
     '* Notice: Click the record to get detailed information.',
   课件原文件: 'Courseware Document',
+  问题反馈: 'Feedback',
 };
 
 module.exports = { languageMap: languageMap };

@@ -216,6 +216,15 @@ const routes = {
       external: false,
     });
   },
+
+  // 问题反馈
+  feedback() {
+    tt.openSchema({
+      schema:
+        'https://applink.feishu.cn/client/helpdesk/open?id=6959197447251820547&extra=%7B%22channel%22%3A1%2C%22created_at%22%3A1622461617%7D',
+      external: false,
+    });
+  },
 };
 
 module.exports = routes;
