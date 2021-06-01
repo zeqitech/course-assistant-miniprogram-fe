@@ -5,19 +5,20 @@
     <!-- 上传成绩到系统按钮 -->
     <button
       class="btn animation-slide-bottom"
+      style="animation-delay: 0.1s;"
       type="primary"
       bindtap="uploadScore"
     >{{ _t['上传成绩'] }}</button>
     <!-- 重新生成成绩按钮 -->
     <button
       class="btn animation-slide-bottom"
-      style="animation-delay: 0.1s;"
+      style="animation-delay: 0.2s;"
       bindtap="regetScore"
     >{{ _t['重新生成成绩'] }}</button>
     <!-- 成绩列表 -->
     <s-list
       class="item animation-slide-bottom"
-      style="animation-delay: {{(index + 2) * 0.1}}s;"
+      style="animation-delay: {{(index+3)*0.1}}s;"
       tt:if="{{ scoreList.length !== 0 }}"
       tt:for="{{ scoreList }}"
       title="{{ item.studentName + '  ' + item.schoolId }}"
@@ -26,7 +27,7 @@
     <!-- 无成绩空页面 -->
     <s-empty
       class="empty animation-scale-up"
-      style="animation-delay: 0.2s;"
+      style="animation-delay: 0.3s;"
       tt:if="{{ scoreList.length === 0 }}"
       emptyMessage="{{ _t['暂无成绩信息'] }}"
     ></s-empty>
