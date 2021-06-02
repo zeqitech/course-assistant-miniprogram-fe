@@ -89,7 +89,7 @@ const languageMap = {
   请完善数据: 'Please complete the data.',
   修改中: 'Modifying',
   修改作业信息成功: 'Modified assignment information successfully.',
-  切换语言: '中文模式',
+  切换语言: 'Chinese Mode',
   添加成功: 'Added successfully.',
   竟然没有翻译: 'No translation.',
   选择作业分类: 'Switch Assignment Tag: ',
