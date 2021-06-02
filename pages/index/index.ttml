@@ -38,15 +38,6 @@
       <image class="icon" src="/image/feedback.png"></image>
       <text class="label">{{_t['问题反馈']}}</text>
     </view>
-    <view
-      class="item animation-scale-up"
-      style="animation-delay: 0.3s;"
-      data-to="feedback"
-      bindtap="pageNavigator"
-    >
-      <image class="icon" src="/image/feedback.png"></image>
-      <text class="label">{{_t['问题反馈']}}</text>
-    </view>
     <!-- 添加课程功能，仅教务管理人员可用 -->
     <view
       class="item animation-scale-up"
