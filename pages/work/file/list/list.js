@@ -76,6 +76,7 @@ Page({
     if (globalData.userType !== 'student') {
       this.setData({
         workId: options.workId,
+        courseId: options.courseId,
       });
     } else {
       this.setData({

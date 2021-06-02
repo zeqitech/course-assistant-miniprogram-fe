@@ -124,7 +124,7 @@ const routes = {
     if (data.assistantAuth) {
       // 如果助教可评阅
       tt.navigateTo({
-        url: `/pages/work/file/list/list?workId=${data.workId}`,
+        url: `/pages/work/file/list/list?workId=${data.workId}&courseId=${data.pageData.courseId}`,
       });
     } else {
       // 提示没有评阅权限
