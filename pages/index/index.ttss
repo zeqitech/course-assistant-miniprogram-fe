@@ -27,6 +27,7 @@
 /* 功能列表 */
 .functions {
   width: 100%;
+  white-space: nowrap;
   height: calc(120px + 24px + 12px);
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
